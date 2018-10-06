@@ -32,7 +32,7 @@
 <body>
 	<div style="margin-top: 50px;" class="container">
 		<div class="row" style="text-align: center;">
-			<a href="./user/createUser"><i class="material-icons">add</i></a>
+			<a href="./login"><i class="material-icons">add</i></a>
 		</div>
 	</div>
 </body>

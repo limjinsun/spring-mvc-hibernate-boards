@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>
-	Hello world! ${user.fname} ${user.lname}
+	Success ${user.fname} ${user.lname}
 </h1>
 
 </body>

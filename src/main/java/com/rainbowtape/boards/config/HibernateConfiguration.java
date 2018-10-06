@@ -21,6 +21,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan({"com.rainbowtape.boards"})
 @PropertySource({"/WEB-INF/persistence-mysql.properties"})
 public class HibernateConfiguration {
+	
+	// http://websystique.com/spring/spring4-hibernate4-mysql-maven-integration-example-using-annotations/
+	// https://stackoverflow.com/questions/35258758/getservletconfigclasses-vs-getrootconfigclasses-when-extending-abstractannot
 
 	@Autowired
 	private Environment env;
@@ -37,6 +40,7 @@ public class HibernateConfiguration {
 
 	@Bean
 	public DataSource dataSource() {
+		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(env.getRequiredProperty("jdbc.driverClassName"));
 		dataSource.setUrl(env.getRequiredProperty("jdbc.url"));
@@ -44,9 +48,10 @@ public class HibernateConfiguration {
 		dataSource.setPassword(env.getRequiredProperty("jdbc.pass"));
 		return dataSource;
 	}
-
+	
 	@Bean
 	public Properties hibernateProperties() {
+		
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
 		properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
@@ -57,6 +62,7 @@ public class HibernateConfiguration {
 	@Bean
 	@Autowired
 	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
+		
 		HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
 		hibernateTransactionManager.setSessionFactory(sessionFactory);
 		return hibernateTransactionManager;

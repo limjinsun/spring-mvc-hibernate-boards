@@ -1,6 +1,5 @@
 package com.rainbowtape.boards.controller;
 
-import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,7 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@GetMapping("createUser")
+	@GetMapping("/createUser")
 	public String getCreateFrom(@ModelAttribute("user") User user, Model model) {
 		return "create_user";
 	}
@@ -35,7 +34,7 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping("userLogin")
+	@GetMapping("/userLogin")
 	public String getUserLogin(@ModelAttribute("user") User user, Model model) {
 		return "user_login";
 	}
