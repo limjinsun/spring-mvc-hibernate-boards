@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -34,16 +35,22 @@
 
 <body>
 	<h3>My Custom Login Page</h3>
-	<form:form
-		action="${pageContext.request.contextPath}/loginValidation"
-		method="POST">
+	<c:url value="/validateLogin" var="loginProcessingUrl" />
+	<form:form action="${loginProcessingUrl}" method="POST">
 		<!-- Check for login error -->
 		<c:if test="${param.error != null}">
-			<i class="failed">Sorry! You entered invalid username/password.</i>
+			<div class="alert alert-danger col-xs-offset-1 col-xs-10">
+				Invalid username and password.</div>
+		</c:if>
+
+		<!-- Check for logout -->
+		<c:if test="${param.logout != null}">
+			<div class="alert alert-success col-xs-offset-1 col-xs-10">You
+				have been logged out.</div>
 		</c:if>
 
 		<p>
-			Email: <input type="text" name="useremail" />
+			Email: <input type="text" name="username" />
 		</p>
 
 		<p>

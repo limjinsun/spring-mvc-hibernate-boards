@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -38,9 +39,7 @@ public class HomeController {
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
 		String formattedDate = dateFormat.format(date);
-		
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "index";
@@ -66,5 +65,31 @@ public class HomeController {
 		
 		return "success";
 	}
+	
+	@GetMapping("/login")
+	public String Login(Locale locale, Model model) {
+		logger.info("Welcome to Login home! The client locale is {}.", locale);
+		return "login";
+	}
+	
+	@GetMapping("/success")
+	public String Success (Locale locale, Model model) {
+		logger.info("Welcome to Success area! The client locale is {}.", locale);
+		return "success";
+	}
+	
+	@GetMapping("/403")
+	public String ErrorCode403 (Locale locale, Model model) {
+		logger.info("Welcome to 403 area! The client locale is {}.", locale);
+		return "403";
+	}
+	
+	@GetMapping("/system")
+	public String System (Locale locale, Model model) {
+		logger.info("Welcome to System area! The client locale is {}.", locale);
+		return "success";
+	}
+	
+	
 	
 }
