@@ -90,6 +90,11 @@ public class HomeController {
 		return "success";
 	}
 	
+	@GetMapping("/logoutSuccess")
+	public String logoutSuccess (Locale locale, Model model) {
+		logger.info("Welcome to LogoutSuccess area! The client locale is {}.", locale);
+		return "success";
+	}
 	
 	
 }

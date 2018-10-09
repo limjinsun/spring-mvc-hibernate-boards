@@ -39,13 +39,13 @@
 	<form:form action="${loginProcessingUrl}" method="POST">
 		<!-- Check for login error -->
 		<c:if test="${param.error != null}">
-			<div class="alert alert-danger col-xs-offset-1 col-xs-10">
+			<div class="failed">
 				Invalid username and password.</div>
 		</c:if>
 
 		<!-- Check for logout -->
 		<c:if test="${param.logout != null}">
-			<div class="alert alert-success col-xs-offset-1 col-xs-10">You
+			<div class="failed">You
 				have been logged out.</div>
 		</c:if>
 

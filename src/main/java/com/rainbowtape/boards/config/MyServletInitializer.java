@@ -7,7 +7,7 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[] { WebSecurityConfig.class };
+		return new Class[] { HibernateConfiguration.class, WebSecurityConfig.class };
 	}
 
 	@Override
