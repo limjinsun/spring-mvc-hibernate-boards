@@ -67,5 +67,5 @@ public class HibernateConfiguration {
 		hibernateTransactionManager.setSessionFactory(sessionFactory);
 		return hibernateTransactionManager;
 	}
-
+	
 }

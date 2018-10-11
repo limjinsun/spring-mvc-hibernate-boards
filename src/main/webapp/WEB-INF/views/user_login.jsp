@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
@@ -53,32 +52,22 @@
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
 
-				<form:form modelAttribute="user"
-					class="login100-form validate-form flex-sb flex-w" method="POST"
-					action="userLogin">
+				<form:form modelAttribute="user" class="login100-form validate-form flex-sb flex-w" method="POST" action="userLogin">
 					<span class="login100-form-title p-b-51"> Spring MVC Forum Login </span>
-					<div class="wrap-input100 validate-input m-b-16"
-						data-validate="Username is required">
-						<form:input path="email" type="email" class="input100"
-							name="email" value="" required="required" aria-required="true"
-							placeholder="Email" />
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
+						<form:input path="email" type="email" class="input100" name="email" value="" required="required" aria-required="true" placeholder="Email" />
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-16"
-						data-validate="Password is required">
-						<form:input path="password" value="" required="required"
-							aria-required="true" class="input100" type="password" name="pass"
-							placeholder="Password" />
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+						<form:input path="password" value="" required="required" aria-required="true" class="input100" type="password" name="pass" placeholder="Password" />
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="flex-sb-m w-full p-t-3 p-b-24">
 						
 						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox"
-								name="remember-me"> <label class="label-checkbox100"
-								for="ckb1"> Remember me </label>
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me"> <label class="label-checkbox100" for="ckb1"> Remember me </label>
 						</div>
 						<div>
 							<a href="${pageContext.servletContext.contextPath}/user/createUser" class="txt1"> Register? </a>
@@ -97,8 +86,7 @@
 							 -->
 
 					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn" type="submit"
-								name="action" >Login</button>
+						<button class="login100-form-btn" type="submit" name="action" >Login</button>
 					</div>
 
 				</form:form>

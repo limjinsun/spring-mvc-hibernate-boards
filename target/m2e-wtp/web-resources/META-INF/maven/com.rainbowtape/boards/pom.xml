@@ -16,22 +16,25 @@
 	</properties>
 	<dependencies>
 
+		<!-- 추 -->
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring4</artifactId>
+			<version>3.0.9.RELEASE</version>
+		</dependency>
 
-		<!-- 추가 : https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
 			<version>4.2.0.RELEASE</version>
 		</dependency>
 
-		<!-- 추가 : https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>4.2.0.RELEASE</version>
 		</dependency>
-		
-		<!-- 추가 : https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
@@ -39,7 +42,6 @@
 		</dependency>
 
 
-		<!-- 서블렛 컨텍스트에 데이터소스 추가하면서 디펜던시 추가해줌. -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>

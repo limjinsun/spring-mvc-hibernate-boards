@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.rainbowtape.boards.entity.User;
 import com.rainbowtape.boards.service.UserService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping(value = "/user", method = RequestMethod.GET)
 public class UserController {
 
 	@Autowired
