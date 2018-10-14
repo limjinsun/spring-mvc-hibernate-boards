@@ -72,6 +72,12 @@ public class HomeController {
 		return "login";
 	}
 	
+	@GetMapping("/register")
+	public String Register(Locale locale, Model model) {
+		return "registerForm";
+	}
+	
+	
 	@GetMapping("/success")
 	public String Success (Locale locale, Model model) {
 		logger.info("Welcome to Success area! The client locale is {}.", locale);

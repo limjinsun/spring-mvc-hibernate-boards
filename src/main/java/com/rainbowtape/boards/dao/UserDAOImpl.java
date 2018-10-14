@@ -11,10 +11,7 @@ import com.rainbowtape.boards.entity.User;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
-
-	// Session session = HibernateUtil.getFactory().openSession();
-	// Transaction transaction = null;
-
+	
 	@Autowired
 	SessionFactory sessionFactory;
 

@@ -1,11 +1,18 @@
 package com.rainbowtape.boards.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email; // this is come from Hibernate Validation Dependency.
+import javax.validation.constraints.NotEmpty;
+
 
 @Entity
 @Table(name="user")
@@ -22,8 +29,17 @@ public class User {
 	private String lname;
 	@Column(name="password")
 	private String password;
+	@Email
+	@NotEmpty
 	@Column(name="email", unique = true)
 	private String email;
+	
+	// To declare a side as not responsible for the relationship, the attribute 'mappedBy' is used. 
+	// 'mappedBy' refers to the property name of the association on the owner side. 
+	// http://docs.jboss.org/hibernate/annotations/3.5/reference/en/html_single/#entity-mapping
+	@OneToMany(mappedBy="user_id", cascade= {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
+	private List<UserRole> userroles;
+	
 
 	public User(String fname, String lname, String password, String email) {
 		this.fname = fname;

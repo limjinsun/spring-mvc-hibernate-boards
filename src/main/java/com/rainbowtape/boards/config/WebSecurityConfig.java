@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/resources/**", "/signup", "/about").permitAll()
-				.antMatchers("/","/403").permitAll()
+				.antMatchers("/","/403","/register").permitAll()
 				.antMatchers("/system/**").hasRole("ADMIN")
 				.antMatchers("/user/**").hasAnyRole("USER","ADMIN")
 				.anyRequest().authenticated()
@@ -51,7 +51,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 							.csrf();
 	}
 	
-	
 	// https://memorynotfound.com/spring-security-user-registration-example-thymeleaf/ 
 	
 	@Bean
@@ -60,5 +59,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 	
 	
-
 }

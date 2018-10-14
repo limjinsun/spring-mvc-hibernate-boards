@@ -32,7 +32,13 @@
 <body>
 	<div style="margin-top: 50px;" class="container">
 		<div class="row" style="text-align: center;">
-			<a href="./login"><i class="material-icons">add</i></a>
+			<a href="./login"><i class="material-icons">add_circle</i></a>
+		</div>
+	</div>
+	
+	<div style="margin-top: 50px;" class="container">
+		<div class="row" style="text-align: center;">
+			<a href="./register"><i class="material-icons">send</i></a>
 		</div>
 	</div>
 </body>
