@@ -2,43 +2,39 @@ package com.rainbowtape.boards.config;
 
 import java.util.Properties;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({"com.rainbowtape.boards"})
+@EnableJpaRepositories(basePackages = {"com.rainbowtape.boards.dao"})
 @PropertySource({"classpath:persistence-mysql.properties"})
-public class HibernateConfiguration {
-	
-	// this is Hibernate configuration.
+public class PersistenceConfig {
 
+	// this is JPA and Hibernate configuration.
 	// http://websystique.com/spring/spring4-hibernate4-mysql-maven-integration-example-using-annotations/
 	// https://stackoverflow.com/questions/35258758/getservletconfigclasses-vs-getrootconfigclasses-when-extending-abstractannot
+	// https://www.baeldung.com/the-persistence-layer-with-spring-and-jpa#javaconfig
+	// https://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-part-one-configuration/
 
 	@Autowired
 	private Environment env;
-
-	@Bean
-	public LocalSessionFactoryBean sessionFactory() {
-		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan(new String[] {"com.rainbowtape.boards.entity"});
-		sessionFactory.setHibernateProperties(hibernateProperties());
-
-		return sessionFactory;
-	}
 
 	@Bean
 	public DataSource dataSource() {
@@ -61,13 +57,31 @@ public class HibernateConfiguration {
 		return properties;     
 	}
 
+	// for Spring Data JPA Configuration - adding 'entity manager' 
+
 	@Bean
 	@Autowired
-	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
-		HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
-		hibernateTransactionManager.setSessionFactory(sessionFactory);
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+		entityManagerFactoryBean.setDataSource(dataSource());
+		entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+		entityManagerFactoryBean.setPackagesToScan("com.rainbowtape.boards.entity");
+		entityManagerFactoryBean.setJpaProperties(hibernateProperties());
 
-		return hibernateTransactionManager;
+		return entityManagerFactoryBean;
+	}
+
+	@Bean
+	public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(emf);
+
+		return transactionManager;
+	}
+
+	@Bean
+	public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
+		return new PersistenceExceptionTranslationPostProcessor();
 	}
 
 }

@@ -1,25 +1,27 @@
 package com.rainbowtape.boards.dao;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
-
 import com.rainbowtape.boards.entity.User;
 
-@Repository
-public class UserDAOImpl implements UserDAO {
-	
-	@Autowired
-	SessionFactory sessionFactory;
 
-	@Override
-	@Transactional
-	public void saveUser(User user) {
-		sessionFactory.getCurrentSession().save(user);
-	}
+public class UserDAOImpl {
+	
+//	@Autowired
+//	SessionFactory sessionFactory;
+
+//	@Override
+//	@Transactional
+//	public void saveUser(User user) {
+//		sessionFactory.getCurrentSession().save(user);
+//	}
 
 	/* 
 	 * without @Transactional annotation.
@@ -37,16 +39,18 @@ public class UserDAOImpl implements UserDAO {
 
 	 */
 
-	@Override
-	@Transactional
-	public boolean isUserExist (User user) {
-		Query query = sessionFactory.getCurrentSession().createQuery("from User where email= :email");
-		User oldUser = (User)query.setParameter("email", user.getEmail()).uniqueResult();
-		if(oldUser == null) {
-			return false;
-		}
-		return true;
-	}
+//	@Override
+//	@Transactional
+//	public boolean isUserExist (User user) {
+//		Query query = sessionFactory.getCurrentSession().createQuery("from User where email= :email");
+//		User oldUser = (User)query.setParameter("email", user.getEmail()).uniqueResult();
+//		if(oldUser == null) {
+//			return false;
+//		}
+//		return true;
+//	}
+
+
 
 	/*
 	 * 	transaction  = session.beginTransaction();

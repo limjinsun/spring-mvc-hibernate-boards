@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email; // this is come from Hibernate Validation Dependency.
 import javax.validation.constraints.NotEmpty;
-
 
 @Entity
 @Table(name="user")
@@ -37,10 +37,17 @@ public class User {
 	// To declare a side as not responsible for the relationship, the attribute 'mappedBy' is used. 
 	// 'mappedBy' refers to the property name of the association on the owner side. 
 	// http://docs.jboss.org/hibernate/annotations/3.5/reference/en/html_single/#entity-mapping
-	@OneToMany(mappedBy="user_id", cascade= {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
+	// fetch type has to be EAGER for spring security set-up
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="user_id", cascade= {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
 	private List<UserRole> userroles;
 	
-
+	public List<UserRole> getUserroles() {
+		return userroles;
+	}
+	public void setUserroles(List<UserRole> userroles) {
+		this.userroles = userroles;
+	}
+	
 	public User(String fname, String lname, String password, String email) {
 		this.fname = fname;
 		this.lname = lname;

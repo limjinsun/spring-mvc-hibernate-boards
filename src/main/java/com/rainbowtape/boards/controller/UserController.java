@@ -24,16 +24,16 @@ public class UserController {
 		return "create_user";
 	}
 
-	@PostMapping("/createUser")
-	public String creatUser(@ModelAttribute("user") User user, Model model) {
-		if(userService.isUserExist(user)) {
-			return "already_userexist";
-		} else {
-			user.setPassword(userService.hashPassword(user.getPassword()));
-			userService.saveUser(user);
-			return "success";
-		}
-	}
+//	@PostMapping("/createUser")
+//	public String creatUser(@ModelAttribute("user") User user, Model model) {
+//		if(userService.isUserExist(user)) {
+//			return "already_userexist";
+//		} else {
+//			user.setPassword(userService.hashPassword(user.getPassword()));
+//			userService.saveUser(user);
+//			return "success";
+//		}
+//	}
 	
 	@GetMapping("/userLogin")
 	public String getUserLogin(@ModelAttribute("user") User user, Model model) {
