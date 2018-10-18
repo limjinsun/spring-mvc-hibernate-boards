@@ -1,6 +1,5 @@
 package com.rainbowtape.boards.config;
 
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import com.rainbowtape.boards.service.UserService;
 
@@ -51,24 +51,33 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-		.antMatchers("/resources/**", "/insert", "/about").permitAll()
-		.antMatchers("/","/403","/register").permitAll()
-		.antMatchers("/system/**").hasRole("ADMIN")
-		.antMatchers("/user/**").hasAnyRole("USER","ADMIN")
-		.anyRequest().authenticated()
-		.and()
-		.formLogin().loginPage("/login")
-		.loginProcessingUrl("/validateLogin").permitAll()
-		.defaultSuccessUrl("/success", true)
-		//					.failureUrl("/login")
-		//			        .successHandler(yourSuccessHandlerBean)// https://stackoverflow.com/questions/21097528/moving-spring-security-to-java-config-where-does-authentication-success-handler#comment48422331_21100458
-		.and()
-		.logout().permitAll().logoutSuccessUrl("/logoutSuccess?logout")                                                       
-		.invalidateHttpSession(true)                                                                                                    
-		.and()
-		.exceptionHandling().accessDeniedPage("/403")
-		.and()
+			.antMatchers("/resources/**", "/insert", "/about").permitAll()
+			.antMatchers("/","/403","/register","/login").permitAll()
+			.antMatchers("/system/**").hasRole("ADMIN")
+			.antMatchers("/user/**").hasAnyRole("USER","ADMIN")
+			.anyRequest().authenticated()
+			.and()
+		.formLogin()
+			.loginPage("/login")
+			.loginProcessingUrl("/validateLogin").permitAll().defaultSuccessUrl("/success", true)
+			.permitAll().failureHandler(loginFailureHandler())
+			//					.failureUrl("/login")
+			//			        .successHandler(yourSuccessHandlerBean)// https://stackoverflow.com/questions/21097528/moving-spring-security-to-java-config-where-does-authentication-success-handler#comment48422331_21100458
+			.and()
+		.logout()
+			.permitAll().logoutSuccessUrl("/logoutSuccess?logout")                                                       
+			.invalidateHttpSession(true)                                                                                                    
+			.and()
+		.exceptionHandling()
+			.accessDeniedPage("/403")
+			.and()
 		.csrf();
+	}
+
+	private AuthenticationFailureHandler loginFailureHandler() {
+		return (request, response, exception) -> {
+            response.sendRedirect(request.getContextPath()+"/login?error");
+        };
 	}
 
 	// https://memorynotfound.com/spring-security-user-registration-example-thymeleaf/ 
