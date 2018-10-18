@@ -7,7 +7,10 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
@@ -24,12 +27,37 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 		configurer.enable();
 	}
 
+//	@Bean
+//	public InternalResourceViewResolver jspViewResolver() {
+//		InternalResourceViewResolver bean = new InternalResourceViewResolver();
+//		bean.setPrefix("/WEB-INF/views/");
+//		bean.setSuffix(".jsp");
+//		return bean;
+//	}
+	
 	@Bean
-	public InternalResourceViewResolver jspViewResolver() {
-		InternalResourceViewResolver bean = new InternalResourceViewResolver();
-		bean.setPrefix("/WEB-INF/views/");
-		bean.setSuffix(".jsp");
-		return bean;
-	}
+    public SpringResourceTemplateResolver templateResolver() {
+        final SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+        templateResolver.setCacheable(false);
+        templateResolver.setPrefix("classpath:/templates/");
+        templateResolver.setSuffix(".html");
+        return templateResolver;
+    }
+
+    @Bean
+    public SpringTemplateEngine templateEngine() {
+        final SpringTemplateEngine springTemplateEngine = new SpringTemplateEngine();
+        springTemplateEngine.addTemplateResolver(templateResolver());
+        springTemplateEngine.addDialect(new SpringSecurityDialect());
+        return springTemplateEngine;
+    }
+
+    @Bean
+    public ThymeleafViewResolver viewResolver() {
+        final ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+        viewResolver.setTemplateEngine(templateEngine());
+        viewResolver.setOrder(1);
+        return viewResolver;
+    }
 
 }

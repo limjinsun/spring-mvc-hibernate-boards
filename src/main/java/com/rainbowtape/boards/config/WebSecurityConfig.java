@@ -17,23 +17,6 @@ import com.rainbowtape.boards.service.UserService;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	/**
-	 * 
-	 * old way.
-	@Autowired
-	private DataSource datasource;
-
-	@Autowired // https://docs.spring.io/spring-security/site/docs/current/reference/html/jc.html#jc-authentication-jdbc
-	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(datasource)
-		.usersByUsernameQuery("select user.email AS username, user.password AS password, true" + " from user where user.email=?")
-		.authoritiesByUsernameQuery("select user_roles.user_email AS username, user_roles.user_role AS authority " + "from user_roles where user_roles.user_email=?")
-		.passwordEncoder(new BCryptPasswordEncoder()).rolePrefix("ROLE_");
-	}
-	**/
-	
-	// https://memorynotfound.com/spring-security-user-registration-example-thymeleaf/
-	
 	@Autowired
 	private UserService userService;
 
@@ -61,8 +44,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.loginPage("/login")
 			.loginProcessingUrl("/validateLogin").permitAll().defaultSuccessUrl("/success", true)
 			.permitAll().failureHandler(loginFailureHandler())
-			//					.failureUrl("/login")
-			//			        .successHandler(yourSuccessHandlerBean)// https://stackoverflow.com/questions/21097528/moving-spring-security-to-java-config-where-does-authentication-success-handler#comment48422331_21100458
 			.and()
 		.logout()
 			.permitAll().logoutSuccessUrl("/logoutSuccess?logout")                                                       
@@ -79,7 +60,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             response.sendRedirect(request.getContextPath()+"/login?error");
         };
 	}
-
-	// https://memorynotfound.com/spring-security-user-registration-example-thymeleaf/ 
 	
 }
