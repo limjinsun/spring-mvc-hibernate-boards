@@ -27,19 +27,21 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 		configurer.enable();
 	}
 
-//	@Bean
-//	public InternalResourceViewResolver jspViewResolver() {
-//		InternalResourceViewResolver bean = new InternalResourceViewResolver();
-//		bean.setPrefix("/WEB-INF/views/");
-//		bean.setSuffix(".jsp");
-//		return bean;
-//	}
+	/**		instead of jsp, Thymeleap is being used.
+	@Bean
+	public InternalResourceViewResolver jspViewResolver() {
+		InternalResourceViewResolver bean = new InternalResourceViewResolver();
+		bean.setPrefix("/WEB-INF/views/");
+		bean.setSuffix(".jsp");
+		return bean;
+	}
+	**/
 	
 	@Bean
     public SpringResourceTemplateResolver templateResolver() {
         final SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setCacheable(false);
-        templateResolver.setPrefix("classpath:/templates/");
+        templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
         return templateResolver;
     }
@@ -59,5 +61,5 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
         viewResolver.setOrder(1);
         return viewResolver;
     }
-
+    
 }

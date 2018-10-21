@@ -67,7 +67,7 @@ public class PersistenceConfig {
 		entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		entityManagerFactoryBean.setPackagesToScan("com.rainbowtape.boards.entity");
 		entityManagerFactoryBean.setJpaProperties(hibernateProperties());
-
+		
 		return entityManagerFactoryBean;
 	}
 
@@ -75,7 +75,7 @@ public class PersistenceConfig {
 	public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(emf);
-
+		
 		return transactionManager;
 	}
 

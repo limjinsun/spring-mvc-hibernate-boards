@@ -65,10 +65,10 @@ public class HomeController {
 	}
 
 	@GetMapping("/register")
-	public String Register(Locale locale, Model model) {
+	public String Register(Model model) {
+		model.addAttribute("user", new User());
 		return "registerForm";
 	}
-
 
 	@GetMapping("/success")
 	public String Success (Locale locale, Model model) {

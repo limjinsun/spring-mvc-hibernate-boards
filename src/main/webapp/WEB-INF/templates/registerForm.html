@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <title>Register Form</title>
+
+    <link th:href="@{'/resources/css/font-css.css'}" rel="stylesheet">
+    <link th:href="@{'/resources/css/main.css'}" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Registration Form</h2>
+                    <form method="POST">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">first name</label>
+                                    <input class="input--style-4" type="text" name="first_name">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">last name</label>
+                                    <input class="input--style-4" type="text" name="last_name">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                           	<div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" name="email">
+                           	</div>
+                        </div>
+                        
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Password</label>
+                                    <input class="input--style-4" type="password" name="password">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Password Confirm</label>
+                                    <input class="input--style-4" type="password" name="passwordConfirm">
+                                </div>
+                            </div>
+                        </div>
+						
+                        
+                        
+						<div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
+
+
+<!-- <head>
+<title>Register Form</title>
+</head>
+<body>
+	<h1>Login page</h1>
+
+	<p th:if="${loginError}" class="error">Wrong user or password</p>
+
+	<form th:action="@{/register}" method="post">
+		<label for="username">Username</label>
+		:
+		<input type="text" id="username" name="username" autofocus="autofocus" />
+		<br />
+		<label for="password">Password</label>
+		:
+		<input type="password" id="password" name="password" />
+		<br />
+		<input type="submit" value="Log in" />
+	</form>
+</body>
+</html> -->
