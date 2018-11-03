@@ -285,6 +285,14 @@ a:hover, a:visited, a:link, a:active
 	background:#4dae3c;
 }
 
+.btn--orange {
+	background:#FFA500;
+}
+
+.btn--orange:hover {
+	background:#FF8C00;
+}
+
 .btn--blue {
 	background:#4272d7;
 }

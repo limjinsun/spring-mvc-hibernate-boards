@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages = {"com.rainbowtape.boards.dao"})
 @PropertySource({"classpath:persistence-mysql.properties"})
 public class PersistenceConfig {
-
+	
 	// this is JPA and Hibernate configuration.
 	// http://websystique.com/spring/spring4-hibernate4-mysql-maven-integration-example-using-annotations/
 	// https://stackoverflow.com/questions/35258758/getservletconfigclasses-vs-getrootconfigclasses-when-extending-abstractannot
@@ -43,7 +43,6 @@ public class PersistenceConfig {
 		dataSource.setUrl(env.getRequiredProperty("jdbc.url"));
 		dataSource.setUsername(env.getRequiredProperty("jdbc.user"));
 		dataSource.setPassword(env.getRequiredProperty("jdbc.pass"));
-
 		return dataSource;
 	}
 
@@ -53,7 +52,6 @@ public class PersistenceConfig {
 		properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
 		properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
 		properties.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
-
 		return properties;     
 	}
 
@@ -67,7 +65,6 @@ public class PersistenceConfig {
 		entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		entityManagerFactoryBean.setPackagesToScan("com.rainbowtape.boards.entity");
 		entityManagerFactoryBean.setJpaProperties(hibernateProperties());
-		
 		return entityManagerFactoryBean;
 	}
 
@@ -75,7 +72,6 @@ public class PersistenceConfig {
 	public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(emf);
-		
 		return transactionManager;
 	}
 

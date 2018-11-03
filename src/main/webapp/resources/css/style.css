@@ -365,9 +365,11 @@ body {
 	}
 	.form .fieldset:first-child {
 		/* margin-top:0; */
+		
 	}
 	.form .fieldset:last-child {
 		/* margin-bottom:0; */
+		
 	}
 	.form input.has-padding {
 		padding: 16px 20px 16px 50px;
@@ -424,13 +426,10 @@ body {
 	padding-bottom: 1px;
 }
 
-50%
-{
+50%{
 padding-bottom
 :
 3px;
-
-	
 }
 }
 @
@@ -441,10 +440,18 @@ keyframes borderslide-3px { 0% {
 50%
 {
 padding-bottom
+
+
 :
-3px;
+
+
+3
+px
+;
+
 
 	
+
 }
 }
 @
@@ -455,10 +462,18 @@ padding-bottom
 50%
 {
 padding-bottom
+
+
 :
-2px;
+
+
+2
+px
+;
+
 
 	
+
 }
 }
 @
@@ -466,13 +481,10 @@ keyframes borderslide-2px { 0% {
 	padding-bottom: 1px;
 }
 
-50%
-{
+50%{
 padding-bottom
 :
 2px;
-
-	
 }
 }
 .close-form {

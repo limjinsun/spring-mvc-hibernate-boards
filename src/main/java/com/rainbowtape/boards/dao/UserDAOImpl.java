@@ -1,7 +1,5 @@
 package com.rainbowtape.boards.dao;
 
-
-
 public class UserDAOImpl {
 	
 //	@Autowired

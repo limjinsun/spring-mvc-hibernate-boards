@@ -6,7 +6,7 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] { PersistenceConfig.class, WebSecurityConfig.class };
+		return new Class[] { PersistenceConfig.class, WebSecurityConfig.class, };
 	}
 
 	@Override

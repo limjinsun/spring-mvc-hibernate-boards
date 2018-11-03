@@ -13,27 +13,27 @@ import javax.persistence.Table;
 @Entity
 @Table(name="user_roles")
 public class UserRole {
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_user_role")
 	private int id_user_role;
 
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	private User user_id;
 	
 	@Column(name="user_role")
 	private String user_role;
+	
 	@Column(name="user_email")
 	private String user_email;
 	
 	public UserRole() {
 		//empty constructor
 	}
-	public UserRole(int id_user_role, User user_id, String user_role, String user_email) {
+	public UserRole(User user_id, String user_role, String user_email) {
 		super();
-		this.id_user_role = id_user_role;
 		this.user_id = user_id;
 		this.user_role = user_role;
 		this.user_email = user_email;
@@ -67,5 +67,4 @@ public class UserRole {
 	public void setUser_email(String user_email) {
 		this.user_email = user_email;
 	}
-	
 }

@@ -11,8 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email; // this is come from Hibernate Validation Dependency.
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="user")
@@ -22,23 +21,34 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-
+	
 	@Column(name="fname")
 	private String fname;
+	
 	@Column(name="lname")
 	private String lname;
+	
 	@Column(name="password")
 	private String password;
-	@Email
-	@NotEmpty
+	
 	@Column(name="email", unique = true)
 	private String email;
+	
+	@Transient // no need to match with DB table.
+	private String passwordConfirm;
+	
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
 	
 	// To declare a side as not responsible for the relationship, the attribute 'mappedBy' is used. 
 	// 'mappedBy' refers to the property name of the association on the owner side. 
 	// http://docs.jboss.org/hibernate/annotations/3.5/reference/en/html_single/#entity-mapping
 	// fetch type has to be EAGER for spring security set-up
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="user_id", cascade= {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="user_id", cascade=CascadeType.ALL)
 	private List<UserRole> userroles;
 	
 	public List<UserRole> getUserroles() {

@@ -23,6 +23,12 @@
 
 <body>
 	<nav class="main-nav">
+	
+<!-- 		
+		It wasn't triggered. why??
+		<div sec:authorize="isAuthenticated()">You are already loged in.</div>
+ -->		
+		
 		<ul>
 			<li>
 				<a class="signin" href="#0">Sign in</a>
@@ -99,7 +105,8 @@
 						</p>
 					</div>
 
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					<!-- prevent SCRF attack! -->
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 
 				</form>
 
@@ -110,14 +117,14 @@
 			</div>
 
 			<div id="signup">
-				<form class="form">
+				<form th:action="@{/register}" th:object="${user}" method="post" class="form">
 
 					<div class="">
 						<div class="row row-space">
 							<div class="col-2">
 								<div class="fieldset" style="margin: 0;">
 									<label class="image-replace username" for="signup-username">FirstName</label>
-									<input class="full-width has-padding has-border" id="fname" type="text" placeholder="First Name">
+									<input class="full-width has-padding has-border" id="fname" th:field="*{fname}" type="text" placeholder="First Name">
 									<span class="error-message">Your username can only contain numeric and alphabetic symbols!</span>
 								</div>
 							</div>
@@ -125,7 +132,7 @@
 							<div class="col-2" style="margin-bottom: 0;">
 								<div class="fieldset" style="margin: 0;">
 									<label class="image-replace username" for="signup-username">LastName</label>
-									<input class="full-width has-padding has-border" id="lname" type="text" placeholder="Last Name">
+									<input class="full-width has-padding has-border" id="lname" th:field="*{lname}" type="text" placeholder="Last Name">
 									<span class="error-message">Your username can only contain numeric and alphabetic symbols!</span>
 								</div>
 							</div>
@@ -134,20 +141,20 @@
 
 					<div class="fieldset">
 						<label class="image-replace email" for="signup-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="email" type="email" placeholder="E-mail">
+						<input class="full-width has-padding has-border" id="email" th:field="*{email}" type="email" placeholder="E-mail">
 						<span class="error-message">Enter a valid email address!</span>
 					</div>
 
 					<div class="fieldset">
 						<label class="image-replace password" for="signup-password">Password</label>
-						<input class="full-width has-padding has-border" id="password" type="password" placeholder="Password">
+						<input class="full-width has-padding has-border" id="password" th:field="*{password}" type="password" placeholder="Password">
 						<a href="#0" class="hide-password">Show</a>
 						<span class="error-message">Your password has to be at least 6 characters long!</span>
 					</div>
 
 					<div class="fieldset">
 						<label class="image-replace password" for="signup-password">Password</label>
-						<input class="full-width has-padding has-border" id="confirmPassword" type="password" placeholder="Confirm Password">
+						<input class="full-width has-padding has-border" id="confirmPassword" th:field="*{passwordConfirm}" type="password" placeholder="Confirm Password">
 						<a href="#0" class="hide-password">Show</a>
 						<span class="error-message">Your password has to be at least 6 characters long!</span>
 					</div>
@@ -163,6 +170,7 @@
 					<div class="fieldset">
 						<input class="full-width has-padding" type="submit" value="Create account">
 					</div>
+					
 				</form>
 				<!-- <a href="#0" class="cd-close-form">Close</a> -->
 			</div>
