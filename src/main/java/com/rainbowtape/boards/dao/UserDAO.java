@@ -7,6 +7,9 @@ import com.rainbowtape.boards.entity.User;
 
 @Repository
 public interface UserDAO extends JpaRepository<User, Long> {
+	
+	/** save(), delete(), is already inherited from JpaRepository **/	
+	
 	User findByEmail (String email);
 	User findById (int userId);
 }

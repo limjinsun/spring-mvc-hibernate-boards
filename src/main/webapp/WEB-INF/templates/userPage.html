@@ -26,7 +26,7 @@
 	<div class="row row-space">
 		<div class="col-1">
 			<div class="p-t-15">
-				<p style="text-align:center;">
+				<p style="text-align: center;">
 					<span th:if="${user} != null" th:text="${user.getEmail()}">user email</span>
 				</p>
 			</div>
@@ -35,6 +35,13 @@
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<input type="submit" value="Do you want to logout?" class="btn btn--radius-2 btn--blue btn--full">
 				</form>
+			</div>
+			<div class="p-t-15">
+				<form th:if="${user} != null" th:action="@{'/user/'+${user.getId()}+'/delete'}" method="post">
+					<input type="submit" value="Delete Account" class="btn btn--radius-2 btn--orange btn--full">
+				</form>
+				
+				<!-- <a  th:href="@{'/user/'+${user.getId()}+'/delete'}" class="btn btn--radius-2 btn--orange btn--full">Delete Account</a> -->
 			</div>
 		</div>
 	</div>

@@ -34,11 +34,10 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	AuthenticationManager authenticationManager;
 
-	// Overriding 'userDetailsService' class. and This method will be called at spring-security authentication process.
+	/* Overriding 'userDetailsService' class. and This method will be called at spring-security authentication process. */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userDAO.findByEmail(username);
-        System.out.println("UserServiceImpl.java + user : " + user);
         if(user == null) {
         	System.out.println("UserServiceImpl.java + user is not existed");
             throw new UsernameNotFoundException("User not found");
@@ -50,7 +49,7 @@ public class UserServiceImpl implements UserService {
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
 	}
 	
-	// Declared in interface
+	/* Declared in interface */
 	@Override
 	public User findByEmail(String email) {
 		return userDAO.findByEmail(email);
@@ -77,8 +76,9 @@ public class UserServiceImpl implements UserService {
 		userDAO.save(temp);
 	}
 
+	/* after register, automatically login in through spring security */
 	@Override
-	public void autoLogin(String username, String password) {
+	public void makeUserToLoginStatus (String username, String password) {
 		UserDetails userDetails = loadUserByUsername(username);
 	    UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 	    Authentication auth = authenticationManager.authenticate(usernamePasswordAuthenticationToken);

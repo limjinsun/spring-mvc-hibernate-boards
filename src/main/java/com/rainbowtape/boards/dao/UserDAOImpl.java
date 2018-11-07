@@ -38,8 +38,6 @@ public class UserDAOImpl {
 //		return true;
 //	}
 
-
-
 	/*
 	 * 	transaction  = session.beginTransaction();
 		Query query = session.createQuery("from User where email= :email");

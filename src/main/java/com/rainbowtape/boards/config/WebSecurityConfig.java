@@ -77,6 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private AuthenticationSuccessHandler loginSuccessHandler() {
 		return (request, response, authentication) -> {
+			/* check if user is ADMIN , then redirect to appropriate page respectively */
 			Boolean isAdmin = false;
 			Iterator i = authentication.getAuthorities().iterator();
 			while (i.hasNext()) {
@@ -88,9 +89,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			if(authentication.getAuthorities().size() == 0) {
 				response.sendRedirect(request.getContextPath()+"/403");
 			} else if(isAdmin == true) {
-				response.sendRedirect(request.getContextPath()+"/system");
+				response.sendRedirect(request.getContextPath()+"/admin");
 			} else {
-				response.sendRedirect(request.getContextPath()+"/success");
+				response.sendRedirect(request.getContextPath()+"/user/" + userService.findByEmail(authentication.getName()).getId());
 			}
 		};
 	}

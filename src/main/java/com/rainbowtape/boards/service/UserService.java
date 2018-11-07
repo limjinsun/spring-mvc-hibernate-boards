@@ -10,5 +10,5 @@ public interface UserService extends UserDetailsService {
 	User findById(int userId);
 	void deleteUser(User user);
 	void createUser(UserValidation user);
-	void autoLogin(String username, String password);	
+	void makeUserToLoginStatus(String username, String password);	
 }
