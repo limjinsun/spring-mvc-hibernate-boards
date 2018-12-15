@@ -1,94 +1,116 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Required meta tags-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-    <title>Register Form</title>
-
-    <link th:href="@{'/resources/css/font-css.css'}" rel="stylesheet">
-    <link th:href="@{'/resources/css/main.css'}" rel="stylesheet" media="all">
+<!-- Required meta tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Star Admin Free Bootstrap Admin Dashboard Template</title>
+<!-- plugins:css -->
+<link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}">
+<link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.base.css'}">
+<link rel="stylesheet" th:href="@{'/resourcesvendors/css/vendor.bundle.addons.css'}">
+<!-- endinject -->
+<!-- plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<link rel="stylesheet" th:href="@{'/resources/css/style.css'}">
+<!-- endinject -->
+<!-- Favicons and -- For iPhone -->
+<link rel="icon" th:href="@{'/resources/images/favicon.ico'}" sizes="32x32">
+<link rel="shortcut icon" th:href="@{'/resources/images/favicon.ico'}" />
+<link rel="apple-touch-icon-precomposed" th:href="@{'/resources/images/favicon.ico'}">
+<meta name="msapplication-TileColor" content="#00bcd4">
+<meta name="msapplication-TileImage" th:href="@{'/resources/images/favicon.ico'}">
 </head>
 
 <body>
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w680">
-            <div class="card card-4">
-                <div class="card-body">
-                    <h2 class="title">Registration Form</h2>
-                    <form method="POST">
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">first name</label>
-                                    <input class="input--style-4" type="text" name="first_name">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">last name</label>
-                                    <input class="input--style-4" type="text" name="last_name">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                           	<div class="input-group">
-                                    <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="email">
-                           	</div>
-                        </div>
-                        
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Password</label>
-                                    <input class="input--style-4" type="password" name="password">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Password Confirm</label>
-                                    <input class="input--style-4" type="password" name="passwordConfirm">
-                                </div>
-                            </div>
-                        </div>
+	<div class="container-scroller">
+		<div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+			<div class="content-wrapper d-flex align-items-center auth register-bg-1 theme-one">
+				<div class="row w-100">
+					<div class="col-lg-4 mx-auto">
+						<h2 class="text-center mb-4">Register</h2>
+						<div class="auto-form-wrapper">
 						
-                        
-                        
-						<div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
+						
+							<form th:action="@{/register}" th:object="${user}" method="post">
+								<div class="form-group">
+									<div class="input-group">
+										<input class="form-control" id="fname" th:field="*{fname}" type="text" placeholder="Name">
+										<div class="input-group-append">
+											<span class="input-group-text">
+												<i class="mdi mdi-check-circle-outline"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<input class="form-control" id="email" th:field="*{email}" type="email" placeholder="E-mail">
+										<div class="input-group-append">
+											<span class="input-group-text">
+												<i class="mdi mdi-check-circle-outline"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<input class="form-control" id="password_reg" th:field="*{password}" type="password" placeholder="Password">
+										<div class="input-group-append">
+											<span class="input-group-text">
+												<i class="mdi mdi-check-circle-outline"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<input class="form-control" id="confirmPassword" th:field="*{passwordConfirm}" type="password" placeholder="Confirm Password">
+										<div class="input-group-append">
+											<span class="input-group-text">
+												<i class="mdi mdi-check-circle-outline"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group d-flex justify-content-center">
+									<div class="form-check form-check-flat mt-0">
+										<label class="form-check-label">
+											<input type="checkbox" class="form-check-input" checked>
+											I agree to the terms
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<button class="btn btn-primary submit-btn btn-block" type="submit">Register</button>
+								</div>
+								<div class="text-block text-center my-3">
+									<span class="text-small font-weight-semibold">Already have and account ?</span>
+									<a th:href="@{/login}" class="text-black text-small">Login</a>
+								</div>
+							</form>
+							
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- content-wrapper ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
+	<!-- plugins:js -->
+	<script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}"></script>
+	<script th:src="@{'/resources/vendors/js/vendor.bundle.addons.js'}"></script>
+	<!-- endinject -->
+	<!-- inject:js -->
+	<script th:src="@{'/resources/js/off-canvas.js'}"></script>
+	<script th:src="@{'/resources/js/misc.js'}"></script>
+	<!-- endinject -->
 </body>
+
 </html>
-
-
-<!-- <head>
-<title>Register Form</title>
-</head>
-<body>
-	<h1>Login page</h1>
-
-	<p th:if="${loginError}" class="error">Wrong user or password</p>
-
-	<form th:action="@{/register}" method="post">
-		<label for="username">Username</label>
-		:
-		<input type="text" id="username" name="username" autofocus="autofocus" />
-		<br />
-		<label for="password">Password</label>
-		:
-		<input type="password" id="password" name="password" />
-		<br />
-		<input type="submit" value="Log in" />
-	</form>
-</body>
-</html> -->

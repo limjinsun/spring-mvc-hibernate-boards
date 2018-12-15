@@ -32,38 +32,48 @@ public class UserRole {
 	public UserRole() {
 		//empty constructor
 	}
+	
 	public UserRole(User user_id, String user_role, String user_email) {
 		super();
 		this.user_id = user_id;
 		this.user_role = user_role;
 		this.user_email = user_email;
 	}
+	
 	@Override
 	public String toString() {
 		return "UserRole [id_user_role=" + id_user_role + ", user_id=" + user_id + ", user_role=" + user_role
 				+ ", user_email=" + user_email + "]";
 	}
+	
 	public int getId_user_role() {
 		return id_user_role;
 	}
+	
 	public void setId_user_role(int id_user_role) {
 		this.id_user_role = id_user_role;
 	}
+	
 	public User getUser_id() {
 		return user_id;
 	}
+	
 	public void setUser_id(User user_id) {
 		this.user_id = user_id;
 	}
+	
 	public String getUser_role() {
 		return user_role;
 	}
+	
 	public void setUser_role(String user_role) {
 		this.user_role = user_role;
 	}
+	
 	public String getUser_email() {
 		return user_email;
 	}
+	
 	public void setUser_email(String user_email) {
 		this.user_email = user_email;
 	}

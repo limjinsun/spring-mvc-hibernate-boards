@@ -16,18 +16,18 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.rainbowtape.boards")
 public class SpringConfig extends WebMvcConfigurerAdapter {
-
+	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
-
+	
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
-
-	/**		instead of jsp, Thymeleap is being used.
+	
+	/** view -> instead of jsp, Thymeleap is being used.
 	@Bean
 	public InternalResourceViewResolver jspViewResolver() {
 		InternalResourceViewResolver bean = new InternalResourceViewResolver();
@@ -45,7 +45,7 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
         templateResolver.setSuffix(".html");
         return templateResolver;
     }
-
+	
     @Bean
     public SpringTemplateEngine templateEngine() {
         final SpringTemplateEngine springTemplateEngine = new SpringTemplateEngine();
@@ -53,14 +53,14 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
         springTemplateEngine.addDialect(new SpringSecurityDialect());
         return springTemplateEngine;
     }
-
+    
     @Bean
     public ThymeleafViewResolver viewResolver() {
         final ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setOrder(1);
-        viewResolver.setContentType("text/html;charset=UTF-8"); /* important for Korean Language */
+        viewResolver.setContentType("text/html;charset=UTF-8"); /* important for Korean Language */ 
         return viewResolver;
     }
-    
+    	
 }

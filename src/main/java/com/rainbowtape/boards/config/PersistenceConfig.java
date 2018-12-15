@@ -1,7 +1,7 @@
 package com.rainbowtape.boards.config;
 
-import java.util.Properties;
 
+import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
@@ -32,10 +32,9 @@ public class PersistenceConfig {
 	// https://stackoverflow.com/questions/35258758/getservletconfigclasses-vs-getrootconfigclasses-when-extending-abstractannot
 	// https://www.baeldung.com/the-persistence-layer-with-spring-and-jpa#javaconfig
 	// https://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-part-one-configuration/
-
 	@Autowired
 	private Environment env;
-
+	
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -74,10 +73,16 @@ public class PersistenceConfig {
 		transactionManager.setEntityManagerFactory(emf);
 		return transactionManager;
 	}
-
+	
 	@Bean
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
 		return new PersistenceExceptionTranslationPostProcessor();
 	}
 
+//	private List<String> getRootPathUrls() {
+//	    List<String> urlPatterns = new ArrayList<String>();
+//	    urlPatterns.add("/*");
+//	    return urlPatterns;
+//	}
+	
 }

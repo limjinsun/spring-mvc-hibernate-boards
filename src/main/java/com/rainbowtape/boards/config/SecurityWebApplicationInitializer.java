@@ -6,6 +6,7 @@ public class SecurityWebApplicationInitializer extends AbstractSecurityWebApplic
 	
 	/**	This would simply only register the springSecurityFilterChain Filter for every URL in your application. 
 		With out this class, It won't intercept HTTP traffic for spring-security.
+		Check the web-page.
 		https://docs.spring.io/spring-security/site/docs/current/reference/html/jc.html#abstractsecuritywebapplicationinitializer-with-spring-mvc
 	 */
 }

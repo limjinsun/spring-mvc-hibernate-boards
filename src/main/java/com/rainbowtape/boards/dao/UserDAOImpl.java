@@ -4,6 +4,14 @@ public class UserDAOImpl {
 	
 //	@Autowired
 //	SessionFactory sessionFactory;
+	
+	/** or 
+	 * 		
+	 * 		@PersistenceContext
+			private EntityManager manager;
+			
+	 * 
+	 */
 
 //	@Override
 //	@Transactional

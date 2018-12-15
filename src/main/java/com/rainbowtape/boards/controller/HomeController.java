@@ -1,9 +1,9 @@
 package com.rainbowtape.boards.controller;
 
+import java.util.Iterator;
 import java.util.Locale;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,24 +30,37 @@ public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@PersistenceContext
-	private EntityManager manager;
-	
 	@Autowired
 	private UserService userService;
 
+	@Transactional
 	@RequestMapping(value = "/", produces = "application/text; charset=utf8", method = RequestMethod.GET)
 	public String home() {
+		logger.info("Index");	
 		return "index";
 	}
 
 	/* An @ModelAttribute on a method argument indicates the argument should be retrieved from the model. 
-	 * If not present in the model, the argument should be instantiated first and then added to the model. 
+	 * If not present in the model, the argument should be instantiated first and then added to the model.
 	 * https://docs.spring.io/spring/docs/3.1.x/spring-framework-reference/html/mvc.html#mvc-ann-modelattrib-methods */	
 	@RequestMapping(value = "/login", produces = "application/text; charset=utf8", method = RequestMethod.GET)
 	public String login(@ModelAttribute User user) {
+		
+		logger.info("Login");
+		boolean isAdmin = false;
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if (!(auth instanceof AnonymousAuthenticationToken)) {
+		System.err.println(auth);
+		Iterator<? extends GrantedAuthority> i = auth.getAuthorities().iterator();
+		while (i.hasNext()) {
+			if(i.next().toString().contains("ADMIN")) {
+				isAdmin = true;
+				break;
+			}
+		}
+		if(isAdmin) {
+			return "redirect:/admin/";
+		} else if (!(auth instanceof AnonymousAuthenticationToken)) {
+			logger.info("User Already Logged in.");
 			String userEmail = auth.getName();
 			user = userService.findByEmail(userEmail);
 			int userId = user.getId();
@@ -54,9 +68,16 @@ public class HomeController {
 		}
 		return "login";
 	}
+
+	@RequestMapping(value = "/registerForm", produces = "text/plain;charset=UTF-8", method = RequestMethod.GET)
+	public String registerForm(@ModelAttribute("user") UserValidation user, BindingResult bindingResult) {
+		
+		return "registerForm";
+	}
 	
-	@RequestMapping(value = "/register", produces = "application/text; charset=utf8", method = RequestMethod.POST)
+	@RequestMapping(value = "/register", produces = "text/plain;charset=UTF-8", method = RequestMethod.POST)
 	public String registerUser(@ModelAttribute("user") @Valid UserValidation user, BindingResult bindingResult) {
+		
 		if(bindingResult.hasErrors()) {
 			System.out.println("HomeController Binding result : " + bindingResult);
 			return "registerError";
@@ -69,35 +90,48 @@ public class HomeController {
 		userService.makeUserToLoginStatus(user.getEmail(), user.getPassword());
 		return "redirect:/login";
 	}
-	
+
 	@RequestMapping(value = "/loginError", produces = "application/text; charset=utf8", method = RequestMethod.GET)
 	public String loginError(Model model) {
+		
 		return "loginError";
 	}
 
 	@RequestMapping(value = "/dbError", produces = "application/text; charset=utf8", method = RequestMethod.GET)
 	public String dbError(Model model) {
+		
 		return "dbError";
 	}
-	
+
 	@GetMapping("/403")
 	public String errorCode403 (Locale locale, Model model) {
+		
 		logger.info("HomeController.java + Welcome to 403 area! The client locale is {}.", locale);
+		return "403";
+	}
+	
+	@GetMapping("/404")
+	public String errorCode404 (Locale locale, Model model) {
+		
+		logger.info("HomeController.java + Welcome to 404 area! The client locale is {}.", locale);
 		return "403";
 	}
 
 	@GetMapping("/admin")
-	public String getSystem (Model model) {
+	public String getSystem (@ModelAttribute User user, Model model) {
+		
 		return "system";
 	}
 
 	@GetMapping("/logoutSuccess")
 	public String logoutSuccess (Model model) {
+		
 		return "success";
 	}
-	
+
 	@GetMapping("/contents")
 	public String getContents (Model model) {
+		
 		return "contents";
 	}
 }
