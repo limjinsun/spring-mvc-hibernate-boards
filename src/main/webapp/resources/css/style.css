@@ -8540,8 +8540,6 @@ pre {
     opacity: 1;
     font-weight: 300; }
 
-select.form-control:not([size]):not([multiple]) {
-  height: calc(2.25rem + 2px); }
 select.form-control:focus::-ms-value {
   color: #495057;
   background-color: #ffffff; }
@@ -13862,7 +13860,7 @@ input:focus {
 .sidebar {
   min-height: calc(100vh - 63px);
   background: #ffffff;
-  font-family: "Montserrat", "Poppins", sans-serif;
+  font-family: "Montserrat", "Kakao", sans-serif;
   padding: 0;
   width: 255px;
   z-index: 11;
@@ -14049,7 +14047,7 @@ input:focus {
       right: 0; } }
 /* Navbar */
 .navbar.default-layout {
-  font-family: "Montserrat", "Poppins", sans-serif;
+  font-family: "Montserrat", "Kakao", sans-serif;
   background: linear-gradient(120deg, #00e4d0, #5983e8);
   transition: background 0.25s ease;
   -webkit-transition: background 0.25s ease;
@@ -14316,7 +14314,7 @@ address p {
   margin: 0.38rem 0 0.75rem; }
 
 .card-title {
-  font-family: "Montserrat", "Poppins", sans-serif;
+  font-family: "Montserrat", "Kakao", sans-serif;
   font-weight: 500;
   color: #404852;
   margin-bottom: 22px;
@@ -15830,7 +15828,7 @@ pre {
   font-family: "Montserrat", "Poppins", sans-serif;
   font-size: 1rem;
   padding: 0.56rem 0.75rem;
-  line-height: 14px;
+  line-height: 34px;
   font-weight: 300;
   /* add for form styling */
   -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
@@ -16223,7 +16221,7 @@ ul {
   .table thead th {
     border-top: 0;
     border-bottom-width: 1px;
-    font-family: "Montserrat", "Poppins", sans-serif;
+    font-family: "Montserrat", "Kakao", sans-serif;
     font-weight: 500; }
     .table thead th i {
       margin-left: 0.325rem; }

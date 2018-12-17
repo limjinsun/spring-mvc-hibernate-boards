@@ -27,7 +27,7 @@ import com.rainbowtape.boards.service.UserProfileService;
 import com.rainbowtape.boards.service.UserService;
 
 @Controller
-@SessionAttributes("userProfileFormspree")
+@SessionAttributes("userProfileFormspree") // DB 에 저장하지않고, 콘트롤러간의 데이터이동을 위해서 선언해 줌.
 @RequestMapping(value = "/user", method = RequestMethod.GET)
 public class UserController {
 
@@ -62,7 +62,7 @@ public class UserController {
 		return userProfileService.findById(userId);
 	}
 
-	@ModelAttribute("userProfileFormspree") // 세션 어트리뷰트를 이용하기 위해선 모델어트리뷰트를 미리 만들어 줘야 함. ---> https://stackoverflow.com/a/32028313/4735043
+	@ModelAttribute("userProfileFormspree") // 세션 어트리뷰트를 이용하기 위해선 모델어트리뷰트를 미리 만들어 줘야 함.---> https://stackoverflow.com/a/32028313/4735043
 	public UserProfileFormspree getUserProfileFormspree () {
 
 		return new UserProfileFormspree();
@@ -111,8 +111,9 @@ public class UserController {
 			@ModelAttribute("userProfileFormspree") UserProfileFormspree userProfileFormspree, 
 			Model model ) {
 
-		System.err.println(model);
 		userService.updateUser(user);
+		System.err.println(user);
+		System.err.println(userProfileFormspree.getOccupation());
 		userProfileService.updateUserProfile(userProfile);
 		// 이메일을 변경하였을 경우를 대비해서, 변경된 정보로 현재 authentication 정보를 업데이트 해줘야 한다. 
 		updateAuthentication(user);

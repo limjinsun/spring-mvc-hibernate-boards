@@ -1,45 +1,45 @@
 package com.rainbowtape.boards.test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import com.rainbowtape.boards.entity.User;
-import com.rainbowtape.boards.entity.UserProfile;
-import com.rainbowtape.boards.entity.UserRole;
+import java.util.Random;
 
 public class Test {
-		
-	private static final EntityManagerFactory emFactoryObj;
-	private static final String PERSISTENCE_UNIT_NAME = "my-persistence-unit";	
-
-	static {
-		emFactoryObj = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+	
+	private String string;
+	
+	private String file = "/images/faces/face2.jpg";
+	
+	public Test () {
+		string = Integer.toString(new Random().nextInt(10));
 	}
+	
+	
+//	private static final EntityManagerFactory emFactoryObj;
+//	private static final String PERSISTENCE_UNIT_NAME = "my-persistence-unit";	
+//
+//	static {
+//		emFactoryObj = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+//	}
+//
+//	// This Method Is Used To Retrieve The 'EntityManager' Object
+//	public static EntityManager getEntityManager() {
+//		
+//		return emFactoryObj.createEntityManager();
+//	}
 
-	// This Method Is Used To Retrieve The 'EntityManager' Object
-	public static EntityManager getEntityManager() {
-		
-		return emFactoryObj.createEntityManager();
-	}
-
+	
+	
+	
 	public static void main(String[] args) {
 		
-		System.err.println(ANSIConstants.ANSI_PURPLE + "example" + ANSIConstants.ANSI_RESET);
-
+		Test t = new Test();
+		String j = t.file.substring(0, 18);
+		j = j + t.string + ".jpg";
+		System.out.println(j);
 		
-//		System.out.println("\033[0m BLACK");
-//        System.out.println("\033[31m RED");
-//        System.out.println("\033[32m GREEN");
-//        System.out.println("\033[33m YELLOW");
-//        System.out.println("\033[34m BLUE");
-//        System.out.println("\033[35m MAGENTA");
-//        System.out.println("\033[36m CYAN");
-//        System.err.println("\033[37m WHITE");
-//
+		
+		
+
+
 //		EntityManager em = getEntityManager();
 //		em.getTransaction().begin();
 //		System.out.println("데이터베이스 커넥션 성공!");
@@ -57,5 +57,11 @@ public class Test {
 //		em.clear();
 //		System.out.println("Record Successfully Inserted In The Database");
 	}
-	
+
+
+	@Override
+	public String toString() {
+		return "Test [string=" + string + "]";
+	}
+
 }

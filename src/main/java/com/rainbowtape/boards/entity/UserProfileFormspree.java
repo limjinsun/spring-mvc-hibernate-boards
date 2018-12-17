@@ -12,6 +12,7 @@ public class UserProfileFormspree {
 	private String school;
 	private String duration;
 	private String textarea;
+	private String email;
 
 	public UserProfileFormspree() {
 		// empty constructor
@@ -109,5 +110,13 @@ public class UserProfileFormspree {
 
 	public void setWhen(String when) {
 		this.when = when;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

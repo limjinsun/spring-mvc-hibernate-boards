@@ -42,6 +42,9 @@
 								<p><span th:if="${user} != null" th:text="${user.getFname()}">user name</span></p>
 								<p><span th:if="${user} != null" th:text="${userProfile.getMbti()}">user mbti</span></p>
 								<p><span th:if="${user} != null" th:text="${userProfileFormspree.getOccupation()}">user occupation</span></p>
+								<p><span th:if="${user} != null" th:text="${userProfileFormspree.getSchool()}">user occupation</span></p>
+								<p><span th:if="${user} != null" th:text="${userProfileFormspree.getBudget()}">user occupation</span></p>
+								<p><span th:if="${user} != null" th:text="${userProfileFormspree.getTextarea()}">user occupation</span></p>
 							</div>
 						</div>
 						<div class="row mt-5">
@@ -71,9 +74,9 @@
 		/* var contactform = document.getElementById('formaction');
 		contactform.setAttribute('action', '//formspree.io/' + 'liffeydublin'+ '@' + 'naver' + '.' + 'com'); */
 		
-		document.getElementById("formspree_submit").addEventListener("click", () => {
+		/* document.getElementById("formspree_submit").addEventListener("click", () => {
 			console.log("hello");
-		})
+		}) */
 	</script>
 	<!-- plugins:js -->
 	<script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}"></script>

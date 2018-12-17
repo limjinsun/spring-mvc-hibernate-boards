@@ -1,6 +1,7 @@
 package com.rainbowtape.boards.entity;
 
 import java.util.Date;
+import java.util.Random;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -81,6 +82,11 @@ public class UserProfile {
 	
 	public UserProfile(User user) {
 		this.user = user;
+		String randomNumber = Integer.toString(new Random().nextInt(10));
+		String file = "/images/faces/face2.jpg";
+		file = file.substring(0, 18);
+		file = file + randomNumber + ".jpg";
+		this.userpics = file;
 	}
 
 	@Override
