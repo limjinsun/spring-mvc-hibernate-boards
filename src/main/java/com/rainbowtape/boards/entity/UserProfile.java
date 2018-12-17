@@ -65,6 +65,9 @@ public class UserProfile {
 	
 	@Column(name="interest")
 	private String interest;
+	
+	@Column(name="flightinfo")
+	private String flightinfo;
 
 	@Column(name="usertext")
 	private String usertext;
@@ -85,12 +88,12 @@ public class UserProfile {
 		return "UserProfile [user=" + user + ", id=" + id + ", userpics=" + userpics + ", userstatus=" + userstatus
 				+ ", visatype=" + visatype + ", address=" + address + ", dob=" + dob + ", passportno=" + passportno
 				+ ", age=" + age + ", kakaotalk=" + kakaotalk + ", mbti=" + mbti + ", interest=" + interest
-				+ ", usertext=" + usertext + ", admintext=" + admintext + "]";
+				+ ", flightinfo=" + flightinfo + ", usertext=" + usertext + ", admintext=" + admintext + "]";
 	}
-	
+
 	public UserProfile(User user, String userpics, String userstatus, String visatype, String address, Date dob,
-			String passportno, int age, String kakaotalk, String mbti, String interest, String usertext,
-			String admintext) {
+			String passportno, int age, String kakaotalk, String mbti, String interest, String flightinfo,
+			String usertext, String admintext) {
 		super();
 		this.user = user;
 		this.userpics = userpics;
@@ -103,6 +106,7 @@ public class UserProfile {
 		this.kakaotalk = kakaotalk;
 		this.mbti = mbti;
 		this.interest = interest;
+		this.flightinfo = flightinfo;
 		this.usertext = usertext;
 		this.admintext = admintext;
 	}
@@ -209,5 +213,13 @@ public class UserProfile {
 
 	public void setInterest(String interest) {
 		this.interest = interest;
+	}
+	
+	public String getFlightinfo() {
+		return flightinfo;
+	}
+
+	public void setFlightinfo(String flightinfo) {
+		this.flightinfo = flightinfo;
 	}
 }
