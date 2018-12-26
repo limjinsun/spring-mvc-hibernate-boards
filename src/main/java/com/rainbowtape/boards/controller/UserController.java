@@ -27,7 +27,7 @@ import com.rainbowtape.boards.service.UserProfileService;
 import com.rainbowtape.boards.service.UserService;
 
 @Controller
-@SessionAttributes("userProfileFormspree") // DB 에 저장하지않고, 콘트롤러간의 데이터이동을 위해서 선언해 줌.
+@SessionAttributes("userProfileFormspree") // DB 에 저장하지않고, 콘트롤러간의 데이터이동을 위해서 선언해 줌. 모델어트리뷰트가 아니라 세션어트리뷰트로 데이타 이동. 
 @RequestMapping(value = "/user", method = RequestMethod.GET)
 public class UserController {
 
@@ -121,10 +121,24 @@ public class UserController {
 		return "redirect:/user/" + user.getId() + "/formspree";	
 	}
 
+	@PreAuthorize("#user.email == authentication.name or hasRole('ROLE_ADMIN')") 
 	@RequestMapping(value = "/{id}/formspree", method = RequestMethod.GET)
-	public String goFormspree (Model model) {
-
+	public String goFormspree (
+			@ModelAttribute("user") User user, 
+			@ModelAttribute("userProfile") UserProfile userProfile, 
+			Model model) {
+	
 		return "formspree";
+	}
+	
+	@PreAuthorize("#user.email == authentication.name or hasRole('ROLE_ADMIN')") 
+	@RequestMapping(value = "/{id}/schools", method = RequestMethod.GET)
+	public String goSchoolPage (
+			@ModelAttribute("user") User user, 
+			@ModelAttribute("userProfile") UserProfile userProfile, 
+			Model model) {
+	
+		return "school";
 	}
 
 	/** For the security purpose, HTTP GET is NOT allowed. - CSRF protection **/

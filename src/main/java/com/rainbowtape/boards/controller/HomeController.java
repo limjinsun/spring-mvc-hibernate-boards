@@ -36,6 +36,7 @@ public class HomeController {
 	@Transactional
 	@RequestMapping(value = "/", produces = "application/text; charset=utf8", method = RequestMethod.GET)
 	public String home() {
+		
 		logger.info("Index");	
 		return "index";
 	}
@@ -47,17 +48,8 @@ public class HomeController {
 	public String login(@ModelAttribute User user) {
 		
 		logger.info("Login");
-		boolean isAdmin = false;
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		System.err.println(auth);
-		Iterator<? extends GrantedAuthority> i = auth.getAuthorities().iterator();
-		while (i.hasNext()) {
-			if(i.next().toString().contains("ADMIN")) {
-				isAdmin = true;
-				break;
-			}
-		}
-		if(isAdmin) {
+		if(isAdmin(auth)) {
 			return "redirect:/admin/";
 		} else if (!(auth instanceof AnonymousAuthenticationToken)) {
 			logger.info("User Already Logged in.");
@@ -67,6 +59,19 @@ public class HomeController {
 			return "redirect:/user/" + userId;
 		}
 		return "login";
+	}
+	
+	private boolean isAdmin(Authentication auth) {
+		
+		boolean isAdmin = false;
+		Iterator<? extends GrantedAuthority> i = auth.getAuthorities().iterator();
+		while (i.hasNext()) {
+			if(i.next().toString().contains("ADMIN")) {
+				isAdmin = true;
+				break;
+			}
+		}
+		return isAdmin;
 	}
 
 	@RequestMapping(value = "/registerForm", produces = "text/plain;charset=UTF-8", method = RequestMethod.GET)

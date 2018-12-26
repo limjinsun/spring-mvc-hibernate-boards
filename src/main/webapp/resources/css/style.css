@@ -59,6 +59,8 @@
 /* === SCSS Compass Functions === */
 @import url(../vendors/css/kakao.css);
 @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600");
+@import url("https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css");
+@import url("https://cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css");
 @-moz-keyframes flash {
   0% {
     opacity: 1; }
@@ -13928,7 +13930,7 @@ input:focus {
       .sidebar .nav .nav-item .nav-link .menu-title {
         color: inherit;
         display: inline-block;
-        font-size: 1rem;
+        font-size: 0.95rem;
         line-height: 1;
         vertical-align: middle; }
       .sidebar .nav .nav-item .nav-link .badge {
@@ -13973,7 +13975,7 @@ input:focus {
       .sidebar .nav.sub-menu .nav-item .nav-link {
         color: #252525;
         padding: 0.75rem 1rem;
-        font-size: 1rem;
+        font-size: 0.95rem;
         line-height: 1;
         height: auto; }
         .sidebar .nav.sub-menu .nav-item .nav-link.active {
@@ -14106,7 +14108,7 @@ input:focus {
         .navbar.default-layout .navbar-menu-wrapper .navbar-toggler:not(.navbar-toggler-right) {
           display: none; } }
     .navbar.default-layout .navbar-menu-wrapper .navbar-text {
-      font-size: 1rem; }
+      font-size: 0.95rem; }
     .navbar.default-layout .navbar-menu-wrapper .navbar-nav {
       flex-direction: row;
       align-items: center; }
@@ -14115,7 +14117,7 @@ input:focus {
         margin-right: 1rem; }
         .navbar.default-layout .navbar-menu-wrapper .navbar-nav .nav-item .nav-link {
           color: inherit;
-          font-size: 1rem;
+          font-size: 0.95rem;
           vertical-align: middle; }
           @media (max-width: 767px) {
             .navbar.default-layout .navbar-menu-wrapper .navbar-nav .nav-item .nav-link {
@@ -14151,7 +14153,7 @@ input:focus {
           margin: 0; }
           .navbar.default-layout .navbar-menu-wrapper .navbar-nav.header-links .nav-item .nav-link {
             height: 63px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             padding: 16px 25px;
             display: -webkit-flex;
             display: flex;
@@ -14183,7 +14185,7 @@ input:focus {
 :root,
 body {
   font-size: 1rem;
-  font-family: "Montserrat", "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   letter-spacing: -0.01rem; }
 
@@ -14199,11 +14201,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", "Poppins", sans-serif;
+  font-family: "Montserrat", "Kakao", sans-serif;
   font-weight: 500; }
 
 p {
-  font-size: 1rem; }
+  font-size: 0.95rem; }
 
 .h1,
 h1 {
@@ -14230,7 +14232,7 @@ h6 {
   font-size: 0.9375rem; }
 
 p {
-  font-size: 1rem; }
+  font-size: 0.95rem; }
 
 .display-1 {
   font-size: 3.75rem; }
@@ -14323,13 +14325,13 @@ address p {
     text-align: right; }
 
 .card-subtitle {
-  font-family: "Montserrat", "Poppins", sans-serif;
+  font-family: "Montserrat", "Kakao", sans-serif;
   margin-top: 0.625rem;
   margin-bottom: 0.625rem; }
 
 .card-description {
   margin-bottom: 0.9375rem;
-  font-family: "Montserrat", "Poppins", sans-serif; }
+  font-family: "Montserrat", "Nanum Square", "Kakao", "Poppins", "Nanum Barun Gothic", sans-serif; }
   .rtl .card-description {
     text-align: right; }
 
@@ -14435,8 +14437,8 @@ pre {
   -webkit-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
   border-top: 1px solid #f2f2f2;
-  font-size: calc(1rem - 0.05rem);
-  font-family: "Montserrat", "Poppins", sans-serif; }
+  font-size: calc(0.95rem - 0.05rem);
+  font-family: "Montserrat", sans-serif; }
   .footer a {
     color: #00ce68;
     font-size: inherit; }
@@ -14721,7 +14723,7 @@ pre {
     width: 40%; }
     .card-revenue-table .revenue-item .revenue-amount p {
       font-size: 1.25rem;
-      font-family: "Montserrat", "Poppins", sans-serif;
+      font-family: "Montserrat", sans-serif;
       font-weight: 600;
       text-align: right; }
       .rtl .card-revenue-table .revenue-item .revenue-amount p {
@@ -14733,7 +14735,7 @@ pre {
   color: #ffffff; }
   .card-revenue .highlight-text {
     font-size: 1.875rem;
-    font-family: "Montserrat", "Poppins", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 500; }
   .card-revenue .badge {
     background-color: rgba(255, 255, 255, 0.2);
@@ -14809,7 +14811,7 @@ pre {
   font-weight: initial;
   line-height: 1;
   padding: 0.2rem 0.3rem;
-  font-family: "Montserrat", "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600; }
   .badge:empty {
     display: inline-block;
@@ -14946,7 +14948,7 @@ pre {
 .btn {
   font-size: 0.875rem;
   line-height: 1;
-  font-family: "Montserrat", "Poppins", sans-serif; }
+  font-family: "Montserrat", sans-serif; }
   .btn i {
     margin-right: 0.3125rem; }
   .btn .btn-label:before {
@@ -15616,7 +15618,7 @@ pre {
         right: 0; }
 
 .form-check .form-check-label {
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.5;
   padding-left: 10px; }
   .form-check .form-check-label input:checked + .input-helper:before {
@@ -15807,7 +15809,7 @@ pre {
 
 /* Dropdowns */
 .dropdown-menu {
-  font-size: 1rem; }
+  font-size: 0.95rem; }
   .dropdown-menu .dropdown-item:active {
     background: initial; }
 
@@ -15825,8 +15827,8 @@ pre {
 
 .form-control {
   border: 1px solid #f2f2f2;
-  font-family: "Montserrat", "Poppins", sans-serif;
-  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
   padding: 0.56rem 0.75rem;
   line-height: 34px;
   font-weight: 300;
@@ -15865,10 +15867,10 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none; }
   select.form-control {
-    padding: 0.4375rem 0.75rem; }
+    padding: 0.56rem 0.75rem; }
 
 .form-group label {
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1;
   vertical-align: top; }
 .form-group.has-danger .form-control {
@@ -15892,8 +15894,8 @@ select {
     -webkit-align-items: center;
     align-items: center;
     padding: 15px;
-    font-family: "Montserrat", "Poppins", sans-serif;
-    font-size: 1rem; }
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.95rem; }
     .icons-list > div i {
       display: inline-block;
       font-size: 20px;
@@ -15906,7 +15908,7 @@ dl,
 ol,
 ul {
   padding-left: 1rem;
-  font-size: 1rem; }
+  font-size: 0.95rem; }
   dl li,
   ol li,
   ul li {
@@ -16186,7 +16188,7 @@ ul {
     .preview-list .preview-item .preview-item-content p {
       margin-bottom: 10px; }
       .preview-list .preview-item .preview-item-content p .content-category {
-        font-family: "Montserrat", "Poppins", sans-serif;
+        font-family: "Montserrat", sans-serif;
         padding-right: 15px;
         border-right: 1px solid #f2f2f2; }
   .preview-list .preview-item .preview-actions {
@@ -16228,7 +16230,7 @@ ul {
   .table td,
   .table th {
     vertical-align: middle;
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1;
     white-space: nowrap; }
     .table td img,
@@ -16287,7 +16289,7 @@ ul {
         border-color: #e5e5e5;
         color: #b6b6b6; }
   .auth.theme-one .auto-form-wrapper .form-group .submit-btn {
-    font-family: "Montserrat", "Poppins", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 13px;
     padding: 12px 8px;
     font-weight: 600; }
@@ -16393,7 +16395,7 @@ ul {
           border-right: none;
           color: #dfdfdf; }
       .auth.theme-two .auto-form-wrapper form .form-group .submit-btn {
-        font-family: "Montserrat", "Poppins", sans-serif;
+        font-family: "Montserrat", sans-serif;
         font-size: 13px;
         padding: 11px 33px;
         font-weight: 600;

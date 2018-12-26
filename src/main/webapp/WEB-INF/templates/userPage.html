@@ -198,7 +198,7 @@
 
 		<!-- partial -->
 		<div class="container-fluid page-body-wrapper">
-			<!-- partial:partials/_sidebar.html -->
+		
 			<nav class="sidebar sidebar-offcanvas" id="sidebar">
 				<ul class="nav">
 					<li class="nav-item nav-profile">
@@ -211,7 +211,7 @@
 									<span class="profile-name" th:text="${user.getFname()}">홍길동</span>
 									<span>&nbsp;님</span>
 									<div>
-										<small class="designation text-muted" style="padding: 0 6px 0 0px;">pre-member</small>
+										<small class="designation text-muted" style="padding: 0 6px 0 0px;">member</small>
 										<span class="status-indicator online"></span>
 									</div>
 								</div>
@@ -234,6 +234,18 @@
 						</a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link" th:href="@{'/user/'+${user.getId()}+'/profile'}">
+							<i class="menu-icon mdi mdi-backup-restore"></i>
+							<span class="menu-title">My Profile</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{'/user/'+${user.getId()}+'/schools'}">
+							<i class="menu-icon mdi mdi-table"></i>
+							<span class="menu-title">Schools</span>
+						</a>
+					</li>
+					<!-- <li class="nav-item">
 						<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
 							<i class="menu-icon mdi mdi-content-copy"></i>
 							<span class="menu-title">Schools</span>
@@ -242,19 +254,13 @@
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
 								<li class="nav-item">
-									<a class="nav-link" href="pages/ui-features/buttons.html">3 Months Courses</a>
+									<a class="nav-link" href="pages/ui-features/buttons.html">Student Visa</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="pages/ui-features/typography.html">6 Months Courses</a>
+									<a class="nav-link" href="pages/ui-features/typography.html">Working Holiday</a>
 								</li>
 							</ul>
 						</div>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" th:href="@{'/user/'+${user.getId()}+'/profile'}">
-							<i class="menu-icon mdi mdi-backup-restore"></i>
-							<span class="menu-title">My Profile</span>
-						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" th:href="@{'/user/'+${user.getId()}+'/profile'}">
@@ -273,35 +279,10 @@
 							<i class="menu-icon mdi mdi-sticker"></i>
 							<span class="menu-title">Icons</span>
 						</a>
-					</li>
-					<!-- <li class="nav-item">
-						<a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-							<i class="menu-icon mdi mdi-restart"></i>
-							<span class="menu-title">User Pages</span>
-							<i class="menu-arrow"></i>
-						</a>
-						<div class="collapse" id="auth">
-							<ul class="nav flex-column sub-menu">
-								<li class="nav-item">
-									<a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="pages/samples/login.html"> Login </a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="pages/samples/register.html"> Register </a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="pages/samples/error-404.html"> 404 </a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="pages/samples/error-500.html"> 500 </a>
-								</li>
-							</ul>
-						</div>
 					</li> -->
 				</ul>
 			</nav>
+			
 			<!-- partial -->
 			<div class="main-panel">
 				<div class="content-wrapper">
@@ -320,7 +301,7 @@
 							<div class="card">
 								<div class="card-body">
 									<h4 class="card-title">Orders</h4>
-									<p>기존 스터디원 중 1개 이상의 스터디 주제를 제안해야 자격을 부여한다. 만약 스터디 주제 제안 기간에 스터디를 제안하지 않았는데 참여하고 싶으면 10만원의 벌금을 납부해야 한다. 기존 스터디원 중 100% 개근자는 스터디 주제를 제안하지 않아도 참여 자격을 부여한다. 기존
+									<p class="card-description">기존 스터디원 중 1개 이상의 스터디 주제를 제안해야 자격을 부여한다. 만약 스터디 주제 제안 기간에 스터디를 제안하지 않았는데 참여하고 싶으면 10만원의 벌금을 납부해야 한다. 기존 스터디원 중 100% 개근자는 스터디 주제를 제안하지 않아도 참여 자격을 부여한다. 기존
 										스터디원 중 다음 스터디 참여자가 적은 경우 새로운 스터디원을 모집한다. 스터디에 50% 불참시 다음 스터디를 참여할 수 없다. 불참 기준은 지각은 포함하지 않고 불참한 횟수만 포함해 계산한다. 단, A4용지 한장 수준으로 다음 스터디 참여 이유를 제출한 후 스터디원들의 투표를 통해
 										참여 자격을 부여한다.</p>
 									<!-- <div class="table-responsive">

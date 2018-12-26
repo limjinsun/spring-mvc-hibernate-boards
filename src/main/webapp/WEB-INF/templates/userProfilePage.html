@@ -26,6 +26,7 @@
 <style>
 .font1rem {
 	/* font-size: 0.99rem; */
+	
 }
 </style>
 </head>
@@ -119,6 +120,18 @@
 						</a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link" th:href="@{'/user/'+${user.getId()}+'/profile'}">
+							<i class="menu-icon mdi mdi-backup-restore"></i>
+							<span class="menu-title">My Profile</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{'/user/'+${user.getId()}+'/schools'}">
+							<i class="menu-icon mdi mdi-table"></i>
+							<span class="menu-title">Schools</span>
+						</a>
+					</li>
+					<!-- <li class="nav-item">
 						<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
 							<i class="menu-icon mdi mdi-content-copy"></i>
 							<span class="menu-title">Schools</span>
@@ -137,12 +150,6 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" th:href="@{'/user/'+${user.getId()}+'/profile'}">
-							<i class="menu-icon mdi mdi-backup-restore"></i>
-							<span class="menu-title">My Profile</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" th:href="@{'/user/'+${user.getId()}+'/profile'}">
 							<i class="menu-icon mdi mdi-chart-line"></i>
 							<span class="menu-title">Charts</span>
 						</a>
@@ -158,7 +165,7 @@
 							<i class="menu-icon mdi mdi-sticker"></i>
 							<span class="menu-title">Icons</span>
 						</a>
-					</li>
+					</li> -->
 				</ul>
 			</nav>
 
@@ -209,7 +216,8 @@
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Name</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="name" th:field="*{user.fname}" name="name" />  <!--  th:valuse 로 했을때는 안됌?? -->
+													<input type="text" class="form-control" id="name" th:field="*{user.fname}" name="name" />
+													<!--  th:valuse 로 했을때는 안됌?? -->
 												</div>
 											</div>
 										</div>
@@ -250,7 +258,7 @@
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Telephone</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" name="tel" th:field="*{userProfileFormspree.telephone}"/>
+													<input type="text" class="form-control" name="tel" th:field="*{userProfileFormspree.telephone}" />
 												</div>
 											</div>
 										</div>
@@ -258,7 +266,7 @@
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Occupation</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" name="ocupation" th:field="*{userProfileFormspree.occupation}"/>
+													<input type="text" class="form-control" name="ocupation" th:field="*{userProfileFormspree.occupation}" />
 												</div>
 											</div>
 										</div>
@@ -268,7 +276,7 @@
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Study Plan</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" name="timeToStudy" th:field="*{userProfileFormspree.when}"/>
+													<input type="text" class="form-control" name="timeToStudy" th:field="*{userProfileFormspree.when}" />
 												</div>
 											</div>
 										</div>
@@ -304,7 +312,7 @@
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Duration</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" name="durationOfStudy" th:field="*{userProfileFormspree.duration}"/>
+													<input type="text" class="form-control" name="durationOfStudy" th:field="*{userProfileFormspree.duration}" />
 												</div>
 											</div>
 										</div>
@@ -312,7 +320,7 @@
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">MBTI type</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" name="mbti" th:field="*{userProfile.mbti}"/>
+													<input type="text" class="form-control" name="mbti" th:field="*{userProfile.mbti}" />
 												</div>
 											</div>
 											<!-- <div class="form-group row">
@@ -328,7 +336,8 @@
 											<label class="col-form-label" for="exampleTextarea1">Textarea</label>
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<textarea class="form-control" style="line-height: 20px; width: 100%;" id="exampleTextarea1" rows="10" name="message" th:field="*{userProfileFormspree.textarea}">
+													<textarea class="form-control" style="line-height: 20px; width: 100%;" id="exampleTextarea1" rows="10" name="message"
+														th:field="*{userProfileFormspree.textarea}">
 													</textarea>
 												</div>
 											</div>
@@ -476,7 +485,11 @@
 	</div>
 
 	<script>
-		document.getElementById("edit_btn").addEventListener("click",function() {
+		document
+				.getElementById("edit_btn")
+				.addEventListener(
+						"click",
+						function() {
 							document.getElementById("submit_btn").style.display = "inline";
 							document.forms[2].elements[1].readOnly = false;
 							document.forms[2].elements[2].readOnly = false;
@@ -491,21 +504,20 @@
 		document.forms[1].elements[3].disabled = true;
 		document.forms[1].elements[2].style = "background-color: #eee;"
 		document.forms[1].elements[3].style = "background-color: #eee;"
-		
+
 		document.forms[1].elements[7].value = "직업"
 		document.forms[1].elements[8].value = "예상연수시기(ex. 20xx 년 3월)"
 		document.forms[1].elements[9].value = "현재 자신의 영어실력(ex. 상.중.하)"
-		document.forms[1].elements[10].value = "희망하는 어학원의 가격(ex. 상.중.하)"	
+		document.forms[1].elements[10].value = "희망하는 어학원의 가격(ex. 상.중.하)"
 		document.forms[1].elements[11].value = "관심있는 어학원의 이름"
 		document.forms[1].elements[12].value = "예상연수기간(ex. 6개월)"
 		document.forms[1].elements[14].value = "ex. 왜 어학연수를 가려고 하는지? 어학연수로 얻고싶은 점은 무엇인지? 자신의 현재 경제적 상황은 어떤지? 영어 스피킹과 리스닝 실력은 어느수준인지? 등과 함께 현재자신에게 무엇이 필요한지, 상담으로 피드백 받고 싶은 부분이 어떤부분인지 구체적으로 작성해주시기 바랍니다 "
-		
-       /*  var x; 
-        for(x = 0; x < document.forms[1].elements.length; x++) { 
-            
-        } */
+
+		/*  var x; 
+		 for(x = 0; x < document.forms[1].elements.length; x++) { 
+		     
+		 } */
 		// document.getElementById("p_kakaotalk").value = "카톡";
-		
 	</script>
 
 	<!-- plugins:js -->
