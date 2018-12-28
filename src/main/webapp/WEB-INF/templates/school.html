@@ -93,6 +93,7 @@
 								<div class="profile-image">
 									<img th:src="@{'/resources'+${userProfile.getUserpics()}}" alt="profile image">
 								</div>
+								<div id="user_id" th:text="${user.getId()}" style="display: none;">99999</div>
 								<div class="text-wrapper">
 									<span class="profile-name" th:text="${user.getFname()}">홍길동</span>
 									<span>&nbsp;님</span>
@@ -178,9 +179,9 @@
 					<div class="col-12 grid-margin">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">Select School</h4>
-								<form th:action="@{'/school/search'}" id="search-form" method="GET">
-									<p class="card-description">What's your preference?</p>
+								<!-- <h4 class="card-title">Select School</h4> -->
+								<form action="#" id="search-form" method="GET">
+									<!-- <p class="card-description">What's your preference?</p> -->
 									<div class="row col-lg-10" style="margin: auto; padding: 0;">
 
 										<div class="col-md-4">
@@ -190,9 +191,9 @@
 													 -->
 												<div class="col-sm-12">
 													<select class="form-control" id="area" name="area">
-														<option value="Dublin">Dublin</option>
-														<option value="Cork">Cork</option>
-														<option value="Galway">Galway</option>
+														<option value="Dublin">DUBLIN</option>
+														<option value="Cork">CORK</option>
+														<option value="Galway">GALWAY</option>
 														<option value="ETC">ETC</option>
 													</select>
 												</div>
@@ -220,36 +221,35 @@
 											</div>
 										</div>
 
-
-
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
 
-
 					<div class="col-lg-12 grid-margin stretch-card">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">Schools</h4>
+								<!-- <h4 class="card-title">Schools</h4>
 								<p class="card-description">
 									Dublin
-									<!-- <code>.table-bordered</code> -->
-								</p>
+									<code>.table-bordered</code>
+								</p> -->
 								<div class="table-responsive">
-									<table class="table table-bordered">
+									<table class="table table-bordered" id="table1">
 										<thead>
 											<tr>
-												<th>#</th>
-												<th>First name</th>
-												<th>Progress</th>
-												<th>Amount</th>
-												<th>Deadline</th>
+												<th>학교명</th>
+												<th>코스명</th>
+												<th>코스가격</th>
+												<th>학교주소</th>
+												<th>설명</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr>
+										<tbody id="tbody1">
+
+
+											<!-- <tr>
 												<td>1</td>
 												<td>Herman Beck</td>
 												<td>
@@ -325,7 +325,7 @@
 												</td>
 												<td>$ 150.00</td>
 												<td>June 16, 2015</td>
-											</tr>
+											</tr> -->
 										</tbody>
 									</table>
 								</div>
@@ -389,20 +389,18 @@
 		});
 		
 		function searchViaAjax() {
-			
-			var area = document.getElementById("area").value;
-			var studyterm = document.getElementById("studyterm").value;
+			var area = document.getElementById("area").value
+			var studyterm = document.getElementById("studyterm").value
 
 			$.ajax({
 				type : "GET",
 				contentType : "application/json",
 				url : "/boards/school/search/api", 
 				data : "area=" + area + "&studyterm=" + studyterm + "",
-				dataType : 'text',
+				dataType: "json",
 				timeout : 100000,
 				success : function(data) {
-					console.log("SUCCESS: ", data);
-					/* display(data); */
+					doSomething(data);
 					enableSearchButton();
 				},
 				error : function(e) {
@@ -415,7 +413,64 @@
 				}
 			});
 		}
-
+		
+		function doSomething(json){
+			var userid
+			var korRate
+            var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+            var targetUrl = 'http://rate-exchange-1.appspot.com/currency?from=EUR&to=KRW'
+            var school_id
+            		
+			fetch(proxyUrl + targetUrl)
+            .then(blob => blob.json())
+            .then(data => {
+                korRate = data.rate;
+                const rows = json.map((item) => {
+                    return [item.nameofschool, item.nameofcourse, formatter.format(Math.round(item.priceofcourse * korRate/100)*100),
+                        item.address, item.producttext
+                    ];
+                })
+                return rows;
+            }).then((array) => {
+                if (!document.getElementsByTagName) return;
+                $("#tbody1").empty();
+                tBody = document.getElementsByTagName("tbody").item(0);
+                array.forEach((element) => {
+                    row = document.createElement("tr");
+                    var isFirst = true;
+                    element.forEach((item) => {
+                        cell = document.createElement("td");
+                        node = document.createTextNode(item);
+                        
+                        if(!isFirst){
+                        	cell.appendChild(node);
+                        }
+                        
+                        if(isFirst){
+                        	userid = document.getElementById("user_id").innerHTML
+                        	a = document.createElement("a");
+                            a.setAttribute('href', "/boards/user/"+userid+"/schools?school="+item+"");
+                            a.appendChild(node);
+                            cell.appendChild(a);
+                            isFirst = false;
+                        }
+                        
+                        // 		
+                        row.appendChild(cell);
+                    })
+                    tBody.appendChild(row);
+                })
+            })
+            .catch(e => {
+                console.log(e);
+            });
+		}
+		
+		var formatter = new Intl.NumberFormat('ko-KO', {
+			  style: 'currency',
+			  currency: 'KRW',
+			  minimumFractionDigits: 0,
+			})
 	</script>
 
 </body>

@@ -119,7 +119,7 @@ public class HomeController {
 	public String errorCode404 (Locale locale, Model model) {
 		
 		logger.info("HomeController.java + Welcome to 404 area! The client locale is {}.", locale);
-		return "403";
+		return "404";
 	}
 
 	@GetMapping("/admin")

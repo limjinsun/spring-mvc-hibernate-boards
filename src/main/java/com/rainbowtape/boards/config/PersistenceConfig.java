@@ -78,11 +78,4 @@ public class PersistenceConfig {
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
 		return new PersistenceExceptionTranslationPostProcessor();
 	}
-
-//	private List<String> getRootPathUrls() {
-//	    List<String> urlPatterns = new ArrayList<String>();
-//	    urlPatterns.add("/*");
-//	    return urlPatterns;
-//	}
-	
 }

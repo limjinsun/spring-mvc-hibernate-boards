@@ -13930,7 +13930,7 @@ input:focus {
       .sidebar .nav .nav-item .nav-link .menu-title {
         color: inherit;
         display: inline-block;
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         line-height: 1;
         vertical-align: middle; }
       .sidebar .nav .nav-item .nav-link .badge {
@@ -13975,7 +13975,7 @@ input:focus {
       .sidebar .nav.sub-menu .nav-item .nav-link {
         color: #252525;
         padding: 0.75rem 1rem;
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         line-height: 1;
         height: auto; }
         .sidebar .nav.sub-menu .nav-item .nav-link.active {
@@ -14108,7 +14108,7 @@ input:focus {
         .navbar.default-layout .navbar-menu-wrapper .navbar-toggler:not(.navbar-toggler-right) {
           display: none; } }
     .navbar.default-layout .navbar-menu-wrapper .navbar-text {
-      font-size: 0.95rem; }
+      font-size: 0.85rem; }
     .navbar.default-layout .navbar-menu-wrapper .navbar-nav {
       flex-direction: row;
       align-items: center; }
@@ -14117,7 +14117,7 @@ input:focus {
         margin-right: 1rem; }
         .navbar.default-layout .navbar-menu-wrapper .navbar-nav .nav-item .nav-link {
           color: inherit;
-          font-size: 0.95rem;
+          font-size: 0.85rem;
           vertical-align: middle; }
           @media (max-width: 767px) {
             .navbar.default-layout .navbar-menu-wrapper .navbar-nav .nav-item .nav-link {
@@ -14153,7 +14153,7 @@ input:focus {
           margin: 0; }
           .navbar.default-layout .navbar-menu-wrapper .navbar-nav.header-links .nav-item .nav-link {
             height: 63px;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             padding: 16px 25px;
             display: -webkit-flex;
             display: flex;
@@ -14205,7 +14205,7 @@ h6 {
   font-weight: 500; }
 
 p {
-  font-size: 0.95rem; }
+  font-size: 0.85rem; }
 
 .h1,
 h1 {
@@ -14232,7 +14232,7 @@ h6 {
   font-size: 0.9375rem; }
 
 p {
-  font-size: 0.95rem; }
+  font-size: 0.85rem; }
 
 .display-1 {
   font-size: 3.75rem; }
@@ -14437,7 +14437,7 @@ pre {
   -webkit-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
   border-top: 1px solid #f2f2f2;
-  font-size: calc(0.95rem - 0.05rem);
+  font-size: calc(0.85rem - 0.05rem);
   font-family: "Montserrat", sans-serif; }
   .footer a {
     color: #00ce68;
@@ -15618,7 +15618,7 @@ pre {
         right: 0; }
 
 .form-check .form-check-label {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   line-height: 1.5;
   padding-left: 10px; }
   .form-check .form-check-label input:checked + .input-helper:before {
@@ -15809,7 +15809,7 @@ pre {
 
 /* Dropdowns */
 .dropdown-menu {
-  font-size: 0.95rem; }
+  font-size: 0.85rem; }
   .dropdown-menu .dropdown-item:active {
     background: initial; }
 
@@ -15828,7 +15828,7 @@ pre {
 .form-control {
   border: 1px solid #f2f2f2;
   font-family: "Montserrat", sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   padding: 0.56rem 0.75rem;
   line-height: 34px;
   font-weight: 300;
@@ -15870,7 +15870,7 @@ select {
     padding: 0.56rem 0.75rem; }
 
 .form-group label {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   line-height: 1;
   vertical-align: top; }
 .form-group.has-danger .form-control {
@@ -15895,7 +15895,7 @@ select {
     align-items: center;
     padding: 15px;
     font-family: "Montserrat", sans-serif;
-    font-size: 0.95rem; }
+    font-size: 0.85rem; }
     .icons-list > div i {
       display: inline-block;
       font-size: 20px;
@@ -15908,7 +15908,7 @@ dl,
 ol,
 ul {
   padding-left: 1rem;
-  font-size: 0.95rem; }
+  font-size: 0.85rem; }
   dl li,
   ol li,
   ul li {
@@ -16230,7 +16230,7 @@ ul {
   .table td,
   .table th {
     vertical-align: middle;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     line-height: 1;
     white-space: nowrap; }
     .table td img,

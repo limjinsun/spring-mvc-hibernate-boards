@@ -1,5 +1,7 @@
 package com.rainbowtape.boards.config;
 
+import javax.servlet.ServletRegistration;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -19,6 +21,12 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 		return new String[] { "/" };
 	}
 
+	@Override
+	protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+		boolean done = registration.setInitParameter("throwExceptionIfNoHandlerFound", "true"); // -> true
+		if(!done) throw new RuntimeException();
+	}
+
 	/* https://stackoverflow.com/a/23051264/4735043 - Replaced	 
 	@Override
 	protected Filter[] getServletFilters() {
@@ -26,7 +34,7 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 		characterEncodingFilter.setEncoding("UTF-8");
 		return new Filter[] { characterEncodingFilter };
 	}
-	 
+
 	/* 404 에러를 캐취하기위해 한 노력. 아직까지 못잡음. 
 	@Override
 	protected void registerDispatcherServlet(ServletContext servletContext) {
@@ -60,6 +68,6 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 		}
 		customizeRegistration(registration);
 	}
-	*/
-	
+	 */
+
 }
