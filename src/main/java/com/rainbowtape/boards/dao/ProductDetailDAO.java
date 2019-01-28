@@ -15,4 +15,5 @@ public interface ProductDetailDAO extends JpaRepository<ProductDetail, Long> {
 	
 	@Query("SELECT p FROM ProductDetail p WHERE p.address LIKE %?1%")
 	public List<ProductDetail> findWithArea(String area);
+	
 }

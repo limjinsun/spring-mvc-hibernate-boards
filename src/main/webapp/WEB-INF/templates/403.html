@@ -37,20 +37,20 @@
 							</div>
 							<div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
 								<h2>Forbidden!</h2>
-								<h3 class="font-weight-light">당신에게 권한이 없습니다.</h3>
+								<h3 class="font-weight-light">정상적으로 로그인하지 않았거나 잘못된 접근입니다.</h3>
 							</div>
 						</div>
 						<div class="row mt-5">
 							<div class="col-12 text-center mt-xl-2">
 								<form th:action="@{'/logout'}" method="post">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-									<input type="submit" value="Log out" class="btn btn--radius-2 btn--red btn--full">
+									<input type="submit" value="돌아가기" class="btn btn--radius-2 btn--red btn--full">
 								</form>
 							</div>
 						</div>
 						<div class="row mt-5">
 							<div class="col-12 mt-xl-2">
-								<p class="text-white font-weight-medium text-center">Copyright &copy; 2018 All rights reserved.</p>
+								<p class="text-white font-weight-medium text-center">Copyright &copy; 2019 All rights reserved.</p>
 							</div>
 						</div>
 					</div>

@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.rainbowtape.boards.dto.UserProfileFormspree;
 import com.rainbowtape.boards.entity.User;
 import com.rainbowtape.boards.entity.UserProfile;
-import com.rainbowtape.boards.entity.UserProfileFormspree;
 import com.rainbowtape.boards.service.UserProfileService;
 import com.rainbowtape.boards.service.UserService;
 
@@ -121,7 +121,7 @@ public class UserController {
 		return "redirect:/user/" + user.getId() + "/formspree";	
 	}
 
-	@PreAuthorize("#user.email == authentication.name or hasRole('ROLE_ADMIN')") 
+	// @PreAuthorize("#user.email == authentication.name or hasRole('ROLE_ADMIN')") 
 	@RequestMapping(value = "/{id}/formspree", method = RequestMethod.GET)
 	public String goFormspree (
 			@ModelAttribute("user") User user, 
@@ -156,6 +156,7 @@ public class UserController {
 		return "redirect:/login";	
 	}
 
+	// 업데이트 유저 로그인 정보 
 	private void updateAuthentication(User user) {
 		Collection<SimpleGrantedAuthority> nowAuthorities = (Collection<SimpleGrantedAuthority>)SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 		UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword(), nowAuthorities);

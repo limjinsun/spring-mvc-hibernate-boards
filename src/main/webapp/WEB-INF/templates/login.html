@@ -22,93 +22,148 @@
 <link rel="apple-touch-icon-precomposed" th:href="@{'/resources/images/favicon.ico'}">
 <meta name="msapplication-TileColor" content="#00bcd4">
 <meta name="msapplication-TileImage" th:href="@{'/resources/images/favicon.ico'}">
+
+<style th:inline="text">
+body, html {
+	height: 100%;
+}
+
+.bg {
+	/* The image used */
+	background-image: url([[@{/resources/images/bg/2.jpg}]]);
+	/* Full height */
+	height: 100%;
+	/* Center and scale the image nicely */
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 10% 50%;
+}
+</style>
 </head>
 
 <body>
-	<div class="container-scroller">
-		<div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
-			<div class="content-wrapper d-flex align-items-center auth theme-one"><!--  content-wrapper d-flex align-items-center auth auth-bg-1 theme-one -->
-				<div class="row w-100" >
-					<div class="col-lg-3 card-description">
-						<div class="row w-100" >
-							<h3>아일랜드어학연수</h3>
+	<div class="bg">
+		<div class="container-scroller">
+			<div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+				<div class="content-wrapper d-flex align-items-center auth ">
+					<!--  register-bg-1   theme-one-->
+					<!--  content-wrapper d-flex align-items-center auth auth-bg-1 theme-one -->
+					<div class="row w-100">
+						<div class="col-lg-4 card-description" style="color: #ffffff;">
+							<div class="row w-100">
+								<h1>리피의 아일랜드</h1>
+							</div>
+							<div class="row w-100">
+								<p>어학연수_ 스스로 선택하는 자유_ 혼자서 할수있는 자신감_</p>
+							</div>
 						</div>
-						<div class="row w-100" >
-							<p>스스로 선택하는 자유. 혼자서 할수있는 자신감.</p>
-						</div>
-					</div>
-					<div class="col-lg-4 mx-auto">
-						<div class="auto-form-wrapper" >
-							<form th:action="@{'/validateLogin'}" method='POST' >
-								<h2 style="padding:10px; width:100%; text-align:center; letter-spacing:-0.1rem;"></h2>
-								<div class="form-group">
-									<!-- <label class="label">E-mail</label> -->
-									<div class="input-group">
-										<input class="form-control" id="username" name="username" type="email" placeholder="E-mail" />
-										<div class="input-group-append">
-											<span class="input-group-text">
-												<i class="mdi mdi-check-circle-outline"></i>
-											</span>
+						<div class="col-lg-4 mx-auto">
+							<div class="auto-form-wrapper">
+								<form th:action="@{'/validateLogin'}" method='POST'>
+									<h2 style="padding: 10px; width: 100%; text-align: center; letter-spacing: -0.1rem;"></h2>
+									<div class="form-group">
+										<!-- <label class="label">E-mail</label> -->
+										<div class="input-group">
+											<input class="form-control" id="username" name="username" type="email" placeholder="E-mail" />
+											<div class="input-group-append">
+												<span class="input-group-text">
+													<i class="mdi mdi-check-circle-outline"></i>
+												</span>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<!-- <label class="label">Password</label> -->
-									<div class="input-group">
-										<input class="form-control" id="password" name="password" type="password" placeholder="Password" />
-										<div class="input-group-append">
-											<span class="input-group-text">
-												<i class="mdi mdi-check-circle-outline"></i>
-											</span>
+									<div class="form-group">
+										<!-- <label class="label">Password</label> -->
+										<div class="input-group">
+											<input class="form-control" id="password" name="password" type="password" placeholder="Password" />
+											<div class="input-group-append">
+												<span class="input-group-text">
+													<i class="mdi mdi-check-circle-outline"></i>
+												</span>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<button class="btn btn-primary submit-btn btn-block">Login</button>
-								</div>
-								<div class="form-group d-flex justify-content-between">
-									<div class="form-check form-check-flat mt-0">
-										<label class="form-check-label">
-											<input type="checkbox" class="form-check-input" id="remember-me" checked>
-											Keep me signed in
-										</label>
+									<div class="form-group d-flex justify-content-between">
+										<div class="form-check form-check-flat mt-0">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-check-input" id="remember-me" checked>
+												Keep me signed in
+											</label>
+										</div>
+										<a th:href="@{'/forgotPassword/recoverForm'}" class="text-small forgot-password text-black">Forgot Password</a>
 									</div>
-									<a href="#" class="text-small forgot-password text-black">Forgot Password</a>
+									<div class="form-group">
+										<button class="btn btn-success btn-lg btn-block">리피회원 로그인</button>
+									</div>
+
+
+
+									<!--  
+									
+									<form th:action="@{'/consulting'}" method="get">
+												<input type="submit" class="mui-btn mui-btn--raised mui-btn--accent card-description" style="height: auto; letter-spacing: -0.03rem; padding: 3px 26px;"
+													value="어학연수 등록상담 신청" />
+											</form>
+									
+									
+									
+									 -->
+
+									<!-- <div class="form-group">
+										<button class="btn btn-block g-login">
+											<img class="mr-3" th:src="@{'/resources/images/file-icons/icon-google.svg'}" alt="">
+											Log in with Google
+										</button>
+									</div> -->
+									<div class="text-block text-center my-3">
+										<!-- <span class="text-small font-weight-semibold" style="color:#ffffff;">Not a member ?</span> -->
+										<a th:href="@{/registerForm}" class="text-black text-small">
+											<h6>가입하기</h6>
+										</a>
+									</div>
+									<!-- prevent CSRF attack! -->
+									<!-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> -->
+									<!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> -->
+
+									<!-- https://www.baeldung.com/csrf-thymeleaf-with-spring-security -->
+
+								</form>
+
+								<div class="form-group">
+									<form th:action="@{'/school/all'}" method="get">
+										<input class="btn btn-lg btn-danger btn-block" type="submit" value="로그인없이 어학원 가격정보보기" />
+									</form>
 								</div>
 								<div class="form-group">
-									<button class="btn btn-block g-login">
-										<!-- <img class="mr-3" th:src="@{'/resources/images/file-icons/icon-google.svg'}" alt=""> -->
-										Log in with Google
-									</button>
+									<form th:action="@{'/school/all'}" method="get">
+										<input class="btn btn-lg btn-primary btn-block" type="submit" value="로그인없이 어학연수 조언보기" />
+									</form>
 								</div>
-								<div class="text-block text-center my-3">
-									<span class="text-small font-weight-semibold">Not a member ?</span>
-									<a th:href="@{/registerForm}" class="text-black text-small">Create new account</a>
-								</div>
-								<!-- prevent CSRF attack! -->
-								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-							</form>
+							</div>
+							<!-- <ul class="auth-footer">
+								<li>
+									<a href="#">Conditions</a>
+								</li>
+								<li>
+									<a href="#">Help</a>
+								</li>
+								<li>
+									<a href="#">Terms</a>
+								</li>
+							</ul> -->
+							<p class="footer-text text-center">copyright © 2019 리피의 아일랜드. All rights reserved.</p>
 						</div>
-						<ul class="auth-footer">
-							<li>
-								<a href="#">Conditions</a>
-							</li>
-							<li>
-								<a href="#">Help</a>
-							</li>
-							<li>
-								<a href="#">Terms</a>
-							</li>
-						</ul>
-						<p class="footer-text text-center">copyright © 2018 Bootstrapdash. All rights reserved.</p>
+						<div class="col-lg-4"></div>
 					</div>
-					<div class="col-lg-3"></div>
 				</div>
+				<!-- content-wrapper ends -->
 			</div>
-			<!-- content-wrapper ends -->
+			<!-- page-body-wrapper ends -->
 		</div>
-		<!-- page-body-wrapper ends -->
+
+
 	</div>
+
 	<!-- container-scroller -->
 	<!-- plugins:js -->
 	<script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}"></script>

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.rainbowtape</groupId>
 	<artifactId>boards</artifactId>
@@ -15,7 +13,14 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
-	
+
+		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+
 		<!-- jackson json bind -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -76,32 +81,28 @@
 			<version>1.4</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm 
-			// This is added when bean for hibernate.cfg.xml in servlet-context.xml -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm // This is added when bean for hibernate.cfg.xml in servlet-context.xml -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt // This is 
-			added when password hashing needed. -->
+		<!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt // This is added when password hashing needed. -->
 		<dependency>
 			<groupId>org.mindrot</groupId>
 			<artifactId>jbcrypt</artifactId>
 			<version>0.4</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java // This 
-			is added when with Hibernate -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java // This is added when with Hibernate -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.12</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core // 
-			This was added when Entity class was created. -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core // This was added when Entity class was created. -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>

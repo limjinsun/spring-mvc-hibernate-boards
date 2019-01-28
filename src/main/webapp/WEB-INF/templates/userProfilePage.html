@@ -24,10 +24,68 @@
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.addons.css'}" type="text/css">
 
 <style>
-.font1rem {
-	/* font-size: 0.99rem; */
-	
+.fixed_menu {
+	position: fixed;
 }
+
+.margin_for_fixed {
+	margin-left: 255px;
+}
+
+@media ( max-width :991px) {
+	.fixed_menu {
+		/* position: absolute; */
+		
+	}
+	.margin_for_fixed {
+		margin-left: 0;
+	}
+}
+
+.navbar.default-layout {
+	transition: background 0.25s ease;
+	-webkit-transition: background 0.25s ease;
+	-moz-transition: background 0.25s ease;
+	-ms-transition: background 0.25s ease;
+	background-color: rgba(255, 255, 255);
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0),
+		rgba(220, 220, 220, 0.4));
+}
+
+.navbar-brand-wrapper {
+	background-color: rgba(255, 255, 255 .5);
+}
+
+.navbar.default-layout .navbar-menu-wrapper {
+	color: #222;
+}
+
+.content-wrapper {
+	background: rgba(220, 220, 220, 0.1);
+}
+
+.footer {
+	background: rgba(220, 220, 220, 0.1);
+	border-top: 0.5px solid #f2f2f2;
+}
+
+.fixed_menu {
+	position: fixed;
+}
+
+.margin_for_fixed {
+	margin-left: 255px;
+}
+
+@media ( max-width :991px) {
+	.fixed_menu {
+		/* position: absolute; */
+	}
+	.margin_for_fixed {
+		margin-left: 0;
+	}
+}
+
 </style>
 </head>
 
@@ -85,7 +143,7 @@
 		<!-- partial -->
 		<div class="container-fluid page-body-wrapper">
 			<!-- partial:partials/_sidebar.html -->
-			<nav class="sidebar sidebar-offcanvas" id="sidebar">
+			<nav class="sidebar sidebar-offcanvas fixed_menu" id="sidebar">
 				<ul class="nav">
 					<li class="nav-item nav-profile">
 						<div class="nav-link">
@@ -174,7 +232,7 @@
 
 
 			<!-- partial -->
-			<div class="main-panel">
+			<div class="main-panel margin_for_fixed">
 				<div class="content-wrapper">
 
 					<div class="row">
@@ -211,7 +269,7 @@
 
 									<input type="hidden" name="_next" value="http://liffeyireland.com/thanks/" />
 									<input type="text" name="_gotcha" style="display: none" />
-									<div class="row">
+									<div class="row" style="padding-bottom: 0; padding-top: 0;">
 										<div class="col-md-6">
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label">Name</label>
@@ -349,8 +407,8 @@
 							</div>
 						</div>
 
-						<div class="col-md-6 d-flex align-items-stretch grid-margin">
-							<div class="row flex-grow">
+						<!-- <div class="col-md-6 d-flex align-items-stretch grid-margin">
+							<div> <!-- class="row flex-grow"
 								<div class="col-12">
 									<div class="card">
 										<div class="card-header" style="padding-bottom: 0;">
@@ -363,15 +421,15 @@
 										<div class="card-body" style="padding-top: 0;">
 											<h3 class="card-title">Information</h3>
 											<p class="card-description">자신의 정보를 확인하고 수정할수 있습니다.</p>
-											<form class="form-sample" th:action="@{'/user/'+${user.getId()}+'/updateUserProfile'}" method="post">
+											<form class="form-sample card-body" th:action="@{'/user/'+${user.getId()}+'/updateUserProfile'}" method="post" style="padding-top:0px; padding-bottom:0px;">
 												<p class="card-description"></p>
-												<!-- form group -->
+												<!-- form group
 												<div class="row">
 													<div class="col-md-12">
 														<div class="form-group row">
 															<label class="col-sm-3 col-form-label">Name</label>
 															<div class="col-sm-9">
-																<input type="text" class="form-control font1rem" id="fname" th:field="*{user.Fname}" th:value="${user.getFname()}" readonly="readonly">
+																<input type="text" class="form-control " id="fname" th:field="*{user.Fname}" th:value="${user.getFname()}" readonly="readonly">
 															</div>
 														</div>
 													</div>
@@ -379,7 +437,7 @@
 														<div class="form-group row">
 															<label class="col-sm-3 col-form-label">E-Mail</label>
 															<div class="col-sm-9">
-																<input type="email" class="form-control font1rem" id="email" th:field="*{user.Email}" th:value="${user.getEmail()}" readonly="readonly">
+																<input type="email" class="form-control " id="email" th:field="*{user.Email}" th:value="${user.getEmail()}" readonly="readonly">
 															</div>
 														</div>
 													</div>
@@ -388,7 +446,7 @@
 														<div class="form-group row">
 															<label class="col-sm-3 col-form-label">KaKao Talk</label>
 															<div class="col-sm-9">
-																<input type="text" class="form-control font1rem" id="kakaotalk" th:field="*{userProfile.kakaotalk}" th:value="${userProfile.getKakaotalk()}"
+																<input type="text" class="form-control " id="kakaotalk" th:field="*{userProfile.kakaotalk}" th:value="${userProfile.getKakaotalk()}"
 																	readonly="readonly">
 															</div>
 														</div>
@@ -397,7 +455,7 @@
 														<div class="form-group row">
 															<label class="col-sm-3 col-form-label">Visa Type</label>
 															<div class="col-sm-9">
-																<select class="form-control font1rem" disabled="true" id="visatype" th:field="*{userProfile.visatype}">
+																<select class="form-control " disabled="true" id="visatype" th:field="*{userProfile.visatype}">
 																	<option th:value="${userProfile.getVisatype()}" th:text="${userProfile.getVisatype()}" selected></option>
 																	<option value="Student">Student</option>
 																	<option value="Working-Holiday">Working-Holiday</option>
@@ -409,7 +467,7 @@
 														<div class="form-group row">
 															<label class="col-sm-3 col-form-label">Interest</label>
 															<div class="col-sm-9">
-																<input type="text" class="form-control font1rem" id="interest" th:field="*{userProfile.interest}" th:value="${userProfile.getInterest()}"
+																<input type="text" class="form-control " id="interest" th:field="*{userProfile.interest}" th:value="${userProfile.getInterest()}"
 																	readonly="readonly">
 															</div>
 														</div>
@@ -430,6 +488,88 @@
 											</form>
 										</div>
 									</div>
+								</div>
+							</div>
+						</div> -->
+
+						<div class="col-md-6 grid-margin stretch-card">
+							<div class="card">
+
+								<div class="card-header" style="padding-bottom: 0;">
+									<div class="clearfix">
+										<div class="float-left">
+											<i class="mdi mdi-comment-account-outline text-primary icon-big"></i>
+										</div>
+									</div>
+								</div>
+
+								<div class="card-body" style="padding-top: 0;">
+									<h3 class="card-title">Information</h3>
+									<p class="card-description">자신의 정보를 확인하고 수정할수 있습니다.</p>
+									<form class="form-sample card-body" th:action="@{'/user/'+${user.getId()}+'/updateUserProfile'}" method="post" style="padding-top: 0px; padding-bottom: 0px;">
+										<p class="card-description"></p>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Name</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control " id="fname" th:field="*{user.Fname}" th:value="${user.getFname()}" readonly="readonly">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">E-Mail</label>
+													<div class="col-sm-9">
+														<input type="email" class="form-control " id="email" th:field="*{user.Email}" th:value="${user.getEmail()}" readonly="readonly">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-12">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">KaKao Talk</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control " id="kakaotalk" th:field="*{userProfile.kakaotalk}" th:value="${userProfile.getKakaotalk()}"
+															readonly="readonly">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Visa Type</label>
+													<div class="col-sm-9">
+														<select class="form-control " disabled="true" id="visatype" th:field="*{userProfile.visatype}">
+															<option th:value="${userProfile.getVisatype()}" th:text="${userProfile.getVisatype()}" selected></option>
+															<option value="Student">Student</option>
+															<option value="Working-Holiday">Working-Holiday</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Interest</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control " id="interest" th:field="*{userProfile.interest}" th:value="${userProfile.getInterest()}"
+															readonly="readonly">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group row">
+													<button type="submit" id="submit_btn" class="btn btn-danger btn-fw" style="margin: 10px 10px 0 10px; display: none;">Submit</button>
+													<button type="button" id="edit_btn" class="btn btn-primary btn-fw" style="margin: 10px 10px 0 10px;">Edit</button>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group row"></div>
+											</div>
+										</div>
+										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+									</form>
 								</div>
 							</div>
 						</div>
@@ -466,13 +606,13 @@
 				<!-- partial:../../partials/_footer.html -->
 				<footer class="footer">
 					<div class="container-fluid clearfix">
-						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">
-							Copyright © 2018
-							<a href="#" target="_blank" style='font-family: "Kakao"'>리피의 아일랜드</a>
+						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block card-description">
+							Copyright © 2019
+							<a href="#" target="_blank">리피의 아일랜드</a>
 							. All rights reserved.
 						</span>
-						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-							Hand-crafted & made with
+						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center card-description">
+							당신의 성공적인 어학연수를 위해
 							<i class="mdi mdi-heart text-danger"></i>
 						</span>
 					</div>
@@ -491,11 +631,16 @@
 						"click",
 						function() {
 							document.getElementById("submit_btn").style.display = "inline";
-							document.forms[2].elements[1].readOnly = false;
-							document.forms[2].elements[2].readOnly = false;
-							document.forms[2].elements[3].readOnly = false;
-							document.forms[2].elements[4].disabled = false;
-							document.forms[2].elements[5].readOnly = false;
+							document.forms[2].elements[0]
+									.removeAttribute("readonly");
+							document.forms[2].elements[1]
+									.removeAttribute("readonly");
+							document.forms[2].elements[2]
+									.removeAttribute("readonly");
+							document.forms[2].elements[3]
+									.removeAttribute("disabled");
+							document.forms[2].elements[4]
+									.removeAttribute("readonly");
 							// var x = document.getElementById("visatype");
 							// x.remove(x.selectedIndex);
 						});
@@ -513,9 +658,9 @@
 		document.forms[1].elements[12].value = "예상연수기간(ex. 6개월)"
 		document.forms[1].elements[14].value = "ex. 왜 어학연수를 가려고 하는지? 어학연수로 얻고싶은 점은 무엇인지? 자신의 현재 경제적 상황은 어떤지? 영어 스피킹과 리스닝 실력은 어느수준인지? 등과 함께 현재자신에게 무엇이 필요한지, 상담으로 피드백 받고 싶은 부분이 어떤부분인지 구체적으로 작성해주시기 바랍니다 "
 
-		/*  var x; 
-		 for(x = 0; x < document.forms[1].elements.length; x++) { 
-		     
+		/*  var x;
+		 for(x = 0; x < document.forms[1].elements.length; x++) {
+
 		 } */
 		// document.getElementById("p_kakaotalk").value = "카톡";
 	</script>

@@ -96,7 +96,7 @@ public class UserProfile {
 				+ ", age=" + age + ", kakaotalk=" + kakaotalk + ", mbti=" + mbti + ", interest=" + interest
 				+ ", flightinfo=" + flightinfo + ", usertext=" + usertext + ", admintext=" + admintext + "]";
 	}
-
+	//한글테스트. 
 	public UserProfile(User user, String userpics, String userstatus, String visatype, String address, Date dob,
 			String passportno, int age, String kakaotalk, String mbti, String interest, String flightinfo,
 			String usertext, String admintext) {

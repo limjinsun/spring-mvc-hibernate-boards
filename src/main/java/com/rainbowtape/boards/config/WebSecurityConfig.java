@@ -33,7 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired // UserServiceImpl autowired
 	private UserService userService;
 
-
 	// https://www.baeldung.com/spring-security-authentication-with-a-database
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception { 
@@ -63,10 +62,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.addFilterBefore(filter,CsrfFilter.class);
 		/** https://stackoverflow.com/a/23051264/4735043 **/
 		http
+		.csrf().disable() // https://stackoverflow.com/questions/28716632/spring-boot-request-method-post-not-supported
 		.authorizeRequests()
 		.antMatchers("/resources/**").permitAll()
 		.antMatchers("/registerForm").permitAll()
-		.antMatchers("/","/403","/register","/login","/loginError","/dbError","/404","/formspree").permitAll()
+		.antMatchers("/forgotPassword/**").permitAll()
+		.antMatchers("/school/**").permitAll()
+		.antMatchers("/","/403","/register","/login","/loginError","/dbError","/404","/formspree","/validateLogin","/consulting").permitAll()
 		.antMatchers("/system/**").hasRole("ADMIN")
 		.antMatchers("/user/**").hasAnyRole("USER","ADMIN")
 		.anyRequest().authenticated()
@@ -83,7 +85,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.exceptionHandling()
 		.accessDeniedPage("/403");
-
 		//				.and()
 		//			.csrf();
 	}

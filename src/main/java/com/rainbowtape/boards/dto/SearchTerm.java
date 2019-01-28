@@ -1,4 +1,4 @@
-package com.rainbowtape.boards.entity;
+package com.rainbowtape.boards.dto;
 
 public class SearchTerm {
 	

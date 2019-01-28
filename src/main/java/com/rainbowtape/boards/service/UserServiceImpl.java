@@ -18,10 +18,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.rainbowtape.boards.dao.UserDAO;
+import com.rainbowtape.boards.dto.UserValidation;
 import com.rainbowtape.boards.entity.User;
 import com.rainbowtape.boards.entity.UserProfile;
 import com.rainbowtape.boards.entity.UserRole;
-import com.rainbowtape.boards.entity.UserValidation;
 
 @Service
 public class UserServiceImpl implements UserService {

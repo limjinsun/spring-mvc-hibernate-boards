@@ -3,8 +3,8 @@ package com.rainbowtape.boards.service;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import com.rainbowtape.boards.dto.UserValidation;
 import com.rainbowtape.boards.entity.User;
-import com.rainbowtape.boards.entity.UserValidation;
 
 public interface UserService extends UserDetailsService {
 	

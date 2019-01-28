@@ -57,10 +57,11 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
-@import url(../vendors/css/kakao.css);
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400&subset=korean");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600");
 @import url("https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css");
 @import url("https://cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css");
+@import url("https://gist.githack.com/limjinsun/e2b0e086489782c9d27c6c731769b4ad/raw/a45edfb4a40701dd645f3495c02ac4edfc09882f/kakao.css");
 @-moz-keyframes flash {
   0% {
     opacity: 1; }
@@ -8315,7 +8316,7 @@ pre {
   background-color: transparent; }
   .table th,
   .table td {
-    padding: 18px 30px;
+    padding: 14px 30px;
     vertical-align: top;
     border-top: 1px solid #f2f2f2; }
   .table thead th {
@@ -8521,7 +8522,7 @@ pre {
   color: #495057;
   background-color: #ffffff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 0.04rem solid #ced4da;
   border-radius: 2px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
   .form-control::-ms-expand {
@@ -8552,21 +8553,21 @@ select.form-control:focus::-ms-value {
   width: 100%; }
 
 .col-form-label {
-  padding-top: calc(0.56rem + 1px);
-  padding-bottom: calc(0.56rem + 1px);
+  padding-top: calc(0.56rem + 0.04rem);
+  padding-bottom: calc(0.56rem + 0.04rem);
   margin-bottom: 0;
   font-size: inherit;
   line-height: 1; }
 
 .col-form-label-lg {
-  padding-top: calc(0.94rem + 1px);
-  padding-bottom: calc(0.94rem + 1px);
+  padding-top: calc(0.94rem + 0.04rem);
+  padding-bottom: calc(0.94rem + 0.04rem);
   font-size: 1.25rem;
   line-height: 1; }
 
 .col-form-label-sm {
-  padding-top: calc(0.5rem + 1px);
-  padding-bottom: calc(0.5rem + 1px);
+  padding-top: calc(0.5rem + 0.04rem);
+  padding-bottom: calc(0.5rem + 0.04rem);
   font-size: 0.875rem;
   line-height: 1; }
 
@@ -8579,7 +8580,7 @@ select.form-control:focus::-ms-value {
   line-height: 1;
   background-color: transparent;
   border: solid transparent;
-  border-width: 1px 0; }
+  border-width: 0.04rem 0; }
   .form-control-plaintext.form-control-sm, .input-group-sm > .form-control-plaintext.form-control,
   .input-group-sm > .input-group-prepend > .form-control-plaintext.input-group-text,
   .input-group-sm > .input-group-append > .form-control-plaintext.input-group-text,
@@ -8607,7 +8608,7 @@ select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.for
 .input-group-sm > .input-group-append > select.input-group-text:not([size]):not([multiple]),
 .input-group-sm > .input-group-prepend > select.btn:not([size]):not([multiple]),
 .input-group-sm > .input-group-append > select.btn:not([size]):not([multiple]) {
-  height: calc(1.8125rem + 2px); }
+  height: calc(1.8125rem + 0.08rem); }
 
 .form-control-lg, .input-group-lg > .form-control,
 .input-group-lg > .input-group-prepend > .input-group-text,
@@ -8624,7 +8625,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .input-group-lg > .input-group-append > select.input-group-text:not([size]):not([multiple]),
 .input-group-lg > .input-group-prepend > select.btn:not([size]):not([multiple]),
 .input-group-lg > .input-group-append > select.btn:not([size]):not([multiple]) {
-  height: calc(2.875rem + 2px); }
+  height: calc(2.875rem + 0.08rem); }
 
 .form-group {
   margin-bottom: 1rem; }
@@ -8854,12 +8855,12 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .btn {
   display: inline-block;
-  font-weight: 400;
+  font-weight: 300;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  border: 1px solid transparent;
+  border: 0.04rem solid transparent;
   padding: 0.56rem 1.375rem;
   font-size: 1rem;
   line-height: 1;
@@ -9443,7 +9444,7 @@ tbody.collapse.show {
   .btn-group-vertical .btn + .btn-group,
   .btn-group-vertical .btn-group + .btn,
   .btn-group-vertical .btn-group + .btn-group {
-    margin-left: -1px; }
+    margin-left: -0.04rem; }
 
 .btn-toolbar {
   display: flex;
@@ -9488,7 +9489,7 @@ tbody.collapse.show {
   .btn-group-vertical > .btn + .btn-group,
   .btn-group-vertical > .btn-group + .btn,
   .btn-group-vertical > .btn-group + .btn-group {
-    margin-top: -1px;
+    margin-top: -0.04rem;
     margin-left: 0; }
   .btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle),
   .btn-group-vertical > .btn-group:not(:last-child) > .btn {
@@ -9536,7 +9537,7 @@ tbody.collapse.show {
     .input-group > .custom-file + .form-control,
     .input-group > .custom-file + .custom-select,
     .input-group > .custom-file + .custom-file {
-      margin-left: -1px; }
+      margin-left: -0.04rem; }
   .input-group > .form-control:not(:last-child),
   .input-group > .custom-select:not(:last-child) {
     border-top-right-radius: 0;
@@ -9570,13 +9571,13 @@ tbody.collapse.show {
   .input-group-append .btn + .input-group-text,
   .input-group-append .input-group-text + .input-group-text,
   .input-group-append .input-group-text + .btn {
-    margin-left: -1px; }
+    margin-left: -0.04rem; }
 
 .input-group-prepend {
-  margin-right: -1px; }
+  margin-right: -0.04rem; }
 
 .input-group-append {
-  margin-left: -1px; }
+  margin-left: -0.04rem; }
 
 .input-group-text {
   display: flex;
@@ -9590,7 +9591,7 @@ tbody.collapse.show {
   text-align: center;
   white-space: nowrap;
   background-color: #e9ecef;
-  border: 1px solid #ced4da;
+  border: 0.04rem solid #ced4da;
   border-radius: 2px; }
   .input-group-text input[type="radio"],
   .input-group-text input[type="checkbox"] {
@@ -9693,14 +9694,14 @@ tbody.collapse.show {
 .custom-select {
   display: inline-block;
   width: 100%;
-  height: calc(2.25rem + 2px);
+  height: calc(2.25rem + 0.08rem);
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
   line-height: 1.5;
   color: #495057;
   vertical-align: middle;
   background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
   background-size: 8px 10px;
-  border: 1px solid #ced4da;
+  border: 0.04rem solid #ced4da;
   border-radius: 0.25rem;
   appearance: none; }
   .custom-select:focus {
@@ -9721,13 +9722,13 @@ tbody.collapse.show {
     opacity: 0; }
 
 .custom-select-sm {
-  height: calc(1.8125rem + 2px);
+  height: calc(1.8125rem + 0.08rem);
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
   font-size: 75%; }
 
 .custom-select-lg {
-  height: calc(2.875rem + 2px);
+  height: calc(2.875rem + 0.08rem);
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
   font-size: 125%; }
@@ -9736,14 +9737,14 @@ tbody.collapse.show {
   position: relative;
   display: inline-block;
   width: 100%;
-  height: calc(2.25rem + 2px);
+  height: calc(2.25rem + 0.08rem);
   margin-bottom: 0; }
 
 .custom-file-input {
   position: relative;
   z-index: 2;
   width: 100%;
-  height: calc(2.25rem + 2px);
+  height: calc(2.25rem + 0.08rem);
   margin: 0;
   opacity: 0; }
   .custom-file-input:focus ~ .custom-file-control {
@@ -9760,12 +9761,12 @@ tbody.collapse.show {
   right: 0;
   left: 0;
   z-index: 1;
-  height: calc(2.25rem + 2px);
+  height: calc(2.25rem + 0.08rem);
   padding: 0.375rem 0.75rem;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
-  border: 1px solid #ced4da;
+  border: 0.04rem solid #ced4da;
   border-radius: 0.25rem; }
   .custom-file-label::after {
     position: absolute;
@@ -9774,13 +9775,13 @@ tbody.collapse.show {
     bottom: 0;
     z-index: 3;
     display: block;
-    height: calc(calc(2.25rem + 2px) - 1px * 2);
+    height: calc(calc(2.25rem + 0.08rem) - 0.04rem * 2);
     padding: 0.375rem 0.75rem;
     line-height: 1.5;
     color: #495057;
     content: "Browse";
     background-color: #e9ecef;
-    border-left: 1px solid #ced4da;
+    border-left: 0.04rem solid #ced4da;
     border-radius: 0 0.25rem 0.25rem 0; }
 
 .nav {
@@ -13797,6 +13798,24 @@ input:focus {
   width: 100% !important;
   margin: auto; }
 
+/* style for no pading at small screen */
+@media screen and (max-width: 575px) {
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
+    padding-right: 0px;
+    padding-left: 0px; }
+
+  .container-fluid {
+    padding-right: 0px;
+    padding-left: 0px; } }
+input, textarea, select, button {
+  letter-spacing: -0.03rem; }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important; }
+
 /* Fonts */
 .text-twitter {
   color: #1da1f2; }
@@ -13862,7 +13881,7 @@ input:focus {
 .sidebar {
   min-height: calc(100vh - 63px);
   background: #ffffff;
-  font-family: "Montserrat", "Kakao", sans-serif;
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
   padding: 0;
   width: 255px;
   z-index: 11;
@@ -13930,7 +13949,7 @@ input:focus {
       .sidebar .nav .nav-item .nav-link .menu-title {
         color: inherit;
         display: inline-block;
-        font-size: 0.85rem;
+        font-size: 0.88rem;
         line-height: 1;
         vertical-align: middle; }
       .sidebar .nav .nav-item .nav-link .badge {
@@ -13975,7 +13994,7 @@ input:focus {
       .sidebar .nav.sub-menu .nav-item .nav-link {
         color: #252525;
         padding: 0.75rem 1rem;
-        font-size: 0.85rem;
+        font-size: 0.88rem;
         line-height: 1;
         height: auto; }
         .sidebar .nav.sub-menu .nav-item .nav-link.active {
@@ -14047,9 +14066,12 @@ input:focus {
     transition: all 0.25s ease-out; }
     .sidebar-offcanvas.active {
       right: 0; } }
+@media screen and (min-width: 992px) {
+  .margin-for-sidebar {
+    margin-left: 255px; } }
 /* Navbar */
 .navbar.default-layout {
-  font-family: "Montserrat", "Kakao", sans-serif;
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
   background: linear-gradient(120deg, #00e4d0, #5983e8);
   transition: background 0.25s ease;
   -webkit-transition: background 0.25s ease;
@@ -14108,7 +14130,7 @@ input:focus {
         .navbar.default-layout .navbar-menu-wrapper .navbar-toggler:not(.navbar-toggler-right) {
           display: none; } }
     .navbar.default-layout .navbar-menu-wrapper .navbar-text {
-      font-size: 0.85rem; }
+      font-size: 0.88rem; }
     .navbar.default-layout .navbar-menu-wrapper .navbar-nav {
       flex-direction: row;
       align-items: center; }
@@ -14117,7 +14139,7 @@ input:focus {
         margin-right: 1rem; }
         .navbar.default-layout .navbar-menu-wrapper .navbar-nav .nav-item .nav-link {
           color: inherit;
-          font-size: 0.85rem;
+          font-size: 0.88rem;
           vertical-align: middle; }
           @media (max-width: 767px) {
             .navbar.default-layout .navbar-menu-wrapper .navbar-nav .nav-item .nav-link {
@@ -14153,7 +14175,7 @@ input:focus {
           margin: 0; }
           .navbar.default-layout .navbar-menu-wrapper .navbar-nav.header-links .nav-item .nav-link {
             height: 63px;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             padding: 16px 25px;
             display: -webkit-flex;
             display: flex;
@@ -14185,31 +14207,36 @@ input:focus {
 :root,
 body {
   font-size: 1rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
   font-weight: 400;
-  letter-spacing: -0.01rem; }
+  letter-spacing: -0.03rem; }
+
+.h4,
+.h5,
+.h6,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.08rem; }
 
 .h1,
 .h2,
 .h3,
-.h4,
-.h5,
-.h6,
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Montserrat", "Kakao", sans-serif;
-  font-weight: 500; }
+h3 {
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.13rem; }
 
 p {
-  font-size: 0.85rem; }
+  font-size: 0.88rem; }
 
 .h1,
 h1 {
-  font-size: 2.19rem; }
+  font-size: 2.39rem; }
 
 .h2,
 h2 {
@@ -14232,7 +14259,7 @@ h6 {
   font-size: 0.9375rem; }
 
 p {
-  font-size: 0.85rem; }
+  font-size: 0.88rem; }
 
 .display-1 {
   font-size: 3.75rem; }
@@ -14316,16 +14343,16 @@ address p {
   margin: 0.38rem 0 0.75rem; }
 
 .card-title {
-  font-family: "Montserrat", "Kakao", sans-serif;
-  font-weight: 500;
-  color: #404852;
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-weight: 300;
+  color: #222;
   margin-bottom: 22px;
   text-transform: capitalize; }
   .rtl .card-title {
     text-align: right; }
 
 .card-subtitle {
-  font-family: "Montserrat", "Kakao", sans-serif;
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
   margin-top: 0.625rem;
   margin-bottom: 0.625rem; }
 
@@ -14404,12 +14431,15 @@ html {
       width: 100%; } }
 
 .content-wrapper {
-  background: #f2f8f9;
   padding: 1.5rem 1.7rem;
   width: 100%;
   -webkit-flex-grow: 1;
   flex-grow: 1; }
 
+/** adding for little screen **/
+@media screen and (max-width: 575px) {
+  .content-wrapper {
+    padding: 1.5rem 0.95rem; } }
 .container-scroller {
   overflow: hidden; }
 
@@ -14437,8 +14467,8 @@ pre {
   -webkit-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
   border-top: 1px solid #f2f2f2;
-  font-size: calc(0.85rem - 0.05rem);
-  font-family: "Montserrat", sans-serif; }
+  font-size: calc(0.88rem - 0.05rem);
+  font-family: "Montserrat", "Noto Sans KR", sans-serif; }
   .footer a {
     color: #00ce68;
     font-size: inherit; }
@@ -14723,7 +14753,7 @@ pre {
     width: 40%; }
     .card-revenue-table .revenue-item .revenue-amount p {
       font-size: 1.25rem;
-      font-family: "Montserrat", sans-serif;
+      font-family: "Montserrat", "Noto Sans KR", sans-serif;
       font-weight: 600;
       text-align: right; }
       .rtl .card-revenue-table .revenue-item .revenue-amount p {
@@ -14735,7 +14765,7 @@ pre {
   color: #ffffff; }
   .card-revenue .highlight-text {
     font-size: 1.875rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", "Noto Sans KR", sans-serif;
     font-weight: 500; }
   .card-revenue .badge {
     background-color: rgba(255, 255, 255, 0.2);
@@ -14811,7 +14841,7 @@ pre {
   font-weight: initial;
   line-height: 1;
   padding: 0.2rem 0.3rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
   font-weight: 600; }
   .badge:empty {
     display: inline-block;
@@ -14948,7 +14978,7 @@ pre {
 .btn {
   font-size: 0.875rem;
   line-height: 1;
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Montserrat", "Noto Sans KR", sans-serif; }
   .btn i {
     margin-right: 0.3125rem; }
   .btn .btn-label:before {
@@ -14982,7 +15012,7 @@ pre {
   .btn.btn-sm, .btn-group-sm > .btn {
     font-size: 0.875rem; }
   .btn.btn-lg, .btn-group-lg > .btn {
-    font-size: 0.875rem; }
+    font-size: 0.975rem; }
   .btn.btn-xs {
     padding: 0.5rem 0.75rem;
     font-size: 0.625rem; }
@@ -15618,7 +15648,7 @@ pre {
         right: 0; }
 
 .form-check .form-check-label {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   line-height: 1.5;
   padding-left: 10px; }
   .form-check .form-check-label input:checked + .input-helper:before {
@@ -15809,7 +15839,7 @@ pre {
 
 /* Dropdowns */
 .dropdown-menu {
-  font-size: 0.85rem; }
+  font-size: 0.88rem; }
   .dropdown-menu .dropdown-item:active {
     background: initial; }
 
@@ -15827,18 +15857,23 @@ pre {
 
 .form-control {
   border: 1px solid #f2f2f2;
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.85rem;
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-size: 0.88rem;
   padding: 0.56rem 0.75rem;
   line-height: 34px;
   font-weight: 300;
   /* add for form styling */
-  -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
-  -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
-  box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: inset 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: inset 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px; }
+  .form-control input:-webkit-autofill,
+  .form-control input:-webkit-autofill:hover,
+  .form-control input:-webkit-autofill:focus,
+  .form-control input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important; }
   .form-control.form-control-lg, .input-group-lg > .form-control,
   .input-group-lg > .input-group-prepend > .form-control.input-group-text,
   .input-group-lg > .input-group-append > .form-control.input-group-text,
@@ -15870,7 +15905,7 @@ select {
     padding: 0.56rem 0.75rem; }
 
 .form-group label {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   line-height: 1;
   vertical-align: top; }
 .form-group.has-danger .form-control {
@@ -15894,8 +15929,8 @@ select {
     -webkit-align-items: center;
     align-items: center;
     padding: 15px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.85rem; }
+    font-family: "Montserrat", "Noto Sans KR", sans-serif;
+    font-size: 0.88rem; }
     .icons-list > div i {
       display: inline-block;
       font-size: 20px;
@@ -15908,7 +15943,7 @@ dl,
 ol,
 ul {
   padding-left: 1rem;
-  font-size: 0.85rem; }
+  font-size: 0.88rem; }
   dl li,
   ol li,
   ul li {
@@ -16188,7 +16223,7 @@ ul {
     .preview-list .preview-item .preview-item-content p {
       margin-bottom: 10px; }
       .preview-list .preview-item .preview-item-content p .content-category {
-        font-family: "Montserrat", sans-serif;
+        font-family: "Montserrat", "Noto Sans KR", sans-serif;
         padding-right: 15px;
         border-right: 1px solid #f2f2f2; }
   .preview-list .preview-item .preview-actions {
@@ -16223,14 +16258,14 @@ ul {
   .table thead th {
     border-top: 0;
     border-bottom-width: 1px;
-    font-family: "Montserrat", "Kakao", sans-serif;
+    font-family: "Montserrat", "Noto Sans KR", sans-serif;
     font-weight: 500; }
     .table thead th i {
       margin-left: 0.325rem; }
   .table td,
   .table th {
     vertical-align: middle;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     line-height: 1;
     white-space: nowrap; }
     .table td img,
@@ -16289,7 +16324,7 @@ ul {
         border-color: #e5e5e5;
         color: #b6b6b6; }
   .auth.theme-one .auto-form-wrapper .form-group .submit-btn {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", "Noto Sans KR", sans-serif;
     font-size: 13px;
     padding: 12px 8px;
     font-weight: 600; }
@@ -16395,7 +16430,7 @@ ul {
           border-right: none;
           color: #dfdfdf; }
       .auth.theme-two .auto-form-wrapper form .form-group .submit-btn {
-        font-family: "Montserrat", sans-serif;
+        font-family: "Montserrat", "Noto Sans KR", sans-serif;
         font-size: 13px;
         padding: 11px 33px;
         font-weight: 600;

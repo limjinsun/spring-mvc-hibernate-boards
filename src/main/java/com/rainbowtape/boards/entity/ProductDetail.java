@@ -27,6 +27,7 @@ public class ProductDetail {
 	 * 
 	 * One to One relation 에서 @JsonIgnore 를 선언해줘야 recursion 을 방지할수가 있다. 
 	 * https://stackoverflow.com/a/39720231/4735043
+	 * 결과적으로 REST api 에서, 이 칼럼의 Json data 는 생략된다.
 	 */
 	@JsonIgnore 
 	@OneToOne(fetch = FetchType.LAZY)
@@ -34,7 +35,7 @@ public class ProductDetail {
 	private Product product;
 	
 	@Column(name="nameofschool")
-	private String nameofschool;
+	private String nameofschool;	
 	
 	@Column(name="logoofschool")
 	private String logoofschool;
@@ -277,4 +278,5 @@ public class ProductDetail {
 	public void setProductspec2(String productspec2) {
 		this.productspec2 = productspec2;
 	}
+	
 }

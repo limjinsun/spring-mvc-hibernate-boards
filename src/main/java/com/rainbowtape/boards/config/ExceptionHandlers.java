@@ -12,5 +12,5 @@ public class ExceptionHandlers {
 
 		return "404";//this is view name
 	}
-
+	
 }

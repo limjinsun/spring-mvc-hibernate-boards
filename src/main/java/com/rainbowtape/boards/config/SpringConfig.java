@@ -62,5 +62,5 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
         viewResolver.setContentType("text/html;charset=UTF-8"); /* important for Korean Language */ 
         return viewResolver;
     }
-    	
+    
 }
