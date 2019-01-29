@@ -1,11 +1,12 @@
 package com.rainbowtape.boards.service;
 
-
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.spring4.SpringTemplateEngine;
 
 import com.rainbowtape.boards.dto.Mail;
 
@@ -15,29 +16,22 @@ public class EmailServiceImpl implements EmailService{
 	@Autowired
 	private JavaMailSender emailSender;
 
-    @Autowired
-    private SpringTemplateEngine templateEngine;
-
 	@Override
-	public void sendEmail(Mail mail) {
+	public void sendMail(Mail mail) {
+		MimeMessage mimeMessage = emailSender.createMimeMessage();
 		try {
-//            MimeMessage message = emailSender.createMimeMessage();
-//            MimeMessageHelper helper = new MimeMessageHelper(message,
-//                    MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
-//                    StandardCharsets.UTF_8.name());
-//
-//            Context context = new Context();
-//            context.setVariables(mail.getModel());
-//            String html = templateEngine.process("email/email-template", context);
-//
-//            helper.setTo(mail.getTo());
-//            helper.setText(html, true);
-//            helper.setSubject(mail.getSubject());
-//            helper.setFrom(mail.getFrom());
-
-//            emailSender.send(message);
-        } catch (Exception e){
-            throw new RuntimeException(e);
-        }
+			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, false, "UTF-8");
+			String htmlMsg = mail.getHtml();
+			mimeMessage.setContent(htmlMsg, "text/html; charset=utf-8");
+			mimeMessage.setSubject(mail.getSubject(), "UTF-8");
+			
+			helper.setTo(mail.getTo());
+			helper.setFrom(mail.getFrom());
+			
+			emailSender.send(mimeMessage);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
 	}
+	
 }

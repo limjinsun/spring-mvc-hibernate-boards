@@ -7,6 +7,7 @@ public class Mail {
 	private String from;
     private String to;
     private String subject;
+    private String html;
     private Map<String, Object> model;
     
 	public String getFrom() {
@@ -14,6 +15,12 @@ public class Mail {
 	}
 	public void setFrom(String from) {
 		this.from = from;
+	}
+	public String getHtml() {
+		return html;
+	}
+	public void setHtml(String html) {
+		this.html = html;
 	}
 	public String getTo() {
 		return to;
