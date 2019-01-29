@@ -79,6 +79,20 @@ public class User {
 		this.userProfile = userProfile;
 	}
 	
+	/**
+	 * setiing for tokens. 
+	 */
+	@OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<PasswordResetToken> tokens;
+	
+	public List<PasswordResetToken> getTokens() {
+		return tokens;
+	}
+
+	public void setTokens(List<PasswordResetToken> tokens) {
+		this.tokens = tokens;
+	}
+
 	public User(String fname, String lname, String password, String email) {
 		this.fname = fname;
 		this.lname = lname;
