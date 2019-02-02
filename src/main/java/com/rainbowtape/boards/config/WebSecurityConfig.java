@@ -70,7 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/registerForm").permitAll()
 		.antMatchers("/forgotPassword/**").permitAll()
 		.antMatchers("/school/**").permitAll()
-		.antMatchers("/","/403","/register","/login","/loginError","/dbError","/404","/formspree","/validateLogin","/consulting").permitAll()
+		.antMatchers("/","/403","/register","/login","/loginError","/dbError","/404","/error","/validateLogin","/consulting").permitAll()
 		.antMatchers("/system/**").hasRole("ADMIN")
 		.antMatchers("/user/**").hasAnyRole("USER","ADMIN")
 		.anyRequest().authenticated()
@@ -113,11 +113,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				response.sendRedirect(request.getContextPath()+"/admin");
 			} else {
 				log.info("UserPage Redirecting");
-				response.sendRedirect(request.getContextPath()+"/user/" + userService.findByEmail(authentication.getName()).getId());
+				response.sendRedirect(request.getContextPath()+"/user/");
+//				response.sendRedirect(request.getContextPath()+"/user/" + userService.findByEmail(authentication.getName()).getId());
 			}
 		};
 	}
-
+	
 	private boolean isAdmin(Authentication auth) {
 
 		boolean isAdmin = false;

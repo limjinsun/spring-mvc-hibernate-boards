@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+
 @Entity
 @Table(name="user")
 public class User {
@@ -37,14 +38,6 @@ public class User {
 	
 	@Transient // no need to match with DB table.
 	private String passwordConfirm;
-	
-	public String getPasswordConfirm() {
-		return passwordConfirm;
-	}
-	
-	public void setPasswordConfirm(String passwordConfirm) {
-		this.passwordConfirm = passwordConfirm;
-	}
 	
 	/**
 	 * 	To declare a side as not responsible(child side) for the relationship, the attribute 'mappedBy' is used. 	
@@ -80,7 +73,7 @@ public class User {
 	}
 	
 	/**
-	 * setiing for tokens. 
+	 * setiing for Tokens. 
 	 */
 	@OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<PasswordResetToken> tokens;
@@ -92,7 +85,39 @@ public class User {
 	public void setTokens(List<PasswordResetToken> tokens) {
 		this.tokens = tokens;
 	}
+	
+	/**
+	 * one to many - for Posts.
+	 */
+	@OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Post> posts;
+	
+	public List<Post> getPosts() {
+		return posts;
+	}
 
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+	
+	/**
+	 * one to many - for Replys.
+	 */
+	@OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Reply> replys;
+	
+	public List<Reply> getReplys() {
+		return replys;
+	}
+
+	public void setReplys(List<Reply> replys) {
+		this.replys = replys;
+	}
+
+	/**
+	 * ***********************************************
+	 * Constructors and getter and setter for fileds...
+	 */
 	public User(String fname, String lname, String password, String email) {
 		this.fname = fname;
 		this.lname = lname;
@@ -142,6 +167,14 @@ public class User {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+	
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
 	}
 	
 	@Override

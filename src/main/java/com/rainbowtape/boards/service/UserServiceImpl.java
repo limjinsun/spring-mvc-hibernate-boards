@@ -100,8 +100,10 @@ public class UserServiceImpl implements UserService {
 		UserDetails userDetails = loadUserByUsername(username);
 	    UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 	    Authentication auth = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+	    System.err.println("before if --- userhasbeen-autheticated!!");
 	    if (auth.isAuthenticated()) {
 	        SecurityContextHolder.getContext().setAuthentication(auth);
+	        System.err.println("userhasbeen-autheticated!!");
 	    }
 	}
 }

@@ -10,16 +10,13 @@
 <meta name="msapplication-TileColor" content="#00bcd4">
 <meta name="msapplication-TileImage" th:href="@{'/resources/images/favicon.ico'}">
 
-
 <!-- CSS -->
 <link href="https://cdn.muicss.com/mui-0.9.41/css/mui.min.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.muicss.com/mui-0.9.41/js/mui.min.js" type="text/javascript"></script>
-
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/font-awesome/css/font-awesome.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/icheck/skins/all.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/css/style.css'}" type="text/css">
-<link rel="stylesheet" th:href="@{'/resources/css/custom.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.base.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.addons.css'}" type="text/css">
@@ -49,29 +46,10 @@
 	
 }
 
-.min-height-fix {
-	min-height: 200px;
-}
-
-.center-fix {
-	width: 100%;
-	margin: 0 auto;
-}
-
-.vertical-center {
-	min-height: 100%; /* Fallback for browsers do NOT support vh unit */
-	/*  min-height: 100vh;  */
-	/* These two lines are counted as one :-)       */
-	display: flex;
-	align-items: center;
-	margin: 0 auto;
-}
-
 a {
 	text-decoration: none !important;
 }
 </style>
-
 <style>
 .mui-select:focus>select {
 	height: calc(52px + 1px);
@@ -142,7 +120,6 @@ input, textarea, select, button {
 	letter-spacing: -0.07rem;
 }
 </style>
-
 </head>
 <body style="overflow-x: unset;">
 	<div class="container-scroller" style="overflow: unset;">
@@ -150,26 +127,13 @@ input, textarea, select, button {
 			<nav class="navbar default-layout col-lg-12 col-12 p-0 d-flex flex-row">
 				<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
 					<a class="navbar-brand brand-logo" th:href="@{'/'}">
-						<span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span>
-						<span class="menu-title font-b">
-							<small class="borderlist">리피의아일랜드</small>
-						</span>
-						<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
-						<!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
+						<img th:src="@{'/resources/images/main-logo.svg'}" alt="" />
 					</a>
 					<a class="navbar-brand brand-logo-mini" th:href="@{'/'}">
-						<i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i>
-						<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
+						<img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" />
 					</a>
 				</div>
 			</nav>
-		</div>
-		<div class="row purchace-popup sticky-top w-100" style="background-color: rgba(228, 228, 228, 1);">
-			<div class="col-12" style="margin-bottom: 0px; padding: 0px;">
-				<span class="d-block d-flex justify-content-between">
-					<h6 class="card-description" style="margin: 0;">리피의 아일랜드 상담신청. 원하시는 부분만 표기하셔도 됩니다. 개인정보는 저장되지 않습니다.</h6>
-				</span>
-			</div>
 		</div>
 		<!-- partial -->
 		<div class="container-fluid page-body-wrapper" style="padding-top: 0px">
@@ -177,7 +141,6 @@ input, textarea, select, button {
 			<div class="main-panel" style="width: 100%;">
 				<div class="content-wrapper">
 					<div class="col-12 grid-margin borderon">
-
 						<div class="card borderon" style="padding: 0px;">
 							<!-- <div class="card-header" style="padding-bottom: 0;">
 								<div class="clearfix">
@@ -189,100 +152,39 @@ input, textarea, select, button {
 							<div class="card-body" style="padding: 1.1rem 1.9rem;">
 								<div class="row">
 									<div class="col-lg-7 borderon">
-										<h2 class="card-description">상담신청하기</h2>
-										<p class="card-description">
-											<i class="fa fa-caret-right"></i>
-											리피의 아일랜드는 아일랜드내, 모든 어학연수 기관의 등록이 가능합니다.
-											<br />
-											<i class="fa fa-caret-right"></i>
-											어학원 추천은 심층상담후, 상담자에게 적합한 연수기관(어학원)을 원하실때 한해서 추천드리고 있습니다. 상담란에 연수와 관련하여 구체적으로 알고 싶은점들을 표기하셔야, 심도있는 피드백을 받으실수 있습니다.
-											<br />
-											<i class="fa fa-caret-right"></i>
-											ex. 왜 어학연수를 가려고 하는지? 어학연수로 얻고싶은 점은 무엇인지? 자신의 현재 경제적 상황은 어떤지? 영어 스피킹과 리스닝 실력은 어느수준인지? 등과 함께 현재자신에게 무엇이 필요한지, 상담으로 피드백 받고 싶은 부분이 어떤부분인지 구체적으로 작성해주시기 바랍니다
-											<br />
-											<i class="fa fa-caret-right"></i>
-											기본적으로 상담은 메일로 회신드립니다. 이메일 정보가 정확한지 꼭 확인하시기 바랍니다.
-											<br />
-										<p>
+										<h2 class="card-description">새 비밀번호를 입력해주세요.</h2>
+										<p class="card-description"></p>
+									</div>
+									<div class="text-danger card-description" th:errors="${resetPassword.password}">에러가발생했습니다</div>
+									<div th:if="${errormsg}">
+										<div class="text-danger card-description">
+											<span th:text="${errormsg}"></span>
+										</div>
 									</div>
 									<!-- <div class="col-lg-3 borderon">hello</div> -->
 								</div>
-
+								<!-- <div class="text-danger" th:if="${#fields.hasErrors('${userEmail.email}')}">if문이 동작 에러가 발생했습니다. </div> -->
 								<div class="row">
 									<div class="col-lg-6 mx-auto borderon">
-										<form class="mui-form mui-panel" id="formaction" method="POST" />
-										<legend></legend>
-
-										<input type="hidden" name="_next" value="//localhost:8080/boards/" />
-										<input type="text" name="_gotcha" style="display: none" />
-
+										<form id="MyForm" class="mui-form mui-panel" th:action="@{'/forgotPassword/resetForm'}" th:object="${resetPassword}" method="POST" />
 										<!-- <input type="text" class="form-control" id="name" th:field="*{user.fname}" name="name" /> -->
 										<div class="mui-textfield">
-											<input type="text" id="name" name="name">
-											<label>이름</label>
+											<input type="password" id="password" name="password" th:field="${resetPassword.password}">
+											<label>새 비밀번호</label>
+											<!-- <p class="error-message" th:each="error: ${#fields.errors('password')}" th:text="${error}">Validation error</p> -->
 										</div>
 										<div class="mui-textfield">
-											<input type="text" id="email" name="email">
-											<label>이메일 </label>
+											<input type="password" id="passwordConfirm" name="passwordConfirm" th:field="${resetPassword.confirmPassword}">
+											<label>비밀번호 확인</label>
+											<!-- <p class="error-message" th:each="error: ${#fields.errors('confirmPassword')}" th:text="${error}">Validation error</p> -->
 										</div>
-										<div class="mui-textfield">
-											<input type="text" id="kakaotalk" name="kakaotalk">
-											<label>카카오톡 </label>
-										</div>
-										<div class="mui-textfield">
-											<input type="text" id="gender" name="gender">
-											<label>성별 </label>
-										</div>
-										<div class="mui-textfield">
-											<input type="text" id="tel" name="tel">
-											<label>연락처 </label>
-										</div>
-										<div class="mui-textfield">
-											<input type="text" id="occupation" name="ocupation">
-											<label>직업 </label>
-										</div>
-										<div class="mui-textfield">
-											<input type="text" placeholder="ex.20xx 년 x 월 " id="studyplan" name="studyplan">
-											<label>예상연수시기 </label>
-										</div>
-										<div class="mui-textfield">
-											<input type="text" placeholder="ex.6개월 " id="duration" name="duration">
-											<label>예상연수기간 </label>
-										</div>
-										<div class="mui-textfield">
-											<input type="text" placeholder="ex.상 중 하 " id="englishlevel" name="englishlevel">
-											<label>자신의 영어실력</label>
-										</div>
-										<div class="mui-textfield">
-											<input type="text" placeholder="ex.상 중 하 " id="budget" name="budget">
-											<label>희망하는 어학원의 가격대</label>
-										</div>
-										<div class="mui-textfield">
-											<input type="text" id="school" name="school">
-											<label>관심있는 어학원의 이름</label>
-										</div>
-										<div class="mui-textfield">
-											<input type="text" placeholder="모르시면 공란으로 남겨두셔도 무방합니다. " id="mbti" name="mbti">
-											<label>MBTI type</label>
-										</div>
-										<div class="mui-textfield">
-											<textarea
-												placeholder="ex. 왜 어학연수를 가려고 하는지? 어학연수로 얻고싶은 점은 무엇인지? 자신의 현재 경제적 상황은 어떤지? 영어 스피킹과 리스닝 실력은 어느수준인지? 등과 함께 현재자신에게 무엇이 필요한지, 상담으로 피드백 받고 싶은 부분이 어떤부분인지 구체적으로 작성해주시기 바랍니다"
-												id="content" name="content"></textarea>
-											<label>상담내용</label>
-										</div>
-										<button type="submit" class="mui-btn mui-btn--raised">Submit</button>
+										<p class="card-description">비밀번호는 6자 이상입니다</p>
+										<button type="submit" class="mui-btn mui-btn--raised card-description">전송</button>
 										</form>
-
-
-
 									</div>
 								</div>
-
-
 							</div>
 						</div>
-
 					</div>
 					<!-- <div style="height: 2000px;"></div> -->
 					<!-- <div class="container-fluid d-flex flex-wrap">
@@ -309,15 +211,6 @@ input, textarea, select, button {
 		</div>
 		<!-- page-body-wrapper ends -->
 	</div>
-
-
-	<script>
-		var contactform = document.getElementById('formaction');
-		contactform.setAttribute('action', '//formspree.io/' + 'liffeydublin'
-				+ '@' + 'naver' + '.' + 'com');
-	</script>
-
-
 	<!-- container-scroller -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<!-- plugins:js -->
@@ -327,10 +220,10 @@ input, textarea, select, button {
 	<!-- inject:js -->
 	<script th:src="@{'/resources/js/off-canvas.js'}"></script>
 	<script th:src="@{'/resources/js/misc.js'}"></script>
+
 	<!-- endinject -->
 	<!-- Custom js for this page-->
 	<!-- <script th:src="@{'/resources/js/dashboard.js'}"></script> -->
 	<!-- End custom js for this page-->
-
 </body>
 </html>

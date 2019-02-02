@@ -53,10 +53,7 @@ public class HomeController {
 			return "redirect:/admin/";
 		} else if (!(auth instanceof AnonymousAuthenticationToken)) {
 			logger.info("User Already Logged in.");
-			String userEmail = auth.getName();
-			user = userService.findByEmail(userEmail);
-			int userId = user.getId();
-			return "redirect:/user/" + userId;
+			return "redirect:/user/";
 		}
 		return "login";
 	}
@@ -112,6 +109,12 @@ public class HomeController {
 
 		logger.info("HomeController.java + Welcome to 403 area! The client locale is {}.", locale);
 		return "403";
+	}
+	
+	@GetMapping("/error")
+	public String getDefaultError () {
+
+		return "error";
 	}
 
 	@GetMapping("/404")

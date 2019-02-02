@@ -71,6 +71,65 @@
 </style>
 
 
+<style>
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 99999;
+	opacity: 0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+
+.modalDialog:target {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.modalDialog>div {
+	width: 400px;
+    position: relative;
+    margin: 20% auto;
+    padding: 15px 15px;
+    border-radius: 3px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+}
+
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover {
+	background: #00d9ff;
+}
+</style>
+
+
 </head>
 
 <body>
@@ -112,11 +171,24 @@
 									</div>
 								</div>
 							</a>
+
 							<a class="dropdown-item mt-2"> Manage Accounts </a>
 							<a class="dropdown-item"> Change Password </a>
-							<a class="dropdown-item"> Check Inbox </a>
+							<a class="dropdown-item" href="#openModal"> 탈퇴하기 </a>
 							<a class="dropdown-item"> Sign Out </a>
 						</div>
+
+
+						<!-- <div id="open-modal" class="modal-window">
+							<div>
+								<a href="#" title="Close" class="modal-close">Close</a>
+								<h1>Voilà!</h1>
+								<div>
+									A CSS-only modal based on the :target pseudo-class. Hope you find it helpful.
+									<a href="https://twitter.com/timothylong" target="_blank">Say hello on Twitter. 
+								</div>
+							</div>
+						</div> -->
 					</li>
 				</ul>
 				<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -780,6 +852,21 @@
 			<!-- main-panel ends -->
 		</div>
 		<!-- page-body-wrapper ends -->
+	</div>
+
+
+
+	<div id="openModal" class="modalDialog">
+		<div>
+			<a href="#close" title="Close" class="close">X</a>
+
+			<h2>리피의 아일랜드 회원탈퇴</h2>
+
+			<p>정말로 회원을 탈퇴하십니까? 당신과 관련된 모든자료는 폐기되고 복구되지 않습니다.</p>
+			<form th:action="@{'/user/delete'}" method="post">
+				<input class="btn btn-lg btn-primary btn-lg" type="submit" value="탈퇴하기" />
+			</form>
+		</div>
 	</div>
 	<!-- container-scroller -->
 

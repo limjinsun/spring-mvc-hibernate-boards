@@ -1,5 +1,5 @@
 package com.rainbowtape.boards.dto;
-
+// not using
 public class UserProfileFormspree {
 	
 	private String gender;

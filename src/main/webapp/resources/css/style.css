@@ -59,9 +59,9 @@
 /* === SCSS Compass Functions === */
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400&subset=korean");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600");
-@import url("https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css");
 @import url("https://cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css");
 @import url("https://gist.githack.com/limjinsun/e2b0e086489782c9d27c6c731769b4ad/raw/a45edfb4a40701dd645f3495c02ac4edfc09882f/kakao.css");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600");
 @-moz-keyframes flash {
   0% {
     opacity: 1; }
@@ -7139,7 +7139,7 @@
   --success: #00ce68;
   --info: #8862e0;
   --warning: #ffaf00;
-  --danger: #e65251;
+  --danger: #dc1010;
   --light: #f3f5f6;
   --dark: #424964;
   --breakpoint-xs: 0;
@@ -8404,13 +8404,13 @@ pre {
 .table-danger,
 .table-danger > th,
 .table-danger > td {
-  background-color: #f8cfce; }
+  background-color: #f5bcbc; }
 
 .table-hover .table-danger:hover {
-  background-color: #f5b9b8; }
+  background-color: #f2a6a6; }
   .table-hover .table-danger:hover > td,
   .table-hover .table-danger:hover > th {
-    background-color: #f5b9b8; }
+    background-color: #f2a6a6; }
 
 .table-light,
 .table-light > th,
@@ -8989,24 +8989,24 @@ fieldset:disabled a.btn {
 
 .btn-danger {
   color: #fff;
-  background-color: #e65251;
-  border-color: #e65251; }
+  background-color: #dc1010;
+  border-color: #dc1010; }
   .btn-danger:hover {
     color: #fff;
-    background-color: #e13130;
-    border-color: #e02624; }
+    background-color: #b80d0d;
+    border-color: #ac0d0d; }
   .btn-danger:focus, .btn-danger.focus {
-    box-shadow: 0 0 0 0.2rem rgba(230, 82, 81, 0.5); }
+    box-shadow: 0 0 0 0.2rem rgba(220, 16, 16, 0.5); }
   .btn-danger.disabled, .btn-danger:disabled {
     color: #fff;
-    background-color: #e65251;
-    border-color: #e65251; }
+    background-color: #dc1010;
+    border-color: #dc1010; }
   .btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active, .show > .btn-danger.dropdown-toggle {
     color: #fff;
-    background-color: #e02624;
-    border-color: #d8201f; }
+    background-color: #ac0d0d;
+    border-color: #a10c0c; }
     .btn-danger:not(:disabled):not(.disabled):active:focus, .btn-danger:not(:disabled):not(.disabled).active:focus, .show > .btn-danger.dropdown-toggle:focus {
-      box-shadow: 0 0 0 0.2rem rgba(230, 82, 81, 0.5); }
+      box-shadow: 0 0 0 0.2rem rgba(220, 16, 16, 0.5); }
 
 .btn-light {
   color: #212529;
@@ -9156,25 +9156,25 @@ fieldset:disabled a.btn {
       box-shadow: 0 0 0 0.2rem rgba(255, 175, 0, 0.5); }
 
 .btn-outline-danger {
-  color: #e65251;
+  color: #dc1010;
   background-color: transparent;
   background-image: none;
-  border-color: #e65251; }
+  border-color: #dc1010; }
   .btn-outline-danger:hover {
     color: #fff;
-    background-color: #e65251;
-    border-color: #e65251; }
+    background-color: #dc1010;
+    border-color: #dc1010; }
   .btn-outline-danger:focus, .btn-outline-danger.focus {
-    box-shadow: 0 0 0 0.2rem rgba(230, 82, 81, 0.5); }
+    box-shadow: 0 0 0 0.2rem rgba(220, 16, 16, 0.5); }
   .btn-outline-danger.disabled, .btn-outline-danger:disabled {
-    color: #e65251;
+    color: #dc1010;
     background-color: transparent; }
   .btn-outline-danger:not(:disabled):not(.disabled):active, .btn-outline-danger:not(:disabled):not(.disabled).active, .show > .btn-outline-danger.dropdown-toggle {
     color: #fff;
-    background-color: #e65251;
-    border-color: #e65251; }
+    background-color: #dc1010;
+    border-color: #dc1010; }
     .btn-outline-danger:not(:disabled):not(.disabled):active:focus, .btn-outline-danger:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-danger.dropdown-toggle:focus {
-      box-shadow: 0 0 0 0.2rem rgba(230, 82, 81, 0.5); }
+      box-shadow: 0 0 0 0.2rem rgba(220, 16, 16, 0.5); }
 
 .btn-outline-light {
   color: #f3f5f6;
@@ -10436,11 +10436,11 @@ tbody.collapse.show {
 
 .badge-danger {
   color: #fff;
-  background-color: #e65251; }
+  background-color: #dc1010; }
   .badge-danger[href]:hover, .badge-danger[href]:focus {
     color: #fff;
     text-decoration: none;
-    background-color: #e02624; }
+    background-color: #ac0d0d; }
 
 .badge-light {
   color: #212529;
@@ -10540,13 +10540,13 @@ tbody.collapse.show {
     color: #523800; }
 
 .alert-danger {
-  color: #782b2a;
-  background-color: #fadcdc;
-  border-color: #f8cfce; }
+  color: #720808;
+  background-color: #f8cfcf;
+  border-color: #f5bcbc; }
   .alert-danger hr {
-    border-top-color: #f5b9b8; }
+    border-top-color: #f2a6a6; }
   .alert-danger .alert-link {
-    color: #521d1d; }
+    color: #420505; }
 
 .alert-light {
   color: #7e7f80;
@@ -10711,15 +10711,15 @@ tbody.collapse.show {
     border-color: #855b00; }
 
 .list-group-item-danger {
-  color: #782b2a;
-  background-color: #f8cfce; }
+  color: #720808;
+  background-color: #f5bcbc; }
   .list-group-item-danger.list-group-item-action:hover, .list-group-item-danger.list-group-item-action:focus {
-    color: #782b2a;
-    background-color: #f5b9b8; }
+    color: #720808;
+    background-color: #f2a6a6; }
   .list-group-item-danger.list-group-item-action.active {
     color: #fff;
-    background-color: #782b2a;
-    border-color: #782b2a; }
+    background-color: #720808;
+    border-color: #720808; }
 
 .list-group-item-light {
   color: #7e7f80;
@@ -11289,12 +11289,12 @@ button.bg-warning:focus {
   background-color: #cc8c00 !important; }
 
 .bg-danger {
-  background-color: #e65251 !important; }
+  background-color: #dc1010 !important; }
 
 a.bg-danger:hover, a.bg-danger:focus,
 button.bg-danger:hover,
 button.bg-danger:focus {
-  background-color: #e02624 !important; }
+  background-color: #ac0d0d !important; }
 
 .bg-light {
   background-color: #f3f5f6 !important; }
@@ -11364,7 +11364,7 @@ button.bg-dark:focus {
   border-color: #ffaf00 !important; }
 
 .border-danger {
-  border-color: #e65251 !important; }
+  border-color: #dc1010 !important; }
 
 .border-light {
   border-color: #f3f5f6 !important; }
@@ -13516,10 +13516,10 @@ a.text-warning:hover, a.text-warning:focus {
   color: #cc8c00 !important; }
 
 .text-danger {
-  color: #e65251 !important; }
+  color: #dc1010 !important; }
 
 a.text-danger:hover, a.text-danger:focus {
-  color: #e02624 !important; }
+  color: #ac0d0d !important; }
 
 .text-light {
   color: #f3f5f6 !important; }
@@ -13881,7 +13881,7 @@ input:-webkit-autofill:active {
 .sidebar {
   min-height: calc(100vh - 63px);
   background: #ffffff;
-  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
   padding: 0;
   width: 255px;
   z-index: 11;
@@ -14071,7 +14071,7 @@ input:-webkit-autofill:active {
     margin-left: 255px; } }
 /* Navbar */
 .navbar.default-layout {
-  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
   background: linear-gradient(120deg, #00e4d0, #5983e8);
   transition: background 0.25s ease;
   -webkit-transition: background 0.25s ease;
@@ -14217,7 +14217,7 @@ body {
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
   font-weight: 300;
   letter-spacing: -0.08rem; }
 
@@ -14227,7 +14227,7 @@ h6 {
 h1,
 h2,
 h3 {
-  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
   font-weight: 600;
   letter-spacing: -0.13rem; }
 
@@ -14324,9 +14324,9 @@ address p {
     color: #ffaf00; }
 
 .blockquote-danger {
-  border-color: #e65251; }
+  border-color: #dc1010; }
   .blockquote-danger .blockquote-footer {
-    color: #e65251; }
+    color: #dc1010; }
 
 .blockquote-light {
   border-color: #f3f5f6; }
@@ -14343,7 +14343,7 @@ address p {
   margin: 0.38rem 0 0.75rem; }
 
 .card-title {
-  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
   font-weight: 300;
   color: #222;
   margin-bottom: 22px;
@@ -14352,7 +14352,7 @@ address p {
     text-align: right; }
 
 .card-subtitle {
-  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
   margin-top: 0.625rem;
   margin-bottom: 0.625rem; }
 
@@ -14387,7 +14387,10 @@ small,
   font-size: 2.5rem; }
 
 .icon-md {
-  font-size: 1.875rem; }
+  font-size: 2.2rem; }
+
+.icon-xmd {
+  font-size: 1.5rem; }
 
 .icon-sm {
   font-size: 1rem; }
@@ -14635,7 +14638,7 @@ pre {
   background: rgba(255, 175, 0, 0.2); }
 
 .bg-inverse-danger {
-  background: rgba(230, 82, 81, 0.2); }
+  background: rgba(220, 16, 16, 0.2); }
 
 .bg-inverse-light {
   background: rgba(243, 245, 246, 0.2); }
@@ -14830,7 +14833,7 @@ pre {
   .dashboard-bar-chart-legend .col:nth-child(2) .bg {
     background: #308ee0; }
   .dashboard-bar-chart-legend .col:nth-child(3) .bg {
-    background: #e65251; }
+    background: #dc1010; }
 
 /*-------------------------------------------------------------------*/
 /* === Components === */
@@ -14882,7 +14885,7 @@ pre {
   color: #ffffff; }
 
 .badge-danger {
-  border: 1px solid #e65251;
+  border: 1px solid #dc1010;
   color: #ffffff; }
 
 .badge-light {
@@ -14915,8 +14918,8 @@ pre {
   color: #ffaf00; }
 
 .badge-inverse-danger {
-  background: rgba(230, 82, 81, 0.3);
-  color: #e65251; }
+  background: rgba(220, 16, 16, 0.3);
+  color: #dc1010; }
 
 .badge-inverse-light {
   background: rgba(243, 245, 246, 0.3);
@@ -14948,8 +14951,8 @@ pre {
   border: 1px solid #ffaf00; }
 
 .badge-outline-danger {
-  color: #e65251;
-  border: 1px solid #e65251; }
+  color: #dc1010;
+  border: 1px solid #dc1010; }
 
 .badge-outline-light {
   color: #f3f5f6;
@@ -15056,7 +15059,7 @@ pre {
     .btn-group .btn.btn-success {
       border-color: #00bf60; }
     .btn-group .btn.btn-danger {
-      border-color: #e44544; }
+      border-color: #ce0f0f; }
     .btn-group .btn.btn-dark {
       border-color: #3c425b; }
     .btn-group .btn.btn-light {
@@ -15341,23 +15344,23 @@ pre {
     border-color: #ffaf00; }
 
 .btn-inverse-danger {
-  color: #e65251;
-  background-color: rgba(230, 82, 81, 0.2);
+  color: #dc1010;
+  background-color: rgba(220, 16, 16, 0.2);
   background-image: none;
-  border-color: rgba(230, 82, 81, 0); }
+  border-color: rgba(220, 16, 16, 0); }
   .btn-inverse-danger:hover {
     color: #ffffff;
-    background-color: #e65251;
-    border-color: #e65251; }
+    background-color: #dc1010;
+    border-color: #dc1010; }
   .btn-inverse-danger.focus, .btn-inverse-danger:focus {
-    box-shadow: 0 0 0 3px rgba(230, 82, 81, 0.5); }
+    box-shadow: 0 0 0 3px rgba(220, 16, 16, 0.5); }
   .btn-inverse-danger.disabled, .btn-inverse-danger:disabled {
-    color: #e65251;
+    color: #dc1010;
     background-color: transparent; }
   .btn-inverse-danger.active, .btn-inverse-danger:active, .show > .btn-inverse-danger.dropdown-toggle {
     color: #ffffff;
-    background-color: #e65251;
-    border-color: #e65251; }
+    background-color: #dc1010;
+    border-color: #dc1010; }
 
 .btn-inverse-light {
   color: #f3f5f6;
@@ -15489,22 +15492,22 @@ pre {
     border-color: #ffaf00; }
 
 .btn-inverse-outline-danger {
-  color: #e65251;
+  color: #dc1010;
   background-image: none;
   background: transparent;
-  border-color: rgba(230, 82, 81, 0.2); }
+  border-color: rgba(220, 16, 16, 0.2); }
   .btn-inverse-outline-danger:hover {
-    color: #e65251;
-    background-color: rgba(230, 82, 81, 0.2);
-    border-color: rgba(230, 82, 81, 0.2); }
+    color: #dc1010;
+    background-color: rgba(220, 16, 16, 0.2);
+    border-color: rgba(220, 16, 16, 0.2); }
   .btn-inverse-outline-danger.focus, .btn-inverse-outline-danger:focus {
-    box-shadow: 0 0 0 3px rgba(230, 82, 81, 0.5); }
+    box-shadow: 0 0 0 3px rgba(220, 16, 16, 0.5); }
   .btn-inverse-outline-danger.disabled, .btn-inverse-outline-danger:disabled {
-    color: #e65251;
+    color: #dc1010;
     background-color: transparent; }
   .btn-inverse-outline-danger.active, .btn-inverse-outline-danger:active, .show > .btn-inverse-outline-danger.dropdown-toggle {
     color: #ffffff;
-    border-color: #e65251; }
+    border-color: #dc1010; }
 
 .btn-inverse-outline-light {
   color: #f3f5f6;
@@ -15547,7 +15550,7 @@ pre {
   border: 0;
   border-radius: 2px; }
   .card .card-body {
-    padding: 1.88rem 1.81rem; }
+    padding: 1rem 1rem; }
     .card .card-body .smallpad {
       padding: 1.0rem, 1.01rem; }
     .card .card-body + .card-body {
@@ -15567,7 +15570,7 @@ pre {
   .card.card-outline-warning {
     border: 1px solid #ffaf00; }
   .card.card-outline-danger {
-    border: 1px solid #e65251; }
+    border: 1px solid #dc1010; }
   .card.card-rounded {
     border-radius: 5px; }
   .card.card-faded {
@@ -15603,9 +15606,9 @@ pre {
   color: #c28500; }
 
 .card-inverse-danger {
-  background: rgba(230, 82, 81, 0.2);
-  border: 1px solid #d44b4b;
-  color: #af3e3e; }
+  background: rgba(220, 16, 16, 0.2);
+  border: 1px solid #ca0f0f;
+  color: #a70c0c; }
 
 .card-inverse-light {
   background: rgba(243, 245, 246, 0.2);
@@ -15759,7 +15762,7 @@ pre {
   content: "";
   width: 8px;
   height: 8px;
-  background: #e65251;
+  background: #dc1010;
   border-radius: 50%;
   top: 30%;
   -moz-transform: translateY(-30%);
@@ -15909,7 +15912,7 @@ select {
   line-height: 1;
   vertical-align: top; }
 .form-group.has-danger .form-control {
-  border-color: #e65251; }
+  border-color: #dc1010; }
 .form-group .file-upload-default {
   visibility: hidden;
   position: absolute; }
@@ -15968,7 +15971,7 @@ ul {
 
 .list-ticked li:before {
   content: '\F12D';
-  color: #e65251; }
+  color: #dc1010; }
 
 .list-arrow li:before {
   content: '\F142';
@@ -16258,7 +16261,7 @@ ul {
   .table thead th {
     border-top: 0;
     border-bottom-width: 1px;
-    font-family: "Montserrat", "Noto Sans KR", sans-serif;
+    font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
     font-weight: 500; }
     .table thead th i {
       margin-left: 0.325rem; }

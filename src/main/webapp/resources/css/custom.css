@@ -1,0 +1,34 @@
+/* custom css */
+.font-a {
+	font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial,
+		"Noto Sans KR", sans-serif;
+	font-weight: 300;
+}
+
+.font-b {
+	font-family: "Montserrat", "Nanum Square", "Kakao", "Poppins",
+		"Nanum Barun Gothic", sans-serif;
+}
+
+/* 메뉴 */
+.navbar.default-layout .navbar-brand-wrapper .navbar-brand {
+	color: #222;
+}
+
+.borderlist {
+	list-style-position: inside;
+	border-top: 1px solid grey;
+	/* border-bottom: 1px solid grey; */
+}
+
+a {
+	color: #222;
+}
+
+.rotate-90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}

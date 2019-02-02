@@ -4,5 +4,5 @@ import com.rainbowtape.boards.dto.Mail;
 
 public interface EmailService {
 	
-	void sendMail(Mail mail);
+	public void sendMail(Mail mail);
 }

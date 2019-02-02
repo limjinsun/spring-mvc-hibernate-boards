@@ -10,16 +10,22 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 
 import com.rainbowtape.boards.dto.Mail;
+import com.rainbowtape.boards.dto.ResetPassword;
 import com.rainbowtape.boards.dto.UserEmail;
 import com.rainbowtape.boards.entity.PasswordResetToken;
 import com.rainbowtape.boards.entity.User;
@@ -28,6 +34,7 @@ import com.rainbowtape.boards.service.PasswordResetTokenService;
 import com.rainbowtape.boards.service.UserService;
 
 @Controller
+@SessionAttributes({"user", "token"})
 @RequestMapping(value = "/forgotPassword")
 public class PasswordResetController {
 	
@@ -35,15 +42,14 @@ public class PasswordResetController {
 	
 	@Autowired
 	private UserService userService;
-	
 	@Autowired 
 	private EmailService emailService;
-	
 	@Autowired
     private SpringTemplateEngine templateEngine;
-	
 	@Autowired
 	private PasswordResetTokenService passwordResetTokenService;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@ModelAttribute("userEmail")
 	public UserEmail makeUserEmailDTO () {
@@ -97,7 +103,7 @@ public class PasswordResetController {
         model.put("user", user);
         model.put("signature", "https://liffeyireland.com");
         String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
-        model.put("resetUrl", url + "/boards/resetPassword/reset?token=" + token.getTokenString());
+        model.put("resetUrl", url + "/boards/forgotPassword/resetForm?token=" + token.getTokenString());
         mail.setModel(model);
         
         Context context = new Context();
@@ -107,7 +113,53 @@ public class PasswordResetController {
 		mail.setHtml(html);
 		emailService.sendMail(mail);
 		
-		return "_temp";
+		return "_mailsent";
 	}
 	
+	/**
+	 *  - 링크를 클릭해서 겟리퀘스트로 들어온 유저의 토큰이 유효기간이 지났는지 먼저 확인한 후,
+	 *  - 토큰이 없거나 
+	 *  - 토큰이 지난 거면, 에러창으로 리다이렉트, 
+	 *  - 토큰이 유효하면, 유저를 찾고, 비번을 변경할수 있는 폼을 보여줌. 
+	 *  - 폼으로 포스트 리퀘스트로 받은후 비번을 업데이트해주고, 로긴 시켜줌.
+	 *  
+	 */
+
+	@GetMapping("/resetForm")
+	public String getResetForm (@RequestParam("token") String tokenString, Model model) {
+		
+		PasswordResetToken token = passwordResetTokenService.findByToken(tokenString);
+		if (token == null || token.isExpired()) {
+			System.err.println("token is not valid");
+			return "redirect:/error";
+		}
+		model.addAttribute("token", token);
+		model.addAttribute("user", token.getUser());
+		model.addAttribute("resetPassword", new ResetPassword());
+		
+		return "_resetForm";
+	}
+	
+	@PostMapping("/resetForm")
+	public String updateNewPassword (
+								@ModelAttribute("resetPassword") @Valid ResetPassword resetPassword, 
+								BindingResult result,
+								@ModelAttribute("token") PasswordResetToken token,
+								@ModelAttribute("user") User user,
+								RedirectAttributes redirectAttributes) {
+		
+		if (result.hasErrors()) {
+			System.err.println(result.toString());
+            redirectAttributes.addFlashAttribute("errormsg", "비밀번호 등록에 실패하였습니다.");
+			return "redirect:/forgotPassword/resetForm?token=" + token.getTokenString();
+		}
+		
+		user.setPassword(passwordEncoder.encode(resetPassword.getPassword()));
+		userService.updateUser(user);
+		userService.makeUserToLoginStatus(user.getEmail(), resetPassword.getPassword()); // use password before encodeded.
+		passwordResetTokenService.deleteToken(token);
+		
+		return "redirect:/login";
+	} 
+
 }
