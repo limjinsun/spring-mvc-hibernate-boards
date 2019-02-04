@@ -2,6 +2,8 @@ package com.rainbowtape.boards.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,4 +31,14 @@ public class PostServiceImpl implements PostService {
 		return postDAO.findByIdpost(idpost);
 	}
 
+	@Override
+	@Transactional
+	public void delete(int idpost) {
+		postDAO.deleteByIdpost(idpost);
+	}
+
+	@Override
+	public void update(Post post) {
+		postDAO.save(post);
+	}
 }

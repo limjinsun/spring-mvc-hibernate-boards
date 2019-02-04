@@ -11,6 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
 @Table(name="reply")
@@ -21,14 +25,17 @@ public class Reply {
 	@Column(name="idreply")
 	private int idreply;
 	
+	@SafeHtml
+	@NotNull
+	@Size(min=1)
 	@Column(name="r_content")
 	private String content;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.MERGE) // detached entity passed to persist 에러방지. 
 	@JoinColumn(name="r_user")
 	private User user;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.MERGE) // detached entity passed to persist 에러방지. 
 	@JoinColumn(name="r_post")
 	private Post post;
 	
@@ -78,4 +85,12 @@ public class Reply {
 		this.datemodified = datemodified;
 	}
 	
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
+
 }

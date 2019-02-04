@@ -21,6 +21,7 @@
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.base.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.addons.css'}" type="text/css">
+
 <style>
 .navbar.default-layout {
 	transition: background 0.25s ease;
@@ -120,8 +121,21 @@ input, button, select, optgroup, textarea {
 input, textarea, select, button {
 	letter-spacing: -0.07rem;
 }
+
+.form-small-font-a {
+	display: block;
+	color: rgba(48, 48, 48, .9);
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 15px;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-bottom: .5rem;
+}
 </style>
 </head>
+
 <body style="overflow-x: unset;">
 	<div class="container-scroller" style="overflow: unset;">
 		<div class="header-firstnav">
@@ -162,22 +176,52 @@ input, textarea, select, button {
 							<div class="card-body" style="padding: 1.1rem 1.9rem;">
 								<div class="row">
 									<div class="col-lg-7 borderon">
-										<h2 class="card-description">비밀번호를 잊어버리셨나요?</h2>
-										<p class="card-description">가입시 입력하신 이메일을 알려주세요.</p>
+										<h2 class="card-description">글쓰기</h2>
+										<p class="card-description">당신이 작성한 글은, 당신에게 또는 누군가에게 도움이 됩니다.</p>
+									</div>
+									<div th:if="${errormsg}">
+										<div class="text-danger card-description">
+											<span th:text="${errormsg}"></span>
+										</div>
 									</div>
 									<!-- <div class="col-lg-3 borderon">hello</div> -->
 								</div>
-								<div class="text-danger card-description" th:errors="${userEmail.email}">에러가발생했습니다</div>
 								<!-- <div class="text-danger" th:if="${#fields.hasErrors('${userEmail.email}')}">if문이 동작 에러가 발생했습니다. </div> -->
 								<div class="row">
 									<div class="col-lg-6 mx-auto borderon">
-										<form id="MyForm" class="mui-form mui-panel" th:action="@{'/forgotPassword/recoverForm'}" th:object="${userEmail}" method="POST" />
-										<!-- <input type="text" class="form-control" id="name" th:field="*{user.fname}" name="name" /> -->
-										<div class="mui-textfield">
-											<input type="text" id="email" name="email" th:field="${userEmail.email}">
-											<label>이메일 </label>
+										<form th:action="@{'/forum/update/' + ${post.idpost}}" id="post_writing" class="mui-form mui-panel" th:object="${post}" method="POST" />
+										<div style="margin-bottom: 10px;">
+											<p class="form-small-font-a">글종류</p>
+											<div class="mui-radio borderon" style="margin-bottom: 0px; height: 28px;">
+												<label>
+													<input type="radio" style="margin-top: 5px;" name="category" th:field="${post.category}" id="optionsRadios1" th:value="option1" checked>
+													<p class="font-a" style="padding-top: 3px">어학연수조언하기</p>
+												</label>
+											</div>
+											<div class="mui-radio borderon" style="margin-bottom: 0px; height: 28px;">
+												<label>
+													<input type="radio" style="margin-top: 5px;" name="category" th:field="${post.category}" id="optionsRadios2" th:value="option2">
+													<p class="font-a" style="padding-top: 3px">질문하기</p>
+												</label>
+											</div>
 										</div>
-										<button type="submit" class="mui-btn mui-btn--raised card-description">전송</button>
+
+										<div class="mui-textfield borderon">
+											<input type="text" id="title" name="title" th:field="${post.title}">
+											<label>제목</label>
+										</div>
+
+										<div class="mui-textfield">
+											<textarea name="content" th:field="${post.content}" placeholder="2000자 까지만 등록이 가능합니다."></textarea>
+											<label>내용</label>
+										</div>
+
+										<div class="mui-textfield borderon">
+											<input type="text" name="tag" th:field="${post.tag}" id="tag">
+											<label>내용과 관련한 태그를 적어주세요. [옵션] (예, 리피어학원, 어학연수, 워홀, 코크 맛집.. 등등 )</label>
+										</div>
+
+										<button type="submit" class="mui-btn mui-btn--raised font-b">전송</button>
 										</form>
 									</div>
 								</div>
@@ -211,17 +255,9 @@ input, textarea, select, button {
 	</div>
 	<!-- container-scroller -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<!-- plugins:js -->
 	<script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}"></script>
 	<script th:src="@{'/resources/vendors/js/vendor.bundle.addons.js'}"></script>
-	<!-- endinject -->
-	<!-- inject:js -->
 	<script th:src="@{'/resources/js/off-canvas.js'}"></script>
 	<script th:src="@{'/resources/js/misc.js'}"></script>
-
-	<!-- endinject -->
-	<!-- Custom js for this page-->
-	<!-- <script th:src="@{'/resources/js/dashboard.js'}"></script> -->
-	<!-- End custom js for this page-->
 </body>
 </html>

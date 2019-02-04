@@ -127,12 +127,15 @@ public class PasswordResetController {
 
 	@GetMapping("/resetForm")
 	public String getResetForm (@RequestParam("token") String tokenString, Model model) {
-		
+		// 1. 링크를 클릭해서 겟리퀘스트로 들어온 유저의 토큰이 유효기간이 지났는지 먼저 확인한 후
 		PasswordResetToken token = passwordResetTokenService.findByToken(tokenString);
 		if (token == null || token.isExpired()) {
 			System.err.println("token is not valid");
+			// 토큰이 지난 거면, 에러창으로 리다이렉트, 
 			return "redirect:/error";
 		}
+		
+		// 2. 토큰이 유효하면, 유저를 찾고, 비번을 변경할수 있는 폼을 보여줌.
 		model.addAttribute("token", token);
 		model.addAttribute("user", token.getUser());
 		model.addAttribute("resetPassword", new ResetPassword());
@@ -140,6 +143,8 @@ public class PasswordResetController {
 		return "_resetForm";
 	}
 	
+	
+	// 3. 폼으로 포스트 리퀘스트로 받은후 비번을 업데이트해주고, 로긴 시켜줌.
 	@PostMapping("/resetForm")
 	public String updateNewPassword (
 								@ModelAttribute("resetPassword") @Valid ResetPassword resetPassword, 
@@ -147,13 +152,15 @@ public class PasswordResetController {
 								@ModelAttribute("token") PasswordResetToken token,
 								@ModelAttribute("user") User user,
 								RedirectAttributes redirectAttributes) {
-		
+		// 3.1 비번 입력이 일치하지 않은경우 다시 폼으로 돌려보냄. 에러메세지 추가해서. 
 		if (result.hasErrors()) {
 			System.err.println(result.toString());
+			// 플래쉬어트리뷰트를 이용하면, model 어트리뷰트로 추가해 주지 않아도, 리다이렉으된 콘트롤러에서 한번만 사용되고 자동으로 지워진다. 
             redirectAttributes.addFlashAttribute("errormsg", "비밀번호 등록에 실패하였습니다.");
 			return "redirect:/forgotPassword/resetForm?token=" + token.getTokenString();
 		}
 		
+		// 3-2 비번을 업데이트해주고, 로긴 시켜줌.
 		user.setPassword(passwordEncoder.encode(resetPassword.getPassword()));
 		userService.updateUser(user);
 		userService.makeUserToLoginStatus(user.getEmail(), resetPassword.getPassword()); // use password before encodeded.

@@ -2,7 +2,10 @@ package com.rainbowtape.boards.dto;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.SafeHtml;
 
 import com.rainbowtape.boards.entity.anotation.FieldMatch;
 
@@ -11,18 +14,24 @@ public class UserValidation {
 	
 	private int id;
 	
+	@SafeHtml
+	@NotNull
+	@Size(min=1)
 	private String fname;
 	
 	private String lname;
 	
+	@SafeHtml
 	@Size(min = 6)
 	@NotEmpty
 	private String password;
 	
+	@SafeHtml
 	@Email
 	@NotEmpty
 	private String email;
 	
+	@SafeHtml
 	@Size(min = 6)
 	@NotEmpty
 	private String passwordConfirm;

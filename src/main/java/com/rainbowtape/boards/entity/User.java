@@ -14,7 +14,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-
 @Entity
 @Table(name="user")
 public class User {
@@ -175,6 +174,17 @@ public class User {
 	
 	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
+	}
+	
+	public String getMaskedEmail() {
+		String str = this.email;
+		char[] chars = str.toCharArray();
+        int atIndex = str.indexOf("@");
+        for (int i = 1; i < atIndex-2; i++){
+            chars[i] = "#".charAt(0);
+        }
+        str = new String(chars);
+		return str;
 	}
 	
 	@Override

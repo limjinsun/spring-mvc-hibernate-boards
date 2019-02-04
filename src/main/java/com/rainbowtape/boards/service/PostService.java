@@ -9,4 +9,6 @@ public interface PostService {
 	public void save(Post post);
 	public List<Post> getAllPost();
 	public Post findById(int idpost);
+	public void delete(int idpost);
+	public void update(Post post);
 }

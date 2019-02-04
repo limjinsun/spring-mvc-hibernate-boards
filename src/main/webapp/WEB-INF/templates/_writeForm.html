@@ -45,7 +45,6 @@
 .borderon {
 	/* border-style: solid;
 	border-width: thin; */
-	
 }
 
 a {
@@ -150,7 +149,10 @@ input, textarea, select, button {
 						<!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
 					</a>
 					<a class="navbar-brand brand-logo-mini" th:href="@{'/'}">
-						<i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i>
+						<span class="menu-title font-b">
+							<small class="borderlist">리피</small>
+						</span>
+						<!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i> -->
 						<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
 					</a>
 				</div>
@@ -176,6 +178,11 @@ input, textarea, select, button {
 										<h2 class="card-description">글쓰기</h2>
 										<p class="card-description">당신이 작성한 글은, 당신에게 또는 누군가에게 도움이 됩니다.</p>
 									</div>
+									<div th:if="${errormsg}">
+										<div class="text-danger card-description">
+											<span th:text="${errormsg}"></span>
+										</div>
+									</div>
 									<!-- <div class="col-lg-3 borderon">hello</div> -->
 								</div>
 								<!-- <div class="text-danger" th:if="${#fields.hasErrors('${userEmail.email}')}">if문이 동작 에러가 발생했습니다. </div> -->
@@ -186,7 +193,7 @@ input, textarea, select, button {
 											<p class="form-small-font-a">글종류</p>
 											<div class="mui-radio borderon" style="margin-bottom: 0px; height: 28px;">
 												<label>
-													<input type="radio" style="margin-top: 5px;" name="category" th:field="${post.category}" id="optionsRadios1" th:value="option1" checked>
+													<input type="radio" style="margin-top: 5px;" name="category" th:field="${post.category}" id="optionsRadios1" th:value="option1" checked="checked" />
 													<p class="font-a" style="padding-top: 3px">어학연수조언하기</p>
 												</label>
 											</div>
@@ -246,6 +253,10 @@ input, textarea, select, button {
 		<!-- page-body-wrapper ends -->
 	</div>
 	<!-- container-scroller -->
+	<script>
+		document.getElementById("optionsRadios1").setAttribute("checked",
+				"checked")
+	</script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}"></script>
 	<script th:src="@{'/resources/vendors/js/vendor.bundle.addons.js'}"></script>

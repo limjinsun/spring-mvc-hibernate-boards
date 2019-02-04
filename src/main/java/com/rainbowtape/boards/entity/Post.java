@@ -19,6 +19,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
 @Table(name="post")
@@ -29,12 +33,19 @@ public class Post {
 	@Column(name="idpost")
 	private int idpost;
 
+	@SafeHtml
+	@NotNull
+	@Size(min=1)
 	@Column(name="p_title")
 	private String title;
 
+	@SafeHtml
+	@NotNull
+	@Size(min=1)
 	@Column(name="p_content")
 	private String content;
 
+	@NotNull
 	@Column(name="p_category")
 	private String category;
 
@@ -50,8 +61,8 @@ public class Post {
 	private String formatedDateCreated;
 	
 	@Column(name="p_datemodified")
-	private String datemodified;
-
+	private Date datemodified;
+	
 	@Column(name="p_tag")
 	private String tag;
 
@@ -128,6 +139,7 @@ public class Post {
 		this.datecreated = now;
 	}
 	
+	// 사용안하는 메소드 - Thyemleap 기능으로 대체됨. 
 	public String getFormatedDateCreated() throws ParseException {
 		
 		final String OLD_FORMAT = "yyyy-MM-dd HH:mm:ss";
@@ -146,11 +158,11 @@ public class Post {
 		this.formatedDateCreated = formatedDateCreated;
 	}
 
-	public String getDatemodified() {
+	public Date getDatemodified() {
 		return datemodified;
 	}
 
-	public void setDatemodified(String datemodified) {
+	public void setDatemodified(Date datemodified) {
 		this.datemodified = datemodified;
 	}
 
