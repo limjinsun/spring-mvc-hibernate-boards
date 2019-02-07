@@ -36,12 +36,14 @@ public class Post {
 	@SafeHtml
 	@NotNull
 	@Size(min=1)
+	@Size(max=195)
 	@Column(name="p_title")
 	private String title;
 
 	@SafeHtml
 	@NotNull
 	@Size(min=1)
+	@Size(max=4990)
 	@Column(name="p_content")
 	private String content;
 
@@ -76,7 +78,8 @@ public class Post {
 	 * One to Many - for Replys. 
 	 */
 
-	@OneToMany(mappedBy="post", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+//	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy="post", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Reply> replys;
 
 	public List<Reply> getReplys() {

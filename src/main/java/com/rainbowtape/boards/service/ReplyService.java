@@ -9,5 +9,6 @@ public interface ReplyService {
 	
 	public void save(Reply reply);
 	public List<Reply> findByPost(Post post);
+	public void delete(int idreply);
 
 }

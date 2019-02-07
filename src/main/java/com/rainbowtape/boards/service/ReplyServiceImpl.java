@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rainbowtape.boards.dao.ReplayDAO;
+import com.rainbowtape.boards.dao.ReplyDAO;
 import com.rainbowtape.boards.entity.Post;
 import com.rainbowtape.boards.entity.Reply;
 
@@ -13,7 +13,7 @@ import com.rainbowtape.boards.entity.Reply;
 public class ReplyServiceImpl implements ReplyService {
 
 	@Autowired
-	private ReplayDAO replyDAO;
+	private ReplyDAO replyDAO;
 
 	@Override
 	public void save(Reply reply) {
@@ -23,6 +23,12 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public List<Reply> findByPost(Post post) {
 		return replyDAO.findByPost(post);
+	}
+
+	@Override
+	public void delete(int idreply) {
+		replyDAO.delete(idreply);
+		System.err.println("delete reply id - " + idreply);
 	}
 
 }

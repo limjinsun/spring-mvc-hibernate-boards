@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -20,6 +21,7 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
+@EnableSpringDataWebSupport // https://stackoverflow.com/a/30071152/4735043
 @ComponentScan(basePackages = "com.rainbowtape.boards")
 public class SpringConfig extends WebMvcConfigurerAdapter {
 	

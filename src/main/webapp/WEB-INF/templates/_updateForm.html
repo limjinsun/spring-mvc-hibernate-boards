@@ -37,10 +37,6 @@
 	background: rgba(220, 220, 220, 0.1);
 }
 
-.footer {
-	background: rgba(220, 220, 220, 0.1);
-	border-top: 0.5px solid #f2f2f2;
-}
 
 .borderon {
 	/* border-style: solid;
@@ -50,88 +46,6 @@
 
 a {
 	text-decoration: none !important;
-}
-</style>
-<style>
-.mui-select:focus>select {
-	height: calc(52px + 1px);
-	margin-bottom: -1px;
-	border-color: #fc2092;
-	border-width: 1px;
-	letter-spacing: -0.03rem;
-}
-
-.mui-select:focus>label, .mui-select>select:focus ~label {
-	color: #fc2092;
-	letter-spacing: -0.03rem;
-}
-
-.mui-select>select {
-	display: block;
-	height: 52px;
-	letter-spacing: -0.03rem;
-}
-
-.mui-select:hover>select {
-	border-color: orange;
-}
-
-.mui-table>tbody>tr>td {
-	padding: 13px;
-	line-height: 1.429;
-}
-
-.mui-table>thead>tr>th {
-	border-bottom-color: rgba(0, 0, 0, 0.26);
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-	font-weight: 700;
-}
-
-.mui-form {
-	width: 100%;
-}
-
-.mui-textfield>input:focus ~label, .mui-textfield>textarea:focus ~label
-	{
-	color: #fc2092
-}
-
-.mui-textfield>input:focus, .mui-textfield>textarea:focus {
-	border-color: #fc2092;
-	border-width: 1px
-}
-
-input, textarea, select, button {
-	font-weight: 400;
-}
-
-input, button, select, optgroup, textarea {
-	margin: 5px 0 0 0;
-}
-
-.mui-textfield>textarea {
-	min-height: 450px
-}
-
-.mui-textfield>label {
-	color: rgba(48, 48, 48, .9);
-}
-
-input, textarea, select, button {
-	letter-spacing: -0.07rem;
-}
-
-.form-small-font-a {
-	display: block;
-	color: rgba(48, 48, 48, .9);
-	font-size: 12px;
-	font-weight: 400;
-	line-height: 15px;
-	overflow-x: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	margin-bottom: .5rem;
 }
 </style>
 </head>
@@ -176,7 +90,7 @@ input, textarea, select, button {
 							<div class="card-body" style="padding: 1.1rem 1.9rem;">
 								<div class="row">
 									<div class="col-lg-7 borderon">
-										<h2 class="card-description">글쓰기</h2>
+										<h2 class="card-description">글수정</h2>
 										<p class="card-description">당신이 작성한 글은, 당신에게 또는 누군가에게 도움이 됩니다.</p>
 									</div>
 									<div th:if="${errormsg}">
@@ -189,7 +103,7 @@ input, textarea, select, button {
 								<!-- <div class="text-danger" th:if="${#fields.hasErrors('${userEmail.email}')}">if문이 동작 에러가 발생했습니다. </div> -->
 								<div class="row">
 									<div class="col-lg-6 mx-auto borderon">
-										<form th:action="@{'/forum/update/' + ${post.idpost}}" id="post_writing" class="mui-form mui-panel" th:object="${post}" method="POST" />
+										<form th:action="@{'/forum/update/' + ${post.idpost}}" id="post_writing" class="mui-form" th:object="${post}" method="POST" />
 										<div style="margin-bottom: 10px;">
 											<p class="form-small-font-a">글종류</p>
 											<div class="mui-radio borderon" style="margin-bottom: 0px; height: 28px;">

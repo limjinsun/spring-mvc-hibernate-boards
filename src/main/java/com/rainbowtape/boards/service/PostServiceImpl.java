@@ -5,6 +5,10 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.rainbowtape.boards.dao.PostDAO;
@@ -35,10 +39,18 @@ public class PostServiceImpl implements PostService {
 	@Transactional
 	public void delete(int idpost) {
 		postDAO.deleteByIdpost(idpost);
+		System.err.println("delete post id - " + idpost);
 	}
 
 	@Override
 	public void update(Post post) {
 		postDAO.save(post);
 	}
+
+	@Override
+	public Page<Post> findAll(Pageable pageable) {
+		return postDAO.findAll(pageable);
+	}
+
+	
 }

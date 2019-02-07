@@ -72,77 +72,6 @@ a {
 }
 </style>
 
-<style>
-.mui-select:focus>select {
-	height: calc(52px + 1px);
-	margin-bottom: -1px;
-	border-color: #fc2092;
-	border-width: 1px;
-	letter-spacing: -0.03rem;
-}
-
-.mui-select:focus>label, .mui-select>select:focus ~label {
-	color: #fc2092;
-	letter-spacing: -0.03rem;
-}
-
-.mui-select>select {
-	display: block;
-	height: 52px;
-	letter-spacing: -0.03rem;
-}
-
-.mui-select:hover>select {
-	border-color: orange;
-}
-
-.mui-table>tbody>tr>td {
-	padding: 13px;
-	line-height: 1.429;
-}
-
-.mui-table>thead>tr>th {
-	border-bottom-color: rgba(0, 0, 0, 0.26);
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-	font-weight: 700;
-}
-
-.mui-form {
-	width: 100%;
-}
-
-.mui-textfield>input:focus ~label, .mui-textfield>textarea:focus ~label
-	{
-	color: #fc2092
-}
-
-.mui-textfield>input:focus, .mui-textfield>textarea:focus {
-	border-color: #fc2092;
-	border-width: 1px
-}
-
-input, textarea, select, button {
-	font-weight: 400;
-}
-
-input, button, select, optgroup, textarea {
-	margin: 5px 0 0 0;
-}
-
-.mui-textfield>textarea {
-	min-height: 450px
-}
-
-.mui-textfield>label {
-	color: rgba(48, 48, 48, .9);
-}
-
-input, textarea, select, button {
-	letter-spacing: -0.07rem;
-}
-</style>
-
 </head>
 <body style="overflow-x: unset;">
 	<div class="container-scroller" style="overflow: unset;">
@@ -213,7 +142,7 @@ input, textarea, select, button {
 
 								<div class="row">
 									<div class="col-lg-6 mx-auto borderon">
-										<form class="mui-form mui-panel" id="formaction" method="POST" />
+										<form class="mui-form" id="formaction" method="POST" />
 										<legend></legend>
 
 										<input type="hidden" name="_next" value="//localhost:8080/boards/" />

@@ -28,6 +28,12 @@
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.addons.css'}" type="text/css">
 
 <style>
+.borderon {
+	/* border-style: solid;
+	border-width: thin; */
+	
+}
+
 .fixed_menu {
 	position: fixed;
 }
@@ -72,10 +78,6 @@
 	background: rgba(220, 220, 220, 0.1);
 }
 
-.footer {
-	background: rgba(220, 220, 220, 0.1);
-	border-top: 0.5px solid #f2f2f2;
-}
 </style>
 
 
@@ -310,56 +312,59 @@
 					</div>
 
 					<div sec:authorize="hasRole('ROLE_ADMIN')">
-						<span th:text="${post.user.email}"> 글쓴이 </span>
+						<span th:text="${post.user.email}"> 작성자이메일 완전표시 </span>
 					</div>
 
-					<div th:if="${post != null}">
-						<table>
+					<div th:if="${post != null}" class="col-lg-11 mx-auto">
+						<table class="table mui-table mui-table--bordered borderon" style="max-width: 100%;">
 							<thead>
-								<tr>
-									<th>
-										<div style="height: 100%; width: 100%;">
+								<tr class="borderon">
+									<th colspan=2>
+										<div>
 											<span th:text="${post.title}"> 제목 </span>
 										</div>
 									</th>
 								</tr>
-								<tr>
+								<tr class="borderon">
 									<!-- <th><div style="height: 100%; width: 100%;"><span th:text="${post.user.fname}"> 글쓴이 </span></div></th> -->
 									<th>
-										<div style="height: 100%; width: 100%;">
-											<span th:text="${#strings.contains(post.user.email, 'admin@java.com')}? '관리자' : ${post.user.getMaskedEmail()}"> 글쓴이 </span>
+										<div>
+											<span th:attr="style=${#strings.contains(post.user.email,'admin@java.com')}? 'color:DeepPink;' : ''"
+												th:text="${#strings.contains(post.user.email, 'admin@java.com')}? '리피' : ${post.user.getMaskedEmail()}"> 작성자 </span>
 										</div>
 									</th>
 									<th>
-										<div style="height: 100%; width: 100%;">
+										<div>
 											<span th:text="${#dates.format(post.datecreated, 'dd MMM yyyy')}"> 날짜 </span>
 										</div>
 									</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
+								<tr class="borderon">
 									<td colspan=2>
 										<div style="height: 100%; width: 100%;">
 											<span>
-												<p th:utext="${#strings.replace( #strings.escapeXml( post.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}"></p>
+												<p th:utext="${#strings.replace( #strings.escapeXml( post.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">글내용</p>
 											</span>
 										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<span><!--  th:if="${user.email} eq ${reply.user.email} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" -->
-											<a href="comments.html" th:href="@{'/forum/update/'+${post.idpost}}" th:if="${user.id} eq ${post.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >수정</a>
-										</span>
-										&nbsp
-										<span>
-											<div th:if="${user.id} eq ${post.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
-												<form id="delete_form" th:action="@{'/forum/delete/'+${post.idpost}}" method="post" />
-												<a href="javascript:{}" onclick="document.getElementById('delete_form').submit(); return false;">삭제</a>
-												</form>
-											</div>
-										</span>
+
+										<div style="text-align:right;">
+											<small>
+												<span>
+													<a href="comments.html" th:href="@{'/forum/update/'+${post.idpost}+'?u='+${post.user.id}}"
+														th:if="${user.id} eq ${post.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">수정</a>
+												</span> <span>
+													<div th:if="${user.id} eq ${post.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+														<form id="delete_form" th:action="@{'/forum/delete/'+${post.idpost}+'?u='+${user.id}}" method="post" />
+														<a href="javascript:{}" onclick="document.getElementById('delete_form').submit(); return false;">삭제</a>
+														</form>
+													</div>
+												</span>
+											</small>
+										</div>
+
+
 									</td>
 								</tr>
 							</tbody>
@@ -371,13 +376,16 @@
 							</div>
 						</div>
 
-						<form id="post_writing" th:action="@{'/forum/writeReply/'+${post.idpost}}" th:object="${reply}" class="mui-form mui-panel" method="POST" />
+						<form id="post_writing" th:action="@{'/forum/writeReply/'+${post.idpost}}" th:object="${reply}" class="mui-form mui-panel-no-shadow" method="POST" />
 						<div class="mui-textfield">
 							<textarea name="content" th:field="${reply.content}" placeholder="" class="mui-reply"></textarea>
 							<!-- <label>덧글달기</label> -->
 						</div>
-						<button type="submit" class="mui-btn mui-btn--raised font-b">댓글달기</button>
+						<button type="submit" class="mui-btn mui-btn--flat font-b">댓글달기</button>
 						</form>
+
+
+
 
 
 						<div th:if="${#lists.isEmpty(replys)}">
@@ -385,7 +393,7 @@
 						</div>
 
 						<div th:if="!${#lists.isEmpty(replys)}">
-							<table>
+							<table class="table mui-table mui-table--bordered borderon">
 								<!-- <thead>
 									<tr>
 										<th>제목</th>
@@ -396,39 +404,55 @@
 									<tr th:each="reply : ${replys}">
 										<td>
 											<div style="height: 100%; width: 100%;">
-												<span>
-													<p th:utext="${#strings.replace( #strings.escapeXml( reply.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">내용</p>
-												</span>
+												<div th:attr="style=${#strings.contains(reply.user.email,'admin@java.com')}? 'color:DeepPink;' : ''">
+													<span>
+														<p th:utext="${#strings.replace( #strings.escapeXml( reply.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">댓글내용</p>
+													</span>
+												</div>
+
+												<!-- 	</div> -->
 											</div>
-										</td>
-										<td>
-											<div style="height: 100%; width: 250px; width: 100px; max-width: 100px; display: inline-block;">
-												<span th:text="${#dates.format(reply.datecreated, 'dd MMM yyyy')}"> 날짜 </span>
+											<!-- </td>
+										<td class="borderon"> -->
+											<div style="text-align: right;">
+												<small>
+													<span th:text="${#dates.format(reply.datecreated, 'dd MMM yyyy')}"> 댓글날짜 </span>
+													<span th:attr="style=${#strings.contains(reply.user.email,'admin@java.com')}? 'color:DeepPink;' : ''"
+														th:text="${#strings.contains(reply.user.email, 'admin@java.com')}? '리피' : ${reply.user.getMaskedEmail()}"> 댓글작성자 </span>
+												</small>
 											</div>
-											<div>
+											<div style="text-align: right;">
+												<small>
 													<!--  if this user is owner of reply ?? how to check? user.email 
 															"${item.codItem} eq ${defaultCodItem}"
 													
 													 -->
-												<span>
-													<!-- <a href="comments.html" th:href="@{'/forum/update/'+${post.idpost}}" th:if="${isThisUserOriginalPosterOrAdmin} == true">수정</a> -->
-												</span>
-												&nbsp
-												<span>
-													<div th:if="${user.id} eq ${reply.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
-														<form id="reply_delete_form" th:action="@{'/forum/deleteReply/'+${reply.idreply}}" method="post" />
-														<a href="javascript:{}" onclick="document.getElementById('delete_form').submit(); return false;">삭제</a>
-														</form>
-													</div>
-												</span>
-
+													<span>
+														<!-- <a href="comments.html" th:href="@{'/forum/update/'+${post.idpost}}" th:if="${isThisUserOriginalPosterOrAdmin} == true">수정</a> -->
+													</span>
+													<!-- &nbsp -->
+													<span>
+														<div th:if="${user.id} eq ${reply.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+															<form th:id="'id' + ${reply.idreply}" th:action="@{'/forum/deleteReply/'+${reply.idreply}+'?idpost='+${post.idpost}}" method="post" />
+															<a href="javascript:{}" th:onclick="'document.getElementById(\'id' + ${reply.idreply} + '\').submit(); return false;'">삭제</a>
+															</form>
+														</div>
+													</span>
+													<!-- <p th:text=${reply.idreply}>댓글 아이디</p> -->
+												</small>
 											</div>
-
 										</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
+
+						<div class="mui-form mui-panel-no-shadow">
+							<form th:action="@{'/forum/viewpostslist'}" method="get">
+								<input class="mui-btn mui-btn--flat font-b" type="submit" value="글목록" style="width: 100%;" />
+							</form>
+						</div>
+
 
 
 
