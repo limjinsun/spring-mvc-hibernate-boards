@@ -1,7 +1,9 @@
 package com.rainbowtape.boards.config;
 
+import javax.servlet.Filter;
 import javax.servlet.ServletRegistration;
 
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -25,6 +27,13 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 	protected void customizeRegistration(ServletRegistration.Dynamic registration) {
 		boolean done = registration.setInitParameter("throwExceptionIfNoHandlerFound", "true"); // -> true
 		if(!done) throw new RuntimeException();
+	}
+
+	@Override
+	protected Filter[] getServletFilters() {
+		return new Filter[] {
+			new OpenEntityManagerInViewFilter()
+		};
 	}
 
 	/* https://stackoverflow.com/a/23051264/4735043 - Replaced	 

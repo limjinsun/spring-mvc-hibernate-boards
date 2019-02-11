@@ -57,7 +57,7 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400&subset=korean");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600");
 @import url("https://cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css");
 @import url("https://gist.githack.com/limjinsun/e2b0e086489782c9d27c6c731769b4ad/raw/a45edfb4a40701dd645f3495c02ac4edfc09882f/kakao.css");
@@ -13881,7 +13881,7 @@ input:-webkit-autofill:active {
 .sidebar {
   min-height: calc(100vh - 63px);
   background: #ffffff;
-  font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Roboto", "Source Sans Pro", Helvetica, Arial, sans-serif;
   padding: 0;
   width: 255px;
   z-index: 11;
@@ -14071,7 +14071,7 @@ input:-webkit-autofill:active {
     margin-left: 255px; } }
 /* Navbar */
 .navbar.default-layout {
-  font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Roboto", "Source Sans Pro", Helvetica, Arial, sans-serif;
   background: linear-gradient(120deg, #00e4d0, #5983e8);
   transition: background 0.25s ease;
   -webkit-transition: background 0.25s ease;
@@ -14207,7 +14207,7 @@ input:-webkit-autofill:active {
 :root,
 body {
   font-size: 1rem;
-  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Roboto", "Source Sans Pro", sans-serif;
   font-weight: 400;
   letter-spacing: -0.03rem; }
 
@@ -14217,9 +14217,9 @@ body {
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Roboto", "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-weight: 300;
-  letter-spacing: -0.08rem; }
+  letter-spacing: -0.025rem; }
 
 .h1,
 .h2,
@@ -14227,7 +14227,7 @@ h6 {
 h1,
 h2,
 h3 {
-  font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Roboto", "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-weight: 600;
   letter-spacing: -0.13rem; }
 
@@ -14343,7 +14343,7 @@ address p {
   margin: 0.38rem 0 0.75rem; }
 
 .card-title {
-  font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Roboto", "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-weight: 300;
   color: #222;
   margin-bottom: 22px;
@@ -14352,7 +14352,7 @@ address p {
     text-align: right; }
 
 .card-subtitle {
-  font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Roboto", "Source Sans Pro", Helvetica, Arial, sans-serif;
   margin-top: 0.625rem;
   margin-bottom: 0.625rem; }
 
@@ -14471,7 +14471,7 @@ pre {
   -ms-transition: all 0.25s ease;
   border-top: 1px solid #f2f2f2;
   font-size: calc(0.88rem - 0.05rem);
-  font-family: "Montserrat", "Noto Sans KR", sans-serif; }
+  font-family: "Montserrat", "Roboto", "Source Sans Pro", sans-serif; }
   .footer a {
     color: #00ce68;
     font-size: inherit; }
@@ -14756,7 +14756,7 @@ pre {
     width: 40%; }
     .card-revenue-table .revenue-item .revenue-amount p {
       font-size: 1.25rem;
-      font-family: "Montserrat", "Noto Sans KR", sans-serif;
+      font-family: "Montserrat", "Roboto", "Source Sans Pro", sans-serif;
       font-weight: 600;
       text-align: right; }
       .rtl .card-revenue-table .revenue-item .revenue-amount p {
@@ -14768,7 +14768,7 @@ pre {
   color: #ffffff; }
   .card-revenue .highlight-text {
     font-size: 1.875rem;
-    font-family: "Montserrat", "Noto Sans KR", sans-serif;
+    font-family: "Montserrat", "Roboto", "Source Sans Pro", sans-serif;
     font-weight: 500; }
   .card-revenue .badge {
     background-color: rgba(255, 255, 255, 0.2);
@@ -14844,7 +14844,7 @@ pre {
   font-weight: initial;
   line-height: 1;
   padding: 0.2rem 0.3rem;
-  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Roboto", "Source Sans Pro", sans-serif;
   font-weight: 600; }
   .badge:empty {
     display: inline-block;
@@ -14981,7 +14981,7 @@ pre {
 .btn {
   font-size: 0.875rem;
   line-height: 1;
-  font-family: "Montserrat", "Noto Sans KR", sans-serif; }
+  font-family: "Montserrat", "Roboto", "Source Sans Pro", sans-serif; }
   .btn i {
     margin-right: 0.3125rem; }
   .btn .btn-label:before {
@@ -15860,7 +15860,7 @@ pre {
 
 .form-control {
   border: 1px solid #f2f2f2;
-  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-family: "Montserrat", "Roboto", "Source Sans Pro", sans-serif;
   font-size: 0.88rem;
   padding: 0.56rem 0.75rem;
   line-height: 34px;
@@ -15932,7 +15932,7 @@ select {
     -webkit-align-items: center;
     align-items: center;
     padding: 15px;
-    font-family: "Montserrat", "Noto Sans KR", sans-serif;
+    font-family: "Montserrat", "Roboto", "Source Sans Pro", sans-serif;
     font-size: 0.88rem; }
     .icons-list > div i {
       display: inline-block;
@@ -16226,7 +16226,7 @@ ul {
     .preview-list .preview-item .preview-item-content p {
       margin-bottom: 10px; }
       .preview-list .preview-item .preview-item-content p .content-category {
-        font-family: "Montserrat", "Noto Sans KR", sans-serif;
+        font-family: "Montserrat", "Roboto", "Source Sans Pro", sans-serif;
         padding-right: 15px;
         border-right: 1px solid #f2f2f2; }
   .preview-list .preview-item .preview-actions {
@@ -16261,7 +16261,7 @@ ul {
   .table thead th {
     border-top: 0;
     border-bottom-width: 1px;
-    font-family: "Montserrat", "Source Sans Pro", Helvetica, Arial, "Noto Sans KR", sans-serif;
+    font-family: "Montserrat", "Roboto", "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-weight: 500; }
     .table thead th i {
       margin-left: 0.325rem; }
@@ -16327,7 +16327,7 @@ ul {
         border-color: #e5e5e5;
         color: #b6b6b6; }
   .auth.theme-one .auto-form-wrapper .form-group .submit-btn {
-    font-family: "Montserrat", "Noto Sans KR", sans-serif;
+    font-family: "Montserrat", "Roboto", "Source Sans Pro", sans-serif;
     font-size: 13px;
     padding: 12px 8px;
     font-weight: 600; }
@@ -16433,7 +16433,7 @@ ul {
           border-right: none;
           color: #dfdfdf; }
       .auth.theme-two .auto-form-wrapper form .form-group .submit-btn {
-        font-family: "Montserrat", "Noto Sans KR", sans-serif;
+        font-family: "Montserrat", "Roboto", "Source Sans Pro", sans-serif;
         font-size: 13px;
         padding: 11px 33px;
         font-weight: 600;

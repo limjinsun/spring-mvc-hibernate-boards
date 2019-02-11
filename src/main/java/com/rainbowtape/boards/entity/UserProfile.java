@@ -37,7 +37,7 @@ public class UserProfile {
 	 */
 	
 	@Column(name="userpics")
-	private String userpics = "/images/faces/face2.jpg";
+	private String userpics = "/images/faces/face2.png";
 	
 	@Column(name="userstatus")
 	private String userstatus;
@@ -83,9 +83,9 @@ public class UserProfile {
 	public UserProfile(User user) {
 		this.user = user;
 		String randomNumber = Integer.toString(new Random().nextInt(10));
-		String file = "/images/faces/face2.jpg";
+		String file = "/images/faces/face2.png";
 		file = file.substring(0, 18);
-		file = file + randomNumber + ".jpg";
+		file = file + randomNumber + ".png";
 		this.userpics = file;
 	}
 

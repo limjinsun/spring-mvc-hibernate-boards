@@ -108,11 +108,14 @@ public class ForumController {
 		
 		System.err.println(pageable.getPageNumber());
 		int pageNum = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1);
-		pageable = new PageRequest(pageNum, 10, new Sort(Sort.Direction.DESC, "datemodified"));
+		pageable = new PageRequest(pageNum, 10, new Sort(Sort.Direction.DESC, "p_datemodified"));
 		
 		Page<Post> page = postService.findAll(pageable);
 		model.addAttribute("page", page);
-
+		
+		List<Post> specialPosts = postService.findSpecialPost("공지");
+		model.addAttribute("specialPosts", specialPosts);
+		
 		return "_viewpostslist";
 	}
 
@@ -132,7 +135,7 @@ public class ForumController {
 		return "_viewpost";
 	}
 
-	@PreAuthorize("#userid == #user.id")
+	@PreAuthorize("#userid == #user.id or hasRole('ROLE_ADMIN')")
 	@GetMapping("/update/{idpost}")
 	public String showUpdateForm(
 			@PathVariable int idpost, 
@@ -159,6 +162,13 @@ public class ForumController {
 		originalPost.setTitle(temp.getTitle());
 		originalPost.setContent(temp.getContent());
 		originalPost.setTag(temp.getTag());
+		
+		String s = temp.getSpecial();
+		if(s.isEmpty()) {
+			originalPost.setSpecial(null);
+		} else {
+			originalPost.setSpecial(s);
+		}
 
 		java.util.Date now = new java.util.Date();
 		originalPost.setDatemodified(now);
@@ -174,7 +184,7 @@ public class ForumController {
 			@ModelAttribute("user") User user,
 			@RequestParam("u") int userid,
 			RedirectAttributes redirectAttributes) {
-
+		
 		if (!postService.findById(idpost).getReplys().isEmpty()) {
 			System.err.println(postService.findById(idpost).getReplys().size());
 			redirectAttributes.addFlashAttribute("errormsg", "댓글이 달린 글은 삭제할수 없습니다."); 

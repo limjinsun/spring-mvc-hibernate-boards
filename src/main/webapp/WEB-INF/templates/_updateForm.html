@@ -134,6 +134,11 @@ a {
 											<input type="text" name="tag" th:field="${post.tag}" id="tag">
 											<label>내용과 관련한 태그를 적어주세요. [옵션] (예, 리피어학원, 어학연수, 워홀, 코크 맛집.. 등등 )</label>
 										</div>
+										
+										<div sec:authorize="hasRole('ROLE_ADMIN')" class="mui-textfield borderon">
+											<input type="text" name="special" th:field="${post.special}" id="special">
+											<label style="color:deeppink;">관리자를 위한 스페셜 섹션</label>
+										</div>
 
 										<button type="submit" class="mui-btn mui-btn--raised font-b">전송</button>
 										</form>

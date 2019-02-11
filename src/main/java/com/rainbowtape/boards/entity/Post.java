@@ -22,6 +22,8 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
@@ -78,8 +80,8 @@ public class Post {
 	 * One to Many - for Replys. 
 	 */
 
-//	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(mappedBy="post", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@LazyCollection(LazyCollectionOption.FALSE) // left join fetch 까지썼던게 헛수고. 
+	@OneToMany(mappedBy="post", cascade=CascadeType.ALL) // , fetch = FetchType.LAZY 를 포기함. 댓글수표시때문에 
 	private List<Reply> replys;
 
 	public List<Reply> getReplys() {

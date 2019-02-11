@@ -26,9 +26,9 @@ import com.rainbowtape.boards.entity.User;
 import com.rainbowtape.boards.service.UserService;
 
 @Controller
-public class HomeController {
+public class LoginController {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@Autowired
 	private UserService userService;

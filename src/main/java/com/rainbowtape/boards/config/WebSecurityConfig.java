@@ -67,8 +67,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.csrf().disable() // https://stackoverflow.com/questions/28716632/spring-boot-request-method-post-not-supported
 		.authorizeRequests()
 		.antMatchers("/resources/**").permitAll()
+		.antMatchers("/images/**").permitAll()
 		.antMatchers("/registerForm").permitAll()
 		.antMatchers("/forgotPassword/**").permitAll()
+		.antMatchers("/api/school/**").permitAll()
 		.antMatchers("/school/**").permitAll()
 		.antMatchers("/","/403","/register","/login","/loginError","/dbError","/404","/error","/validateLogin","/consulting").permitAll()
 		.antMatchers("/system/**").hasRole("ADMIN")
@@ -114,12 +116,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			} else {
 				log.info("UserPage Redirecting");
 				response.sendRedirect(request.getContextPath()+"/user/");
-//				response.sendRedirect(request.getContextPath()+"/user/" + userService.findByEmail(authentication.getName()).getId());
 			}
 		};
 	}
 	
 	private boolean isAdmin(Authentication auth) {
+		
+		System.err.println("isadmin?? - " + auth.getAuthorities().toString());
 
 		boolean isAdmin = false;
 		Iterator<? extends GrantedAuthority> i = auth.getAuthorities().iterator();

@@ -68,8 +68,6 @@
 .content-wrapper {
 	background: rgba(220, 220, 220, 0.1);
 }
-
-
 </style>
 
 
@@ -155,7 +153,7 @@
 		<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 			<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
 				<a class="navbar-brand brand-logo" th:href="@{'/'}">
-					<span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span>
+					<!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> -->
 					<span class="menu-title font-b">
 						<small class="borderlist">리피의아일랜드</small>
 					</span>
@@ -163,10 +161,14 @@
 					<!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
 				</a>
 				<a class="navbar-brand brand-logo-mini" th:href="@{'/'}">
-					<span class="menu-title font-b">
+					<!-- <span class="menu-title font-b">
 						<small class="borderlist">리피</small>
+					</span> -->
+					<span>
+						<small class="borderlist">홈</small>
+						<!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 14px;"></i> -->
 					</span>
-					<!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i> -->
+					
 					<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
 				</a>
 			</div>
@@ -254,7 +256,7 @@
 						<a class="nav-link" th:href="@{'/user/'+${user.getId()}}">
 							<i class="mdi mdi-television icon-md"></i>
 							<span class="menu-title font-b">
-								<small>&nbspDash Board</small>
+								&nbsp<small class="">Dash Board</small>
 							</span>
 						</a>
 					</li>
@@ -262,7 +264,7 @@
 						<a class="nav-link" th:href="@{'/forum/write'}">
 							<i class="mdi mdi-message-text-outline icon-md"></i>
 							<span class="menu-title font-b">
-								<small>&nbsp글쓰기</small>
+								&nbsp<small class="">글쓰기</small>
 							</span>
 						</a>
 					</li>
@@ -270,7 +272,7 @@
 						<a class="nav-link" th:href="@{'/forum/viewpostslist'}">
 							<i class="mdi mdi-message-text-outline icon-md"></i>
 							<span class="menu-title font-b">
-								<small>&nbsp글목록보기</small>
+								&nbsp<small class="">글목록보기</small>
 							</span>
 						</a>
 					</li>
@@ -278,7 +280,7 @@
 						<a class="nav-link" th:href="@{'/school/all'}">
 							<i class="mdi mdi-school icon-md"></i>
 							<span class="menu-title font-b">
-								<small>&nbsp어학원 가격정보</small>
+								&nbsp<small class="">어학원 가격정보</small>
 							</span>
 						</a>
 					</li>
@@ -287,7 +289,7 @@
 							<a href="#" class="nav-link" onclick="document.getElementById('logout').submit()">
 								<i class="mdi mdi-power icon-md"></i>
 								<span class="menu-title font-b">
-									<small>&nbsp로그아웃</small>
+									&nbsp<small class="">로그아웃</small>
 								</span>
 							</a>
 						</form>
@@ -302,14 +304,26 @@
 				<!-- partial:partials/_footer.html -->
 				<footer class="footer">
 					<div class="container-fluid clearfix">
-						<span class="d-block text-center text-sm-left d-sm-inline-block font-b">
-							Copyright © 2019 리피의 아일랜드. All rights reserved.
-						</span>
+						<span class="d-block text-center text-sm-left d-sm-inline-block font-b"> Copyright © 2019 리피의 아일랜드. All rights reserved. </span>
 						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center font-b">
-							아일랜드 현지번호 +353 87 2119 531
-							스스로 선택하는 자유, 혼자할수 있는 자신감
+							아일랜드 현지번호 +353 87 2119 531 스스로 선택하는 자유, 혼자할수 있는 자신감
 							<!-- <i class="mdi mdi-heart text-danger"></i> -->
 						</span>
+					</div>
+					<div class="borderon mt-auto align-self-end text-center">
+						<a href="https://blog.naver.com/b1uedays_">
+							<i class="mdi mdi-web text-muted icon-sm"></i>
+						</a>
+						<a href="mailto: liffeydublin@naver.com">
+							<i class="mdi mdi-email text-muted icon-sm"></i>
+						</a>
+						<a href="https://www.instagram.com/liffeydublin/">
+							<i class="mdi mdi-instagram text-muted icon-sm"></i>
+						</a>
+						<!-- <a href="http://google.com">
+							<i class="mdi mdi-youtube-play text-muted icon-sm"></i>
+						</a> -->
+
 					</div>
 				</footer>
 				<!-- partial -->

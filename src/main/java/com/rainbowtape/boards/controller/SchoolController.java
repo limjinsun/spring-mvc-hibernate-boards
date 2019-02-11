@@ -1,44 +1,144 @@
 package com.rainbowtape.boards.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.servlet.ServletContext;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.rainbowtape.boards.entity.ProductDetail;
-import com.rainbowtape.boards.service.ProductDetailService;
+import com.rainbowtape.boards.entity.Course;
+import com.rainbowtape.boards.entity.School;
+import com.rainbowtape.boards.service.CourseService;
+import com.rainbowtape.boards.service.SchoolService;
+
 
 @Controller
-@RequestMapping(value = "/school", method = RequestMethod.GET)
+@RequestMapping(value = "/school")
 public class SchoolController {
-
-	private static final Logger logger = LoggerFactory.getLogger(SchoolController.class);
 	
 	@Autowired
-	private ProductDetailService productDetailService;
+    ServletContext context;
+
+	@Autowired
+	private SchoolService schoolService;
+	
+	@Autowired
+	private CourseService courseService;
 
 	/* An @ModelAttribute on a method argument indicates the argument should be retrieved from the model. 
 	 * If not present in the model, the argument should be instantiated first and then added to the model.
 	 * https://docs.spring.io/spring/docs/3.1.x/spring-framework-reference/html/mvc.html#mvc-ann-modelattrib-methods */	
-	@RequestMapping(value = "/all", produces = "application/text; charset=utf8", method = RequestMethod.GET)
+
+	@GetMapping("/all")
 	public String getAllSchool (Model model) {
 		
-		logger.info("GetAllSchool");
-	
-		List<ProductDetail> schoolList = productDetailService.findAll();
-		model.addAttribute("schools", schoolList);
+		List<School> schools = schoolService.getAllSchool();
+		
+		model.addAttribute("schools", schools);
 		return "_school";
 	}
 	
-	@RequestMapping(value = "/course", produces = "application/text; charset=utf8", method = RequestMethod.GET)
-	public String getCourse (Model model) {
-	
+	@GetMapping("/course")
+	public String getCourseDetails (@RequestParam("s_id") int idschool, Model model) {
+		
+		School school = schoolService.findOne(idschool);
+		model.addAttribute("school", school);
+		
+		List<Course> courses = courseService.findBySchool(school);
+		model.addAttribute("courses", courses);
+		
 		return "_course";
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping("/addSchool")
+	public String getSchoolAddForm (Model model) {
+		
+		model.addAttribute("school", new School());
+		model.addAttribute("schoolName", new String());
+		return "_schoolAddForm";
+	}
+	
+	private static String UPLOADED_FOLDER = "/Users/rainbowtape/liffey-app/images/";
+	
+	@PostMapping("/addSchool")
+	public String addSchoolIntoDb (
+			@RequestParam("file1") MultipartFile file1, 
+			@RequestParam("file2") MultipartFile file2,
+			@ModelAttribute("school") @Valid School school,
+			BindingResult result, 
+			@ModelAttribute("schoolName") String schoolName,
+			RedirectAttributes redirectAttributes) {
+		
+		System.err.println(schoolName);
+		
+		if(result.hasErrors()) {
+			System.out.println(result.toString());
+			redirectAttributes.addFlashAttribute("errormsg", "입력에 실패하였습니다. 정상적으로 다시 작성해 주세요."); 
+			return "redirect:/school/addSchool";
+		}
+		
+		if (file1.isEmpty() || file2.isEmpty()) {
+            redirectAttributes.addFlashAttribute("errormsg", "Please select a file to upload");
+            return "redirect:/school/addSchool";
+        }
+		
+        try {
+        	
+        	String directoryName = UPLOADED_FOLDER + schoolName;
+        	File directory = new File(directoryName);
+            if (! directory.exists()){
+            	System.err.println(directory.mkdirs());
+                // If you require it to make the entire directory path including parents,
+                // use directory.mkdirs(); here instead.
+            }            
+            
+            String file1Name = schoolName + "-logo.png";
+            byte[] bytes = file1.getBytes();
+            Path path = Paths.get(directoryName + File.separator + file1Name);
+            Files.write(path, bytes);
+            
+            String file2Name = schoolName + "-header.jpg";
+            byte[] bytes2 = file2.getBytes();
+            Path path2 = Paths.get(directoryName + File.separator + file2Name);
+            Files.write(path2, bytes2);
+            
+            String logo = Paths.get(File.separator + schoolName + File.separator + file1Name).toString();
+            String schoolpics = Paths.get(File.separator + schoolName + File.separator + file2Name).toString();
+            school.setLogo(logo);
+            school.setSchoolpics(schoolpics);
+            
+            schoolService.save(school);
+
+            redirectAttributes.addFlashAttribute("message",
+                    "You successfully uploaded '" + file1.getOriginalFilename() + " and " + file2.getOriginalFilename() + "'");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "redirect:/school/uploadStatus";
+	}
+	
+	@GetMapping("/uploadStatus")
+    public String uploadStatus() {
+        return "uploadStatus";
+    }
 }

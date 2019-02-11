@@ -26,9 +26,9 @@
 		<div class="col-1">
 			<div class="p-t-15">
 				<p> this is admin page </p>
-				<form th:action="@{'/logout'}" method="post">
+				<form th:action="@{'/user/'}" method="get">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-					<input type="submit" value="Do you want to logout?" class="btn btn--radius-2 btn--blue btn--full">
+					<input type="submit" value="TO USER PAGE?" class="btn btn--radius-2 btn--blue btn--full">
 				</form>
 			</div>
 		</div>

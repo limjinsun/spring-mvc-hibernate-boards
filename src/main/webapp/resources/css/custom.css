@@ -10,6 +10,11 @@
 		"Nanum Barun Gothic", sans-serif;
 }
 
+a:link {
+  text-decoration: none;
+}
+
+
 /* 메뉴 */
 .navbar.default-layout .navbar-brand-wrapper .navbar-brand {
 	color: #222;

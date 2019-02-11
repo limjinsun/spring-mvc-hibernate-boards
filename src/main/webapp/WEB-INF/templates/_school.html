@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 
-<title>School Page</title>
+<title>리피의 아일랜드 :: 아일랜드 어학연수 전문컨설턴트</title>
 
 <!-- Favicons and -- For iPhone -->
 <link rel="icon" th:href="@{'/resources/images/favicon.ico'}" sizes="32x32">
@@ -14,6 +14,9 @@
 <meta name="msapplication-TileImage" th:href="@{'/resources/images/favicon.ico'}">
 
 <!-- CSS -->
+<link href="https://cdn.muicss.com/mui-0.9.41/css/mui.min.css" rel="stylesheet" type="text/css">
+<script src="https://cdn.muicss.com/mui-0.9.41/js/mui.min.js" type="text/javascript"></script>
+
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/font-awesome/css/font-awesome.css'}" type="text/css">
 
@@ -77,7 +80,7 @@ a {
 			<nav class="navbar default-layout col-lg-12 col-12 p-0 d-flex flex-row">
 				<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
 					<a class="navbar-brand brand-logo" th:href="@{'/'}">
-						<span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span>
+						<!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> -->
 						<span class="menu-title font-b">
 							<small class="borderlist">리피의아일랜드</small>
 						</span>
@@ -86,7 +89,7 @@ a {
 					</a>
 					<a class="navbar-brand brand-logo-mini" th:href="@{'/'}">
 						<span class="menu-title font-b">
-							<small class="borderlist">리피</small>
+							<small class="borderlist">홈</small>
 						</span>
 						<!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i> -->
 						<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
@@ -158,8 +161,6 @@ a {
 			<!-- partial -->
 			<div class="main-panel" style="width: 100%;">
 
-
-
 				<!-- <div class="row purchace-popup">
 					<div class="col-12">
 						<span class="d-block d-md-flex align-items-center">
@@ -171,253 +172,93 @@ a {
 				</div> -->
 
 				<div class="content-wrapper">
-
-
 					<div class="container-fluid d-flex flex-wrap">
-						<div class="col-lg-6 grid-margin">
-							<div class="school-card h-100">
-								<div class="card min-height-fix h-100">
-									<div class="card-header"></div>
-									<div class="card-body">
-										<div class="row">
-											<div class="col-md-7 d-flex flex-column borderon">
-												<div class="d-flex flex-row justify-content-center align-items-center borderon">
-													<div class="col-md-4 borderon">
-														<img th:src="@{'/resources/images/logos/englishour-logo.png'}" width="100%" style="max-height: 250px; max-width: 250px;" alt="" />
-													</div>
-													<div class="col-md-8 borderon">
-														<h2 class="font-a">잉글리쉬아우워 Englishour</h2>
-													</div>
-												</div>
 
-												<div class="borderon">
-													<i class="mdi mdi-map-marker-circle text-primary icon-sm"></i>
-													<span style="margin-left: 3px;">
-														<small class="text-primary">372 Harolds Cross Rd, Dublin</small>
-													</span>
-												</div>
-												<div class="borderon">
-													<p class="card-description">잉글리쉬 아워는 더블린 시티 중심에 위치한 중규모 어학원 입니다. 여기에 학원에 대한 내용을 적으시면 됩니다.</p>
-												</div>
-												<div class="borderon mt-auto align-self-end">
-													<a href="http://google.com">
-														<i class="mdi mdi-web text-primary icon-md"></i>
-													</a>
-													<a href="http://google.com">
-														<i class="mdi mdi-instagram text-primary icon-md"></i>
-													</a>
-													<a href="http://google.com">
-														<i class="mdi mdi-youtube-play text-primary icon-md"></i>
-													</a>
-													<a href="http://google.com">
-														<i class="mdi mdi-facebook-box text-primary icon-md"></i>
-													</a>
-												</div>
-											</div>
-
-											<div class="col-md-5 d-flex flex-column justify-content-center align-items-center borderon">
-												<div class="table-responsive borderon">
-													<table class="table card-description">
-														<tbody>
-															<tr>
-																<td width="40%">학생국적비율</td>
-																<td>
-																	<div class="progress">
-																		<div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-																	</div>
-																</td>
-															</tr>
-															<tr>
-																<td>시내접근성</td>
-																<td>
-																	<div class="progress">
-																		<div class="progress-bar bg-danger" role="progressbar" style="width: 55%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-																	</div>
-																</td>
-															</tr>
-															<tr>
-																<td>액티비티</td>
-																<td>
-																	<div class="progress">
-																		<div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-																	</div>
-																</td>
-															</tr>
-															<!-- 															<tr>
-																<td>Peter Meggik</td>
-																<td>
-																	<div class="progress">
-																		<div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-																	</div>
-																</td>
-															</tr>
- -->
-														</tbody>
-													</table>
-												</div>
-
-
-												<div class="template-demo text-center borderon">
-													<input class="btn btn-outline-primary" type="button" value="자세히 보기" onclick="window.location.href='/boards/school/course'" />
-													<!-- <button type="button" class="btn btn-outline-success">6개월과정 오후코스</button>
-													<button type="button" class="btn btn-outline-primary">6개월과정 오전코스</button>
-													<button type="button" class="btn btn-outline-success">6개월과정 오후코스</button> -->
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+						<!-- 스쿨 카드 시작  -->
+						<div th:if="${#lists.isEmpty(schools)}">
+							<p>조건에 해당하는 학교가 없습니다.</p>
 						</div>
 
 
-						<div class="col-lg-6 grid-margin">
+						<div th:if="!${#lists.isEmpty(schools)}" th:each="school : ${schools}" class="col-lg-6 grid-margin">
 							<div class="school-card h-100">
 								<div class="card min-height-fix h-100">
-									<div class="card-header"></div>
-									<div class="card-body">
-										<div class="row">
-											<div class="col-md-7 d-flex flex-column borderon">
-												<div class="d-flex flex-row justify-content-center align-items-center borderon">
-													<div class="col-md-4 borderon">
-														<img th:src="@{'/resources/images/logos/englishour-logo.png'}" width="100%" style="max-height: 250px; max-width: 250px;" alt="" />
-													</div>
-													<div class="col-md-8 borderon">
-														<h2 class="font-a">잉글리쉬아우워 Englishour</h2>
-													</div>
-												</div>
-
-												<div class="borderon">
-													<i class="mdi mdi-map-marker-circle text-primary icon-sm"></i>
-													<span style="margin-left: 3px;">
-														<small class="text-primary">372 Harolds Cross Rd, Dublin</small>
-													</span>
-												</div>
-												<div class="borderon">
-													<p class="card-description">잉글리쉬 아워는 더블린 시티 중심에 위치한 중규모 어학원 입니다. 여기에 학원에 대한 내용을 적으시면 됩니다.</p>
-												</div>
-												<div class="borderon mt-auto align-self-end">
-													<a href="http://google.com">
-														<i class="mdi mdi-web text-primary icon-md"></i>
-													</a>
-													<a href="http://google.com">
-														<i class="mdi mdi-instagram text-primary icon-md"></i>
-													</a>
-													<a href="http://google.com">
-														<i class="mdi mdi-youtube-play text-primary icon-md"></i>
-													</a>
-													<a href="http://google.com">
-														<i class="mdi mdi-facebook-box text-primary icon-md"></i>
-													</a>
-												</div>
-											</div>
-
-											<div class="col-md-5 d-flex flex-column justify-content-center align-items-center borderon">
-												<div class="table-responsive borderon">
-													<table class="table card-description">
-														<tbody>
-															<tr>
-																<td width="40%">학생국적비율</td>
-																<td>
-																	<div class="progress">
-																		<div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-																	</div>
-																</td>
-															</tr>
-															<tr>
-																<td>시내접근성</td>
-																<td>
-																	<div class="progress">
-																		<div class="progress-bar bg-danger" role="progressbar" style="width: 55%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-																	</div>
-																</td>
-															</tr>
-															<tr>
-																<td>액티비티</td>
-																<td>
-																	<div class="progress">
-																		<div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-																	</div>
-																</td>
-															</tr>
-															<!-- 															<tr>
-																<td>Peter Meggik</td>
-																<td>
-																	<div class="progress">
-																		<div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-																	</div>
-																</td>
-															</tr>
- -->
-														</tbody>
-													</table>
-												</div>
-
-
-												<div class="template-demo text-center borderon">
-													<input class="btn btn-outline-primary" type="button" value="자세히 보기" onclick="window.location.href='/boards/school/course'" />
-													<!-- <button type="button" class="btn btn-outline-success">6개월과정 오후코스</button>
-													<button type="button" class="btn btn-outline-primary">6개월과정 오전코스</button>
-													<button type="button" class="btn btn-outline-success">6개월과정 오후코스</button> -->
-												</div>
-											</div>
+									<div class="card-header" style="padding: 0.75rem 0.2rem 0 0.2rem;">
+										<div class="borderon">
+											<h6 class="card-description" style="margin-left: 12px; font-size: 0.7rem;">
+												<i class="mdi mdi-map-marker-circle text-dark icon-sm borderon"></i>
+												<span th:text=${school.location}>더블린</span>
+												&nbsp
+												<i class="mdi mdi-bank text-dark icon-sm borderon"></i>
+												<span th:text=${school.type}>사설어학원</span>
+												&nbsp
+												<i class="mdi mdi-view-day text-dark icon-sm borderon"></i>
+												<span th:text=${school.size}>중규모</span>
+												&nbsp
+												<i class="mdi mdi-human-male-female text-dark icon-sm borderon"></i>
+												<span th:text=${school.classsize}>한반14명</span>
+												&nbsp
+												<i class="mdi mdi-clipboard-check text-dark icon-sm borderon"></i>
+												<span th:text=${school.certificate}>인증&nbspILEP, ACELS</span>
+												<span>
+													<a th:href="@{'/school/update/'+${school.idschool} }"
+														th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">&nbsp<i class="mdi mdi-flip-to-back text-danger icon-sm borderon"></i>학교정보수정하기</a>
+												</span>
+											</h6>
 										</div>
 									</div>
-								</div>
-							</div>
-						</div>
-
-
-						<div class="col-lg-6 grid-margin">
-							<div class="school-card h-100">
-								<div class="card min-height-fix h-100">
-									<div class="card-header"></div>
-									<div class="card-body">
+									<div class="card-body" style="padding-top: 0;">
 										<div class="row">
-											<div class="col-md-7 d-flex flex-column borderon">
+											<!-- align-self-center / align-items-center -->
+											<div class="col-md-7 d-flex flex-column justify-content-center borderon">
 												<div class="d-flex flex-row justify-content-center align-items-center borderon">
 													<div class="col-md-4 borderon">
-														<img th:src="@{'/resources/images/logos/englishour-logo.png'}" width="100%" style="max-height: 250px; max-width: 250px;" alt="" />
+														<!--  /logos/englishour-logo.png -->
+														<img th:src="@{'/images' + ${school.logo} }" width="100%" style="max-height: 250px; max-width: 250px;" alt="" />
 													</div>
-													<div class="col-md-8 borderon">
-														<h2 class="font-a">잉글리쉬아우워 Englishour</h2>
+
+													<div class="col-md-8 justify-content-center align-items-center borderon">
+														<h2 class="font-a" th:text="${school.name}">학교이름</h2>
 													</div>
 												</div>
 
-												<div class="borderon">
+												<div class="align-self-right borderon">
 													<i class="mdi mdi-map-marker-circle text-primary icon-sm"></i>
 													<span style="margin-left: 3px;">
-														<small class="text-primary">372 Harolds Cross Rd, Dublin</small>
+														<small class="text-primary" th:text="${school.address}">학교주소</small>
 													</span>
 												</div>
 												<div class="borderon">
-													<p class="card-description">잉글리쉬 아워는 더블린 시티 중심에 위치한 중규모 어학원 입니다. 여기에 학원에 대한 내용을 적으시면 됩니다.</p>
+													<p class="card-description" th:text="${school.description}" style="margin-bottom: 0px">학교설명</p>
 												</div>
-												<div class="borderon mt-auto align-self-end">
-													<a href="http://google.com">
+											</div>
+											<!--  align-items-center  -->
+											<div class="col-md-5 d-flex flex-column justify-content-center align-items-center borderon">
+												<div class="borderon mt-auto align-self-left">
+													<a th:href="${school.homepage}" target="_blank">
 														<i class="mdi mdi-web text-primary icon-md"></i>
 													</a>
-													<a href="http://google.com">
+													<a th:href="'http://instagram.com/' + ${school.insta}" target="_blank">
 														<i class="mdi mdi-instagram text-primary icon-md"></i>
 													</a>
-													<a href="http://google.com">
+													<a th:href="${school.youtube}" target="_blank">
 														<i class="mdi mdi-youtube-play text-primary icon-md"></i>
 													</a>
-													<a href="http://google.com">
+													<a th:href="${school.facebook}" target="_blank">
 														<i class="mdi mdi-facebook-box text-primary icon-md"></i>
 													</a>
 												</div>
-											</div>
-
-											<div class="col-md-5 d-flex flex-column justify-content-center align-items-center borderon">
 												<div class="table-responsive borderon">
 													<table class="table card-description">
 														<tbody>
 															<tr>
 																<td width="40%">학생국적비율</td>
 																<td>
+																	<!--  <div th:style="'background:url(' + @{/<path-to-image>} + ');'"></div> 
+																<input type="submit" value="Subscribe me!" th:attr="value=#{subscribe.submit}"/>-->
 																	<div class="progress">
-																		<div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+																		<div th:style="'width:' + ${school.nationalmix} + '%' + ';'" class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25"
+																			aria-valuemin="0" aria-valuemax="100"></div>
 																	</div>
 																</td>
 															</tr>
@@ -425,7 +266,8 @@ a {
 																<td>시내접근성</td>
 																<td>
 																	<div class="progress">
-																		<div class="progress-bar bg-danger" role="progressbar" style="width: 55%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+																		<div th:style="'width:' + ${school.towndistance} + '%' + ';'" class="progress-bar bg-danger" role="progressbar" style="width: 55%" aria-valuenow="75"
+																			aria-valuemin="0" aria-valuemax="100"></div>
 																	</div>
 																</td>
 															</tr>
@@ -433,7 +275,8 @@ a {
 																<td>액티비티</td>
 																<td>
 																	<div class="progress">
-																		<div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+																		<div th:style="'width:' + ${school.activity} + '%' + ';'" class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90"
+																			aria-valuemin="0" aria-valuemax="100"></div>
 																	</div>
 																</td>
 															</tr>
@@ -449,10 +292,11 @@ a {
 														</tbody>
 													</table>
 												</div>
-
-
 												<div class="template-demo text-center borderon">
-													<input class="btn btn-outline-primary" type="button" value="자세히 보기" onclick="window.location.href='/boards/school/course'" />
+													<!--  th:onclick="'alert(\'' + ${myVar} + '\');'" -->
+													<!--  onclick="window.location.href='/boards/school/course'" -->
+													<input class="mui-btn mui-btn--flat font-b" type="button" value="자세히 보기"
+														th:onclick="'window.location.href = \'' + @{/school/course?s_id={id}(id=${school.idschool})} + '\''" />
 													<!-- <button type="button" class="btn btn-outline-success">6개월과정 오후코스</button>
 													<button type="button" class="btn btn-outline-primary">6개월과정 오전코스</button>
 													<button type="button" class="btn btn-outline-success">6개월과정 오후코스</button> -->
@@ -474,60 +318,8 @@ a {
 
 
 
-
-
-
 					</div>
-
-
-
-
-
-					<div style="height: 2000px"></div>
-
-					<div class="row">
-						<div class="col-lg-12 grid-margin">
-							<div class="school-card">
-								<div class="card">
-									<div class="card-body">
-										<h2 class="card-title">잉글리쉬아우워</h2>
-										<p class="card-description">테스트 글</p>
-										<div class="table-responsive"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12 grid-margin">
-							<div class="school-card">
-								<div class="card">
-									<div class="card-body">
-										<h2 class="card-title">잉글리쉬아우워</h2>
-										<p class="card-description">테스트 글</p>
-										<div class="table-responsive"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12 grid-margin">
-							<div class="school-card">
-								<div class="card">
-									<div class="card-body">
-										<h2 class="card-title">잉글리쉬아우워</h2>
-										<p class="card-description">테스트 글</p>
-										<div class="table-responsive"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-
-
+					<!-- container-fluid end -->
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:partials/_footer.html -->

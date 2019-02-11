@@ -1,5 +1,9 @@
 package com.rainbowtape.boards.dao;
 
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,4 +20,13 @@ public interface PostDAO extends JpaRepository<Post, Long> {
 	Post findByIdpost(@Param("idpost") int idpost);
 	
 	void deleteByIdpost(int idpost);
+
+	@Query(value = "SELECT * FROM post WHERE p_special = ?1", nativeQuery = true)
+	List<Post> findSpecialPost(String string);
+	
+	@Query(value = "SELECT * FROM post p WHERE p.p_special IS NULL ORDER BY ?#{#pageable}",
+			countQuery = "SELECT count(*) FROM post p WHERE p.p_special IS NULL ORDER BY ?#{#pageable}",
+		    nativeQuery = true)
+	Page<Post> findAll(Pageable pageable);
+
 }

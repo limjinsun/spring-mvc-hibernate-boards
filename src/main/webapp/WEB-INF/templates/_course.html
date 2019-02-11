@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-<title>School Page</title>
+<title th:text="'리피의 아일랜드 : ' + ${school.name}">School Page</title>
 <!-- Favicons and -- For iPhone -->
 <link rel="icon" th:href="@{'/resources/images/favicon.ico'}" sizes="32x32">
 <link rel="apple-touch-icon-precomposed" th:href="@{'/resources/images/favicon.ico'}">
@@ -48,7 +48,6 @@
 	background: rgba(220, 220, 220, 0.1);
 }
 
-
 .borderon {
 	/* border-style: solid;
 	border-width: thin; */
@@ -73,9 +72,10 @@ a {
 	width: 100%; /* The width is the width of the web page */
 }
 
+/* th:src="@{'/resources/images' + ${school.logo} }" */
 .outbox {
 	background:
-		url([[@{/resources/images/school_header/englishour_header.jpg}]]) #000
+		url([[@{'/images' + ${school.schoolpics} }]]) #000
 		55% 0 no-repeat;
 	background-size: 140% auto;
 	margin-top: -68px;
@@ -103,7 +103,6 @@ a {
 </style>
 
 <style>
-
 </style>
 </head>
 <body style="overflow-x: unset;">
@@ -112,7 +111,7 @@ a {
 			<nav class="navbar default-layout col-lg-12 col-12 p-0 d-flex flex-row">
 				<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center" style="background-color: rgba(255, 255, 255 .5);">
 					<a class="navbar-brand brand-logo" th:href="@{'/'}">
-						<span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span>
+						<!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> -->
 						<span class="menu-title font-b">
 							<small class="borderlist">리피의아일랜드</small>
 						</span>
@@ -121,7 +120,7 @@ a {
 					</a>
 					<a class="navbar-brand brand-logo-mini" th:href="@{'/'}">
 						<span class="menu-title font-b">
-							<small class="borderlist">리피</small>
+							<small class="borderlist">홈</small>
 						</span>
 						<!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i> -->
 						<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
@@ -156,18 +155,22 @@ a {
 					<div class="row borderon">
 						<div class="col-lg-5" style="margin-top: -60px; z-index: 3;">
 							<div class="card mui-panel borderon" style="margin-bottom: 0; padding: 3px;">
-								<h3 class="card-title borderon" style="margin: 15px; margin-bottom: 8px;">잉글리쉬아우워 Englishour</h3>
+								<h3 class="card-title borderon" th:text="${school.name}" style="margin: 15px; margin-bottom: 8px;">학교이름</h3>
 								<h6 class="card-description" style="margin-left: 12px;">
-									<i class="mdi mdi-web text-dark icon-sm borderon"></i>
-									<span>더블린&nbsp</span>
+									<i class="mdi mdi-map-marker-circle text-dark icon-sm borderon"></i>
+									<span th:text=${school.location}>더블린</span>
+									&nbsp
 									<i class="mdi mdi-bank text-dark icon-sm borderon"></i>
-									<span>사설어학원&nbsp</span>
+									<span th:text=${school.type}>사설어학원</span>
+									&nbsp
 									<i class="mdi mdi-view-day text-dark icon-sm borderon"></i>
-									<span>중규모&nbsp</span>
+									<span th:text=${school.size}>중규모</span>
+									&nbsp
 									<i class="mdi mdi-human-male-female text-dark icon-sm borderon"></i>
-									<span>한반14명&nbsp</span>
+									<span th:text=${school.classsize}>한반14명</span>
+									&nbsp
 									<i class="mdi mdi-clipboard-check text-dark icon-sm borderon"></i>
-									<span>인증&nbspILEP, ACELS</span>
+									<span th:text=${school.certificate}>인증&nbspILEP, ACELS</span>
 								</h6>
 							</div>
 						</div>
@@ -211,10 +214,10 @@ a {
 												<li class="mdl-menu__item" data-val="RU">Russia</li>
 											</ul>
 										</div>
-										 
+
 
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select ">
-											
+
 											<label class="mdl-textfield__label" for="octane">Octane</label>
 											<select class="mdl-textfield__input" id="octane" name="octane">
 												<option></option>
@@ -230,17 +233,15 @@ a {
 										<form class="mui-form">
 											<legend></legend>
 											<div class="mui-select">
-												<select>
-													<option>제너럴잉글리쉬 6개월과정 주 15시간 오전</option>
-													<option>제너럴잉글리쉬 6개월과정 주 15시간 오후</option>
-													<option>Option 3</option>
-													<option>Option 4</option>
+												<select id="course-selecting">
+													<option>option1</option>
+													<option>option2</option>
 												</select>
 												<label>어학원 코스를 선택하세요.</label>
 											</div>
 
 											<div class="mui-pannel">
-												<p class="card-description">월~금 매일 아침9:30분부터 12:30까지 진행되는 기본영어 코스입니다. 하루 2번의 레슨으로 구성되어집니다.</p>
+												<p id="course-describe" class="card-description">코스소개</p>
 											</div>
 											<!-- <div class="mui-select">
 												<select>
@@ -251,10 +252,18 @@ a {
 											</div> -->
 											<!-- <button type="submit" class="mui-btn mui-btn--raised">Submit</button> -->
 										</form>
-										<table class="mui-table">
+										<table class="mui-table borderon">
 											<thead>
 												<tr>
-													<th style="font-family: Nanum Square; padding-left: 0px;">어학코스 가격</th>
+													<th style="font-family: Nanum Square; padding-left: 0px;">
+														<div class="borderon">
+															<span class="borderon">어학코스 가격</span>
+															<span class="align-self-right borderon">
+																<small id="today">오늘날짜.</small>
+																<small> 환율정보로 업데이트된 가격입니다.</small>
+															</span>
+														</div>
+													</th>
 													<!-- <th>Column 2</th> -->
 												</tr>
 											</thead>
@@ -266,7 +275,7 @@ a {
 														</div>
 														<span class="text-right">
 															<div>
-																<h3>$ 4,500,400</h3>
+																<h3 id="course-pricing"></h3>
 															</div>
 														</span>
 													</td>
@@ -279,7 +288,7 @@ a {
 														</div>
 														<span class="text-right text-danger">
 															<div>
-																<h3>$ 4,000,500</h3>
+																<h3 id="course-special-pricing"></h3>
 															</div>
 														</span>
 													</td>
@@ -345,18 +354,18 @@ a {
 										<div class="row borderon">
 											<div class="col-lg-2 d-flex justify-content-center align-items-center borderon">
 												<div>
-													<img th:src="@{'/resources/images/logos/englishour-logo.png'}" width="100%" style="max-height: 250px; max-width: 250px;" alt="" />
+													<img th:src="@{'/images' + ${school.logo} }" width="100%" style="max-height: 250px; max-width: 250px;" alt="" />
 												</div>
 											</div>
 											<div class="col-lg-6 d-flex flex-column borderon">
 												<div class="borderon">
 													<i class="mdi mdi-map-marker-circle text-primary icon-sm"></i>
 													<span style="margin-left: 3px;">
-														<small class="text-primary">372 Harolds Cross Rd, Dublin</small>
+														<small class="text-primary" th:text="${school.address}" >학교주소</small>
 													</span>
 												</div>
 												<div class="borderon">
-													<p class="card-description">잉글리쉬 아워는 더블린 시티 중심에 위치한 중규모 어학원 입니다. 여기에 학원에 대한 내용을 적으시면 됩니다.</p>
+													<p class="card-description" th:text="${school.description}">학교설명</p>
 												</div>
 												<div class="table-responsive borderon">
 													<table class="table card-description">
@@ -365,7 +374,7 @@ a {
 																<td width="40%">학생국적비율</td>
 																<td>
 																	<div class="progress">
-																		<div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+																		<div th:style="'width:' + ${school.nationalmix} + '%' + ';'" class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 																	</div>
 																</td>
 															</tr>
@@ -373,7 +382,7 @@ a {
 																<td>시내접근성</td>
 																<td>
 																	<div class="progress">
-																		<div class="progress-bar bg-danger" role="progressbar" style="width: 55%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+																		<div th:style="'width:' + ${school.towndistance} + '%' + ';'" class="progress-bar bg-danger" role="progressbar" style="width: 55%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 																	</div>
 																</td>
 															</tr>
@@ -381,7 +390,7 @@ a {
 																<td>액티비티</td>
 																<td>
 																	<div class="progress">
-																		<div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+																		<div th:style="'width:' + ${school.activity} + '%' + ';'" class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
 																	</div>
 																</td>
 															</tr>
@@ -399,16 +408,16 @@ a {
 												</div>
 												<div class="borderon mt-auto align-self-end">
 
-													<a href="http://google.com">
+													<a th:href="${school.homepage}" target="_blank">
 														<i class="mdi mdi-web text-primary icon-md"></i>
 													</a>
-													<a href="http://google.com">
+													<a th:href="'http://instagram.com/' + ${school.insta}" target="_blank">
 														<i class="mdi mdi-instagram text-primary icon-md"></i>
 													</a>
-													<a href="http://google.com">
+													<a th:href="${school.youtube}" target="_blank">
 														<i class="mdi mdi-youtube-play text-primary icon-md"></i>
 													</a>
-													<a href="http://google.com">
+													<a th:href="${school.facebook}" target="_blank">
 														<i class="mdi mdi-facebook-box text-primary icon-md"></i>
 													</a>
 
@@ -429,29 +438,50 @@ a {
 															<tr>
 																<td width="40%">코스 등록비</td>
 																<td class="text-right">
-																	₩ 0
-																	<label class="badge badge-danger">리피특별</label>
+																	<span id="addmisionfee-badge"> </span>
+																	&nbsp
+																	<span id="admission-price" class="font-weight-bold">₩0</span>
 																</td>
 															</tr>
 															<tr>
-																<td>공식시험비</td>
-																<td class="text-right">₩ 0</td>
+																<td width="40%">공식시험비</td>
+																<td class="text-right">
+																	<span id="examfee-badge"> </span>
+																	&nbsp
+																	<span id="exam-price" class="font-weight-bold">₩0</span>
+																</td>
 															</tr>
 															<tr>
-																<td>교재비</td>
-																<td class="text-right">₩ 20000</td>
+																<td width="40%">교재비</td>
+																<td class="text-right">
+																	<span id="textbookfee-badge"> </span>
+																	&nbsp
+																	<span id="textbook-price" class="font-weight-bold">₩0</span>
+																</td>
 															</tr>
 															<tr>
-																<td>메디컬인슈어런스</td>
-																<td class="text-right">₩ 180000</td>
+																<td width="40%">메디컬 인슈어런스</td>
+																<td class="text-right">
+																	<span id="insurancefee-badge"> </span>
+																	&nbsp
+																	<span id="insurance-price" class="font-weight-bold">₩0</span>
+																</td>
 															</tr>
 															<tr>
-																<td>홈스테이 배정비</td>
-																<td class="text-right">₩ 50000</td>
+																<td width="40%">홈스테이 배정비</td>
+																<td class="text-right">
+																	<span id="hostbookingfee-badge"> </span>
+																	&nbsp
+																	<span id="hostbooking-price" class="font-weight-bold">₩0</span>
+																</td>
 															</tr>
 															<tr>
-																<td>홈스테이 주당</td>
-																<td class="text-right">₩ 270000</td>
+																<td width="40%">홈스테이 1주비용</td>
+																<td class="text-right">
+																	<span id="hostfeeperweek-badge"> </span>
+																	&nbsp
+																	<span id="host-price" class="font-weight-bold">₩0</span>
+																</td>
 															</tr>
 														</tbody>
 													</table>
@@ -467,6 +497,8 @@ a {
 								</div>
 							</div>
 						</div>
+
+
 
 
 
@@ -518,17 +550,41 @@ a {
 					</div>
 				</div>
 
+
+
+
 				<div class="content-wrapper">
+
+					<div class="col-lg-12 grid-margin">
+						<div class="school-card h-100">
+							<div class="card  h-100">
+								<!-- <div class="card-header borderon"></div> -->
+
+									<div class="card-body col-lg-12">
+										<h3 class="card-title font-b">리피의 코멘트</h4>
+										<p class="card-description" id="admin-text" th:text="${school.admintext}">
+											admin-text</p>
+									</div>
+									<!-- <div class="row borderon">
+										<div class="col-lg-12 d-flex justify-content-center align-items-center borderon">
+											<h3 class="font-b">리피의 코멘트</h3>
+
+										</div>
+									</div> -->
+							</div>
+						</div>
+					</div>
+
+
+
 					<div class="col-lg-12 borderon">
 						<div class="card borderon">
 							<div class="card-body borderon">
-								<h6 class="card-title borderon">
-									<ul>
-										<li>곳곳마다 다른 코스금액, 공식가격이 차이나는 이유는 어학원의 실제가격과의 차이때문입니다. 그리고 이 실제가격은 각 유학서비스와 어학원들의 복잡한 관계때문에 겉으로 드러나지 않습니다.</li>
-										<li>리피의 아일랜드의 모든 어학원은 현지에서 직접 컨택하여, 소비자에게 공개되지 않는, 해당 시기의 가장 좋은 Rate로 현지에서 등록 진행해 드립니다.</li>
-										<li>아일랜드 어학연수는 어학원 만으로는 해결되지 않는 부분들이 있습니다. 현지에서의 생활에 대해서 진지하게 고민해보시고 도전하세요. 리피의 아일랜드는 회원들이 현지에서 각자 자신의 생활을 잘 만들어 갈수있도록 도움드리고 있습니다.</li>
-									</ul>
-								</h6>
+								<p class="card-description font-a borderon">
+									‣ 곳곳마다 다른 코스금액, 공식가격이 차이나는 이유는 어학원의 실제가격과의 차이때문입니다. 그리고 이 실제가격은 각 유학서비스와 어학원들의 복잡한 관계때문에 겉으로 드러나지 않습니다.<br/>
+									‣ 리피의 아일랜드의 모든 어학원은 현지에서 직접 컨택하여, 소비자에게 공개되지 않는, 해당 시기의 가장 좋은 Rate로 현지에서 등록 진행해 드립니다.<br/>
+									‣ 아일랜드 어학연수는 어학원 만으로는 해결되지 않는 부분들이 있습니다. 현지에서의 생활에 대해서 진지하게 고민해보시고 도전하세요. 리피의 아일랜드는 회원들이 현지에서 각자 자신의 생활을 잘 만들어 갈수있도록 도움드리고 있습니다.<br/>
+								</p>
 
 								<div>
 									<form th:action="@{'/consulting'}" method="get">
@@ -561,13 +617,13 @@ a {
 		</div>
 		<!-- page-body-wrapper ends -->
 	</div>
-	<script>
+	<script th:inline="text">
 		// Initialize and add the map
 		function initMap() {
 			// The location of Uluru
 			var position = {
-				lat : 53.348,
-				lng : -6.258
+				lat : [[${school.latitude}]],
+				lng : [[${school.longitude}]]
 			};
 			// The map, centered at Uluru
 			var map = new google.maps.Map(document.getElementById('map'), {
@@ -627,6 +683,7 @@ a {
 				position : position,
 				map : map
 			});
+			console.log(position);
 		}
 	</script>
 	<!--Load the API from the specified URL
@@ -637,12 +694,13 @@ a {
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkG9vUC8MV7ttpf2MSSNW74wOgbn-6DNM&callback=initMap"></script>
 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script>
-		fetch("/boards/school/api/insta/englishour")
+
+	<script th:inline="text">
+		fetch("[[@{'/api/school/insta/' + ${school.insta} }]]")
 			.then((res) => res.json())
 			.then(function(data){
 				return data.entry_data.ProfilePage["0"].graphql.user.edge_owner_to_timeline_media.edges;
-			}).then(function(data) {					  
+			}).then(function(data) {
 				return data.map(dataItem => dataItem.node.display_url)
 			}).then(data => {
 				for (i=1; i < 5; i++){
@@ -653,13 +711,120 @@ a {
 				document.getElementById("instafeed").classList.remove('d-none');
 				document.getElementById("instafeed").classList.add('d-flex');
 			})
-			.catch(function() {
-		        console.log("error");
+			.catch(function(e) {
+		        console.log(e);
 		    });;
-		    			
+
 		function getElementByXpath(path) {
   			return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 		}
+	</script>
+
+	<script th:inline="text">
+	/** clearing select options **/
+	var select = document.getElementById("course-selecting");
+	select.options.length = 0;
+	
+	var KORrates = ""
+	var today = ""
+	
+	axios.get("https://api.exchangeratesapi.io/latest")
+		.then(response => (this.info = response))
+		.then(function(result){
+			KORrates = result.data.rates.KRW
+			today = result.data.date
+			fetch("[[@{'/api/school/courseDetails?s_id=' + ${school.idschool} }]]")
+				.then((res) => res.json())
+				.then(function(data){
+					var coursedescribe = data[0].description
+					var price = data[0].price * KORrates
+					var specialprice = data[0].specialprice * KORrates
+					document.getElementById("today").innerHTML = today
+					document.getElementById("course-describe").innerHTML = coursedescribe
+					document.getElementById("course-pricing").innerHTML = '￦' + '&nbsp' + numberWithCommas(price)
+					document.getElementById("course-special-pricing").innerHTML = '￦' + '&nbsp' + numberWithCommas(specialprice)
+				}).catch(function(e) {
+					console.log(e);
+				})
+		})
+	    .catch(function(e) {
+			console.log(e);
+		})
+	
+	axios.get("https://api.exchangeratesapi.io/latest")
+		.then(response => (this.info = response))
+		.then(function(result){
+			KORrates = result.data.rates.KRW
+	        fetch("[[@{'/api/school/courseDetails?s_id=' + ${school.idschool} }]]")
+				.then((res) => res.json())
+				.then(function(data){
+					for(i = 0; i < data.length; ++i){
+						select.options[select.options.length] = new Option(data[i].name, i)
+					}
+					select.addEventListener('change',function(){
+						var index = document.getElementById("course-selecting").value
+						var price = data[index].price * KORrates
+						var specialprice = data[index].specialprice * KORrates
+						document.getElementById("course-pricing").innerHTML = '￦' + '&nbsp' + numberWithCommas(price)
+						document.getElementById("course-special-pricing").innerHTML = '￦' + '&nbsp' + numberWithCommas(specialprice)
+						document.getElementById("course-describe").innerHTML = data[index].description
+					})
+				})
+				.catch(function(e) {
+			        console.log(e);
+			    })
+		})
+	    .catch(function(e) {
+			console.log(e);
+		})
+	
+	axios.get("https://api.exchangeratesapi.io/latest")
+		.then(response => (this.info = response))
+		.then(function(result){
+			KORrates = result.data.rates.KRW
+			today = result.data.date
+			fetch("[[@{'/api/school/schoolDetails?s_id=' + ${school.idschool} }]]")
+				.then((res) => res.json())
+				.then(function(schooldata){
+					/* console.log(schooldata)
+					console.log(KORrates) */
+					
+					if (schooldata.addmisionfee == 0) makeBadge('addmisionfee'+'-badge')
+                    if (schooldata.textbookfee == 0) makeBadge('textbookfee'+'-badge')
+                    if (schooldata.insurancefee == 0) makeBadge('insurancefee'+'-badge')
+                    if (schooldata.examfee == 0) makeBadge('examfee'+'-badge')
+                    if (schooldata.hostbookingfee == 0) makeBadge('hostbookingfee'+'-badge')
+                    if (schooldata.hostfeeperweek == 0) makeBadge('hostfeeperweek'+'-badge')
+                    
+					var admissionprice = schooldata.admissionfee * KORrates
+					var examprice = schooldata.examfee * KORrates
+					var texbookprice = schooldata.textbookfee * KORrates
+					var insuranceprice = schooldata.insurancefee * KORrates
+					var hostbookingprice = schooldata.hostbookingfee * KORrates
+					var hostpriceperweek = schooldata.hostfeeperweek * KORrates
+					
+					document.getElementById("admission-price").innerHTML = '￦' + '&nbsp' + numberWithCommas(admissionprice)
+					document.getElementById("exam-price").innerHTML = '￦' + '&nbsp' + numberWithCommas(examprice)
+					document.getElementById("textbook-price").innerHTML = '￦' + '&nbsp' + numberWithCommas(texbookprice)
+					document.getElementById("insurance-price").innerHTML = '￦' + '&nbsp' + numberWithCommas(insuranceprice)
+					document.getElementById("hostbooking-price").innerHTML = '￦' + '&nbsp' + numberWithCommas(hostbookingprice)
+					document.getElementById("host-price").innerHTML = '￦' + '&nbsp' + numberWithCommas(hostpriceperweek)
+				}).catch(function(e) {
+					console.log(e);
+				})
+		})
+	    .catch(function(e) {
+			console.log(e);
+		})
+	
+	function numberWithCommas(x) {
+		    x =	Math.round(x/1000)*1000
+	        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	    }
+	
+	function makeBadge(id){
+	    	document.getElementById(id).innerHTML = '<label class="badge badge-warning">리피회원특별</label>'
+	    }
 	</script>
 
 	<!-- container-scroller -->
