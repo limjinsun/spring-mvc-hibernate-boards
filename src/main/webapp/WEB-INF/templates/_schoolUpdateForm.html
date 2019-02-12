@@ -111,7 +111,7 @@ a {
         <div class="row purchace-popup sticky-top w-100" style="background-color: rgba(228, 228, 228, 1);">
             <div class="col-12" style="margin-bottom: 0px; padding: 0px;">
                 <span class="d-block d-flex justify-content-between">
-                    <h6 class="card-description font-b" style="margin: 0;">리피의 아일랜드 학교등록폼</h6>
+                    <h6 class="card-description font-b" style="margin: 0;">리피의 아일랜드 학교수정폼</h6>
                 </span>
             </div>
         </div>
@@ -132,7 +132,7 @@ a {
                             <div class="card-body" style="padding: 1.1rem 1.9rem;">
                                 <div class="row">
                                     <div class="col-lg-7 borderon">
-                                        <h2 class="card-description">학교등록 폼입니다.</h2>
+                                        <h2 class="card-description">학교수정 폼입니다.</h2>
                                         <p class="card-description">
                                             <i class="fa fa-caret-right"></i>
                                             관리자만 접근 가능한 페이지 입니다.
@@ -150,9 +150,9 @@ a {
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 mx-auto borderon">
-                                        <form class="mui-form" method="POST" th:action="@{'/school/addSchool'}" th:object="${school}" enctype="multipart/form-data" />
+                                        <form class="mui-form" method="POST" th:action="@{'/school/update/' + ${school.idschool} }" th:object="${school}" enctype="multipart/form-data" />
                                         <div class="mui-textfield">
-                                            <input th:filed=${school.schoolDirectoryName} type="text" id="schoolDirectoryName" name="schoolDirectoryName">
+                                            <input th:field=${school.schoolDirectoryName} type="text" id="schoolDirectoryName" name="schoolDirectoryName">
                                             <label>이미지파일디렉토리이름</label>
                                         </div>
                                         <div class="mui-textfield">

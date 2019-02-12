@@ -26,6 +26,9 @@ public class School {
 	@Column(name="idschool")
 	private int idschool;
 	
+	@Column(name="s_schoolDirectoryName") 
+	private String schoolDirectoryName;
+	
 	@Column(name="s_name")
 	private String name;
 	
@@ -373,5 +376,14 @@ public class School {
 	public void setSpecial(String special) {
 		this.special = special;
 	}
+	
+	public String getSchoolDirectoryName() {
+		return schoolDirectoryName;
+	}
+
+	public void setSchoolDirectoryName(String schoolDirectoryName) {
+		this.schoolDirectoryName = schoolDirectoryName;
+	}
+
 	
 }

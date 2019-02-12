@@ -28,4 +28,9 @@ public class SchoolServiceImpl implements SchoolService {
 	public void save(School school) {
 		schoolDAO.save(school);
 	}
+
+	@Override
+	public void delete(School school) {
+		schoolDAO.delete(school);
+	}
 }

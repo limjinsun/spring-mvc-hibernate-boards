@@ -9,5 +9,6 @@ public interface SchoolService {
 	List<School> getAllSchool();
 	School findOne(int idschool);
 	void save(School school);
+	void delete(School school);
 	
 }

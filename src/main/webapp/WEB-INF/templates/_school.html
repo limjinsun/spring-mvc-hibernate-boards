@@ -201,8 +201,22 @@ a {
 												<i class="mdi mdi-clipboard-check text-dark icon-sm borderon"></i>
 												<span th:text=${school.certificate}>인증&nbspILEP, ACELS</span>
 												<span>
-													<a th:href="@{'/school/update/'+${school.idschool} }"
-														th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">&nbsp<i class="mdi mdi-flip-to-back text-danger icon-sm borderon"></i>학교정보수정하기</a>
+													<a th:href="@{'/school/update/'+${school.idschool} }" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+														&nbsp
+														<i class="mdi mdi-flip-to-back text-danger icon-sm borderon"></i>
+														학교정보수정하기
+													</a>
+												</span>
+												&nbsp
+												<span>
+													<form style="display:inline;" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" th:id="'delete-school-id' + ${school.idschool}"
+														th:action="@{'/school/delete/'+${school.idschool} }" method="post" />
+													<a href="javascript:{}" th:onclick="'document.getElementById(\'delete-school-id' + ${school.idschool} + '\').submit(); return false;'">
+														&nbsp
+														<i class="mdi mdi-flip-to-back text-danger icon-sm borderon"></i>
+														학교삭제
+													</a>
+													</form>
 												</span>
 											</h6>
 										</div>
