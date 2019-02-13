@@ -207,8 +207,8 @@ a {
 														수정
 													</a>
 												</span>
-												<span>
-													<form style="display:inline;" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" th:id="'delete-school-id' + ${school.idschool}"
+												<span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+													<form style="display:inline;" th:id="'delete-school-id' + ${school.idschool}"
 														th:action="@{'/school/delete/'+${school.idschool} }" method="post" />
 													<a href="javascript:{}" th:onclick="'document.getElementById(\'delete-school-id' + ${school.idschool} + '\').submit(); return false;'">
 														&nbsp
@@ -222,6 +222,13 @@ a {
 														&nbsp
 														<i class="mdi mdi-flip-to-back text-danger icon-sm borderon"></i>
 														코스추가
+													</a>
+												</span>
+												<span>
+													<a th:href="@{'/school/modifyCourse/'+${school.idschool} }" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+														&nbsp
+														<i class="mdi mdi-flip-to-back text-danger icon-sm borderon"></i>
+														코스수정
 													</a>
 												</span>
 											</h6>

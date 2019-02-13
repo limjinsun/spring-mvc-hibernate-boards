@@ -1,0 +1,289 @@
+    <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <title>School Page</title>
+    <!-- Favicons and -- For iPhone -->
+    <link rel="icon" th:href="@{'/resources/images/favicon.ico'}" sizes="32x32">
+    <link rel="apple-touch-icon-precomposed" th:href="@{'/resources/images/favicon.ico'}">
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    <meta name="msapplication-TileImage" th:href="@{'/resources/images/favicon.ico'}">
+    <!-- CSS -->
+    <link href="https://cdn.muicss.com/mui-0.9.41/css/mui.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.muicss.com/mui-0.9.41/js/mui.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
+    <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/font-awesome/css/font-awesome.css'}" type="text/css">
+    <link rel="stylesheet" th:href="@{'/resources/vendors/icheck/skins/all.css'}" type="text/css">
+    <link rel="stylesheet" th:href="@{'/resources/css/style.css'}" type="text/css">
+    <link rel="stylesheet" th:href="@{'/resources/css/custom.css'}" type="text/css">
+    <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
+    <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.base.css'}" type="text/css">
+    <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.addons.css'}" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{'/resources/css/material-datetime-picker.css'}" type="text/css">
+    <style type="text/css">
+    .navbar.default-layout {
+        transition: background 0.25s ease;
+        -webkit-transition: background 0.25s ease;
+        -moz-transition: background 0.25s ease;
+        -ms-transition: background 0.25s ease;
+        background-color: #ffffff;
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0),
+            rgba(220, 220, 220, 0.4));
+    }
+
+    .content-wrapper {
+        background: rgba(220, 220, 220, 0.1);
+    }
+
+    .footer {
+        background: rgba(220, 220, 220, 0.1);
+        border-top: 0.5px solid #f2f2f2;
+    }
+
+    .borderon {
+        /* border-style: solid;
+        border-width: thin; */
+
+    }
+
+    .min-height-fix {
+        min-height: 200px;
+    }
+
+    .center-fix {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .vertical-center {
+        min-height: 100%;
+        /* Fallback for browsers do NOT support vh unit */
+        /*  min-height: 100vh;  */
+        /* These two lines are counted as one :-)       */
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    a {
+        text-decoration: none !important;
+    }
+    </style>
+    <style type="text/css">
+    input[type="file"] {
+        /* display: none; */
+        position: absolute;
+        left: -99999rem
+    }
+
+    .custom-file-upload {
+        border: 2.5px solid black;
+        display: inline-block;
+        padding: 10px 12px;
+        cursor: pointer;
+        margin: 20px;
+    }
+    </style>
+    <style>
+        .c-datepicker__header-date {
+        background: #292929;
+    }
+
+    .c-datepicker__header-day {
+        background: #4c4c4c;
+    }
+    </style>
+</head>
+
+<body style="overflow-x: unset;">
+
+    <script src="https://unpkg.com/babel-polyfill@6.2.0/dist/polyfill.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rome/2.1.22/rome.standalone.js"></script>
+    <script th:src="@{'/resources/js/material-datetime-picker.js'}" charset="utf-8"></script>
+
+    <div class="container-scroller" style="overflow: unset;">
+        <div class="header-firstnav">
+            <nav class="navbar default-layout col-lg-12 col-12 p-0 d-flex flex-row">
+                <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+                    <a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b"> <small class="borderlist">리피의아일랜드</small>
+                        </span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> --> <!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
+                        </a> <a class="navbar-brand brand-logo-mini" th:href="@{'/'}"> <span class="menu-title font-b"> <small class="borderlist">홈</small>
+                        </span> <!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i> --> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
+                        </a>
+                </div>
+            </nav>
+        </div>
+        <div class="row purchace-popup sticky-top w-100" style="background-color: rgba(228, 228, 228, 1);">
+            <div class="col-12" style="margin-bottom: 0px; padding: 0px;">
+                <span class="d-block d-flex justify-content-between">
+                        <h6 class="card-description font-b" style="margin: 0;">리피의 아일랜드 학교 코스 등록폼</h6>
+                    </span>
+            </div>
+        </div>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper" style="padding-top: 0px">
+            <!-- partial -->
+            <div class="main-panel" style="width: 100%;">
+                <div class="content-wrapper">
+                    <div th:if="${#lists.isEmpty(courses)}">
+                        <p>코스가 없습니다.</p>
+                    </div>
+                    <div class="col-12 grid-margin borderon" th:if="!${#lists.isEmpty(courses)}" th:each="item : ${courses}">
+                        <div class="card borderon" style="padding: 0px;">
+                            <!-- <div class="card-header" style="padding-bottom: 0;">
+                                    <div class="clearfix">
+                                        <div class="float-left">
+                                            <i class="fa fa-graduation-cap text-primary icon-big"></i>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            <div class="card-body" style="padding: 1.1rem 1.9rem;">
+                                <div class="row">
+                                    <div class="col-lg-7 borderon">
+                                        <h2 class="card-description">학교 코스 수정폼입니다.</h2>
+                                        <p class="card-description">
+                                            <i class="fa fa-caret-right"></i> 관리자만 접근 가능한 페이지 입니다. <br />
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                    <!-- <div class="col-lg-3 borderon">hello</div> -->
+                                </div>
+                                <div class="row">
+                                    <div th:if="${errormsg}">
+                                        <div class="text-danger card-description">
+                                            <span th:text="${errormsg}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 mx-auto borderon">
+                                        <form class="mui-form" th:object="${item}" method="POST" enctype='application/x-www-form-urlencoded' th:action="@{'/school/modifyCourse/' + ${school.idschool} + '/' + ${item.idcourse} }" />
+                                        <div class="mui-textfield">
+                                            <input th:value="${item.name}" type="text" id="name" name="name">
+                                            <label>코스이름</label>
+                                        </div>
+                                        <div class="mui-textfield">
+                                            <input th:value="${item.price}" type="text" id="price" name="price">
+                                            <label>코스가격</label>
+                                        </div>
+                                        <div class="mui-textfield">
+                                            <input th:value="${item.specialprice}" type="text" id="specialprice" name="specialprice">
+                                            <label>코스할인가격</label>
+                                        </div>
+                                        <div class="mui-textfield">
+                                            <a class="datetime-togglet" th:id="'datetimeselector' + ${item.idcourse}" > <span class="mdi mdi-calendar-check icon-xmd" style="padding-top: 0px; position: absolute;"></span>
+                                                </a><input style="padding-left: 25px;" th:value="${item.specialdue}" type="text" th:id="'datetimeinput' + ${item.idcourse}" name="specialdue">
+                                            <label>할인마감날짜</label>
+                                        </div>
+                                        <div class="mui-textfield">
+                                            <textarea id="description" name="description" cols="" rows="" style="min-height: 150px" th:inline="text">[[${item.description}]]</textarea>
+                                            <label>코스소개 </label>
+                                        </div>
+                                        <div class="mui-textfield">
+                                            <textarea id="admintext" name="admintext" cols="" rows="" style="min-height: 150px" th:inline="text">[[${item.admintext}]]</textarea>
+                                            <label>리피의 코스 코멘트 - 아직사용안함 </label>
+                                        </div>
+                                        <div class="mui-textfield">
+                                            <input th:value="${item.extra}" type="text" id="extra" name="extra">
+                                            <label>코스 - extra </label>
+                                        </div>
+                                        <button type="submit" class="mui-btn mui-btn--raised">Submit</button>
+                                        </form>
+
+
+                                        <script th:inline="javascript">
+                                        var picker = new MaterialDatetimePicker({}).on('submit', function(d) {
+                                            var myDate = new Date(d);
+                                            mysqldate = myDate.getUTCFullYear() + '-' +
+                                                ('00' + (myDate.getUTCMonth() + 1)).slice(-2) + '-' +
+                                                ('00' + myDate.getUTCDate()).slice(-2) + ' ' +
+                                                ('00' + myDate.getUTCHours()).slice(-2) + ':' +
+                                                ('00' + myDate.getUTCMinutes()).slice(-2) + ':' +
+                                                ('00' + myDate.getUTCSeconds()).slice(-2);
+                                            document.getElementById("datetimeinput[[${item.idcourse}]]").value = mysqldate;
+                                        });
+
+                                        var el = document.getElementById("datetimeselector[[${item.idcourse}]]");
+                                        el.addEventListener('click', function() {
+                                            picker.open();
+                                        }, false);
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div style="height: 2000px;"></div> -->
+                    <!-- <div class="container-fluid d-flex flex-wrap">
+                        </div> -->
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                    <div class="container-fluid clearfix">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block card-description"> Copyright © 2019 <a href="#" target="_blank">리피의 아일랜드</a> . All rights reserved.
+                            </span> <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center card-description"> 당신의 성공적인 어학연수를 위해 <i class="mdi mdi-heart text-danger"></i>
+                            </span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" type="text/javascript"></script>
+    <!-- plugins:js -->
+    <script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}" type="text/javascript"></script>
+    <script th:src="@{'/resources/vendors/js/vendor.bundle.addons.js'}" type="text/javascript"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script th:src="@{'/resources/js/off-canvas.js'}" type="text/javascript"></script>
+    <script th:src="@{'/resources/js/misc.js'}" type="text/javascript"></script>
+    <!-- <script type="text/javascript">
+            let simplepicker = new SimplePicker({
+              zIndex: 1021
+            });
+        
+            // simplepicker.open();
+        
+            const $button = document.querySelector('button');
+            const $eventLog = document.querySelector('.event-log');
+            $button.addEventListener('click', (e) => {
+              simplepicker.open();
+            });
+        
+            // $eventLog.innerHTML += '\n\n';
+            simplepicker.on('submit', (date, readableDate) => {
+                console.log(readableDate)
+              var strDateTime = date; // grinich date format
+              console.log(strDateTime)
+              var myDate = new Date(strDateTime); // js date format
+              console.log(myDate)
+              var mysqldate; // mysql date format
+              mysqldate = myDate.getUTCFullYear() + '-' +
+                  ('00' + (myDate.getUTCMonth()+1)).slice(-2) + '-' +
+                  ('00' + myDate.getUTCDate()).slice(-2) + ' ' + 
+                  ('00' + myDate.getUTCHours()).slice(-2) + ':' + 
+                  ('00' + myDate.getUTCMinutes()).slice(-2) + ':' + 
+                  ('00' + myDate.getUTCSeconds()).slice(-2);
+              document.getElementById("specialdue").value = mysqldate;
+              console.log(mysqldate)
+            });
+        
+            simplepicker.on('close', (date) => {
+              $eventLog.innerHTML += 'Picker Closed'  + '\n';
+            });
+        </script> -->
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <!-- <script th:src="@{'/resources/js/dashboard.js'}"></script> -->
+    <!-- End custom js for this page-->
+</body>
+
+</html>

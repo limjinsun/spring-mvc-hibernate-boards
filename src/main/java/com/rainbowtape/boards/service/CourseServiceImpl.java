@@ -30,4 +30,9 @@ public class CourseServiceImpl implements CourseService {
 		courseDAO.save(course);	
 	}
 
+	@Override
+	public Course findOne(int idcourse) {
+		return courseDAO.findOne(idcourse);	
+	}
+
 }

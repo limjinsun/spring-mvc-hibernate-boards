@@ -266,5 +266,30 @@ public class SchoolController {
 		courseService.save(course);
 		return "redirect:/school/all";
 	}
+	
+	@GetMapping("/modifyCourse/{id}")
+	public String getmodifyForm (@PathVariable("id") int idschool, Model model) {
+		
+		School school = schoolService.findOne(idschool);
+		List<Course> courses = courseService.findBySchool(school);
+		model.addAttribute("courses", courses);
+		model.addAttribute("school", school);
+
+		return "_courseModificationForm";
+	}
+	
+	@PostMapping("/modifyCourse/{s_id}/{c_id}")
+	public String modifyCourse (@PathVariable("s_id") int idschool, 
+								@PathVariable("c_id") int idcourse,
+								Model model) {
+		
+		School school = schoolService.findOne(idschool);
+		Course course = courseService.findOne(idcourse);
+		
+		
+		
+		return "_courseModificationForm";
+	}
+	
 
 }
