@@ -261,6 +261,7 @@ public class SchoolController {
 	@PostMapping("/addCourse/{id}")
 	public String addCourseIntoDb (@PathVariable("id") int idschool, @ModelAttribute Course course) {
 		
+		System.err.println(idschool);
 		course.setSchool(schoolService.findOne(idschool));
 		courseService.save(course);
 		return "redirect:/school/all";

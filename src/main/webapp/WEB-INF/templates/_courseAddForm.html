@@ -21,6 +21,10 @@
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.base.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.addons.css'}" type="text/css">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" th:href="@{'/resources/css/material-datetime-picker.css'}" type="text/css">
+
 <style type="text/css">
 .navbar.default-layout {
 	transition: background 0.25s ease;
@@ -86,19 +90,19 @@ input[type="file"] {
 </style>
 
 <style>
-.event-log {
-	font-family: consolas, Monaco, monospace;
-	margin: 10px 5px;
-	line-height: 2;
-	border: 1px solid #4c4c4c;
-	height: auto;
-	width: 90%;
-	padding: 2px 6px;
-	color: #4c4c4c;
-	white-space: pre;
+
+.c-datepicker__header-date {
+	background: #292929;
 }
 
+.c-datepicker__header-day {
+	background: #4c4c4c;
+}
 </style>
+
+
+
+
 
 
 </head>
@@ -157,7 +161,7 @@ input[type="file"] {
 								</div>
 								<div class="row">
 									<div class="col-lg-6 mx-auto borderon">
-										<form class="mui-form" method="POST" th:action="@{'/school/addCourse/' + ${school.idschool} }" th:object="${course}" />
+										<form class="mui-form" method="POST" enctype='application/x-www-form-urlencoded' th:action="@{'/school/addCourse/' + ${school.idschool} }" th:object="${course}" />
 										<div class="mui-textfield">
 											<input th:field="${course.name}" type="text" id="name" name="name">
 											<label>코스이름</label>
@@ -171,13 +175,16 @@ input[type="file"] {
 											<label>코스할인가격</label>
 										</div>
 
-										
+										<!-- <a class="c-btn c-datepicker-btn"> <span class="material-icon">Open date picker</span>
+										</a> -->
+
+
 										<div class="mui-textfield">
-											<button type=button class="simplepicker-btn">할인 마감 날짜</button>
-											<input th:field="${course.specialdue}" type="text" id="specialdue" name="specialdue" readonly>
-											<!-- <label>specialdue</label> -->
-											
+											<a class="datetime-toggle"> <span class="mdi mdi-calendar-check icon-xmd" style="padding-top: 0px; position: absolute;"></span>
+											</a><input style="padding-left: 25px;" th:field="${course.specialdue}" type="text" id="specialdue" name="specialdue" readonly>
+											<label>할인마감날짜</label>
 										</div>
+
 										<div class="mui-textfield">
 											<textarea th:field="${course.description}" id="description" name="description" cols="" rows="" style="min-height: 150px"></textarea>
 											<label>코스소개 </label>
@@ -225,9 +232,38 @@ input[type="file"] {
 	<!-- inject:js -->
 	<script th:src="@{'/resources/js/off-canvas.js'}" type="text/javascript"></script>
 	<script th:src="@{'/resources/js/misc.js'}" type="text/javascript"></script>
-	<script th:src="@{'/resources/js/simpledatepicker.js'}" type="text/javascript"></script>
 
-	<script type="text/javascript">
+
+
+	<script src="https://unpkg.com/babel-polyfill@6.2.0/dist/polyfill.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/rome/2.1.22/rome.standalone.js"></script>
+	<script th:src="@{'/resources/js/material-datetime-picker.js'}" charset="utf-8"></script>
+
+	<script>
+        var picker = new MaterialDatetimePicker({})
+            .on('submit', function (d) {
+               /*  output.innerText = d;
+                document.getElementById("specialdue").value = d; */
+                
+                var myDate = new Date(d); 
+                mysqldate = myDate.getUTCFullYear() + '-' +
+		  	          ('00' + (myDate.getUTCMonth()+1)).slice(-2) + '-' +
+		  	          ('00' + myDate.getUTCDate()).slice(-2) + ' ' + 
+		  	          ('00' + myDate.getUTCHours()).slice(-2) + ':' + 
+		  	          ('00' + myDate.getUTCMinutes()).slice(-2) + ':' + 
+		  	          ('00' + myDate.getUTCSeconds()).slice(-2);
+	  	      	document.getElementById("specialdue").value = mysqldate;
+	            	});
+
+        var el = document.querySelector('.datetime-toggle');
+        el.addEventListener('click', function () {
+            picker.open();
+        }, false);
+    </script>
+
+
+	<!-- <script type="text/javascript">
 	   	let simplepicker = new SimplePicker({
 	      zIndex: 1021
 	    });
@@ -242,10 +278,11 @@ input[type="file"] {
 	
 	    // $eventLog.innerHTML += '\n\n';
 	    simplepicker.on('submit', (date, readableDate) => {
-	      
+	    	console.log(readableDate)
 	      var strDateTime = date; // grinich date format
+	      console.log(strDateTime)
 	      var myDate = new Date(strDateTime); // js date format
-	      
+	      console.log(myDate)
 	      var mysqldate; // mysql date format
 	      mysqldate = myDate.getUTCFullYear() + '-' +
 	          ('00' + (myDate.getUTCMonth()+1)).slice(-2) + '-' +
@@ -254,12 +291,14 @@ input[type="file"] {
 	          ('00' + myDate.getUTCMinutes()).slice(-2) + ':' + 
 	          ('00' + myDate.getUTCSeconds()).slice(-2);
 	      document.getElementById("specialdue").value = mysqldate;
+	      console.log(mysqldate)
 	    });
 	
 	    simplepicker.on('close', (date) => {
 	      $eventLog.innerHTML += 'Picker Closed'  + '\n';
 	    });
-	</script>
+	</script> -->
+
 	<!-- endinject -->
 	<!-- Custom js for this page-->
 	<!-- <script th:src="@{'/resources/js/dashboard.js'}"></script> -->

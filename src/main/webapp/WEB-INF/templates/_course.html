@@ -72,7 +72,6 @@ a {
 	width: 100%; /* The width is the width of the web page */
 }
 
-/* th:src="@{'/resources/images' + ${school.logo} }" */
 .outbox {
 	background:
 		url([[@{'/images' + ${school.schoolpics} }]]) #000
@@ -695,6 +694,8 @@ a {
 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+
+<!--인스타그람 피드 가져오 -->
 	<script th:inline="text">
 		fetch("[[@{'/api/school/insta/' + ${school.insta} }]]")
 			.then((res) => res.json())
@@ -727,7 +728,7 @@ a {
 	
 	var KORrates = ""
 	var today = ""
-	
+	/* 가격표기하기 첫번째 코스기준  */
 	axios.get("https://api.exchangeratesapi.io/latest")
 		.then(response => (this.info = response))
 		.then(function(result){
@@ -750,7 +751,7 @@ a {
 	    .catch(function(e) {
 			console.log(e);
 		})
-	
+	/* 다른코스 가격및 코스 소개 표시  */
 	axios.get("https://api.exchangeratesapi.io/latest")
 		.then(response => (this.info = response))
 		.then(function(result){
@@ -777,7 +778,7 @@ a {
 	    .catch(function(e) {
 			console.log(e);
 		})
-	
+	/* 0월일때 밷지 표시  */
 	axios.get("https://api.exchangeratesapi.io/latest")
 		.then(response => (this.info = response))
 		.then(function(result){

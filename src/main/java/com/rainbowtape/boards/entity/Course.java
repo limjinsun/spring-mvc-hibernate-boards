@@ -28,7 +28,7 @@ public class Course {
 	private String name;
 	
 	@JsonIgnore
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="idschool")
 	private School school;
 	
@@ -39,7 +39,7 @@ public class Course {
 	private BigDecimal specialprice;
 	
 	@Column(name="c_specialdue")
-	private Date specialdue;
+	private String specialdue;
 	
 	@Column(name="c_description")
 	private String description;
@@ -90,11 +90,11 @@ public class Course {
 		this.specialprice = specialprice;
 	}
 
-	public Date getSpecialdue() {
+	public String getSpecialdue() {
 		return specialdue;
 	}
 
-	public void setSpecialdue(Date specialdue) {
+	public void setSpecialdue(String specialdue) {
 		this.specialdue = specialdue;
 	}
 
