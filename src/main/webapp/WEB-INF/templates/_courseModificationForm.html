@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
@@ -99,29 +99,30 @@
 </head>
 
 <body style="overflow-x: unset;">
-
     <script src="https://unpkg.com/babel-polyfill@6.2.0/dist/polyfill.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rome/2.1.22/rome.standalone.js"></script>
     <script th:src="@{'/resources/js/material-datetime-picker.js'}" charset="utf-8"></script>
-
     <div class="container-scroller" style="overflow: unset;">
         <div class="header-firstnav">
             <nav class="navbar default-layout col-lg-12 col-12 p-0 d-flex flex-row">
                 <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-                    <a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b"> <small class="borderlist">리피의아일랜드</small>
-                        </span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> --> <!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
-                        </a> <a class="navbar-brand brand-logo-mini" th:href="@{'/'}"> <span class="menu-title font-b"> <small class="borderlist">홈</small>
-                        </span> <!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i> --> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
-                        </a>
+                    <a class="navbar-brand brand-logo" th:href="@{'/'}">
+                        <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b"> <small class="borderlist">리피의아일랜드</small>
+                        </span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
+                        <!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
+                    </a> <a class="navbar-brand brand-logo-mini" th:href="@{'/'}"> <span class="menu-title font-b"> <small class="borderlist">홈</small>
+                        </span> <!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i> -->
+                        <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
+                    </a>
                 </div>
             </nav>
         </div>
         <div class="row purchace-popup sticky-top w-100" style="background-color: rgba(228, 228, 228, 1);">
             <div class="col-12" style="margin-bottom: 0px; padding: 0px;">
                 <span class="d-block d-flex justify-content-between">
-                        <h6 class="card-description font-b" style="margin: 0;">리피의 아일랜드 학교 코스 등록폼</h6>
-                    </span>
+                    <h6 class="card-description font-b" style="margin: 0;">리피의 아일랜드 학교 코스 등록폼</h6>
+                </span>
             </div>
         </div>
         <!-- partial -->
@@ -161,7 +162,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 mx-auto borderon">
-                                        <form class="mui-form" th:object="${item}" method="POST" enctype='application/x-www-form-urlencoded' th:action="@{'/school/modifyCourse/' + ${school.idschool} + '/' + ${item.idcourse} }" />
+                                        <form class="mui-form" method="POST" enctype='application/x-www-form-urlencoded' th:action="@{'/school/modifyCourse/' + ${item.idcourse} }" />
                                         <div class="mui-textfield">
                                             <input th:value="${item.name}" type="text" id="name" name="name">
                                             <label>코스이름</label>
@@ -175,8 +176,8 @@
                                             <label>코스할인가격</label>
                                         </div>
                                         <div class="mui-textfield">
-                                            <a class="datetime-togglet" th:id="'datetimeselector' + ${item.idcourse}" > <span class="mdi mdi-calendar-check icon-xmd" style="padding-top: 0px; position: absolute;"></span>
-                                                </a><input style="padding-left: 25px;" th:value="${item.specialdue}" type="text" th:id="'datetimeinput' + ${item.idcourse}" name="specialdue">
+                                            <a class="datetime-togglet" th:id="'datetimeselector' + ${item.idcourse}"> <span class="mdi mdi-calendar-check icon-xmd" style="padding-top: 0px; position: absolute;"></span>
+                                            </a><input style="padding-left: 25px;" th:value="${item.specialdue}" type="text" th:id="'datetimeinput' + ${item.idcourse}" name="specialdue">
                                             <label>할인마감날짜</label>
                                         </div>
                                         <div class="mui-textfield">
@@ -188,11 +189,30 @@
                                             <label>리피의 코스 코멘트 - 아직사용안함 </label>
                                         </div>
                                         <div class="mui-textfield">
-                                            <input th:value="${item.extra}" type="text" id="extra" name="extra">
-                                            <label>코스 - extra </label>
+                                            <input th:value="${item.extra1}" type="text" id="extra1" name="extra1">
+                                            <label>코스 - extra1 </label>
+                                        </div>
+                                        <div class="mui-textfield">
+                                            <input th:value="${item.extra2}" type="text" id="extra2" name="extra2">
+                                            <label>코스 - extra2 </label>
+                                        </div>
+                                        <div class="mui-textfield">
+                                            <input th:value="${item.extra3}" type="text" id="extra3" name="extra3">
+                                            <label>코스 - extra3 </label>
                                         </div>
                                         <button type="submit" class="mui-btn mui-btn--raised">Submit</button>
                                         </form>
+
+
+                                        <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+                                            <form style="display:inline;" th:id="'delete-coures-id' + ${item.idcourse}" th:action="@{'/school/deleteCourse/'+${item.idcourse} }" method="post" />
+                                            <a href="javascript:{}" th:onclick="'document.getElementById(\'delete-coures-id' + ${item.idcourse} + '\').submit(); return false;'">
+                                                &nbsp
+                                                <i class="mdi mdi-flip-to-back text-danger icon-sm borderon"></i>
+                                                <p class="text-danger font-a" style="display:inline;">코스삭제</p>
+                                            </a>
+                                            </form>
+                                        </span>
 
 
                                         <script th:inline="javascript">
@@ -226,8 +246,8 @@
                 <footer class="footer">
                     <div class="container-fluid clearfix">
                         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block card-description"> Copyright © 2019 <a href="#" target="_blank">리피의 아일랜드</a> . All rights reserved.
-                            </span> <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center card-description"> 당신의 성공적인 어학연수를 위해 <i class="mdi mdi-heart text-danger"></i>
-                            </span>
+                        </span> <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center card-description"> 당신의 성공적인 어학연수를 위해 <i class="mdi mdi-heart text-danger"></i>
+                        </span>
                     </div>
                 </footer>
                 <!-- partial -->

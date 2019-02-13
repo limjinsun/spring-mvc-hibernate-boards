@@ -1,7 +1,6 @@
 package com.rainbowtape.boards.entity;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -47,8 +46,38 @@ public class Course {
 	@Column(name="c_admintext")
 	private String admintext;
 	
-	@Column(name="c_extra")
-	private String extra;
+	@Column(name="c_extra1")
+	private String extra1;
+	
+	@Column(name="c_extra2")
+	private String extra2;
+	
+	@Column(name="c_extra3")
+	private String extra3;
+	
+	public String getExtra1() {
+		return extra1;
+	}
+
+	public void setExtra1(String extra1) {
+		this.extra1 = extra1;
+	}
+
+	public String getExtra2() {
+		return extra2;
+	}
+
+	public void setExtra2(String extra2) {
+		this.extra2 = extra2;
+	}
+
+	public String getExtra3() {
+		return extra3;
+	}
+
+	public void setExtra3(String extra3) {
+		this.extra3 = extra3;
+	}
 
 	public int getIdcourse() {
 		return idcourse;
@@ -114,12 +143,11 @@ public class Course {
 		this.admintext = admintext;
 	}
 
-	public String getExtra() {
-		return extra;
+	@Override
+	public String toString() {
+		return "Course [idcourse=" + idcourse + ", name=" + name + ", school=" + school + ", price=" + price
+				+ ", specialprice=" + specialprice + ", specialdue=" + specialdue + ", description=" + description
+				+ ", admintext=" + admintext + ", extra1=" + extra1 + ", extra2=" + extra2 + ", extra3=" + extra3 + "]";
 	}
 
-	public void setExtra(String extra) {
-		this.extra = extra;
-	}
-	
 }

@@ -11,5 +11,6 @@ public interface CourseService {
 	List<Course> findBySchool(School school);
 	void save(Course course);
 	Course findOne(int idcourse);
+	void delete(int idcourse);
 	
 }

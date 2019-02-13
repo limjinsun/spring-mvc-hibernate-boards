@@ -179,16 +179,7 @@ public class SchoolController {
 		try {
 
 			// original foler exist? delete it!..
-			String oldFolderName = UPLOADED_FOLDER + originalSchool.getSchoolDirectoryName();
-			File oldFolder = new File(oldFolderName);
-
-			if (oldFolder.isDirectory()) {
-				File[] children = oldFolder.listFiles();
-				for (File child : children) {
-					child.delete();
-				}
-				oldFolder.delete();
-			}
+			deleteFolderIfExist(originalSchool);
 
 			// make new folfer, if not exist..
 			String directoryName = UPLOADED_FOLDER + schoolDirectoryName;
@@ -226,13 +217,7 @@ public class SchoolController {
 		return "redirect:/school/all";
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@PostMapping("/delete/{id}")
-	public String deleteSchool (@PathVariable("id") int idschool) {
-
-		School originalSchool = schoolService.findOne(idschool);
-
-		// original foler exist? delete it!..
+	private void deleteFolderIfExist(School originalSchool) {
 		String oldFolderName = UPLOADED_FOLDER + originalSchool.getSchoolDirectoryName();
 		File oldFolder = new File(oldFolderName);
 
@@ -243,6 +228,14 @@ public class SchoolController {
 			}
 			oldFolder.delete();
 		}
+	}
+
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PostMapping("/delete/{id}")
+	public String deleteSchool (@PathVariable("id") int idschool) {
+
+		School originalSchool = schoolService.findOne(idschool);
+		deleteFolderIfExist(originalSchool);
 
 		schoolService.delete(originalSchool);
 		return "redirect:/school/all";
@@ -278,18 +271,33 @@ public class SchoolController {
 		return "_courseModificationForm";
 	}
 	
-	@PostMapping("/modifyCourse/{s_id}/{c_id}")
-	public String modifyCourse (@PathVariable("s_id") int idschool, 
-								@PathVariable("c_id") int idcourse,
-								Model model) {
+	@PostMapping("/modifyCourse/{c_id}")
+	public String modifyCourse (@PathVariable("c_id") int idcourse,
+								@ModelAttribute("item") Course courseDTO) {
 		
-		School school = schoolService.findOne(idschool);
 		Course course = courseService.findOne(idcourse);
 		
+		course.setName(courseDTO.getName());
+		course.setPrice(courseDTO.getPrice());
+		course.setSpecialprice(courseDTO.getSpecialprice());
+		course.setSpecialdue(courseDTO.getSpecialdue());
+		course.setDescription(courseDTO.getDescription());
+		course.setAdmintext(courseDTO.getAdmintext());
+		course.setExtra1(courseDTO.getExtra1());
+		course.setExtra2(courseDTO.getExtra2());
+		course.setExtra3(courseDTO.getExtra3());
 		
+		courseService.save(course);
 		
-		return "_courseModificationForm";
+		return "redirect:/school/all";
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PostMapping("/deleteCourse/{c_id}")
+	public String deleteCourse (@PathVariable("c_id") int idcourse) {
+		
+		courseService.delete(idcourse);
+		return "redirect:/school/all";
+	}
 
 }

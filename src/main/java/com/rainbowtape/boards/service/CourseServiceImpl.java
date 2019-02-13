@@ -35,4 +35,9 @@ public class CourseServiceImpl implements CourseService {
 		return courseDAO.findOne(idcourse);	
 	}
 
+	@Override
+	public void delete(int idcourse) {
+		courseDAO.delete(idcourse);
+	}
+
 }
