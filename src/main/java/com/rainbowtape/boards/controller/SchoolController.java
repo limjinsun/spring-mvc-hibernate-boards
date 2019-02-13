@@ -248,4 +248,22 @@ public class SchoolController {
 		return "redirect:/school/all";
 	}
 
+	@GetMapping("/addCourse/{id}")
+	public String getCourseAddForm (@PathVariable("id") int idschool, Model model) {
+		
+		School school = schoolService.findOne(idschool);
+		model.addAttribute("course", new Course());
+		model.addAttribute("school", school);
+
+		return "_courseAddForm";
+	}
+	
+	@PostMapping("/addCourse/{id}")
+	public String addCourseIntoDb (@PathVariable("id") int idschool, @ModelAttribute Course course) {
+		
+		course.setSchool(schoolService.findOne(idschool));
+		courseService.save(course);
+		return "redirect:/school/all";
+	}
+
 }

@@ -9,5 +9,6 @@ public interface CourseService {
 
 	List<Course> getAllCourse();
 	List<Course> findBySchool(School school);
+	void save(Course course);
 	
 }
