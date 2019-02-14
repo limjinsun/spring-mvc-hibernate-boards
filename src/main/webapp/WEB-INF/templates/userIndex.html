@@ -253,16 +253,24 @@
 					</li>
 
 					<li class="nav-item" style="text-align: center;">
-						<a class="nav-link" th:href="@{'/user/'+${user.getId()}}">
-							<i class="mdi mdi-television icon-md"></i>
+						<a class="nav-link" th:href="@{'/user/'}">
+							<i class="mdi mdi-dots-horizontal icon-md"></i>
 							<span class="menu-title font-b">
-								&nbsp<small class="">Dash Board</small>
+								&nbsp<small class="">나의 페이지 </small>
+							</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{'/user/intro/'}">
+							<i class="mdi mdi-dots-vertical icon-md"></i>
+							<span class="menu-title font-b">
+								&nbsp<small class="">진행과정</small>
 							</span>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" th:href="@{'/forum/write'}">
-							<i class="mdi mdi-message-text-outline icon-md"></i>
+							<i class="mdi mdi-menu-up icon-md"></i>
 							<span class="menu-title font-b">
 								&nbsp<small class="">글쓰기</small>
 							</span>
@@ -270,7 +278,7 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" th:href="@{'/forum/viewpostslist'}">
-							<i class="mdi mdi-message-text-outline icon-md"></i>
+							<i class="mdi mdi-drag-vertical icon-md"></i>
 							<span class="menu-title font-b">
 								&nbsp<small class="">글목록보기</small>
 							</span>
@@ -278,7 +286,7 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" th:href="@{'/school/all'}">
-							<i class="mdi mdi-school icon-md"></i>
+							<i class="mdi mdi-menu-left icon-md"></i>
 							<span class="menu-title font-b">
 								&nbsp<small class="">어학원 가격정보</small>
 							</span>

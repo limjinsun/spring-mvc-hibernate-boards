@@ -17,9 +17,6 @@
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/font-awesome/css/font-awesome.css'}" type="text/css">
 
-<link href="https://cdn.muicss.com/mui-0.9.41/css/mui.min.css" rel="stylesheet" type="text/css">
-<script src="https://cdn.muicss.com/mui-0.9.41/js/mui.min.js" type="text/javascript"></script>
-
 <link rel="stylesheet" th:href="@{'/resources/vendors/icheck/skins/all.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/css/style.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/css/custom.css'}" type="text/css">
@@ -28,12 +25,6 @@
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.addons.css'}" type="text/css">
 
 <style>
-.borderon {
-	/* border-style: solid;
-	border-width: thin; */
-	
-}
-
 .fixed_menu {
 	position: fixed;
 }
@@ -156,14 +147,13 @@
 </style>
 </head>
 
-
 <body>
 	<div class="container-scroller">
 		<!-- partial:partials/_navbar.html -->
 		<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 			<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
 				<a class="navbar-brand brand-logo" th:href="@{'/'}">
-					<span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span>
+					<!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> -->
 					<span class="menu-title font-b">
 						<small class="borderlist">리피의아일랜드</small>
 					</span>
@@ -171,10 +161,14 @@
 					<!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
 				</a>
 				<a class="navbar-brand brand-logo-mini" th:href="@{'/'}">
-					<span class="menu-title font-b">
+					<!-- <span class="menu-title font-b">
 						<small class="borderlist">리피</small>
+					</span> -->
+					<span>
+						<small class="borderlist">홈</small>
+						<!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 14px;"></i> -->
 					</span>
-					<!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i> -->
+					
 					<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
 				</a>
 			</div>
@@ -262,7 +256,15 @@
 						<a class="nav-link" th:href="@{'/user/'+${user.getId()}}">
 							<i class="mdi mdi-television icon-md"></i>
 							<span class="menu-title font-b">
-								<small>&nbspDash Board</small>
+								&nbsp<small class="">Dash Board</small>
+							</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{'/intro/>
+							<i class="mdi mdi-television icon-md"></i>
+							<span class="menu-title font-b">
+								&nbsp<small class="">진행과정</small>
 							</span>
 						</a>
 					</li>
@@ -270,7 +272,7 @@
 						<a class="nav-link" th:href="@{'/forum/write'}">
 							<i class="mdi mdi-message-text-outline icon-md"></i>
 							<span class="menu-title font-b">
-								<small>&nbsp글쓰기</small>
+								&nbsp<small class="">글쓰기</small>
 							</span>
 						</a>
 					</li>
@@ -278,7 +280,7 @@
 						<a class="nav-link" th:href="@{'/forum/viewpostslist'}">
 							<i class="mdi mdi-message-text-outline icon-md"></i>
 							<span class="menu-title font-b">
-								<small>&nbsp글목록보기</small>
+								&nbsp<small class="">글목록보기</small>
 							</span>
 						</a>
 					</li>
@@ -286,7 +288,7 @@
 						<a class="nav-link" th:href="@{'/school/all'}">
 							<i class="mdi mdi-school icon-md"></i>
 							<span class="menu-title font-b">
-								<small>&nbsp어학원 가격정보</small>
+								&nbsp<small class="">어학원 가격정보</small>
 							</span>
 						</a>
 					</li>
@@ -295,7 +297,7 @@
 							<a href="#" class="nav-link" onclick="document.getElementById('logout').submit()">
 								<i class="mdi mdi-power icon-md"></i>
 								<span class="menu-title font-b">
-									<small>&nbsp로그아웃</small>
+									&nbsp<small class="">로그아웃</small>
 								</span>
 							</a>
 						</form>
@@ -305,181 +307,31 @@
 
 			<!-- partial -->
 			<div class="main-panel margin_for_fixed">
-				<div class="content-wrapper">
-
-					<div class="col-lg-8 mx-auto">
-					
-						<div th:if="${post == null}">
-							<p>게시물이 없습니다</p>
-						</div>
-
-						<div th:if="${post != null}" class="col-lg-11 mx-auto">
-							<table class="table mui-table mui-table--bordered font-c borderon" style="max-width: 100%;">
-								<thead>
-									<tr class="borderon">
-										<th colspan=2>
-											<div>
-												<span th:text="${post.title}"> 제목 </span>
-											</div>
-										</th>
-									</tr>
-									<tr class="borderon">
-										<!-- <th><div style="height: 100%; width: 100%;"><span th:text="${post.user.fname}"> 글쓴이 </span></div></th> -->
-										<th>
-											<div>
-												<span th:attr="style=${#strings.contains(post.user.email,'admin@java.com')}? 'color:DeepPink;' : ''"
-													th:text="${#strings.contains(post.user.email, 'admin@java.com')}? '리피' : ${post.user.getMaskedEmail()}"> 작성자 </span>
-												<span th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:text=${post.user.email}></span>
-											</div>
-
-										</th>
-										<th>
-											<div class="text-right">
-												<span th:text="${#dates.format(post.datecreated, 'dd MMM yyyy')}"> 작성날짜 </span>
-											</div>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="borderon">
-										<td colspan=2>
-											<div style="height: 100%; width: 100%;">
-												<span>
-													<p th:utext="${#strings.replace( #strings.escapeXml( post.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">글내용</p>
-												</span>
-											</div>
-
-											<div style="text-align: right;">
-												<small>
-													<span>
-														<a href="comments.html" th:href="@{'/forum/update/'+${post.idpost}+'?u='+${post.user.id}}"
-															th:if="${user.id} eq ${post.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">수정</a>
-													</span>
-													<span>
-														<div th:if="${user.id} eq ${post.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
-															<form id="delete_form" th:action="@{'/forum/delete/'+${post.idpost}+'?u='+${user.id}}" method="post" />
-															<a href="javascript:{}" onclick="document.getElementById('delete_form').submit(); return false;">삭제</a>
-															</form>
-														</div>
-													</span>
-												</small>
-											</div>
-
-
-										</td>
-									</tr>
-								</tbody>
-							</table>
-
-							<div th:if="${errormsg}">
-								<div class="text-danger card-description">
-									<span th:text="${errormsg}"></span>
-								</div>
-							</div>
-
-							<form id="post_writing" th:action="@{'/forum/writeReply/'+${post.idpost}}" th:object="${reply}" class="mui-form mui-panel-no-shadow" method="POST" />
-							<div class="mui-textfield">
-								<textarea name="content" th:field="${reply.content}" placeholder="" class="mui-reply"></textarea>
-								<!-- <label>덧글달기</label> -->
-							</div>
-							<button type="submit" class="mui-btn mui-btn--flat font-b">댓글달기</button>
-							</form>
-
-
-
-
-
-							<div th:if="${#lists.isEmpty(replys)}">
-								<p>댓글이 없습니다</p>
-							</div>
-
-							<div th:if="!${#lists.isEmpty(replys)}">
-								<table class="table mui-table mui-table--bordered borderon">
-									<!-- <thead>
-									<tr>
-										<th>제목</th>
-										<th>날짜</th>
-									</tr>
-								</thead> -->
-									<tbody>
-										<tr th:each="reply : ${replys}">
-											<td>
-												<div style="height: 100%; width: 100%;">
-													<div th:attr="style=${#strings.contains(reply.user.email,'admin@java.com')}? 'color:DeepPink;' : ''">
-														<span>
-															<p th:utext="${#strings.replace( #strings.escapeXml( reply.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">댓글내용</p>
-														</span>
-													</div>
-
-													<!-- 	</div> -->
-												</div>
-												<!-- </td>
-										<td class="borderon"> -->
-												<div style="text-align: right;">
-													<small>
-														<span th:text="${#dates.format(reply.datecreated, 'dd MMM yyyy')}"> 댓글날짜 </span>
-														<span th:attr="style=${#strings.contains(reply.user.email,'admin@java.com')}? 'color:DeepPink;' : ''"
-															th:text="${#strings.contains(reply.user.email, 'admin@java.com')}? '리피' : ${reply.user.getMaskedEmail()}"> 댓글작성자 </span>
-													</small>
-												</div>
-												<div style="text-align: right;">
-													<small>
-														<!--  if this user is owner of reply ?? how to check? user.email 
-															"${item.codItem} eq ${defaultCodItem}"
-													
-													 -->
-														<span>
-															<!-- <a href="comments.html" th:href="@{'/forum/update/'+${post.idpost}}" th:if="${isThisUserOriginalPosterOrAdmin} == true">수정</a> -->
-														</span>
-														<!-- &nbsp -->
-														<span>
-															<div th:if="${user.id} eq ${reply.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
-																<form th:id="'id' + ${reply.idreply}" th:action="@{'/forum/deleteReply/'+${reply.idreply}+'?idpost='+${post.idpost}}" method="post" />
-																<a href="javascript:{}" th:onclick="'document.getElementById(\'id' + ${reply.idreply} + '\').submit(); return false;'">삭제</a>
-																</form>
-															</div>
-														</span>
-														<!-- <p th:text=${reply.idreply}>댓글 아이디</p> -->
-													</small>
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-
-							<div class="mui-form mui-panel-no-shadow">
-								<form th:action="@{'/forum/viewpostslist'}" method="get">
-									<input class="mui-btn mui-btn--flat font-b" type="submit" value="글목록" style="width: 100%;" />
-								</form>
-							</div>
-
-
-
-
-
-
-						</div>
-
-					</div>
-
-
-
-
-				</div>
+				<div class="content-wrapper"></div>
 				<!-- content-wrapper ends -->
 				<!-- partial:partials/_footer.html -->
 				<footer class="footer">
 					<div class="container-fluid clearfix">
-						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block font-b">
-							Copyright © 2019
-							<a href="#" target="_blank">리피의 아일랜드</a>
-							. All rights reserved.
-						</span>
+						<span class="d-block text-center text-sm-left d-sm-inline-block font-b"> Copyright © 2019 리피의 아일랜드. All rights reserved. </span>
 						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center font-b">
-							당신의 성공적인 어학연수를 위해
-							<i class="mdi mdi-heart text-danger"></i>
+							아일랜드 현지번호 +353 87 2119 531 스스로 선택하는 자유, 혼자할수 있는 자신감
+							<!-- <i class="mdi mdi-heart text-danger"></i> -->
 						</span>
+					</div>
+					<div class="borderon mt-auto align-self-end text-center">
+						<a href="https://blog.naver.com/b1uedays_">
+							<i class="mdi mdi-web text-muted icon-sm"></i>
+						</a>
+						<a href="mailto: liffeydublin@naver.com">
+							<i class="mdi mdi-email text-muted icon-sm"></i>
+						</a>
+						<a href="https://www.instagram.com/liffeydublin/">
+							<i class="mdi mdi-instagram text-muted icon-sm"></i>
+						</a>
+						<!-- <a href="http://google.com">
+							<i class="mdi mdi-youtube-play text-muted icon-sm"></i>
+						</a> -->
+
 					</div>
 				</footer>
 				<!-- partial -->
@@ -516,7 +368,6 @@
 	<!-- Custom js for this page-->
 	<script th:src="@{'/resources/js/dashboard.js'}"></script>
 	<!-- End custom js for this page-->
-	<script th:src="@{'/resources/js/custom.js'}"></script>
 </body>
 
 </html>

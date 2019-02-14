@@ -67,6 +67,13 @@ public class UserController {
 		logger.info("UserIndex");
 		return "userIndex";
 	}
+	
+	@GetMapping("/intro")
+	public String userIntro(@ModelAttribute("user") User user) { 
+
+		logger.info("UserIntro");
+		return "_intro";
+	}
 
 	//	@PreAuthorize("#user.email == authentication.name or hasRole('ROLE_ADMIN')") // https://stackoverflow.com/a/45128834/4735043
 	//	@RequestMapping(value = "/{id}", method = RequestMethod.GET) 

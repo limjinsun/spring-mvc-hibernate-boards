@@ -129,6 +129,12 @@ public class LoginController {
 
 		return "system";
 	}
+	
+	@GetMapping("/intro")
+	public String getIntro (@ModelAttribute User user, Model model) {
+
+		return "_intro";
+	}
 
 	@GetMapping("/logoutSuccess")
 	public String logoutSuccess (Model model) {

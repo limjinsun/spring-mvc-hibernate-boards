@@ -12,5 +12,5 @@ import com.rainbowtape.boards.entity.School;
 public interface CourseDAO extends JpaRepository<Course, Integer> {
 	
 	List<Course> findBySchool(School school);
-
+	void delete(int idcourse);
 }
