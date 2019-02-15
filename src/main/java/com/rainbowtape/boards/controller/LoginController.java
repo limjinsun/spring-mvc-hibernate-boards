@@ -147,6 +147,13 @@ public class LoginController {
 
 		return "contents";
 	}
+	
+	@GetMapping("/test")
+	public String getTestPage (Model model) {
+
+		return "test";
+	}
+
 
 	private boolean isAdmin(Authentication auth) {
 
