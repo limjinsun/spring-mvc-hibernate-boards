@@ -225,7 +225,8 @@ input, textarea, select, button {
 .pagination>li>a, .pagination>li>span {
 	position: relative;
 	float: left;
-	padding: 6px 12px;
+	padding: 3px 6px;
+	/* padding: 6px 12px; */
 	margin-left: -1px;
 	line-height: 1.42857143;
 	/* color: #337ab7; */
@@ -304,6 +305,7 @@ input, textarea, select, button {
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
 }
+
 
 /* 버튼 이펙트 */
 

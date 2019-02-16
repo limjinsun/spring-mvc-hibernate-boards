@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
 		List<UserRole> tempRoleList = new ArrayList<UserRole>();
 		tempRoleList.add(tempRole);
 		temp.setUserroles(tempRoleList);
-		UserProfile tempProfile = new UserProfile(temp);
+		UserProfile tempProfile = new UserProfile(temp); // adding user profile..
 		temp.setUserProfile(tempProfile);
 		userDAO.save(temp);
 	}

@@ -1,7 +1,5 @@
 package com.rainbowtape.boards.entity;
 
-import java.util.Date;
-import java.util.Random;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="userprofiles")
@@ -41,34 +37,24 @@ public class UserProfile {
 	
 	@Column(name="userstatus")
 	private String userstatus;
-
-	@Column(name="visatype")
-	private String visatype;
 	
-	@Column(name="address")
-	private String address;
+	@Column(name="school")
+	private String school;
 	
-	@Column(name="dob")
-	@Temporal(TemporalType.DATE)
-	private Date dob;
+	@Column(name="progress")
+	private String progress;
 	
-	@Column(name="passportno")
-	private String passportno;
+	@Column(name="accomodation")
+	private String accomodation;
 	
-	@Column(name="age")
-	private int age;
-	
-	@Column(name="kakaotalk")
-	private String kakaotalk;
-	
-	@Column(name="mbti")
-	private String mbti;
-	
-	@Column(name="interest")
-	private String interest;
+	@Column(name="arrivaldate")
+	private String arrivaldate;
 	
 	@Column(name="flightinfo")
 	private String flightinfo;
+
+	@Column(name="interest")
+	private String interest;
 
 	@Column(name="usertext")
 	private String usertext;
@@ -76,45 +62,20 @@ public class UserProfile {
 	@Column(name="admintext")
 	private String admintext;
 	
-	public UserProfile() {
-		// empty constructor.
-	}
+	@Column(name="extra1")
+	private String extra1;
 	
-	public UserProfile(User user) {
-		this.user = user;
-		String randomNumber = Integer.toString(new Random().nextInt(10));
-		String file = "/images/faces/face2.png";
-		file = file.substring(0, 18);
-		file = file + randomNumber + ".png";
-		this.userpics = file;
+	@Column(name="extra2")
+	private String extra2;
+	
+	
+	public UserProfile() {
+		// Defualt Constructor
 	}
 
-	@Override
-	public String toString() {
-		return "UserProfile [user=" + user + ", id=" + id + ", userpics=" + userpics + ", userstatus=" + userstatus
-				+ ", visatype=" + visatype + ", address=" + address + ", dob=" + dob + ", passportno=" + passportno
-				+ ", age=" + age + ", kakaotalk=" + kakaotalk + ", mbti=" + mbti + ", interest=" + interest
-				+ ", flightinfo=" + flightinfo + ", usertext=" + usertext + ", admintext=" + admintext + "]";
-	}
-	//한글테스트. 
-	public UserProfile(User user, String userpics, String userstatus, String visatype, String address, Date dob,
-			String passportno, int age, String kakaotalk, String mbti, String interest, String flightinfo,
-			String usertext, String admintext) {
-		super();
+	// Contructor for reigistration
+	public UserProfile(User user) {
 		this.user = user;
-		this.userpics = userpics;
-		this.userstatus = userstatus;
-		this.visatype = visatype;
-		this.address = address;
-		this.dob = dob;
-		this.passportno = passportno;
-		this.age = age;
-		this.kakaotalk = kakaotalk;
-		this.mbti = mbti;
-		this.interest = interest;
-		this.flightinfo = flightinfo;
-		this.usertext = usertext;
-		this.admintext = admintext;
 	}
 
 	public User getUser() {
@@ -125,6 +86,14 @@ public class UserProfile {
 		this.user = user;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getUserpics() {
 		return userpics;
 	}
@@ -133,60 +102,52 @@ public class UserProfile {
 		this.userpics = userpics;
 	}
 
-	public String getVisatype() {
-		return visatype;
+	public String getUserstatus() {
+		return userstatus;
 	}
 
-	public void setVisatype(String visatype) {
-		this.visatype = visatype;
+	public void setUserstatus(String userstatus) {
+		this.userstatus = userstatus;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getSchool() {
+		return school;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setSchool(String school) {
+		this.school = school;
 	}
 
-	public Date getDob() {
-		return dob;
+	public String getProgress() {
+		return progress;
 	}
 
-	public void setDob(Date dob) {
-		this.dob = dob;
+	public void setProgress(String progress) {
+		this.progress = progress;
 	}
 
-	public String getPassportno() {
-		return passportno;
+	public String getAccomodation() {
+		return accomodation;
 	}
 
-	public void setPassportno(String passportno) {
-		this.passportno = passportno;
+	public void setAccomodation(String accomodation) {
+		this.accomodation = accomodation;
 	}
 
-	public int getAge() {
-		return age;
+	public String getFlightinfo() {
+		return flightinfo;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setFlightinfo(String flightinfo) {
+		this.flightinfo = flightinfo;
 	}
 
-	public String getKakaotalk() {
-		return kakaotalk;
+	public String getInterest() {
+		return interest;
 	}
 
-	public void setKakaotalk(String kakaotalk) {
-		this.kakaotalk = kakaotalk;
-	}
-
-	public String getMbti() {
-		return mbti;
-	}
-
-	public void setMbti(String mbti) {
-		this.mbti = mbti;
+	public void setInterest(String interest) {
+		this.interest = interest;
 	}
 
 	public String getUsertext() {
@@ -205,27 +166,28 @@ public class UserProfile {
 		this.admintext = admintext;
 	}
 
-	public String getUserstatus() {
-		return userstatus;
+	public String getExtra1() {
+		return extra1;
 	}
 
-	public void setUserstatus(String userstatus) {
-		this.userstatus = userstatus;
-	}
-	
-	public String getInterest() {
-		return interest;
+	public void setExtra1(String extra1) {
+		this.extra1 = extra1;
 	}
 
-	public void setInterest(String interest) {
-		this.interest = interest;
-	}
-	
-	public String getFlightinfo() {
-		return flightinfo;
+	public String getExtra2() {
+		return extra2;
 	}
 
-	public void setFlightinfo(String flightinfo) {
-		this.flightinfo = flightinfo;
+	public void setExtra2(String extra2) {
+		this.extra2 = extra2;
 	}
+
+	public String getArrivaldate() {
+		return arrivaldate;
+	}
+
+	public void setArrivaldate(String arrivaldate) {
+		this.arrivaldate = arrivaldate;
+	}
+
 }

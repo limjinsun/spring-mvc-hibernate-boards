@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
@@ -9,7 +10,6 @@
 <link rel="apple-touch-icon-precomposed" th:href="@{'/resources/images/favicon.ico'}">
 <meta name="msapplication-TileColor" content="#00bcd4">
 <meta name="msapplication-TileImage" th:href="@{'/resources/images/favicon.ico'}">
-
 <!-- CSS -->
 <link href="https://cdn.muicss.com/mui-0.9.41/css/mui.min.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.muicss.com/mui-0.9.41/js/mui.min.js" type="text/javascript"></script>
@@ -21,7 +21,6 @@
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.base.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.addons.css'}" type="text/css">
-
 <style>
 .navbar.default-layout {
 	transition: background 0.25s ease;
@@ -39,7 +38,7 @@
 
 .borderon {
 	/* border-style: solid;
-	border-width: thin; */
+    border-width: thin; */
 	
 }
 
@@ -56,20 +55,12 @@ a {
 		<div class="header-firstnav">
 			<nav class="navbar default-layout col-lg-12 col-12 p-0 d-flex flex-row">
 				<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-					<a class="navbar-brand brand-logo" th:href="@{'/'}">
-						<span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span>
-						<span class="menu-title font-b">
-							<small class="borderlist">리피의아일랜드</small>
-						</span>
-						<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
-						<!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
-					</a>
-					<a class="navbar-brand brand-logo-mini" th:href="@{'/'}">
-						<span class="menu-title font-b">
-							<small class="borderlist">리피</small>
-						</span>
-						<!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i> -->
-						<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
+					<a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b"> <small class="borderlist">리피의아일랜드</small>
+					</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> --> <!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
+					</a> <a class="navbar-brand brand-logo-mini" th:href="@{'/'}"> <!-- <span class="menu-title font-b">
+						<small class="borderlist">리피</small>
+					</span> --> <span> <small class="borderlist">홈</small> <!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 14px;"></i> -->
+					</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
 					</a>
 				</div>
 			</nav>
@@ -82,19 +73,19 @@ a {
 					<div class="col-12 grid-margin borderon">
 						<div class="card borderon" style="padding: 0px;">
 							<!-- <div class="card-header" style="padding-bottom: 0;">
-								<div class="clearfix">
-									<div class="float-left">
-										<i class="fa fa-graduation-cap text-primary icon-big"></i>
-									</div>
-								</div>
-							</div> -->
+                                <div class="clearfix">
+                                    <div class="float-left">
+                                        <i class="fa fa-graduation-cap text-primary icon-big"></i>
+                                    </div>
+                                </div>
+                            </div> -->
 							<div class="card-body" style="padding: 1.1rem 1.9rem;">
 								<div class="row">
 									<div class="col-lg-7 borderon">
 										<h2 class="card-description">글쓰기</h2>
-										<p class="card-description">당신이 작성한 글은, 당신에게 또는 누군가에게 도움이 됩니다.</p>
+										<p class="card-description">당신이 작성한 글은, 당신에게 또는 누군가에게 도움이 됩니다.<br><br>‣ 후기를 작성하신다면, [어학원 광고 / 리피의 아일랜드 광고바라지 않습니다. 어학연수의 장미및 환상보다는, 솔직하게 써주시는 후기를 기대합니다. 글의 길이는 중요하지 않습니다] <br> ‣ 혼자힘으로 아일랜드 땅을 밟게된 소감 / 아일랜드 어학연수를 준비하는 한국의 분들께 드리고 싶은 조언 / 어학원과 홈스테이에 관한 생각 등을 자유롭게 써주세요.</p>
+										
 									</div>
-
 									<!-- <div class="col-lg-3 borderon">hello</div> -->
 								</div>
 								<div class="row">
@@ -113,7 +104,7 @@ a {
 											<div class="mui-radio borderon" style="margin-bottom: 0px; height: 28px;">
 												<label>
 													<input type="radio" style="margin-top: 5px;" name="category" th:field="${post.category}" id="optionsRadios1" th:value="option1" checked="checked" />
-													<p class="font-a" style="padding-top: 3px">어학연수조언하기</p>
+													<p class="font-a" style="padding-top: 3px">리피의 아일랜드 후기 및 조언하기</p>
 												</label>
 											</div>
 											<div class="mui-radio borderon" style="margin-bottom: 0px; height: 28px;">
@@ -123,22 +114,18 @@ a {
 												</label>
 											</div>
 										</div>
-
 										<div class="mui-textfield borderon">
 											<input type="text" id="title" name="title" th:field="${post.title}">
 											<label>제목</label>
 										</div>
-
 										<div class="mui-textfield">
 											<textarea name="content" th:field="${post.content}" placeholder="작성자의 개인정보는 공개되지 않으니, 자유롭게 솔직한 연수에 대한 생각을 써주세요. 당신 뒤에 아일랜드 어학연수 오는 사람들에게 남기고 싶은말을 적어주세요."></textarea>
 											<label>내용</label>
 										</div>
-
 										<div class="mui-textfield borderon">
 											<input type="text" name="tag" th:field="${post.tag}" id="tag">
 											<label>내용과 관련한 태그를 적어주세요. [옵션] (예, 리피어학원, 어학연수, 워홀, 코크 맛집.. 등등 )</label>
 										</div>
-
 										<button type="submit" class="mui-btn mui-btn--raised font-b">전송</button>
 										</form>
 									</div>
@@ -148,20 +135,14 @@ a {
 					</div>
 					<!-- <div style="height: 2000px;"></div> -->
 					<!-- <div class="container-fluid d-flex flex-wrap">
-					</div> -->
+                    </div> -->
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:partials/_footer.html -->
 				<footer class="footer">
 					<div class="container-fluid clearfix">
-						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block card-description">
-							Copyright © 2019
-							<a href="#" target="_blank">리피의 아일랜드</a>
-							. All rights reserved.
-						</span>
-						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center card-description">
-							당신의 성공적인 어학연수를 위해
-							<i class="mdi mdi-heart text-danger"></i>
+						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block card-description"> Copyright © 2019 <a href="#" target="_blank">리피의 아일랜드</a> . All rights reserved.
+						</span> <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center card-description"> 당신의 성공적인 어학연수를 위해 <i class="mdi mdi-heart text-danger"></i>
 						</span>
 					</div>
 				</footer>
@@ -173,13 +154,14 @@ a {
 	</div>
 	<!-- container-scroller -->
 	<script>
-		document.getElementById("optionsRadios1").setAttribute("checked",
-				"checked")
-	</script>
+    document.getElementById("optionsRadios1").setAttribute("checked",
+        "checked")
+    </script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}"></script>
 	<script th:src="@{'/resources/vendors/js/vendor.bundle.addons.js'}"></script>
 	<script th:src="@{'/resources/js/off-canvas.js'}"></script>
 	<script th:src="@{'/resources/js/misc.js'}"></script>
 </body>
+
 </html>

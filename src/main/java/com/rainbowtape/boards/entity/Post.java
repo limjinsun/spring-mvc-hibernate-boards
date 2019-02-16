@@ -8,7 +8,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,6 +24,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 @Entity
 @Table(name="post")
@@ -42,7 +42,9 @@ public class Post {
 	@Column(name="p_title")
 	private String title;
 
-	@SafeHtml
+	@SafeHtml(whitelistType = WhiteListType.RELAXED,  additionalTagsWithAttributes = { 
+            @SafeHtml.Tag(name = "a", attributes = { "target" }) 
+            })
 	@NotNull
 	@Size(min=1)
 	@Size(max=4990)

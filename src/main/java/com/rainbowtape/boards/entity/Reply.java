@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 @Entity
 @Table(name="reply")
@@ -25,7 +26,9 @@ public class Reply {
 	@Column(name="idreply")
 	private int idreply;
 	
-	@SafeHtml
+	@SafeHtml(whitelistType = WhiteListType.RELAXED,  additionalTagsWithAttributes = { 
+            @SafeHtml.Tag(name = "a", attributes = { "target" }) 
+            })
 	@NotNull
 	@Size(min=1)
 	@Column(name="r_content")

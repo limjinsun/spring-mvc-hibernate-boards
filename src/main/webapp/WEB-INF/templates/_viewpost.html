@@ -162,33 +162,19 @@
 		<!-- partial:partials/_navbar.html -->
 		<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 			<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-				<a class="navbar-brand brand-logo" th:href="@{'/'}">
-					<span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span>
-					<span class="menu-title font-b">
-						<small class="borderlist">리피의아일랜드</small>
-					</span>
-					<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
-					<!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
-				</a>
-				<a class="navbar-brand brand-logo-mini" th:href="@{'/'}">
-					<span class="menu-title font-b">
+				<a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b"> <small class="borderlist">리피의아일랜드</small>
+				</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> --> <!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
+				</a> <a class="navbar-brand brand-logo-mini" th:href="@{'/'}"> <!-- <span class="menu-title font-b">
 						<small class="borderlist">리피</small>
-					</span>
-					<!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i> -->
-					<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
+					</span> --> <span> <small class="borderlist">홈</small> <!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 14px;"></i> -->
+				</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
 				</a>
 			</div>
 			<div class="navbar-menu-wrapper d-flex align-items-center">
 				<ul class="navbar-nav navbar-nav-right">
 					<li class="nav-item dropdown d-none d-xl-inline-block">
-						<!-- 네비게이션 바 - 유저 프로파일 <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> -->
-						<span class="profile-text">Hello!&nbsp;</span>
-						<span class="profile-text" th:text="${user.getFname()}">Hello, Richard V.Welsh !</span>
-						<span class="profile-text" style="margin-right: 15px;"> 님</span>
-						<a id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-							<img class="img-xs rounded-circle" th:src="@{'/resources'+${userProfile.getUserpics()}}" alt="Profile image">
-						</a>
-						<!-- </a> -->
+						<!-- 네비게이션 바 - 유저 프로파일 <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> --> <span class="profile-text">Hello!&nbsp;</span> <span class="profile-text" th:text="${user.getFname()}">Hello, Richard V.Welsh !</span> <span class="profile-text" style="margin-right: 15px;"> 님</span> <a id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> <img class="img-xs rounded-circle" th:src="@{'/resources'+${userProfile.getUserpics()}}" alt="Profile image">
+					</a> <!-- </a> -->
 
 						<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
 							<a class="dropdown-item p-0">
@@ -205,9 +191,7 @@
 								</div>
 							</a>
 							<div class="col-12 d-flex align-items-center" style="margin-top: 10px">
-								<a class="dropdown-item d-flex align-items-center" href="#openModal">
-									<i class="mdi mdi-account-remove mr-0 text-gray"></i>
-									&nbsp탈퇴하기
+								<a class="dropdown-item d-flex align-items-center" href="#openModal"> <i class="mdi mdi-account-remove mr-0 text-gray"></i> &nbsp탈퇴하기
 								</a>
 							</div>
 							<!-- 	<a class="dropdown-item mt-2"> Manage Accounts </a>
@@ -258,45 +242,25 @@
 						</div>
 					</li>
 
-					<li class="nav-item" style="text-align: center;">
-						<a class="nav-link" th:href="@{'/user/'+${user.getId()}}">
-							<i class="mdi mdi-television icon-md"></i>
-							<span class="menu-title font-b">
-								<small>&nbspDash Board</small>
-							</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" th:href="@{'/forum/write'}">
-							<i class="mdi mdi-message-text-outline icon-md"></i>
-							<span class="menu-title font-b">
-								<small>&nbsp글쓰기</small>
-							</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" th:href="@{'/forum/viewpostslist'}">
-							<i class="mdi mdi-message-text-outline icon-md"></i>
-							<span class="menu-title font-b">
-								<small>&nbsp글목록보기</small>
-							</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" th:href="@{'/school/all'}">
-							<i class="mdi mdi-school icon-md"></i>
-							<span class="menu-title font-b">
-								<small>&nbsp어학원 가격정보</small>
-							</span>
-						</a>
-					</li>
+					<li class="nav-item" style="text-align: center;"><a class="nav-link" th:href="@{'/user/'}"> <i class="mdi mdi-dots-horizontal icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">나의 페이지 </small>
+						</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{'/user/intro/'}"> <i class="mdi mdi-dots-vertical icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">진행과정</small>
+						</span>
+					</a></li>
+					<!-- <li class="nav-item"><a class="nav-link" th:href="@{'/forum/write'}"> <i class="mdi mdi-menu-left icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">글쓰기</small>
+						</span>  
+					</a></li> -->
+					<li class="nav-item"><a class="nav-link" th:href="@{'/forum/viewpostslist'}"> <i class="mdi mdi-menu-up icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">글보기</small>
+						</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{'/school/all'}"> <i class="mdi mdi-drag-vertical icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">어학원 가격정보</small>
+						</span>
+					</a></li>
 					<li class="nav-item bg-color-a">
 						<form id="logout" th:action="@{'/logout'}" method="post">
-							<a href="#" class="nav-link" onclick="document.getElementById('logout').submit()">
-								<i class="mdi mdi-power icon-md"></i>
-								<span class="menu-title font-b">
-									<small>&nbsp로그아웃</small>
-								</span>
+							<a href="#" class="nav-link" onclick="document.getElementById('logout').submit()"> <i class="mdi mdi-power icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">로그아웃</small>
+							</span>
 							</a>
 						</form>
 					</li>
@@ -308,13 +272,13 @@
 				<div class="content-wrapper">
 
 					<div class="col-lg-8 mx-auto">
-					
+
 						<div th:if="${post == null}">
 							<p>게시물이 없습니다</p>
 						</div>
 
 						<div th:if="${post != null}" class="col-lg-11 mx-auto">
-							<table class="table mui-table mui-table--bordered font-c borderon" style="max-width: 100%;">
+							<table class="table mui-table mui-table--bordered borderon" style="max-width: 100%;">
 								<thead>
 									<tr class="borderon">
 										<th colspan=2>
@@ -327,9 +291,7 @@
 										<!-- <th><div style="height: 100%; width: 100%;"><span th:text="${post.user.fname}"> 글쓴이 </span></div></th> -->
 										<th>
 											<div>
-												<span th:attr="style=${#strings.contains(post.user.email,'admin@java.com')}? 'color:DeepPink;' : ''"
-													th:text="${#strings.contains(post.user.email, 'admin@java.com')}? '리피' : ${post.user.getMaskedEmail()}"> 작성자 </span>
-												<span th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:text=${post.user.email}></span>
+												<span th:attr="style=${#strings.contains(post.user.email,'admin@java.com')}? 'color:DeepPink;' : ''" th:text="${#strings.contains(post.user.email, 'admin@java.com')}? '리피' : ${post.user.getMaskedEmail()}"> 작성자 </span> <span th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:text=${post.user.email}></span>
 											</div>
 
 										</th>
@@ -345,23 +307,20 @@
 										<td colspan=2>
 											<div style="height: 100%; width: 100%;">
 												<span>
-													<p th:utext="${#strings.replace( #strings.escapeXml( post.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">글내용</p>
+													<!-- <p th:utext="${#strings.replace( #strings.escapeXml( post.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">글내용</p> -->
+													<p th:utext="${#strings.replace( post.content ,T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">글내용</p>
 												</span>
 											</div>
 
 											<div style="text-align: right;">
-												<small>
-													<span>
-														<a href="comments.html" th:href="@{'/forum/update/'+${post.idpost}+'?u='+${post.user.id}}"
-															th:if="${user.id} eq ${post.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">수정</a>
-													</span>
-													<span>
+												<small> <span> <a href="comments.html" th:href="@{'/forum/update/'+${post.idpost}+'?u='+${post.user.id}}" th:if="${user.id} eq ${post.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">수정</a>
+												</span> <span>
 														<div th:if="${user.id} eq ${post.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
 															<form id="delete_form" th:action="@{'/forum/delete/'+${post.idpost}+'?u='+${user.id}}" method="post" />
 															<a href="javascript:{}" onclick="document.getElementById('delete_form').submit(); return false;">삭제</a>
 															</form>
 														</div>
-													</span>
+												</span>
 												</small>
 											</div>
 
@@ -407,39 +366,29 @@
 												<div style="height: 100%; width: 100%;">
 													<div th:attr="style=${#strings.contains(reply.user.email,'admin@java.com')}? 'color:DeepPink;' : ''">
 														<span>
-															<p th:utext="${#strings.replace( #strings.escapeXml( reply.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">댓글내용</p>
+															<p th:utext="${#strings.replace( reply.content ,T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">댓글내용</p>
 														</span>
 													</div>
 
 													<!-- 	</div> -->
-												</div>
-												<!-- </td>
+												</div> <!-- </td>
 										<td class="borderon"> -->
 												<div style="text-align: right;">
-													<small>
-														<span th:text="${#dates.format(reply.datecreated, 'dd MMM yyyy')}"> 댓글날짜 </span>
-														<span th:attr="style=${#strings.contains(reply.user.email,'admin@java.com')}? 'color:DeepPink;' : ''"
-															th:text="${#strings.contains(reply.user.email, 'admin@java.com')}? '리피' : ${reply.user.getMaskedEmail()}"> 댓글작성자 </span>
+													<small> <span th:text="${#dates.format(reply.datecreated, 'dd MMM yyyy')}"> 댓글날짜 </span> <span th:attr="style=${#strings.contains(reply.user.email,'admin@java.com')}? 'color:DeepPink;' : ''" th:text="${#strings.contains(reply.user.email, 'admin@java.com')}? '리피' : ${reply.user.getMaskedEmail()}"> 댓글작성자 </span>
 													</small>
 												</div>
 												<div style="text-align: right;">
-													<small>
-														<!--  if this user is owner of reply ?? how to check? user.email 
+													<small> <!--  if this user is owner of reply ?? how to check? user.email 
 															"${item.codItem} eq ${defaultCodItem}"
 													
-													 -->
-														<span>
-															<!-- <a href="comments.html" th:href="@{'/forum/update/'+${post.idpost}}" th:if="${isThisUserOriginalPosterOrAdmin} == true">수정</a> -->
-														</span>
-														<!-- &nbsp -->
-														<span>
+													 --> <span> <!-- <a href="comments.html" th:href="@{'/forum/update/'+${post.idpost}}" th:if="${isThisUserOriginalPosterOrAdmin} == true">수정</a> -->
+													</span> <!-- &nbsp --> <span>
 															<div th:if="${user.id} eq ${reply.user.id} or ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
 																<form th:id="'id' + ${reply.idreply}" th:action="@{'/forum/deleteReply/'+${reply.idreply}+'?idpost='+${post.idpost}}" method="post" />
 																<a href="javascript:{}" th:onclick="'document.getElementById(\'id' + ${reply.idreply} + '\').submit(); return false;'">삭제</a>
 																</form>
 															</div>
-														</span>
-														<!-- <p th:text=${reply.idreply}>댓글 아이디</p> -->
+													</span> <!-- <p th:text=${reply.idreply}>댓글 아이디</p> -->
 													</small>
 												</div>
 											</td>
@@ -471,14 +420,8 @@
 				<!-- partial:partials/_footer.html -->
 				<footer class="footer">
 					<div class="container-fluid clearfix">
-						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block font-b">
-							Copyright © 2019
-							<a href="#" target="_blank">리피의 아일랜드</a>
-							. All rights reserved.
-						</span>
-						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center font-b">
-							당신의 성공적인 어학연수를 위해
-							<i class="mdi mdi-heart text-danger"></i>
+						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block font-b"> Copyright © 2019 <a href="#" target="_blank">리피의 아일랜드</a> . All rights reserved.
+						</span> <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center font-b"> 당신의 성공적인 어학연수를 위해 <i class="mdi mdi-heart text-danger"></i>
 						</span>
 					</div>
 				</footer>

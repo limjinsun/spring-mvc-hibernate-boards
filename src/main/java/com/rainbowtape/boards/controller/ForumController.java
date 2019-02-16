@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.HtmlUtils;
 
 import com.rainbowtape.boards.entity.Post;
 import com.rainbowtape.boards.entity.Reply;
@@ -87,7 +88,6 @@ public class ForumController {
 			System.out.println(result.toString());
 			// 플래쉬어트리뷰트를 이용하면, model 어트리뷰트로 추가해 주지 않아도, 리다이렉트된 콘트롤러에서 한번만 사용되고 자동으로 지워진다. 
 			redirectAttributes.addFlashAttribute("errormsg", "입력에 실패하였습니다. 정상적으로 다시 작성해 주세요."); 
-//			redirectAttributes.addAttribute("post", post);
 			return "redirect:/forum/write";
 		}
 
@@ -96,8 +96,20 @@ public class ForumController {
 		post.setDatecreated(now);
 		post.setDatemodified(now);
 
+		post.setContent(textToHtmlConvertingURLsToLinks(post.getContent()));
+		
 		postService.save(post);
 		return "redirect:/forum/viewpostslist";
+	}
+	
+	public static String textToHtmlConvertingURLsToLinks(String text) {
+	    if (text == null) {
+	        return text;
+	    }
+
+	    String escapedText = HtmlUtils.htmlEscape(text);
+	    return escapedText.replaceAll("(\\A|\\s)((http|https|ftp|mailto):\\S+)(\\s|\\z)",
+	        "$1<a href=\"$2\" target=\"_blank\">$2</a>$4");
 	}
 
 	@GetMapping("/viewpostslist")
@@ -160,11 +172,12 @@ public class ForumController {
 
 		originalPost.setCategory(temp.getCategory());
 		originalPost.setTitle(temp.getTitle());
-		originalPost.setContent(temp.getContent());
+		originalPost.setContent(textToHtmlConvertingURLsToLinks(temp.getContent()));
 		originalPost.setTag(temp.getTag());
 		
+		
 		String s = temp.getSpecial();
-		if(s.isEmpty()) {
+		if(isNullOrEmpty(s)) {
 			originalPost.setSpecial(null);
 		} else {
 			originalPost.setSpecial(s);
@@ -176,6 +189,12 @@ public class ForumController {
 
 		return "redirect:/forum/viewpost/" + idpost;
 	}
+	
+	public static boolean isNullOrEmpty(String str) {
+        if(str != null && !str.isEmpty())
+            return false;
+        return true;
+    }
 
 	@PreAuthorize("#userid == #user.id or hasRole('ROLE_ADMIN')")
 	@PostMapping("/delete/{idpost}")
@@ -209,6 +228,8 @@ public class ForumController {
 			redirectAttributes.addFlashAttribute("errormsg", "댓글의 내용을 작성해 주셔야 합니다. html 태그는 허용되지 않습니다."); 
 			return "redirect:/forum/viewpost/" + idpost;
 		}
+		
+		reply.setContent(textToHtmlConvertingURLsToLinks(reply.getContent()));
 
 		reply.setUser(user);
 		java.util.Date now = new java.util.Date();
