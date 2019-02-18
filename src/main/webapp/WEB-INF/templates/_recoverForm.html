@@ -36,7 +36,6 @@
 	background: rgba(220, 220, 220, 0.1);
 }
 
-
 .borderon {
 	/* border-style: solid;
 	border-width: thin; */
@@ -123,20 +122,12 @@ input, textarea, select, button {
 		<div class="header-firstnav">
 			<nav class="navbar default-layout col-lg-12 col-12 p-0 d-flex flex-row">
 				<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-					<a class="navbar-brand brand-logo" th:href="@{'/'}">
-						<span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span>
-						<span class="menu-title font-b">
-							<small class="borderlist">리피의아일랜드</small>
-						</span>
-						<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
-						<!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
-					</a>
-					<a class="navbar-brand brand-logo-mini" th:href="@{'/'}">
-						<span class="menu-title font-b">
-							<small class="borderlist">리피</small>
-						</span>
-						<!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i> -->
-						<!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
+					<a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b"> <small class="borderlist">리피의아일랜드</small>
+					</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> --> <!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
+					</a> <a class="navbar-brand brand-logo-mini" th:href="@{'/'}"> <!-- <span class="menu-title font-b">
+						<small class="borderlist">리피</small>
+					</span> --> <span> <small class="borderlist">홈</small> <!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 14px;"></i> -->
+					</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
 					</a>
 				</div>
 			</nav>
@@ -188,14 +179,8 @@ input, textarea, select, button {
 				<!-- partial:partials/_footer.html -->
 				<footer class="footer">
 					<div class="container-fluid clearfix">
-						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block card-description">
-							Copyright © 2019
-							<a href="#" target="_blank">리피의 아일랜드</a>
-							. All rights reserved.
-						</span>
-						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center card-description">
-							당신의 성공적인 어학연수를 위해
-							<i class="mdi mdi-heart text-danger"></i>
+						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block card-description"> Copyright © 2019 <a href="#" target="_blank">리피의 아일랜드</a> . All rights reserved.
+						</span> <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center card-description"> 당신의 성공적인 어학연수를 위해 <i class="mdi mdi-heart text-danger"></i>
 						</span>
 					</div>
 				</footer>

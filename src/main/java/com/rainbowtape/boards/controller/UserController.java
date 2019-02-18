@@ -18,6 +18,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -74,7 +75,7 @@ public class UserController {
 		logger.info("UserIntro");
 		return "_intro";
 	}
-
+	
 	//	@PreAuthorize("#user.email == authentication.name or hasRole('ROLE_ADMIN')") // https://stackoverflow.com/a/45128834/4735043
 	//	@RequestMapping(value = "/{id}", method = RequestMethod.GET) 
 	//	public String sendToUserPage(@ModelAttribute("user") User user) { // you can use @Param as well. 
@@ -164,6 +165,13 @@ public class UserController {
 			session.invalidate();
 		}
 		return "redirect:/login";	
+	}
+	
+	@PostMapping("/arrivalUpdate")
+	public String updateArrivalDate(@ModelAttribute("userProfile") UserProfile userProfile) {
+		
+		userProfileService.save(userProfile);
+		return "redirect:/user/";
 	}
 
 	// 업데이트 유저 로그인 정보 

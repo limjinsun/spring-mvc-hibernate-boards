@@ -28,5 +28,10 @@ public class UserProfileServiceImpl implements UserProfileService {
 		System.out.println("유저프로파일-업데이트메소드");
 		userProfileDAO.save(userProfile);
 	}
+
+	@Override
+	public void save(UserProfile userProfile) {
+		userProfileDAO.save(userProfile);
+	}	
 	
 }

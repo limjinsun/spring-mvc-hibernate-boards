@@ -1,12 +1,20 @@
 package com.rainbowtape.boards.config;
 
 import javax.servlet.Filter;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+	
+	@Override
+	public void onStartup(ServletContext servletContext) throws ServletException {
+	    super.onStartup(servletContext);
+	    servletContext.addListener(new SessionListener());
+	}
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -35,6 +43,8 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 			new OpenEntityManagerInViewFilter()
 		};
 	}
+	
+	
 
 	/* https://stackoverflow.com/a/23051264/4735043 - Replaced	 
 	@Override

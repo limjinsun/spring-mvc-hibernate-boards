@@ -123,12 +123,6 @@ public class LoginController {
 		logger.info("HomeController.java + Welcome to 404 area! The client locale is {}.", locale);
 		return "404";
 	}
-
-	@GetMapping("/admin")
-	public String getSystem (@ModelAttribute User user, Model model) {
-
-		return "system";
-	}
 	
 	@GetMapping("/intro")
 	public String getIntro (@ModelAttribute User user, Model model) {

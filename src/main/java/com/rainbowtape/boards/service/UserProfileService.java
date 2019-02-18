@@ -8,4 +8,5 @@ public interface UserProfileService {
 	UserProfile findById(int userid);
 	UserProfile findByUser(User user);
 	void updateUserProfile(UserProfile userProfile);
+	void save(UserProfile userProfile);
 }

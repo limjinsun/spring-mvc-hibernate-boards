@@ -112,7 +112,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				response.sendRedirect(request.getContextPath()+"/403");
 			} else if(isAdmin(authentication)) {
 				log.info("Admin");
-				response.sendRedirect(request.getContextPath()+"/admin");
+				response.sendRedirect(request.getContextPath()+"/admin/");
 			} else {
 				log.info("UserPage Redirecting");
 				response.sendRedirect(request.getContextPath()+"/user/");

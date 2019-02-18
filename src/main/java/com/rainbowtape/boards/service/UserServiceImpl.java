@@ -106,4 +106,9 @@ public class UserServiceImpl implements UserService {
 	        System.err.println("userhasbeen-autheticated!!");
 	    }
 	}
+
+	@Override
+	public List<User> findAllUser() {
+		return userDAO.findAll();
+	}
 }
