@@ -428,7 +428,7 @@
 
 						<div class="card col-lg-4 d-flex grid-margin borderon" style="padding: 20px;">
 
-							<div class="col-12">
+							<div class="d-flex align-items-center col-12">
 								<form th:action="@{'/user/arrivalUpdate'}" class="mui-form" method="POST" />
 								<div class="mui-textfield">
 									<a class="datetime-toggle"> <span class="mdi mdi-calendar-check icon-xmd" style="padding-top: 0px; position: absolute;"></span>
@@ -700,8 +700,8 @@
 				document.getElementById("instafeed").classList.add('d-flex');
 			})
 			.catch(function(e) {
-		        console.log(e);
-		    });;
+		        console.log(e)
+		    })
 
 		function getElementByXpath(path) {
   			return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;

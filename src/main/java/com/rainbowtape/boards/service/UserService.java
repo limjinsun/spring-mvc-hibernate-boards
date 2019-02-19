@@ -2,6 +2,8 @@ package com.rainbowtape.boards.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -18,5 +20,8 @@ public interface UserService extends UserDetailsService {
 	void createUser(UserValidation user);
 	void makeUserToLoginStatus(String username, String password);	
 	void updateUser(User user);
-	List<User> findAllUser();
+//	List<User> findAllUser();
+
+	public Page<User> findAll(Pageable pageable);
+
 }

@@ -306,8 +306,7 @@
 									<tr class="borderon">
 										<td colspan=2>
 											<div style="height: 100%; width: 100%;">
-												<span>
-													<!-- <p th:utext="${#strings.replace( #strings.escapeXml( post.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">글내용</p> -->
+												<span> <!-- <p th:utext="${#strings.replace( #strings.escapeXml( post.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">글내용</p> -->
 													<p th:utext="${#strings.replace( post.content ,T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">글내용</p>
 												</span>
 											</div>
@@ -330,6 +329,17 @@
 								</tbody>
 							</table>
 
+							<!-- content-wrapper ends -->
+							<div class="w-100 grid-margin flex-wrap borderon d-none " id="instafeed" style="padding: 10px 0 10px 0; margin: 0;">
+								<div class="col-lg-12 borderon" style="padding: 0px">
+									<div class="card borderon">
+										<div class="card-body borderon" style="padding: 0;">
+											<img th:src="@{'/resources/images/blank.png'}" width="100%" height="100%" id="slot01" />
+										</div>
+									</div>
+								</div>
+							</div>
+
 							<div th:if="${errormsg}">
 								<div class="text-danger card-description">
 									<span th:text="${errormsg}"></span>
@@ -343,9 +353,6 @@
 							</div>
 							<button type="submit" class="mui-btn mui-btn--flat font-b">댓글달기</button>
 							</form>
-
-
-
 
 
 							<div th:if="${#lists.isEmpty(replys)}">
@@ -403,15 +410,8 @@
 								</form>
 							</div>
 
-
-
-
-
-
 						</div>
-
 					</div>
-
 
 
 
@@ -447,6 +447,37 @@
 		</div>
 	</div>
 	<!-- container-scroller -->
+
+	<script th:inline="javascript">
+    	var insta = /*[[${post.insta}]]*/ null
+	</script>
+
+	<script th:inline="text">
+	if (insta !== null){
+		fetch("[[@{'/api/school/insta/' + ${post.insta} }]]")
+        .then((res) => res.json())
+        .then(function(data) {
+        	console.log(data)
+            return data.entry_data.ProfilePage["0"].graphql.user.edge_owner_to_timeline_media.edges;
+        }).then(function(data) {
+        	console.log(data)
+            return data.map(dataItem => dataItem.node.display_url)
+        }).then(data => {
+        	console.log(data)
+            var location = data[0]
+            document.getElementById("slot01").setAttribute("src", location)
+            document.getElementById("instafeed").classList.remove('d-none');
+            document.getElementById("instafeed").classList.add('d-flex');
+        })
+        .catch(function(e) {
+            console.log(e);
+        })
+	}
+	
+    function getElementByXpath(path) {
+        return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    }
+    </script>
 
 	<!-- plugins:js -->
 	<script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}"></script>

@@ -1,6 +1,8 @@
 package com.rainbowtape.boards.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.rainbowtape.boards.dao.UserProfileDAO;
@@ -33,5 +35,4 @@ public class UserProfileServiceImpl implements UserProfileService {
 	public void save(UserProfile userProfile) {
 		userProfileDAO.save(userProfile);
 	}	
-	
 }

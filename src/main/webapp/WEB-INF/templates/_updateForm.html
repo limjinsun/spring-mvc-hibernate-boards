@@ -107,9 +107,15 @@ a {
 											<div class="mui-radio borderon" style="margin-bottom: 0px; height: 28px;">
 												<label>
 													<input type="radio" style="margin-top: 5px;" name="category" th:field="${post.category}" id="optionsRadios2" th:value="option2">
-													<p class="font-a" style="padding-top: 3px">질문하기</p>
+													<p class="font-a" style="padding-top: 3px">자유게시글 - 마음대로 쓰고싶은 글</p>
 												</label>
 											</div>
+											<!-- <div class="mui-radio borderon" style="margin-bottom: 0px; height: 28px;">
+												<label>
+													<input type="radio" style="margin-top: 5px;" name="category" th:field="${post.category}" id="optionsRadios3" th:value="option3">
+													<p class="font-a" style="padding-top: 3px">자유게시글 - 마음대로 쓰고싶은 글</p>
+												</label>
+											</div> -->
 										</div>
 
 										<div class="mui-textfield borderon">
@@ -125,6 +131,11 @@ a {
 										<div class="mui-textfield borderon">
 											<input type="text" name="tag" th:field="${post.tag}" id="tag">
 											<label>내용과 관련한 태그를 적어주세요. [옵션] (예, 리피어학원, 어학연수, 워홀, 코크 맛집.. 등등 )</label>
+										</div>
+										
+										<div class="mui-textfield borderon">
+											<input type="text" name="insta" th:field="${post.insta}" id="insta"> <!--  -->
+											<label style="color:deeppink;">인스타그램 아이디 [옵션] 게시글과 함께 피드사진 1장이 표시됩니다.</label>
 										</div>
 										
 										<div sec:authorize="hasRole('ROLE_ADMIN')" class="mui-textfield borderon">

@@ -2,9 +2,13 @@ package com.rainbowtape.boards.controller;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -44,26 +48,24 @@ public class AdminController {
 	
 	@GetMapping("/")
 	public String userIndex() { 
-		
-		
-		
 
 		return "adminIndex";
 	}
 	
-	
 	@GetMapping("/allUserInfo")
-	public String getAllUserInfo(Model model) { 
+	public String getAllUserInfo(
+			@PageableDefault(page = 1) Pageable pageable,
+			Model model) { 
 		
-		List<User> users = userService.findAllUser();
-		model.addAttribute("users", users);
+		System.err.println(pageable.getPageNumber());
+		int pageNum = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1); // 페이지넘버가 0 부터 시작하니까 -1 해줌. 
+		pageable = new PageRequest(pageNum, 10, new Sort(Sort.Direction.DESC, "datecreated"));
 		
+		Page<User> usersPage = userService.findAll(pageable);
+		model.addAttribute("page", usersPage);
+
 		return "_allUserInfo";
 	}
-	
-	
-	
-
 
 	// 업데이트 유저 로그인 정보 
 	private void updateAuthentication(User user) {

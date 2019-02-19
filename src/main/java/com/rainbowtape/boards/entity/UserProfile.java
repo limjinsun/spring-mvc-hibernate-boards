@@ -70,7 +70,9 @@ public class UserProfile {
 	@Column(name="extra2")
 	private String extra2;
 	
-	
+	@Column(name="datecreated")
+	private String datecreated;
+
 	public UserProfile() {
 		// Defualt Constructor
 	}
@@ -199,6 +201,14 @@ public class UserProfile {
 
 	public void setArrivaldate(String arrivaldate) {
 		this.arrivaldate = arrivaldate;
+	}
+	
+	public String getDatecreated() {
+		return datecreated;
+	}
+
+	public void setDatecreated(String datecreated) {
+		this.datecreated = datecreated;
 	}
 
 }

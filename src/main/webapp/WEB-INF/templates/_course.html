@@ -340,7 +340,7 @@
                                                     </span>
                                                 </div>
                                                 <div class="borderon">
-                                                    <p class="card-description" th:text="${school.description}">학교설명</p>
+                                                    <p class="card-description" th:text="${school.description}">학교소개 섹션입니다.</p>
                                                 </div>
                                                 <div class="table-responsive borderon">
                                                     <table class="table card-description">
@@ -515,8 +515,7 @@
                                 <!-- <div class="card-header borderon"></div> -->
                                 <div class="card-body col-lg-12">
                                     <h3 class="card-title font-b">리피의 코멘트</h4>
-                                        <p class="card-description" id="admin-text" th:text="${school.admintext}">
-                                            admin-text</p>
+                                    	<p class="card-description" id="admin-text" th:utext="${#strings.replace( school.admintext ,T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">리피의 코멘트 - 어드민텍스트</p>
                                 </div>
                                 <!-- <div class="row borderon">
                                         <div class="col-lg-12 d-flex justify-content-center align-items-center borderon">
@@ -658,8 +657,8 @@
             document.getElementById("instafeed").classList.add('d-flex');
         })
         .catch(function(e) {
-            console.log(e);
-        });;
+            console.log(e)
+        })
 
     function getElementByXpath(path) {
         return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;

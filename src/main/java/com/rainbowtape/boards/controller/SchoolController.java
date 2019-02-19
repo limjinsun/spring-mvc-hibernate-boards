@@ -10,6 +10,9 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.safety.Whitelist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.HtmlUtils;
 
 import com.rainbowtape.boards.entity.Course;
 import com.rainbowtape.boards.entity.School;
@@ -129,11 +133,10 @@ public class SchoolController {
 			String schoolpics = Paths.get(File.separator + schoolDirectoryName + File.separator + file2Name).toString();
 			school.setLogo(logo);
 			school.setSchoolpics(schoolpics);
+			
+			school.setAdmintext(textToHtmlConvertingURLsToLinks(school.getAdmintext()));
 
 			schoolService.save(school);
-
-			//			redirectAttributes.addFlashAttribute("message",
-			//					"You successfully uploaded '" + file1.getOriginalFilename() + " and " + file2.getOriginalFilename() + "'");
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -147,6 +150,8 @@ public class SchoolController {
 	public String getSchoolUpdateForm (@PathVariable("id") int idschool, Model model) {
 
 		School school = schoolService.findOne(idschool);
+		
+		school.setAdmintext(html2textAndKeepLineBreak(school.getAdmintext()));
 		model.addAttribute("school", school);
 
 		return "_schoolUpdateForm";
@@ -155,8 +160,8 @@ public class SchoolController {
 	@PostMapping("/update/{id}")
 	public String updateSchool (
 			@PathVariable("id") int idschool, 
-			@RequestParam("file1") MultipartFile file1, 
-			@RequestParam("file2") MultipartFile file2,
+			@RequestParam(value="file1", required=false) MultipartFile file1, 
+			@RequestParam(value="file2", required=false) MultipartFile file2,
 			@ModelAttribute("school") @Valid School temp,
 			BindingResult result, 
 			RedirectAttributes redirectAttributes,
@@ -167,9 +172,25 @@ public class SchoolController {
 			redirectAttributes.addFlashAttribute("errormsg", "입력에 실패하였습니다. 정상적으로 다시 작성해 주세요."); 
 			return "redirect:/school/update/" + idschool;
 		}
-
-		if (file1.isEmpty() || file2.isEmpty()) {
-			redirectAttributes.addFlashAttribute("errormsg", "Please select a file to upload");
+		// 그림파일 두개다 업데이트 하지 않은 경우, 학교정보만 업데이트 
+		if (file1.isEmpty() && file2.isEmpty()) {
+			School originalSchool = schoolService.findOne(idschool);
+			temp.setIdschool(originalSchool.getIdschool()); // important.
+			temp.setSchoolpics(originalSchool.getSchoolpics()); // keep pics index
+			temp.setLogo(originalSchool.getLogo()); // keep logo index
+			
+			temp.setAdmintext(textToHtmlConvertingURLsToLinks(temp.getAdmintext()));
+			originalSchool = temp;
+			schoolService.save(originalSchool);
+			
+			return "redirect:/school/all";
+		}
+		// 그림파일 한개만 업데이트 한경우, 에러로 두개다 업데이트 요구함. 
+		if(file1.isEmpty() && !file2.isEmpty()) {
+			redirectAttributes.addFlashAttribute("errormsg", "Upload pics has to be set of pictures.");
+			return "redirect:/school/update/" + idschool;
+		} else if (!file1.isEmpty() && file2.isEmpty()) {
+			redirectAttributes.addFlashAttribute("errormsg", "Upload pics has to be set of pictures.");
 			return "redirect:/school/update/" + idschool;
 		}
 
@@ -204,13 +225,12 @@ public class SchoolController {
 			String schoolpics = Paths.get(File.separator + schoolDirectoryName + File.separator + file2Name).toString();
 			temp.setLogo(logo);
 			temp.setSchoolpics(schoolpics);
+			temp.setAdmintext(textToHtmlConvertingURLsToLinks(temp.getAdmintext()));
 			temp.setIdschool(originalSchool.getIdschool()); // important.
 
 			originalSchool = temp;
 			schoolService.save(originalSchool);
 
-			redirectAttributes.addFlashAttribute("message",
-					"You successfully uploaded '" + file1.getOriginalFilename() + " and " + file2.getOriginalFilename() + "'");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -243,26 +263,26 @@ public class SchoolController {
 
 	@GetMapping("/addCourse/{id}")
 	public String getCourseAddForm (@PathVariable("id") int idschool, Model model) {
-		
+
 		School school = schoolService.findOne(idschool);
 		model.addAttribute("course", new Course());
 		model.addAttribute("school", school);
 
 		return "_courseAddForm";
 	}
-	
+
 	@PostMapping("/addCourse/{id}")
 	public String addCourseIntoDb (@PathVariable("id") int idschool, @ModelAttribute Course course) {
-		
+
 		System.err.println(idschool);
 		course.setSchool(schoolService.findOne(idschool));
 		courseService.save(course);
 		return "redirect:/school/all";
 	}
-	
+
 	@GetMapping("/modifyCourse/{id}")
 	public String getmodifyForm (@PathVariable("id") int idschool, Model model) {
-		
+
 		School school = schoolService.findOne(idschool);
 		List<Course> courses = courseService.findBySchool(school);
 		model.addAttribute("courses", courses);
@@ -270,13 +290,13 @@ public class SchoolController {
 
 		return "_courseModificationForm";
 	}
-	
+
 	@PostMapping("/modifyCourse/{c_id}")
 	public String modifyCourse (@PathVariable("c_id") int idcourse,
-								@ModelAttribute("item") Course courseDTO) {
-		
+			@ModelAttribute("item") Course courseDTO) {
+
 		Course course = courseService.findOne(idcourse);
-		
+
 		course.setName(courseDTO.getName());
 		course.setPrice(courseDTO.getPrice());
 		course.setSpecialprice(courseDTO.getSpecialprice());
@@ -286,18 +306,46 @@ public class SchoolController {
 		course.setExtra1(courseDTO.getExtra1());
 		course.setExtra2(courseDTO.getExtra2());
 		course.setExtra3(courseDTO.getExtra3());
-		
+
 		courseService.save(course);
-		
+
 		return "redirect:/school/all";
 	}
-	
+
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/deleteCourse/{c_id}")
 	public String deleteCourse (@PathVariable("c_id") int idcourse) {
-		
+
 		courseService.delete(idcourse);
 		return "redirect:/school/all";
+	}
+
+	/** helper methods **/
+
+	public static boolean isNullOrEmpty(String str) {
+		if(str != null && !str.isEmpty())
+			return false;
+		return true;
+	}
+
+	public static String textToHtmlConvertingURLsToLinks(String text) {
+		if (text == null) {
+			return text;
+		}
+		String escapedText = HtmlUtils.htmlEscape(text);
+		return escapedText.replaceAll("(\\A|\\s)((http|https|ftp|mailto):\\S+)(\\s|\\z)",
+				"$1<a href=\"$2\" target=\"_blank\">$2</a>$4");
+	}
+
+	public static String html2textAndKeepLineBreak(String html) {
+		if(html==null)
+			return html;
+		Document document = Jsoup.parse(html);
+		document.outputSettings(new Document.OutputSettings().prettyPrint(false));//makes html() preserve linebreaks and spacing
+		document.select("br").append("\\n");
+		document.select("p").prepend("\\n\\n");
+		String s = document.html().replaceAll("\\\\n", "\n");
+		return Jsoup.clean(s, "", Whitelist.none(), new Document.OutputSettings().prettyPrint(false));
 	}
 
 }

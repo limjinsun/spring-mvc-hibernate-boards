@@ -27,7 +27,7 @@ public class Course {
 	private String name;
 	
 	@JsonIgnore
-	@ManyToOne(cascade=CascadeType.MERGE)
+	@ManyToOne(cascade=CascadeType.MERGE) // MERGE - https://stackoverflow.com/a/29235227/4735043
 	@JoinColumn(name="idschool")
 	private School school;
 	

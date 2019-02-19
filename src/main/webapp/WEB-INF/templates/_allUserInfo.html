@@ -110,10 +110,6 @@
 
 .close {
 	background: #606061;
-	
-	
-	
-	
 	color: #FFFFFF;
 	line-height: 25px;
 	position: absolute;
@@ -267,11 +263,80 @@
 			<!-- partial -->
 			<div class="main-panel margin_for_fixed">
 				<div class="content-wrapper">
-				
-				
-				
-				
-				
+
+					<div class="col-lg-7 mx-auto borderon">
+						<div th:if="${#lists.isEmpty(page.content)}">
+							<p>회원이 없습니다</p>
+						</div>
+
+						<div th:if="!${#lists.isEmpty(page.content)}">
+
+							<!-- <div class="box borderon d-flex justify-content-center align-items-center" style="border: 3px solid black; padding: 0px; margin: 0px; height: 44px;">
+								<a class="borderon" style="padding: 0 5px;" th:href="@{'/forum/write'}"> <i class="mdi mdi-message-text-outline icon-xmd"></i> <span class="menu-title font-b"> <small>&nbsp글쓰기</small>
+								</span></a>
+							</div> -->
+
+							<table class="table mui-table mui-table--bordered borderon">
+								<!-- <thead class="borderon">
+									<tr>
+										<th class="borderon">제목</th>
+										<th>날짜</th>
+									</tr>  th:style="${post.special != null} ? 'font-weight:800; color:Black;' : '' "
+								</thead> -->
+								<tbody class="borderon">
+									<tr th:each="user : ${page.content}">
+										<td class="borderon"><a th:href="@{'/admin/viewUserDetail/' + ${user.id}}">
+												<div style="height: 100%; width: 100%;">
+													<div style="font-weight: 600; color: Black">
+													 	<span th:text="${#strings.abbreviate(user.fname,28)}"> 유저이름 </span>
+													</div>
+												</div>
+										</a></td>
+										<!-- <td class="borderon" style="text-align: right;">
+											<div style="height: 100%; width: 250px; width: 100px; max-width: 100px; display: inline-block;">
+												<span th:text="${#dates.format(item.datecreated, 'dd MMM yyyy')}"> 날짜 </span>
+											</div>
+										</td> -->
+									</tr>
+
+								</tbody>
+							</table>
+							
+							<!--  페이지 네이션  -->
+
+							<div class="pagination-div col-w-100 borderon" style="text-align: center;">
+
+								<ul class="pagination borderon" th:with="start=${T(Math).floor(page.number/10)*10 + 1},
+                    last=(${start + 9 < page.totalPages ? start + 9 : page.totalPages})" style="margin: 6px 0px;">
+									<li><a th:href="@{/admin/allUserInfo(page=1)}" aria-label="First"> <span aria-hidden="true">First</span>
+									</a></li>
+
+									<li th:class="${page.first} ? 'disabled'"><a th:href="${page.first} ? '#' :@{/admin/allUserInfo(page=${page.number})}" aria-label="Previous"> <span aria-hidden="true">&lt;</span>
+									</a></li>
+
+									<!-- 페이지 넘버는 0 부터 시작 이라서 1을 더해줌  -->
+									<li><th:block th:each="i: ${#numbers.sequence(start, last)}">
+											<span th:if="${page.number+1 == i}" class="selected">[[${i}]]</span>
+											<span th:unless="${page.number+1 == i}"> <a th:href="@{/admin/allUserInfo(page=${i})}">[[${i}]]</a>
+											</span>
+										</th:block></li>
+
+									<li th:class="${page.last} ? 'disabled'"><a th:href="${page.last} ? '#' : @{/admin/allUserInfo(page=${page.number + 2})}" aria-label="Next"> <span aria-hidden="true">&gt;</span>
+									</a></li>
+
+									<li><a th:href="@{/admin/allUserInfo(page=${page.totalPages})}" aria-label="Last"> <span aria-hidden="true">Last</span>
+									</a></li>
+								</ul>
+							</div> 
+
+
+						</div>
+					</div>
+
+
+
+
+
 				</div>
 
 

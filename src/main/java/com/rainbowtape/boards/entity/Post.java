@@ -77,7 +77,10 @@ public class Post {
 
 	@Column(name="p_special")
 	private String special;
-
+	
+	@Column(name="p_insta")
+	private String insta;
+	
 	/**
 	 * One to Many - for Replys. 
 	 */
@@ -196,4 +199,13 @@ public class Post {
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
+	
+	public String getInsta() {
+		return insta;
+	}
+
+	public void setInsta(String insta) {
+		this.insta = insta;
+	}
+
 }

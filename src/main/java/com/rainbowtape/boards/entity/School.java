@@ -122,7 +122,7 @@ public class School {
 	 */
 	@JsonIgnore
 	@LazyCollection(LazyCollectionOption.FALSE) 
-	@OneToMany(mappedBy="school", cascade=CascadeType.REFRESH) // fetch=FetchType.LAZY 삭제. CascadeType 수정 - course deleting 을 위해서.
+	@OneToMany(mappedBy="school", cascade=CascadeType.ALL) // REFRESH // fetch=FetchType.LAZY 삭제. CascadeType 수정 - course deleting 을 위해서.
 	private List<Course> courses;
 	
 	public List<Course> getCourses() {

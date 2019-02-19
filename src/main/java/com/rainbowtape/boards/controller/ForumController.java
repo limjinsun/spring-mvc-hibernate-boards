@@ -6,6 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.safety.Whitelist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -101,16 +104,6 @@ public class ForumController {
 		postService.save(post);
 		return "redirect:/forum/viewpostslist";
 	}
-	
-	public static String textToHtmlConvertingURLsToLinks(String text) {
-	    if (text == null) {
-	        return text;
-	    }
-
-	    String escapedText = HtmlUtils.htmlEscape(text);
-	    return escapedText.replaceAll("(\\A|\\s)((http|https|ftp|mailto):\\S+)(\\s|\\z)",
-	        "$1<a href=\"$2\" target=\"_blank\">$2</a>$4");
-	}
 
 	@GetMapping("/viewpostslist")
 	public String showPostsList (
@@ -157,6 +150,8 @@ public class ForumController {
 			Model model) {
 
 		post = postService.findById(idpost);
+		post.setContent(html2textAndKeepLineBreak(post.getContent()));
+	
 		model.addAttribute("post", post);
 		return "_updateForm";
 	}
@@ -167,7 +162,8 @@ public class ForumController {
 			@ModelAttribute("post") @Valid Post temp, 
 			@ModelAttribute("user") User user,
 			BindingResult result) {
-
+		
+		System.err.println("updatePosting");
 		Post originalPost = postService.findById(idpost);
 
 		originalPost.setCategory(temp.getCategory());
@@ -175,12 +171,18 @@ public class ForumController {
 		originalPost.setContent(textToHtmlConvertingURLsToLinks(temp.getContent()));
 		originalPost.setTag(temp.getTag());
 		
-		
 		String s = temp.getSpecial();
 		if(isNullOrEmpty(s)) {
 			originalPost.setSpecial(null);
 		} else {
 			originalPost.setSpecial(s);
+		}
+		
+		String insta = temp.getInsta();
+		if(isNullOrEmpty(insta)) {
+			originalPost.setInsta(null);
+		} else {
+			originalPost.setInsta(insta);
 		}
 
 		java.util.Date now = new java.util.Date();
@@ -190,12 +192,6 @@ public class ForumController {
 		return "redirect:/forum/viewpost/" + idpost;
 	}
 	
-	public static boolean isNullOrEmpty(String str) {
-        if(str != null && !str.isEmpty())
-            return false;
-        return true;
-    }
-
 	@PreAuthorize("#userid == #user.id or hasRole('ROLE_ADMIN')")
 	@PostMapping("/delete/{idpost}")
 	public String deletePost (
@@ -253,5 +249,33 @@ public class ForumController {
 
 		return "redirect:/forum/viewpost/" + idpost;
 	}
-
+	
+	/** helper methods **/
+	
+	public static boolean isNullOrEmpty(String str) {
+        if(str != null && !str.isEmpty())
+            return false;
+        return true;
+    }
+	
+	public static String textToHtmlConvertingURLsToLinks(String text) {
+	    if (text == null) {
+	        return text;
+	    }
+	    String escapedText = HtmlUtils.htmlEscape(text);
+	    return escapedText.replaceAll("(\\A|\\s)((http|https|ftp|mailto):\\S+)(\\s|\\z)",
+	        "$1<a href=\"$2\" target=\"_blank\">$2</a>$4");
+	}
+	
+	public static String html2textAndKeepLineBreak(String html) {
+	    if(html==null)
+	        return html;
+	    Document document = Jsoup.parse(html);
+	    document.outputSettings(new Document.OutputSettings().prettyPrint(false));//makes html() preserve linebreaks and spacing
+	    document.select("br").append("\\n");
+	    document.select("p").prepend("\\n\\n");
+	    String s = document.html().replaceAll("\\\\n", "\n");
+	    return Jsoup.clean(s, "", Whitelist.none(), new Document.OutputSettings().prettyPrint(false));
+	}
+	
 }
