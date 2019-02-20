@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.HtmlUtils;
 
+import com.rainbowtape.boards.dto.UserWithArrivalInfo;
 import com.rainbowtape.boards.entity.User;
 import com.rainbowtape.boards.entity.UserProfile;
 import com.rainbowtape.boards.service.UserProfileService;
@@ -64,9 +65,10 @@ public class AdminController {
 			Model model) { 
 
 		int pageNum = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1); // 페이지넘버가 0 부터 시작하니까 -1 해줌. 
-		pageable = new PageRequest(pageNum, 10, new Sort(Sort.Direction.DESC, "datecreated"));
+		pageable = new PageRequest(pageNum, 10, new Sort(Sort.Direction.DESC, "arrivaldate"));
 
-		Page<User> usersPage = userService.findAll(pageable);
+//		Page<User> usersPage = userService.findAll(pageable);
+		Page<UserWithArrivalInfo> usersPage = userService.findAllWithArrivalInfo(pageable);
 		model.addAttribute("page", usersPage);
 
 		return "_allUserInfo";
@@ -121,9 +123,9 @@ public class AdminController {
 			Model model) { 
 
 		int pageNum = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1); // 페이지넘버가 0 부터 시작하니까 -1 해줌. 
-		pageable = new PageRequest(pageNum, 10, new Sort(Sort.Direction.DESC, "datecreated"));
+		pageable = new PageRequest(pageNum, 10, new Sort(Sort.Direction.DESC, "arrivaldate"));
 
-		Page<User> usersPage = userService.findMembers(pageable);
+		Page<UserWithArrivalInfo> usersPage = userService.findMembersWithArrivalInfo(pageable);
 		model.addAttribute("page", usersPage);
 
 		return "_allUserInfo";
@@ -135,9 +137,9 @@ public class AdminController {
 			Model model) { 
 
 		int pageNum = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1); // 페이지넘버가 0 부터 시작하니까 -1 해줌. 
-		pageable = new PageRequest(pageNum, 10, new Sort(Sort.Direction.DESC, "datecreated"));
+		pageable = new PageRequest(pageNum, 10, new Sort(Sort.Direction.DESC, "arrivaldate"));
 
-		Page<User> usersPage = userService.findOldMembers(pageable);
+		Page<UserWithArrivalInfo> usersPage = userService.findOldMembersWithArrivalInfo(pageable);
 		model.addAttribute("page", usersPage);
 
 		return "_allUserInfo";

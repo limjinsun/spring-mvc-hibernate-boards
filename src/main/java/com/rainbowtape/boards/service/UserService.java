@@ -1,13 +1,12 @@
 package com.rainbowtape.boards.service;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.rainbowtape.boards.dto.UserValidation;
+import com.rainbowtape.boards.dto.UserWithArrivalInfo;
 import com.rainbowtape.boards.entity.User;
 
 public interface UserService extends UserDetailsService {
@@ -24,5 +23,10 @@ public interface UserService extends UserDetailsService {
 	public Page<User> findAll(Pageable pageable);
 	public Page<User> findMembers(Pageable pageable);
 	public Page<User> findOldMembers(Pageable pageable);
+	
+	
+	public Page<UserWithArrivalInfo> findAllWithArrivalInfo(Pageable pageable);
+	public Page<UserWithArrivalInfo> findMembersWithArrivalInfo(Pageable pageable);
+	public Page<UserWithArrivalInfo> findOldMembersWithArrivalInfo(Pageable pageable);
 
 }

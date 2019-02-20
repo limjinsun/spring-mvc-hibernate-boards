@@ -44,8 +44,6 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 		};
 	}
 	
-	
-
 	/* https://stackoverflow.com/a/23051264/4735043 - Replaced	 
 	@Override
 	protected Filter[] getServletFilters() {

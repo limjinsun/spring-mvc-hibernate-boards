@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import com.rainbowtape.boards.dao.UserDAO;
 import com.rainbowtape.boards.dto.UserValidation;
+import com.rainbowtape.boards.dto.UserWithArrivalInfo;
 import com.rainbowtape.boards.entity.User;
 import com.rainbowtape.boards.entity.UserProfile;
 import com.rainbowtape.boards.entity.UserRole;
@@ -124,5 +125,18 @@ public class UserServiceImpl implements UserService {
 		return userDAO.findOldMembers(pageable);
 	}
 
+	@Override
+	public Page<UserWithArrivalInfo> findAllWithArrivalInfo(Pageable pageable) {
+		return userDAO.findAllWithArrivalInfo(pageable);
+	}
 
+	@Override
+	public Page<UserWithArrivalInfo> findMembersWithArrivalInfo(Pageable pageable) {
+		return userDAO.findMembersWithArrivalInfo(pageable);
+	}
+
+	@Override
+	public Page<UserWithArrivalInfo> findOldMembersWithArrivalInfo(Pageable pageable) {
+		return userDAO.findOldMembersWithArrivalInfo(pageable);
+	}
 }

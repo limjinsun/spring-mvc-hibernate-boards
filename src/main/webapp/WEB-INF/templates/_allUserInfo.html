@@ -264,7 +264,7 @@
 			<div class="main-panel margin_for_fixed">
 				<div class="content-wrapper">
 
-					<div class="col-lg-7 mx-auto borderon">
+					<div class="col-lg-8 mx-auto borderon">
 						<div th:if="${#lists.isEmpty(page.content)}">
 							<p>회원이 없습니다</p>
 						</div>
@@ -288,7 +288,7 @@
 										<td class="borderon"><a th:href="@{'/admin/viewUserDetail/' + ${user.id}}">
 												<div style="height: 100%; width: 100%;">
 													<div style="font-weight: 600; color: Black; padding: 10px;">
-														<span th:text="${#strings.abbreviate(user.fname,28)}"> 유저이름 </span> | <span th:text="${#strings.abbreviate(user.email,28)}"> 유저이메일 </span>
+														<span th:text="${#strings.abbreviate(user.fname,28)}"> 유저이름 </span> | <span th:text="${#strings.abbreviate(user.email,28)}"> 유저이메일 </span> | <span th:text="${#strings.abbreviate(user.arrivaldate,28)} ?: '도착일 미정'"> 유저도착날 </span> | <span th:text="${#strings.abbreviate(user.flightinfo,28)} ?: '도착비행기미정'"> 도착비행편 </span> | <span th:text="${#strings.abbreviate(user.interest,28)} ?: '관심사'"> 관심 </span>
 													</div>
 												</div>
 										</a></td>
