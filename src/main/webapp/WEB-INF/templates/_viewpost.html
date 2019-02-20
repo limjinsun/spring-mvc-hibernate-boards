@@ -191,6 +191,10 @@
 								</div>
 							</a>
 							<div class="col-12 d-flex align-items-center" style="margin-top: 10px">
+								<a class="dropdown-item d-flex align-items-center" th:href="@{'/user/updateEmail'}"> <i class="mdi mdi-email-open mr-0 text-gray"></i> &nbsp이메일수정하기
+								</a>
+							</div>
+							<div class="col-12 d-flex align-items-center" style="margin-top: 10px">
 								<a class="dropdown-item d-flex align-items-center" href="#openModal"> <i class="mdi mdi-account-remove mr-0 text-gray"></i> &nbsp탈퇴하기
 								</a>
 							</div>
@@ -291,7 +295,7 @@
 										<!-- <th><div style="height: 100%; width: 100%;"><span th:text="${post.user.fname}"> 글쓴이 </span></div></th> -->
 										<th>
 											<div>
-												<span th:attr="style=${#strings.contains(post.user.email,'admin@java.com')}? 'color:DeepPink;' : ''" th:text="${#strings.contains(post.user.email, 'admin@java.com')}? '리피' : ${post.user.getMaskedEmail()}"> 작성자 </span> <span th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:text=${post.user.email}></span>
+												<span th:attr="style=${#strings.contains(post.user.email,'info@liffeyireland.com')}? 'color:DeepPink;' : ''" th:text="${#strings.contains(post.user.email, 'info@liffeyireland.com')}? '리피' : ${post.user.getMaskedEmail()}"> 작성자 </span> <span th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:text=${post.user.email}></span>
 											</div>
 
 										</th>
@@ -371,7 +375,7 @@
 										<tr th:each="reply : ${replys}">
 											<td>
 												<div style="height: 100%; width: 100%;">
-													<div th:attr="style=${#strings.contains(reply.user.email,'admin@java.com')}? 'color:DeepPink;' : ''">
+													<div th:attr="style=${#strings.contains(reply.user.email,'info@liffeyireland.com')}? 'color:DeepPink;' : ''">
 														<span>
 															<p th:utext="${#strings.replace( reply.content ,T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">댓글내용</p>
 														</span>
@@ -381,7 +385,7 @@
 												</div> <!-- </td>
 										<td class="borderon"> -->
 												<div style="text-align: right;">
-													<small> <span th:text="${#dates.format(reply.datecreated, 'dd MMM yyyy')}"> 댓글날짜 </span> <span th:attr="style=${#strings.contains(reply.user.email,'admin@java.com')}? 'color:DeepPink;' : ''" th:text="${#strings.contains(reply.user.email, 'admin@java.com')}? '리피' : ${reply.user.getMaskedEmail()}"> 댓글작성자 </span>
+													<small> <span th:text="${#dates.format(reply.datecreated, 'dd MMM yyyy')}"> 댓글날짜 </span> <span th:attr="style=${#strings.contains(reply.user.email,'info@liffeyireland.com')}? 'color:DeepPink;' : ''" th:text="${#strings.contains(reply.user.email, 'info@liffeyireland.com')}? '리피' : ${reply.user.getMaskedEmail()}"> 댓글작성자 </span>
 													</small>
 												</div>
 												<div style="text-align: right;">

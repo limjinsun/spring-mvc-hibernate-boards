@@ -10,15 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rainbowtape.boards.entity.Course;
-import com.rainbowtape.boards.entity.ProductDetail;
 import com.rainbowtape.boards.entity.School;
 import com.rainbowtape.boards.service.CourseService;
-import com.rainbowtape.boards.service.ProductDetailService;
 import com.rainbowtape.boards.service.SchoolService;
 
 /**
@@ -30,9 +27,6 @@ import com.rainbowtape.boards.service.SchoolService;
 @RequestMapping(value = "api/school")
 public class ApiController {
 
-	@Autowired
-	private ProductDetailService productDetailService;
-	
 	@Autowired
 	private SchoolService schoolService;
 	
@@ -51,22 +45,6 @@ public class ApiController {
 		return schoolService.findOne(idschool);
 	}
 	
-	@RequestMapping(value = "/search", method = RequestMethod.GET) 
-	public List<ProductDetail> getListOfSchools(
-			@RequestParam(value = "area", required= false) String area,
-			@RequestParam(value = "studyterm", required= false) String studyterm) {
-
-		return productDetailService.findAll();
-	}
-
-	@RequestMapping(value = "/search/condition", method = RequestMethod.GET) 
-	public List<ProductDetail> getListOfSchoolsWithAjax(
-			@RequestParam(value = "area", required= false) String area,
-			@RequestParam(value = "studyterm", required= false) String studyterm) {
-
-		return productDetailService.findWithArea(area);
-	}
-
 	// @RequestMapping(value = "/insta/{insta_id}", produces = "application/json", method = RequestMethod.GET) 
 	@GetMapping("/insta/{insta_id}")
 	public String getInstafeed(

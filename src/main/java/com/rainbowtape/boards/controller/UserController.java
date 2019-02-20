@@ -16,6 +16,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,14 +69,38 @@ public class UserController {
 		logger.info("UserIndex");
 		return "userIndex";
 	}
-	
+
 	@GetMapping("/intro")
 	public String userIntro(@ModelAttribute("user") User user) { 
 
 		logger.info("UserIntro");
 		return "_intro";
 	}
-	
+
+	@GetMapping("/updateEmail")
+	public String getUpdateEmailForm(@ModelAttribute("user") User user, Model model) { 
+
+		model.addAttribute("user", user);
+		return "_changeEmailForm";
+	}
+
+	@PostMapping("/updateEmail")
+	public String updateEmailIntoDb(@ModelAttribute("user") User user) { 
+
+
+		try {
+			userService.updateUser(user);
+			updateAuthentication(user); // 이메일을 변경하였을 경우를 대비해서, 변경된 정보로 현재 authentication 정보를 업데이트 해줘야 한다. 
+		}
+		catch(Exception e) {
+			System.err.println(e);
+			return "redirect:/error";
+		}
+
+		
+		return "redirect:/user/";
+	}
+
 	//	@PreAuthorize("#user.email == authentication.name or hasRole('ROLE_ADMIN')") // https://stackoverflow.com/a/45128834/4735043
 	//	@RequestMapping(value = "/{id}", method = RequestMethod.GET) 
 	//	public String sendToUserPage(@ModelAttribute("user") User user) { // you can use @Param as well. 
@@ -166,10 +191,10 @@ public class UserController {
 		}
 		return "redirect:/login";	
 	}
-	
+
 	@PostMapping("/arrivalUpdate")
 	public String updateArrivalDate(@ModelAttribute("userProfile") UserProfile userProfile) {
-		
+
 		userProfileService.save(userProfile);
 		return "redirect:/user/";
 	}
