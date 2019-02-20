@@ -14,6 +14,14 @@
 	font-family: "Roboto", "Nanum Barun Gothic", sans-serif;
 }
 
+.font-d {
+	font-family: 'Sunflower', "Roboto", "Nanum Barun Gothic", sans-serif;
+}
+
+.iconic-text {
+ 	font-family: 'Sunflower', "Roboto", "Nanum Barun Gothic", sans-serif; 
+}
+
 a:link {
 	text-decoration: none;
 }
@@ -29,7 +37,8 @@ a:link {
 
 .borderlist {
 	list-style-position: inside;
-	border-top: 1.6px solid black;
+	border-top: 1px solid black;
+	padding-top: 4px;
 	/* border-bottom: 1px solid grey; */
 }
 
@@ -322,3 +331,29 @@ input, textarea, select, button {
 .buttonfx:hover {
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
+
+/** bg-color-css **/
+
+.bg-color-a {
+	background-color: f7f7f7ba;
+}
+
+
+.bg-color-b {
+	background-color: rgb(213, 213, 213);
+}
+
+
+.bg-color-c {
+	background-color: rgb(192, 192, 192);
+}
+
+
+.bg-color-d {
+	background-color: rgb(169, 169, 169);
+}
+
+.bg-color-e {
+	background-color: rgb(121, 121, 121);
+}
+

@@ -70,7 +70,7 @@ public class UserProfile {
 	@Column(name="extra2")
 	private String extra2;
 	
-	@Column(name="datecreated")
+	@Column(name="datecreated", nullable=false, updatable=false, insertable=false)
 	private String datecreated;
 
 	public UserProfile() {
@@ -207,8 +207,5 @@ public class UserProfile {
 		return datecreated;
 	}
 
-	public void setDatecreated(String datecreated) {
-		this.datecreated = datecreated;
-	}
 
 }

@@ -149,9 +149,7 @@
 
 
 <style>
-.bg-color-a {
-	background-color: #f7f7f7ba;
-}
+
 
 /** simplepicker **/
 .simplepicker-date-section {
@@ -196,7 +194,7 @@
 		<!-- partial:partials/_navbar.html -->
 		<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 			<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-				<a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b"> <small class="borderlist">리피의아일랜드</small>
+				<a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b iconic-text"> <small class="borderlist">리피의아일랜드</small>
 				</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> --> <!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
 				</a> <a class="navbar-brand brand-logo-mini" th:href="@{'/'}"> <!-- <span class="menu-title font-b">
 						<small class="borderlist">리피</small>
@@ -298,10 +296,16 @@
 							</a>
 						</form>
 					</li>
-					<li class="nav-item"><a class="nav-link" th:href="@{'/school/addSchool'}"> <i class="mdi mdi-menu-left icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">어학원 추가하기</small>
+					<li class="nav-item bg-color-b"><a class="nav-link" th:href="@{'/school/addSchool'}"> <i class="mdi mdi-menu-left icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">어학원 추가하기</small>
 						</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{'/admin/allUserInfo'}"> <i class="mdi mdi-minus icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">모든 회원 정보</small>
+					<li class="nav-item bg-color-c"><a class="nav-link" th:href="@{'/admin/allUserInfo'}"> <i class="mdi mdi-minus icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">모든 회원 정보</small>
+						</span>
+					</a></li>
+					<li class="nav-item bg-color-d"><a class="nav-link" th:href="@{'/admin/allMemberInfo'}"> <i class="mdi mdi-chevron-up icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">리피 회원 정보</small>
+						</span>
+					</a></li>
+					<li class="nav-item bg-color-e"><a class="nav-link" th:href="@{'/admin/allOldMemberInfo'}"> <i class="mdi mdi-chevron-left icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">리피 구회원 정보</small>
 						</span>
 					</a></li>
 				</ul>
@@ -630,6 +634,25 @@
 							</div>
 						</div>
 					</div>
+					
+					<div class="row">
+
+
+						<div class="col-lg-8 grid-margin">
+							<div class="card">
+								<div class="card-body">
+									<h3 class="font-c card-title">조언</h3>
+									<p class="card-description">
+									<p class="font-c" th:utext="${#strings.replace( userProfile.admintext ,T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')} ?: '현지 도착이후, 개인의 상황에 맞게 업데이트 됩니다'">글내용</p>
+									</p>
+								</div>
+							</div>
+						</div>
+
+
+
+					</div>
+					
 
 
 

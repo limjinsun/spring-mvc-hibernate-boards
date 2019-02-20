@@ -20,8 +20,9 @@ public interface UserService extends UserDetailsService {
 	void createUser(UserValidation user);
 	void makeUserToLoginStatus(String username, String password);	
 	void updateUser(User user);
-//	List<User> findAllUser();
 
 	public Page<User> findAll(Pageable pageable);
+	public Page<User> findMembers(Pageable pageable);
+	public Page<User> findOldMembers(Pageable pageable);
 
 }

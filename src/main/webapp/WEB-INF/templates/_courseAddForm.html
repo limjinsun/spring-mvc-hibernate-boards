@@ -90,7 +90,6 @@ input[type="file"] {
 </style>
 
 <style>
-
 .c-datepicker__header-date {
 	background: #292929;
 }
@@ -112,10 +111,12 @@ input[type="file"] {
 		<div class="header-firstnav">
 			<nav class="navbar default-layout col-lg-12 col-12 p-0 d-flex flex-row">
 				<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-					<a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b"> <small class="borderlist">리피의아일랜드</small>
+					<a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b iconic-text"> <small class="borderlist">리피의아일랜드</small>
 					</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> --> <!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
-					</a> <a class="navbar-brand brand-logo-mini" th:href="@{'/'}"> <span class="menu-title font-b"> <small class="borderlist">홈</small>
-					</span> <!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="top: 10px; left: 18px; position: absolute;"></i> --> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
+					</a> <a class="navbar-brand brand-logo-mini" th:href="@{'/'}"> <!-- <span class="menu-title font-b">
+						<small class="borderlist">리피</small>
+					</span> --> <span> <small class="borderlist">홈</small> <!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 14px;"></i> -->
+					</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
 					</a>
 				</div>
 			</nav>
@@ -146,7 +147,7 @@ input[type="file"] {
 									<div class="col-lg-7 borderon">
 										<h2 class="card-description">학교 코스 등록 폼입니다.</h2>
 										<p class="card-description">
-											<i class="fa fa-caret-right"></i> 관리자만 접근 가능한 페이지 입니다. <br />
+											<i class="fa fa-caret-right"></i> 관리자만 접근 가능한 페이지 입니다. 코스할인 마감일을 반드시 지정해야 합니다. <br />
 										</p>
 										<p></p>
 									</div>
@@ -249,26 +250,25 @@ input[type="file"] {
 	<script th:src="@{'/resources/js/material-datetime-picker.js'}" charset="utf-8"></script>
 
 	<script>
-        var picker = new MaterialDatetimePicker({})
-            .on('submit', function (d) {
-               /*  output.innerText = d;
-                document.getElementById("specialdue").value = d; */
-                
-                var myDate = new Date(d); 
-                mysqldate = myDate.getUTCFullYear() + '-' +
-		  	          ('00' + (myDate.getUTCMonth()+1)).slice(-2) + '-' +
-		  	          ('00' + myDate.getUTCDate()).slice(-2) + ' ' + 
-		  	          ('00' + myDate.getUTCHours()).slice(-2) + ':' + 
-		  	          ('00' + myDate.getUTCMinutes()).slice(-2) + ':' + 
-		  	          ('00' + myDate.getUTCSeconds()).slice(-2);
-	  	      	document.getElementById("specialdue").value = mysqldate;
-	            	});
+		var picker = new MaterialDatetimePicker({}).on('submit', function(d) {
+			/*  output.innerText = d;
+			 document.getElementById("specialdue").value = d; */
 
-        var el = document.querySelector('.datetime-toggle');
-        el.addEventListener('click', function () {
-            picker.open();
-        }, false);
-    </script>
+			var myDate = new Date(d);
+			mysqldate = myDate.getUTCFullYear() + '-'
+					+ ('00' + (myDate.getUTCMonth() + 1)).slice(-2) + '-'
+					+ ('00' + myDate.getUTCDate()).slice(-2) + ' '
+					+ ('00' + myDate.getUTCHours()).slice(-2) + ':'
+					+ ('00' + myDate.getUTCMinutes()).slice(-2) + ':'
+					+ ('00' + myDate.getUTCSeconds()).slice(-2);
+			document.getElementById("specialdue").value = mysqldate;
+		});
+
+		var el = document.querySelector('.datetime-toggle');
+		el.addEventListener('click', function() {
+			picker.open();
+		}, false);
+	</script>
 
 
 	<!-- <script type="text/javascript">

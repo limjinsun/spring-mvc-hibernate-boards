@@ -315,6 +315,8 @@ public class SchoolController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/deleteCourse/{c_id}")
 	public String deleteCourse (@PathVariable("c_id") int idcourse) {
+		
+		System.err.println("deleting-course :" + idcourse);
 
 		courseService.delete(idcourse);
 		return "redirect:/school/all";

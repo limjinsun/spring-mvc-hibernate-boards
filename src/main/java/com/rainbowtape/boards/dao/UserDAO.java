@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.rainbowtape.boards.entity.User;
@@ -14,11 +15,21 @@ public interface UserDAO extends JpaRepository<User, Long> {
 	 * 	save(), delete(), is already inherited from JpaRepository 
 	 * 	you don't need implement this bellow method too.
 	 */	
-	User findByEmail (String email);
-	User findById (int userId);
+	public User findByEmail (String email);
+	public User findById (int userId);
 	
-//	@Query("SELECT u FROM userprofile upf JOIN upf.user u")
-//	@Query(value="SELECT * FROM user INNER JOIN userprofiles ON id = userid", nativeQuery = true)
 	@Query("SELECT u FROM UserProfile upf JOIN upf.user u")
-	Page<User> findAll(Pageable pageable);
+	public Page<User> findAll(Pageable pageable);
+	
+	// 입국일 미정이거나, 오늘보다 크커나(미래이거나) 한 회원.
+	@Query("SELECT u FROM UserProfile upf JOIN upf.user u WHERE upf.userstatus LIKE 'liffey' AND (upf.arrivaldate > CURRENT_DATE OR upf.arrivaldate IS NULL)")
+    public Page<User> findMembers (Pageable pageable);
+	
+	// 입국일이 오늘보다 작은 (과거인) 회원 
+	@Query("SELECT u FROM UserProfile upf JOIN upf.user u WHERE upf.userstatus LIKE 'liffey' AND upf.arrivaldate <= CURRENT_DATE")
+	public Page<User> findOldMembers(Pageable pageable);
+	
+
 }
+
+

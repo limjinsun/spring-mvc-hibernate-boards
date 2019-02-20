@@ -114,5 +114,15 @@ public class UserServiceImpl implements UserService {
 		return userDAO.findAll(pageable);
 	}
 
+	@Override
+	public Page<User> findMembers(Pageable pageable) {
+		return userDAO.findMembers(pageable);
+	}
+
+	@Override
+	public Page<User> findOldMembers(Pageable pageable) {
+		return userDAO.findOldMembers(pageable);
+	}
+
 
 }

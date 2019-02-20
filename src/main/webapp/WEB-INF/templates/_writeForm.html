@@ -55,7 +55,7 @@ a {
 		<div class="header-firstnav">
 			<nav class="navbar default-layout col-lg-12 col-12 p-0 d-flex flex-row">
 				<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-					<a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b"> <small class="borderlist">리피의아일랜드</small>
+					<a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b iconic-text"> <small class="borderlist">리피의아일랜드</small>
 					</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> --> <!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
 					</a> <a class="navbar-brand brand-logo-mini" th:href="@{'/'}"> <!-- <span class="menu-title font-b">
 						<small class="borderlist">리피</small>
@@ -83,8 +83,11 @@ a {
 								<div class="row">
 									<div class="col-lg-7 borderon">
 										<h2 class="card-description">글쓰기</h2>
-										<p class="card-description">당신이 작성한 글은, 당신에게 또는 누군가에게 도움이 됩니다.<br><br>‣ 후기를 작성하신다면, [어학원 광고 / 리피의 아일랜드 광고바라지 않습니다. 어학연수의 장미및 환상보다는, 솔직하게 써주시는 후기를 기대합니다. 글의 길이는 중요하지 않습니다] <br> ‣ 혼자힘으로 아일랜드 땅을 밟게된 소감 / 아일랜드 어학연수를 준비하는 한국의 분들께 드리고 싶은 조언 / 어학원과 홈스테이에 관한 생각 등을 자유롭게 써주세요.</p>
-										
+										<p class="card-description">
+											당신이 작성한 글은, 당신에게 또는 누군가에게 도움이 됩니다.<br>
+											<br>‣ 후기를 작성하신다면, [어학원 광고 / 리피의 아일랜드 광고바라지 않습니다. 어학연수의 장미및 환상보다는, 솔직하게 써주시는 후기를 기대합니다. 글의 길이는 중요하지 않습니다] <br> ‣ 혼자힘으로 아일랜드 땅을 밟게된 소감 / 아일랜드 어학연수를 준비하는 한국의 분들께 드리고 싶은 조언 / 어학원과 홈스테이에 관한 생각 등을 자유롭게 써주세요.
+										</p>
+
 									</div>
 									<!-- <div class="col-lg-3 borderon">hello</div> -->
 								</div>
@@ -133,8 +136,9 @@ a {
 											<label>내용과 관련한 태그를 적어주세요 [옵션] (예, 리피어학원, 어학연수, 워홀, 코크 맛집.. 등등 )</label>
 										</div>
 										<div class="mui-textfield borderon">
-											<input type="text" name="insta" th:field="${post.insta}" id="insta"> <!--  -->
-											<label style="color:deeppink;">인스타그램 아이디 [옵션] 게시글과 함께 피드사진 1장이 표시됩니다. 공개된 계정만 적용됩니다.</label>
+											<input type="text" name="insta" th:field="${post.insta}" id="insta">
+											<!--  -->
+											<label style="color: deeppink;">인스타그램 아이디 [옵션] 게시글과 함께 피드사진 1장이 표시됩니다. 공개된 계정만 적용됩니다.</label>
 										</div>
 										<button type="submit" class="mui-btn mui-btn--raised font-b">전송</button>
 										</form>
@@ -164,9 +168,9 @@ a {
 	</div>
 	<!-- container-scroller -->
 	<script>
-    document.getElementById("optionsRadios1").setAttribute("checked",
-        "checked")
-    </script>
+		document.getElementById("optionsRadios1").setAttribute("checked",
+				"checked")
+	</script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}"></script>
 	<script th:src="@{'/resources/vendors/js/vendor.bundle.addons.js'}"></script>
