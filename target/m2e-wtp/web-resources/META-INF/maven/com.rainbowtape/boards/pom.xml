@@ -14,7 +14,7 @@
 	</properties>
 	<dependencies>
 
-		<!-- https://mvnrepository.com/artifact/com.twitter.twittertext/twitter-text -->
+		<!-- url parsing :: https://mvnrepository.com/artifact/com.twitter.twittertext/twitter-text -->
 		<dependency>
 			<groupId>com.twitter.twittertext</groupId>
 			<artifactId>twitter-text</artifactId>
@@ -42,7 +42,7 @@
 			<version>4.3.4.RELEASE</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+		<!-- dealing with html :: https://mvnrepository.com/artifact/org.jsoup/jsoup -->
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>

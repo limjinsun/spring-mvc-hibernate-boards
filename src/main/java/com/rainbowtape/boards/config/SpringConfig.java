@@ -22,7 +22,7 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
-@EnableSpringDataWebSupport // https://stackoverflow.com/a/30071152/4735043
+@EnableSpringDataWebSupport // https://stackoverflow.com/a/30071152/4735043 - to make 'Pageable' work.
 @ComponentScan(basePackages = "com.rainbowtape.boards")
 public class SpringConfig extends WebMvcConfigurerAdapter {
 
