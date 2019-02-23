@@ -85,7 +85,9 @@ public class SchoolController {
 		return "_schoolAddForm";
 	}
 
-	private static String UPLOADED_FOLDER = "/Users/rainbowtape/liffey-app/images/";
+	// /home/app-data/images/ --> live server
+	// /Users/rainbowtape/liffey-app/images/ --> localhost:8080 
+	private static String UPLOADED_FOLDER = "/home/app-data/images/";
 
 	@PostMapping("/addSchool")
 	public String addSchoolIntoDb (

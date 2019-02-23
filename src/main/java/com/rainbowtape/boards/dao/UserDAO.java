@@ -18,6 +18,7 @@ public interface UserDAO extends JpaRepository<User, Long> {
 	public User findByEmail (String email);
 	public User findById (int userId);
 	
+	@Override
 	@Query("SELECT u FROM UserProfile upf JOIN upf.user u")
 	public Page<User> findAll(Pageable pageable);
 	

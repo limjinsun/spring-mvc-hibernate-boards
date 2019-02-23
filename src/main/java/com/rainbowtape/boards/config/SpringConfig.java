@@ -32,7 +32,9 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-		registry.addResourceHandler("/images/**").addResourceLocations("file:///Users/rainbowtape/liffey-app/images/").setCachePeriod(0);
+		// file:///home/app-data/images/ --> live server
+		// file:///Users/rainbowtape/liffey-app/images/ --> localhost:8080 
+		registry.addResourceHandler("/images/**").addResourceLocations("file:///home/app-data/images/").setCachePeriod(0); 
 	}
 
 	@Override
@@ -102,6 +104,5 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 		resolver.setMaxUploadSize(10000000);
 		return resolver;
 	}
-
 
 }

@@ -1,8 +1,5 @@
 package com.rainbowtape.boards.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 import com.rainbowtape.boards.entity.User;
 import com.rainbowtape.boards.entity.UserProfile;
 

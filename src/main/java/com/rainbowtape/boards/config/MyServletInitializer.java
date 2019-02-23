@@ -12,7 +12,7 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 	
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-	    super.onStartup(servletContext);
+	    super.onStartup(servletContext); 
 	    servletContext.addListener(new SessionListener());
 	}
 
@@ -28,7 +28,7 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] { "/" };
+		return new String[] { "/*" };
 	}
 
 	@Override

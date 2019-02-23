@@ -18,7 +18,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="School")
+@Table(name="school")
 public class School {
 	
 	@Id

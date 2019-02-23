@@ -26,6 +26,7 @@ public interface PostDAO extends JpaRepository<Post, Long> {
 	List<Post> findSpecialPost(String string);
 	
 	// 공지포스트 빼고 모든 포스트(스페셜 컬럼 == null) 를 걸러내기위해서 덮어씀. 
+	@Override
 	@Query(value = "SELECT * FROM post p WHERE p.p_special IS NULL ORDER BY ?#{#pageable}",
 			countQuery = "SELECT count(*) FROM post p WHERE p.p_special IS NULL ORDER BY ?#{#pageable}",
 		    nativeQuery = true)

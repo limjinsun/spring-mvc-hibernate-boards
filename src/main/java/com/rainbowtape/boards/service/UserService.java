@@ -11,6 +11,7 @@ import com.rainbowtape.boards.entity.User;
 
 public interface UserService extends UserDetailsService {
 	
+	@Override
 	public UserDetails loadUserByUsername(String username); // 유저디테일서비스에서온 메소드 - 유저 어센틱케이션 할때쓰인다.
 	
 	User findByEmail(String email);
