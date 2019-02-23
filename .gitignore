@@ -26,3 +26,8 @@ hs_err_pid*
 # Don't track content of this type
 *.properties
 
+
+# igonore taget ----
+*/target/**
+
+
