@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+
+<title>리피의 아일랜드</title>
+
+<!-- Favicons and -- For iPhone -->
+<link rel="icon" th:href="@{'/resources/images/favicon.ico'}" sizes="32x32">
+<link rel="apple-touch-icon-precomposed" th:href="@{'/resources/images/favicon.ico'}">
+<meta name="msapplication-TileColor" content="#00bcd4">
+<meta name="msapplication-TileImage" th:href="@{'/resources/images/favicon.ico'}">
+
+<!-- CSS -->
+<link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/font-awesome/css/font-awesome.css'}" type="text/css">
+
+<link rel="stylesheet" th:href="@{'/resources/vendors/icheck/skins/all.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/css/style.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/css/custom.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.base.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.addons.css'}" type="text/css">
+
+<style>
+.borderon {
+	/* border-style: solid;
+	border-width: thin; */
+}
+
+.table td, .table th {
+	font-size: 0.85rem;
+}
+
+.mui-table>tbody>tr>td {
+	padding: 14px;
+}
+
+.table th, .table td {
+	border-top: 3px solid #ffffff;
+}
+</style>
+<style>
+.fixed_menu {
+	position: fixed;
+}
+
+.margin_for_fixed {
+	margin-left: 255px;
+}
+
+@media ( max-width :991px) {
+	.fixed_menu {
+		/* position: absolute; */
+		
+	}
+	.margin_for_fixed {
+		margin-left: 0;
+	}
+}
+</style>
+
+
+<style>
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 99999;
+	opacity: 0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+
+.modalDialog:target {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.modalDialog>div {
+	width: 400px;
+	position: relative;
+	margin: 20% auto;
+	padding: 15px 15px;
+	border-radius: 3px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+}
+
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover {
+	background: #00d9ff;
+}
+</style>
+
+<style>
+.sidebar .nav .nav-item .nav-link {
+	padding: 5px 20px;
+}
+
+.sidebar .nav .nav-item.nav-profile .nav-link .user-wrapper {
+	margin: 15px 5px;
+}
+</style>
+
+
+<style>
+.bg-color-a {
+	background-color: #f7f7f7ba;
+}
+</style>
+</head>
+
+<body>
+	<div class="container-scroller">
+		<!-- partial:partials/_navbar.html -->
+		<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+			<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+				<a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b iconic-text"> <small class="borderlist">리피의아일랜드</small>
+				</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> --> <!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
+				</a> <a class="navbar-brand brand-logo-mini" th:href="@{'/'}"> <!-- <span class="menu-title font-b">
+						<small class="borderlist">리피</small>
+					</span> --> <span> <small class="borderlist">홈</small> <!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 14px;"></i> -->
+				</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
+				</a>
+			</div>
+			<div class="navbar-menu-wrapper d-flex align-items-center">
+				<ul class="navbar-nav navbar-nav-right">
+					<li class="nav-item dropdown d-none d-xl-inline-block">
+						<!-- 네비게이션 바 - 유저 프로파일 <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> --> <span class="profile-text">Hello!&nbsp;</span> <span class="profile-text" th:text="${user.getFname()}">Hello, Richard V.Welsh !</span> <span class="profile-text" style="margin-right: 15px;"> 님</span> <a id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> <img class="img-xs rounded-circle" th:src="@{'/resources'+${userProfile.getUserpics()}}" alt="Profile image">
+					</a> <!-- </a> -->
+
+						<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+							<a class="dropdown-item p-0">
+								<div class="d-flex border-bottom">
+									<div class="py-3 px-4 d-flex align-items-center justify-content-center">
+										<i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
+									</div>
+									<div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+										<i class="mdi mdi-account-outline mr-0 text-gray"></i>
+									</div>
+									<div class="py-3 px-4 d-flex align-items-center justify-content-center">
+										<i class="mdi mdi-alarm-check mr-0 text-gray"></i>
+									</div>
+								</div>
+							</a>
+							<div class="col-12 d-flex align-items-center" style="margin-top: 10px">
+								<a class="dropdown-item d-flex align-items-center" th:href="@{'/user/updateEmail'}"> <i class="mdi mdi-email-open mr-0 text-gray"></i> &nbsp이메일수정하기
+								</a>
+							</div>
+							<div class="col-12 d-flex align-items-center" style="margin-top: 10px">
+								<a class="dropdown-item d-flex align-items-center" href="#openModal"> <i class="mdi mdi-account-remove mr-0 text-gray"></i> &nbsp탈퇴하기
+								</a>
+							</div>
+							<!-- 	<a class="dropdown-item mt-2"> Manage Accounts </a>
+							<a class="dropdown-item"> Change Password </a> -->
+
+							<!-- 							<a class="dropdown-item"> Sign Out </a>
+ -->
+						</div>
+
+
+					</li>
+				</ul>
+				<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+					<span class="mdi mdi-minus-box icon-xmd"></span>
+				</button>
+			</div>
+		</nav>
+
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+
+			<nav class="sidebar sidebar-offcanvas fixed_menu" id="sidebar">
+				<ul class="nav">
+					<li class="nav-item nav-profile">
+						<div class="nav-link">
+							<!-- <div class="user-wrapper">
+								<div class="profile-image">
+									<img th:src="@{'/resources'+${userProfile.getUserpics()}}" alt="profile image">
+								</div>
+								<div class="text-wrapper">
+									<span class="profile-name" th:text="${user.getFname()}">홍길동</span>
+									<span>&nbsp;님</span>
+									<div>
+										<small class="designation text-muted" style="padding: 0 6px 0 0px;">member</small>
+										<span class="status-indicator online"></span>
+									</div>
+								</div>
+							</div> -->
+							<!-- <form th:action="@{'/logout'}" method="post">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								<button class="btn btn-secondary btn-block" type="submit">
+									<h5 style="margin-block-end: 0em;">
+										<i class="menu-icon mdi mdi-power"></i>
+										Log - Out
+									</h5>
+								</button>
+							</form> -->
+						</div>
+					</li>
+
+					<li class="nav-item" style="text-align: center;"><a class="nav-link" th:href="@{'/user/'}"> <i class="mdi mdi-dots-horizontal icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">나의 페이지 </small>
+						</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{'/user/intro/'}"> <i class="mdi mdi-dots-vertical icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">진행과정</small>
+						</span>
+					</a></li>
+					<!-- <li class="nav-item"><a class="nav-link" th:href="@{'/forum/write'}"> <i class="mdi mdi-menu-left icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">글쓰기</small>
+						</span>  
+					</a></li> -->
+					<li class="nav-item"><a class="nav-link" th:href="@{'/forum/viewpostslist'}"> <i class="mdi mdi-menu-up icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">글보기</small>
+						</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{'/school/all'}"> <i class="mdi mdi-drag-vertical icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">어학원 가격정보</small>
+						</span>
+					</a></li>
+					<li class="nav-item bg-color-a">
+						<form id="logout" th:action="@{'/logout'}" method="post">
+							<a href="#" class="nav-link" onclick="document.getElementById('logout').submit()"> <i class="mdi mdi-power icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">로그아웃</small>
+							</span>
+							</a>
+						</form>
+					</li>
+				</ul>
+			</nav>
+
+			<!-- partial -->
+			<div class="main-panel margin_for_fixed">
+				<div class="content-wrapper">
+
+					<div class="col-lg-7 mx-auto borderon">
+						<div th:if="${#lists.isEmpty(page.content)}">
+							<p>게시물이 없습니다</p>
+						</div>
+
+						<div th:if="!${#lists.isEmpty(page.content)}">
+
+							<div class="box borderon d-flex justify-content-center align-items-center" style="border: 3px solid black; padding: 0px; margin: 0px; height: 44px; ">
+								<a class="borderon" style="padding: 0 5px;"th:href="@{'/forum/write'}"> <i class="mdi mdi-message-text-outline icon-xmd"></i> <span class="menu-title font-b"> <small>&nbsp글쓰기</small>
+								</span></a>
+							</div>
+
+							<table class="table mui-table mui-table--bordered borderon">
+								<!-- <thead class="borderon">
+									<tr>
+										<th class="borderon">제목</th>
+										<th>날짜</th>
+									</tr>  th:style="${post.special != null} ? 'font-weight:800; color:Black;' : '' "
+								</thead> -->
+								<tbody class="borderon">
+									<tr th:each="item : ${specialPosts}">
+										<td class="borderon"><a th:href="@{'/forum/viewpost/' + ${item.idpost}}">
+												<div style="height: 100%; width: 100%;">
+													<div style="font-weight: 600; color: Black">
+														<span>‣attention‣</span> <span th:text="${#strings.abbreviate(item.title,28)}"> 제목 </span>
+													</div>
+												</div>
+										</a></td>
+										<!-- <td class="borderon" style="text-align: right;">
+											<div style="height: 100%; width: 250px; width: 100px; max-width: 100px; display: inline-block;">
+												<span th:text="${#dates.format(item.datecreated, 'dd MMM yyyy')}"> 날짜 </span>
+											</div>
+										</td> -->
+									</tr>
+
+									<tr th:each="post : ${page.content}">
+										<td class="borderon"><a th:href="@{'/forum/viewpost/' + ${post.idpost}}">
+												<div style="height: 100%; width: 100%;">
+													<div>
+														<!-- <span th:if="${post.special != null}">‣attention‣</span> -->
+														<span th:text="${#strings.abbreviate(post.title,28)}"> 제목 </span><span th:if="${post.replys.size() > 0}" th:text=" ' ‣ ' + ${post.replys.size()}"> 댓글수 </span>
+													</div>
+												</div>
+										</a></td>
+										<!-- <td class="borderon" style="text-align: right;">
+											<div style="height: 100%; width: 250px; width: 100px; max-width: 100px; display: inline-block;">
+												<span th:text="${#dates.format(post.datecreated, 'dd MMM yyyy')}"> 날짜 </span>
+											</div>
+										</td> -->
+									</tr>
+								</tbody>
+							</table>
+
+							<div class="pagination-div col-w-100 borderon" style="text-align: center;">
+
+								<ul class="pagination borderon" th:with="start=${T(Math).floor(page.number/10)*10 + 1},
+                    last=(${start + 9 < page.totalPages ? start + 9 : page.totalPages})" style="margin: 6px 0px;">
+									<li><a th:href="@{/forum/viewpostslist(page=1)}" aria-label="First"> <span aria-hidden="true">First</span>
+									</a></li>
+
+									<li th:class="${page.first} ? 'disabled'"><a th:href="${page.first} ? '#' :@{/forum/viewpostslist(page=${page.number})}" aria-label="Previous"> <span aria-hidden="true">&lt;</span>
+									</a></li>
+
+									<!-- <li th:each="page: ${#numbers.sequence(start, last)}">
+								<a th:text="${page}" th:href="@{/forum/viewpostslist(page=${page})}"></a>
+							</li> -->
+
+									<!-- 페이지 넘버는 0 부터 시작 이라서 1을 더해줌  -->
+									<li><th:block th:each="i: ${#numbers.sequence(start, last)}">
+											<span th:if="${page.number+1 == i}" class="selected">[[${i}]]</span>
+											<span th:unless="${page.number+1 == i}"> <a th:href="@{/forum/viewpostslist(page=${i})}">[[${i}]]</a>
+											</span>
+										</th:block></li>
+
+									<li th:class="${page.last} ? 'disabled'"><a th:href="${page.last} ? '#' : @{/forum/viewpostslist(page=${page.number + 2})}" aria-label="Next"> <span aria-hidden="true">&gt;</span>
+									</a></li>
+
+									<li><a th:href="@{/forum/viewpostslist(page=${page.totalPages})}" aria-label="Last"> <span aria-hidden="true">Last</span>
+									</a></li>
+								</ul>
+							</div>
+
+
+						</div>
+					</div>
+
+
+
+					<!-- <div class="pagination-div">
+						<span th:if="${page.hasPrevious()}">
+							<a th:href="@{/forum/viewpostslist(page=${page.number-1},size=${page.size})}">Previous</a>
+						</span>
+						<th:block th:each="i: ${#numbers.sequence(0, page.totalPages - 1)}">
+							<span th:if="${page.number == i}" class="selected">[[${i}+1]]</span>
+							<span th:unless="${page.number == i}">
+								<a th:href="@{/forum/viewpostslist(page=${i},size=${page.size})}">[[${i}+1]]</a>
+							</span>
+						</th:block>
+						<span th:if="${page.hasNext()}">
+							<a th:href="@{/forum/viewpostslist(page=${page.number+1},size=${page.size})}">Next</a>
+						</span>
+					</div> -->
+
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+					<div class="container-fluid clearfix">
+						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block font-b"> Copyright © 2019 <a href="#" target="_blank">리피의 아일랜드</a> . All rights reserved.
+						</span> <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center font-b"> 당신의 성공적인 어학연수를 위해 <i class="mdi mdi-heart text-danger"></i>
+						</span>
+					</div>
+				</footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+
+	<div id="openModal" class="modalDialog">
+		<div>
+			<a href="#close" title="Close" class="close">X</a>
+
+			<h2>리피의 아일랜드 회원탈퇴</h2>
+
+			<p>정말로 회원을 탈퇴하십니까? 당신과 관련된 모든자료는 폐기되고 복구되지 않습니다.</p>
+			<form th:action="@{'/user/delete'}" method="post">
+				<input class="btn btn-lg btn-primary btn-lg" type="submit" value="탈퇴하기" />
+			</form>
+		</div>
+	</div>
+	<!-- container-scroller -->
+
+	<!-- plugins:js -->
+	<script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}"></script>
+<!-- 	<script th:src="@{'/resources/vendors/js/vendor.bundle.addons.js'}"></script>
+ -->
+	<script th:src="@{'/resources/js/off-canvas.js'}"></script>
+<!-- 	<script th:src="@{'/resources/js/misc.js'}"></script>
+	
+	<script th:src="@{'/resources/js/dashboard.js'}"></script>  -->
+	<!-- End custom js for this page-->
+</body>
+
+</html>

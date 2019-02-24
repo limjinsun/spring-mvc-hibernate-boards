@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+
+<title>Error</title>
+
+<!-- Favicons and -- For iPhone -->
+<link rel="icon" th:href="@{'/resources/images/favicon.ico'}" sizes="32x32">
+<link rel="apple-touch-icon-precomposed" th:href="@{'/resources/images/favicon.ico'}">
+<meta name="msapplication-TileColor" content="#00bcd4">
+<meta name="msapplication-TileImage" th:href="@{'/resources/images/favicon.ico'}">
+
+<!-- css setting -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" type="text/css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css' type="text/css">
+
+<link rel="stylesheet" th:href="@{'/resources/css/style.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.base.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.addons.css'}" type="text/css">
+
+</head>
+
+
+<body>
+	<div class="container-scroller">
+		<div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+			<div class="content-wrapper d-flex align-items-center text-center error-page bg-primary">
+				<div class="row flex-grow">
+					<div class="col-lg-7 mx-auto text-white">
+						<div class="row align-items-center d-flex flex-row">
+							<div class="col-lg-6 text-lg-right pr-lg-4">
+								<h1 class="display-1 mb-0">error</h1>
+							</div>
+							<div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
+								<h2>Error!</h2>
+								<h4 class="font-weight-light">로그인에 실패하였습니다.</h3>
+							</div>
+						</div>
+						<div class="row mt-5">
+							<div class="col-12 text-center mt-xl-2">
+								<form th:action="@{'/logout'}" method="post">
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+									<input type="submit" value="돌아가기" class="btn btn--radius-2 btn--red btn--full">
+								</form>
+							</div>
+						</div>
+						<div class="row mt-5">
+							<div class="col-12 mt-xl-2">
+								<p class="text-white font-weight-medium text-center">Copyright &copy; All rights reserved.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- content-wrapper ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+
+
+<!-- <!-- 	<a th:href="@{'/logout'}">Log out</a> 
+	plugins:js
+	<script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}"></script>
+	<script th:src="@{'/resources/vendors/js/vendor.bundle.addons.js'}"></script>
+	endinject
+	inject:js
+	<script th:src="@{'/resources/js/off-canvas.js'}"></script>
+	<script th:src="@{'/resources/js/misc.js'}"></script> --> -->
+</body>
+</html>
+
+

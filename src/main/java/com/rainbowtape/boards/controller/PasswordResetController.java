@@ -100,9 +100,10 @@ public class PasswordResetController {
         model.put("token", token);
         model.put("user", user);
         model.put("signature", "https://liffeyireland.com");
-        String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
-        model.put("resetUrl", url + "/boards/forgotPassword/resetForm?token=" + token.getTokenString());
+        String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        model.put("resetUrl", url + "/forgotPassword/resetForm?token=" + token.getTokenString());
         mail.setModel(model);
+        
         
         Context context = new Context();
         context.setVariables(mail.getModel());
@@ -139,7 +140,6 @@ public class PasswordResetController {
 		
 		return "_resetForm";
 	}
-	
 	
 	// 3. 폼으로 포스트 리퀘스트로 받은후 비번을 업데이트해주고, 로긴 시켜줌.
 	@PostMapping("/resetForm")

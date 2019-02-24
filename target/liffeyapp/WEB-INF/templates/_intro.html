@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+
+<title>리피의 아일랜드</title>
+
+<!-- Favicons and -- For iPhone -->
+<link rel="icon" th:href="@{'/resources/images/favicon.ico'}" sizes="32x32">
+<link rel="apple-touch-icon-precomposed" th:href="@{'/resources/images/favicon.ico'}">
+<meta name="msapplication-TileColor" content="#00bcd4">
+<meta name="msapplication-TileImage" th:href="@{'/resources/images/favicon.ico'}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+
+<!-- CSS -->
+<link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/font-awesome/css/font-awesome.css'}" type="text/css">
+
+<link rel="stylesheet" th:href="@{'/resources/vendors/icheck/skins/all.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/css/style.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/css/custom.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.base.css'}" type="text/css">
+<link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.addons.css'}" type="text/css">
+
+
+
+
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,700);
+
+* {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.timeline {
+	margin: 4em auto;
+	position: relative;
+	max-width: 58em;
+}
+
+.timeline:before {
+	background-color: black;
+	content: '';
+	margin-left: -1px;
+	position: absolute;
+	top: 0;
+	left: 2em;
+	width: 2px;
+	height: 100%;
+}
+
+.timeline-event {
+	position: relative;
+}
+
+.timeline-event-copy {
+	padding: 2em;
+	position: relative;
+	top: -1.875em;
+	left: 4em;
+	width: 80%;
+}
+
+.timeline-event-copy h3 {
+    font-size: 2.35em;
+}
+
+.timeline-event-copy h4 {
+	font-size: 1.2em;
+	margin-bottom: 1.2em;
+}
+
+.timeline-event-copy strong {
+	font-weight: 700;
+}
+
+.timeline-event-copy
+
+
+ 
+
+
+p
+
+
+
+
+:not
+
+
+(
+.timeline-event-thumbnail
+
+
+ 
+
+
+)
+{
+padding-bottom
+
+
+
+
+:
+
+
+ 
+
+
+1
+.2em
+
+
+
+
+;
+}
+.timeline-event-icon {
+	-moz-transition: -moz-transform 0.2s ease-in;
+	-o-transition: -o-transform 0.2s ease-in;
+	-webkit-transition: -webkit-transform 0.2s ease-in;
+	transition: transform 0.2s ease-in;
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	background-color: black;
+	outline: 10px solid white;
+	display: block;
+	margin: 0.5em 0.5em 0.5em -0.5em;
+	position: absolute;
+	top: 0;
+	left: 2em;
+	width: 1em;
+	height: 1em;
+}
+
+.timeline-event-thumbnail {
+	-moz-transition: box-shadow 0.5s ease-in 0.1s;
+	-o-transition: box-shadow 0.5s ease-in 0.1s;
+	-webkit-transition: box-shadow 0.5s ease-in;
+	-webkit-transition-delay: 0.1s;
+	transition: box-shadow 0.5s ease-in 0.1s;
+	color: white;
+	font-size: 0.75em;
+	background-color: black;
+	-moz-box-shadow: inset 0 0 0 0em #ef795a;
+	-webkit-box-shadow: inset 0 0 0 0em #ef795a;
+	box-shadow: inset 0 0 0 0em #ef795a;
+	display: inline-block;
+	margin-bottom: 1.2em;
+	padding: 0.25em 1em 0.2em 1em;
+}
+
+dl, ol, ul {
+	padding-left: 0rem;
+}
+</style>
+
+
+
+<style>
+.fixed_menu {
+	position: fixed;
+}
+
+.margin_for_fixed {
+	margin-left: 255px;
+}
+
+@media ( max-width :991px) {
+	.fixed_menu {
+		/* position: absolute; */
+		
+	}
+	.margin_for_fixed {
+		margin-left: 0;
+	}
+}
+
+.navbar.default-layout {
+	transition: background 0.25s ease;
+	-webkit-transition: background 0.25s ease;
+	-moz-transition: background 0.25s ease;
+	-ms-transition: background 0.25s ease;
+	background-color: rgba(255, 255, 255);
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 1),
+		rgba(220, 220, 220, 1));
+}
+
+.navbar.default-layout .navbar-brand-wrapper .navbar-brand {
+	color: #222;
+}
+
+.navbar-brand-wrapper {
+	background-color: rgba(255, 255, 255 .5);
+}
+
+.navbar.default-layout .navbar-menu-wrapper {
+	color: #222;
+}
+
+.content-wrapper {
+	background: rgba(220, 220, 220, 0.1);
+}
+
+
+
+</style>
+
+
+<style>
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 99999;
+	opacity: 0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+
+.modalDialog:target {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.modalDialog>div {
+	width: 400px;
+	position: relative;
+	margin: 20% auto;
+	padding: 15px 15px;
+	border-radius: 3px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+}
+
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover {
+	background: #00d9ff;
+}
+</style>
+
+<style>
+.sidebar .nav .nav-item .nav-link {
+	padding: 5px 20px;
+}
+
+.sidebar .nav .nav-item.nav-profile .nav-link .user-wrapper {
+	margin: 15px 5px;
+}
+</style>
+
+
+<style>
+.bg-color-a {
+	background-color: #f7f7f7ba;
+}
+</style>
+</head>
+
+<body>
+	<div class="container-scroller">
+		<!-- partial:partials/_navbar.html -->
+		<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+			<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+				<a class="navbar-brand brand-logo" th:href="@{'/'}"> <!-- <span class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 4px;"></span> --> <span class="menu-title font-b iconic-text"> <small class="borderlist">리피의아일랜드</small>
+				</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> --> <!-- <img th:src="@{'/resources/images/main-logo.svg'}" alt="" /> -->
+				</a> <a class="navbar-brand brand-logo-mini" th:href="@{'/'}"> <!-- <span class="menu-title font-b">
+						<small class="borderlist">리피</small>
+					</span> --> <span> <small class="borderlist">홈</small> <!-- <i class="mdi mdi-view-agenda rotate-90 icon-xmd" style="padding-top: 14px;"></i> -->
+				</span> <!-- <img th:src="@{'/resources/images/icon-cube-green.svg'}" alt="" /> -->
+				</a>
+			</div>
+			<div class="navbar-menu-wrapper d-flex align-items-center">
+				<ul class="navbar-nav navbar-nav-right">
+					<li class="nav-item dropdown d-none d-xl-inline-block">
+						<!-- 네비게이션 바 - 유저 프로파일 <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> --> <span class="profile-text">Hello!&nbsp;</span> <span class="profile-text" th:text="${user.getFname()}">Hello, Richard V.Welsh !</span> <span class="profile-text" style="margin-right: 15px;"> 님</span> <a id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> <img class="img-xs rounded-circle" th:src="@{'/resources'+${userProfile.getUserpics()}}" alt="Profile image">
+					</a> <!-- </a> -->
+
+						<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+							<a class="dropdown-item p-0">
+								<div class="d-flex border-bottom">
+									<div class="py-3 px-4 d-flex align-items-center justify-content-center">
+										<i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
+									</div>
+									<div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+										<i class="mdi mdi-account-outline mr-0 text-gray"></i>
+									</div>
+									<div class="py-3 px-4 d-flex align-items-center justify-content-center">
+										<i class="mdi mdi-alarm-check mr-0 text-gray"></i>
+									</div>
+								</div>
+							</a>
+							<div class="col-12 d-flex align-items-center" style="margin-top: 10px">
+								<a class="dropdown-item d-flex align-items-center" th:href="@{'/user/updateEmail'}"> <i class="mdi mdi-email-open mr-0 text-gray"></i> &nbsp이메일수정하기
+								</a>
+							</div>
+							<div class="col-12 d-flex align-items-center" style="margin-top: 10px">
+								<a class="dropdown-item d-flex align-items-center" href="#openModal"> <i class="mdi mdi-account-remove mr-0 text-gray"></i> &nbsp탈퇴하기
+								</a>
+							</div>
+							<!-- 	<a class="dropdown-item mt-2"> Manage Accounts </a>
+							<a class="dropdown-item"> Change Password </a> -->
+
+							<!-- 							<a class="dropdown-item"> Sign Out </a>
+ -->
+						</div>
+
+
+					</li>
+				</ul>
+				<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+					<span class="mdi mdi-minus-box icon-xmd"></span>
+				</button>
+			</div>
+		</nav>
+
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+
+			<nav class="sidebar sidebar-offcanvas fixed_menu" id="sidebar">
+				<ul class="nav">
+					<li class="nav-item nav-profile">
+						<div class="nav-link">
+							<!-- <div class="user-wrapper">
+								<div class="profile-image">
+									<img th:src="@{'/resources'+${userProfile.getUserpics()}}" alt="profile image">
+								</div>
+								<div class="text-wrapper">
+									<span class="profile-name" th:text="${user.getFname()}">홍길동</span>
+									<span>&nbsp;님</span>
+									<div>
+										<small class="designation text-muted" style="padding: 0 6px 0 0px;">member</small>
+										<span class="status-indicator online"></span>
+									</div>
+								</div>
+							</div> -->
+							<!-- <form th:action="@{'/logout'}" method="post">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								<button class="btn btn-secondary btn-block" type="submit">
+									<h5 style="margin-block-end: 0em;">
+										<i class="menu-icon mdi mdi-power"></i>
+										Log - Out
+									</h5>
+								</button>
+							</form> -->
+						</div>
+					</li>
+
+					<li class="nav-item" style="text-align: center;"><a class="nav-link" th:href="@{'/user/'}"> <i class="mdi mdi-dots-horizontal icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">나의 페이지 </small>
+						</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{'/user/intro/'}"> <i class="mdi mdi-dots-vertical icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">진행과정</small>
+						</span>
+					</a></li>
+					<!-- <li class="nav-item"><a class="nav-link" th:href="@{'/forum/write'}"> <i class="mdi mdi-menu-left icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">글쓰기</small>
+						</span>  
+					</a></li> -->
+					<li class="nav-item"><a class="nav-link" th:href="@{'/forum/viewpostslist'}"> <i class="mdi mdi-menu-up icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">글보기</small>
+						</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{'/school/all'}"> <i class="mdi mdi-drag-vertical icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">어학원 가격정보</small>
+						</span>
+					</a></li>
+					<li class="nav-item bg-color-a">
+						<form id="logout" th:action="@{'/logout'}" method="post">
+							<a href="#" class="nav-link" onclick="document.getElementById('logout').submit()"> <i class="mdi mdi-power icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">로그아웃</small>
+							</span>
+							</a>
+						</form>
+					</li>
+				</ul>
+			</nav>
+
+			<!-- partial -->
+			<div class="main-panel margin_for_fixed">
+				<div class="content-wrapper">
+
+
+
+					<ul class="timeline font-c">
+						<li class="timeline-event"><label class="timeline-event-icon"></label>
+							<div class="timeline-event-copy">
+								<p class="timeline-event-thumbnail font-b">연수준비</p>
+								<h3 class="font-c">1. 어학원의 가격정보를 참고하여 자신의 연수를 구상합니다.</h3>
+								<h4></h4>
+								<p>
+									<strong>다양한 선택</strong><br>아일랜드의 어학연수는 아주 다양하게 진행할수 있습니다. 더블린도 시내중심/외각. 또 지방의 어학연수까지. 소셜미디어로 올라온 정보들 말고도 다양한 연수 방법을 고려해보세요. 연수에 대해서 궁금한점은 텍스트 미디어로 무료로 상담드립니다.
+								</p>
+							</div></li>
+						<li class="timeline-event"><label class="timeline-event-icon"></label>
+							<div class="timeline-event-copy">
+								<p class="timeline-event-thumbnail font-b">심층상담</p>
+								<h3 class="font-c">2. 심층상담을 통해서 상담자가 놓치고 있는 부분은 없는지 체크합니다.</h3>
+								<h4></h4>
+								<p>
+									<strong>맞춤형 상담</strong><br>심층상담 작은 상담비용이 청구됩니다.(작은금액입니다.) 이 금액을 제외하고 학생이 추가로 부담하는 비용은 전혀없습니다. 유학원보다 더 저렴하게 어학원등록을 진행합니다. 심층상담은 상담자의 상황에 맞는 연수진행을 위해 맞춤형으로 진행해 드립니다. 무료 상담원하시는 분들은 한국의 유학원에 문의하시면 쉽게 받으실 수 있습니다.
+								</p>
+							</div></li>
+						<li class="timeline-event"><label class="timeline-event-icon"></label>
+							<div class="timeline-event-copy">
+								<p class="timeline-event-thumbnail font-b">학원선정및 신청</p>
+								<h3 class="font-c">3. 어학원과 초기숙소를 확정후 등록신청을 합니다.</h3>
+								<h4></h4>
+								<p>
+									<strong>등록신청</strong><br>초기숙소를 다양한 방식으로 결정할수 있습니다. 스스로 자신의 초기 숙소를 찾는데에도 도움을 드립니다. 홈스테이가 필요하시면 홈스테이 연계도 해드리고, 가장 저렴한 방법으로 진행할수 있도록 안내해드립니다.
+								</p>
+							</div></li>
+						<li class="timeline-event"><label class="timeline-event-icon"></label>
+							<div class="timeline-event-copy">
+								<p class="timeline-event-thumbnail font-b">인보이스 발급</p>
+								<h3 class="font-c">4. 해당교육기관으로 부터 인보이스를 발급받습니다.</h3>
+								<h4></h4>
+								<p>
+									<strong>인보이스 발급</strong><br>직접 해당교육기관으로 부터 인보이스를 발급받아서, 직접 전달해 드립니다. 다른 유학원들과 가격을 비교해볼 수 있습니다.
+								</p>
+							</div></li>
+						<li class="timeline-event"><label class="timeline-event-icon"></label>
+							<div class="timeline-event-copy">
+								<p class="timeline-event-thumbnail font-b">등록금송금 및 스쿨레터발급</p>
+								<h3 class="font-c">5. 등록금을 송금하고 스쿨레터를 발급 받습니다.</h3>
+								<h4></h4>
+								<p>
+									<strong>등록금 송금</strong><br>등록금 송금은 리피의 아일랜드 아일랜드 현지계좌로 진행합니다. 등록금 송금이 확인된 날짜로 5 Working-Day 이내로 스쿨레터를 발급해 드립니다.
+								</p>
+							</div></li>
+						<li class="timeline-event"><label class="timeline-event-icon"></label>
+							<div class="timeline-event-copy">
+								<p class="timeline-event-thumbnail font-b">입국준비 및 현지미팅</p>
+								<h3 class="font-c">6. 입국전 안내와 현지도착후 현지미팅을 진행합니다.</h3>
+								<h4></h4>
+								<p>
+									<strong>현지미팅</strong><br>입국전까지 진행해야되는 일에 대한 안내와, 현지에서 도착후 바로 진행해야 되는 일들에 대해 안내해드리고, 개인의 상황에 맞는 현지 연수 방법에 대해서 같이 고민하고 해당 방법에 대해 알려드립니다. 어학연수는 어학원만 다닌다고 해결되지 않습니다.
+								</p>
+							</div></li>
+						<li class="timeline-event"><label class="timeline-event-icon"></label>
+							<div class="timeline-event-copy">
+								<p class="timeline-event-thumbnail font-b">현지케어</p>
+								<h3 class="font-c">7. 지속적인 현지케어를 해드립니다.</h3>
+								<h4></h4>
+								<p>
+									<strong>현지케어</strong><br>공항픽업. 시티투어. 같은 피상적인 현지케어가 아닌, 상담자가 직면한 문제를 어떻게 해결해야 하는지 방안을 알려드리고, 현지에서 일어나는 문제들을 연수 끝날때 까지 같이 고민해 드립니다.
+								</p>
+							</div></li>
+
+
+					</ul>
+
+
+
+
+
+
+
+
+
+
+
+				</div>
+
+
+
+
+
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+					<div class="container-fluid clearfix">
+						<span class="d-block text-center text-sm-left d-sm-inline-block font-b"> Copyright © 2019 리피의 아일랜드. All rights reserved. </span> <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center font-b"> 아일랜드 현지번호 +353 87 2119 531 스스로 선택하는 자유, 혼자할수 있는 자신감 <!-- <i class="mdi mdi-heart text-danger"></i> -->
+						</span>
+					</div>
+					<div class="borderon mt-auto align-self-end text-center">
+						<a href="https://blog.naver.com/b1uedays_"> <i class="mdi mdi-web text-muted icon-sm"></i>
+						</a> <a href="mailto: liffeydublin@naver.com"> <i class="mdi mdi-email text-muted icon-sm"></i>
+						</a> <a href="https://www.instagram.com/liffeydublin/"> <i class="mdi mdi-instagram text-muted icon-sm"></i>
+						</a>
+						<!-- <a href="http://google.com">
+							<i class="mdi mdi-youtube-play text-muted icon-sm"></i>
+						</a> -->
+
+					</div>
+				</footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+
+
+
+	<div id="openModal" class="modalDialog">
+		<div>
+			<a href="#close" title="Close" class="close">X</a>
+
+			<h2>리피의 아일랜드 회원탈퇴</h2>
+
+			<p>정말로 회원을 탈퇴하십니까? 당신과 관련된 모든자료는 폐기되고 복구되지 않습니다.</p>
+			<form th:action="@{'/user/delete'}" method="post">
+				<input class="btn btn-lg btn-primary btn-lg" type="submit" value="탈퇴하기" />
+			</form>
+		</div>
+	</div>
+	<!-- container-scroller -->
+
+	<!-- plugins:js -->
+	<script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}"></script>
+<!-- 	<script th:src="@{'/resources/vendors/js/vendor.bundle.addons.js'}"></script>
+ -->
+	<script th:src="@{'/resources/js/off-canvas.js'}"></script>
+	<!-- <script th:src="@{'/resources/js/misc.js'}"></script>
+	
+	<script th:src="@{'/resources/js/dashboard.js'}"></script>  -->
+	<!-- End custom js for this page-->
+
+
+</body>
+
+</html>
