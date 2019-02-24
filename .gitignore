@@ -30,4 +30,14 @@ hs_err_pid*
 # igonore taget ----
 */target/**
 
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.iml
+.idea/
+.eclipse
+
 
