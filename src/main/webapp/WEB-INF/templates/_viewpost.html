@@ -243,6 +243,9 @@
 							</a>
 						</form>
 					</li>
+					<li class="nav-item bg-color-b"><a class="nav-link" th:href="@{'/consulting'}"> <i class="mdi mdi-minus icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">상담신청</small>
+						</span>
+					</a></li>
 				</ul>
 			</nav>
 
@@ -284,7 +287,7 @@
 								<tbody>
 									<tr class="borderon">
 										<td colspan=2>
-											<div style="height: 100%; width: 100%;">
+											<div style="height: 100%; width: 100%; padding-top: 10px;">
 												<span> <!-- <p th:utext="${#strings.replace( #strings.escapeXml( post.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">글내용</p> -->
 													<p th:utext="${#strings.replace( post.content ,T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">글내용</p>
 												</span>

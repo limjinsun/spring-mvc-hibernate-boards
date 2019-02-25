@@ -60,13 +60,13 @@ a {
 	height: calc(52px + 1px);
 	margin-bottom: -1px;
 	border-color: #fc2092;
-	border-width: 0.165rem;
+	border-width: 2px;
 	letter-spacing: -0.03rem;
 }
 
 
 .mui-textfield>input:invalid:not(:focus):not(:required), .mui-textfield>input:invalid:not(:focus):required.mui--is-empty.mui--is-touched, .mui-textfield>input:invalid:not(:focus):required.mui--is-not-empty, .mui-textfield>input:invalid:not(:focus):required:not(:empty):not(.mui--is-empty):not(.mui--is-not-empty), .mui-textfield>input:invalid:not(:focus):required[value]:not([value=""]):not(.mui--is-empty):not(.mui--is-not-empty), .mui-textfield>input:not(:focus).mui--is-invalid:not(:required), .mui-textfield>input:not(:focus).mui--is-invalid:required.mui--is-empty.mui--is-touched, .mui-textfield>input:not(:focus).mui--is-invalid:required.mui--is-not-empty, .mui-textfield>input:not(:focus).mui--is-invalid:required:not(:empty):not(.mui--is-empty):not(.mui--is-not-empty), .mui-textfield>input:not(:focus).mui--is-invalid:required[value]:not([value=""]):not(.mui--is-empty):not(.mui--is-not-empty), .mui-textfield>textarea:invalid:not(:focus):not(:required), .mui-textfield>textarea:invalid:not(:focus):required.mui--is-empty.mui--is-touched, .mui-textfield>textarea:invalid:not(:focus):required.mui--is-not-empty, .mui-textfield>textarea:invalid:not(:focus):required:not(:empty):not(.mui--is-empty):not(.mui--is-not-empty), .mui-textfield>textarea:invalid:not(:focus):required[value]:not([value=""]):not(.mui--is-empty):not(.mui--is-not-empty), .mui-textfield>textarea:not(:focus).mui--is-invalid:not(:required), .mui-textfield>textarea:not(:focus).mui--is-invalid:required.mui--is-empty.mui--is-touched, .mui-textfield>textarea:not(:focus).mui--is-invalid:required.mui--is-not-empty, .mui-textfield>textarea:not(:focus).mui--is-invalid:required:not(:empty):not(.mui--is-empty):not(.mui--is-not-empty), .mui-textfield>textarea:not(:focus).mui--is-invalid:required[value]:not([value=""]):not(.mui--is-empty):not(.mui--is-not-empty) {
-    border-width: 0.165rem;
+    border-width: 2.5px;
 }
 
 .mui-select:focus>label, .mui-select>select:focus ~label {
@@ -85,7 +85,7 @@ a {
 }
 
 .mui-table>tbody>tr>td {
-	padding: 10.165rem;
+	padding: 12.5px;
 	line-height: 1.429;
 }
 
@@ -105,12 +105,12 @@ a {
 }
 
 .mui-select>select {
-	border-width: 0.165rem;
+	border-width: 2px;
 	border-color: hotpink;
 }
 
 .mui-textfield>input, .mui-textfield>textarea {
-	border-width: 0.165rem;
+	border-width: 2.5px;
 	border-color: black;
 }
 
@@ -121,7 +121,7 @@ a {
 
 .mui-textfield>input:focus, .mui-textfield>textarea:focus {
 	border-color: #fc2092;
-	border-width: 0.165rem
+	border-width: 2px
 }
 
 input, textarea, select, button {

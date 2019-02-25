@@ -92,7 +92,7 @@ public class PasswordResetController {
 		
 		// 2-4. 메일을 생성하고, 생성된 토큰을 싫어준다음 메일을 보내준다. 
 		Mail mail = new Mail();
-		mail.setFrom("liffeyireland.jin@gmail.com");
+		mail.setFrom("noreply.liffeyireland@gmail.com");
         mail.setTo(user.getEmail());
         mail.setSubject("비밀번호 변경메일입니다. 링크를 이용해 변경해 주세요.");
         
@@ -100,7 +100,9 @@ public class PasswordResetController {
         model.put("token", token);
         model.put("user", user);
         model.put("signature", "https://liffeyireland.com");
-        String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        // String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        String url = request.getScheme() + "://liffeyireland.com" + request.getContextPath();
+        System.err.println(url);
         model.put("resetUrl", url + "/forgotPassword/resetForm?token=" + token.getTokenString());
         mail.setModel(model);
         
