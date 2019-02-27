@@ -29,7 +29,15 @@ public interface PostDAO extends JpaRepository<Post, Long> {
 	@Override
 	@Query(value = "SELECT * FROM post p WHERE p.p_special IS NULL ORDER BY ?#{#pageable}",
 			countQuery = "SELECT count(*) FROM post p WHERE p.p_special IS NULL ORDER BY ?#{#pageable}",
-		    nativeQuery = true)
+		    nativeQuery = true) // https://stackoverflow.com/a/41283553/4735043
 	Page<Post> findAll(Pageable pageable);
 
+	
+	@Query(value = "SELECT * FROM post p WHERE p.p_special LIKE 'manual' ORDER BY ?#{#pageable}",
+			countQuery = "SELECT count(*) FROM post p WHERE p.p_special LIKE 'manual' ORDER BY ?#{#pageable}",
+		    nativeQuery = true) // https://stackoverflow.com/a/41283553/4735043
+	Page<Post> findManualPostAll(Pageable pageable);
+
 }
+
+

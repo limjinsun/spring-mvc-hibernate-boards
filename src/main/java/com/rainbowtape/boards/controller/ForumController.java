@@ -123,6 +123,28 @@ public class ForumController {
 		
 		return "_viewpostslist";
 	}
+	
+	
+	@GetMapping("/viewliffeypostslist")
+	public String showLiffeyPostsList (
+			@ModelAttribute("post") Post post,
+			@PageableDefault(page = 1) Pageable pageable,
+			Model model) {
+		
+		System.err.println(pageable.getPageNumber());
+		int pageNum = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1); // 페이지넘버가 0 이면 0, 0보다 크면 -1 을 해줌.
+		pageable = new PageRequest(pageNum, 10, new Sort(Sort.Direction.DESC, "p_datemodified"));
+		
+		Page<Post> page = postService.findManualPostAll(pageable);
+		model.addAttribute("page", page);
+		
+		List<Post> specialPosts = postService.findSpecialPost("공지");
+		model.addAttribute("specialPosts", specialPosts);
+		
+		return "_viewliffeypostslist";
+	}
+	
+	
 
 	@GetMapping("/viewpost/{idpost}")
 	public String showPost (

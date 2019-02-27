@@ -56,5 +56,10 @@ public class PostServiceImpl implements PostService {
 		System.err.println(result.size());
 		return result;
 	}
+
+	@Override
+	public Page<Post> findManualPostAll(Pageable pageable) {
+		return postDAO.findManualPostAll(pageable);
+	}
 	
 }

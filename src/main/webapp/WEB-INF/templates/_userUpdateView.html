@@ -22,7 +22,6 @@
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.base.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.addons.css'}" type="text/css">
 <style>
-
 .footer {
 	background: rgba(220, 220, 220, 0.1);
 	border-top: 0.5px solid #f2f2f2;
@@ -71,6 +70,57 @@ input[type="file"] {
 	margin: 20px;
 }
 </style>
+
+<style type="text/css">
+
+.mui-table>tbody>tr>td {
+	line-height: 1.6;
+}
+
+.mui-table>thead>tr>th {
+	border-bottom-color: black;
+}
+
+.table td, .table th {
+	/* font-size: 1.05rem; */
+	
+}
+
+.mui-table>tbody>tr>td {
+	padding: 3px;
+}
+
+.table th, .table td {
+	border-top: 3px solid #ffffff;
+}
+
+.mui-table.mui-table--bordered>tbody>tr>td {
+	border-bottom: 2px solid rgba(0, 0, 0, .12);
+	/* 	rgba(0,0,0,.12); */
+}
+	
+.mui-table>thead>tr>th {
+	/* border-bottom-color: rgba(0, 0, 0, 0.26); */
+	border-bottom-style: solid;
+	border-bottom-width: 3px;
+	font-weight: 700;
+}
+
+.mui-table>thead>tr>th {
+	/* border-bottom: 2px solid rgba(0,0,0,.12); */
+	font-weight: 700;
+}
+
+.table td, .table th {
+	white-space: unset;
+}
+
+.table th, .table td {
+	padding: 10px 10px;
+}
+
+
+</style>
 </head>
 
 <body style="overflow-x: unset;">
@@ -112,7 +162,7 @@ input[type="file"] {
 							<div class="card-body" style="padding: 1.1rem 1.9rem;">
 								<div class="row">
 									<div class="col-lg-7 borderon">
-										<h2 class="card-description">유저 업데이트 폼입니다.</h2>
+										<h2 class="card-description">유저 정보 입니다.</h2>
 										<p class="card-description">
 											<i class="fa fa-caret-right"></i> 관리자만 접근 가능한 페이지 입니다. <br />
 										<p>
@@ -129,63 +179,69 @@ input[type="file"] {
 
 								<div class="row">
 									<div class="col-lg-6 mx-auto borderon">
-										<form class="mui-form" method="POST" th:action="@{'/admin/updateUserDetail/' + ${userprofile.id} }" th:object="${userproflie}" />
-										<div class="mui-textfield">
-											<input th:field=${userprofile.userstatus} type="text" id="userstatus" name="userstatus">
-											<label>유저 status. 예)liffey </label>
-										</div>
+									
+										<table class="mui-table mui-table--bordered borderon">
+											<thead>
+												<tr>
+													<th class="borderon text-center" style="height:50px; width:50%">항목</th>
+													<th class="borderon text-center" style="height:50px; width:100%">정보</th>
+												</tr>
+											</thead>
+											<tbody class="borderon">
+                                                
+												<tr class="borderon">
+													<td class="borderon text-center" style="height:50px;">userstatus</td>
+													<td class="borderon text-center" style="height:50px;"><div class="" th:text=${userprofile.userstatus}></div></td> 
+												</tr>
+												<tr class="borderon">
+													<td class="borderon text-center" style="height:50px;">school</td>
+													<td class="borderon text-center" style="height:50px;"><div class="" th:text=${userprofile.school}></div></td> 
+												</tr>
+												<tr class="borderon">
+													<td class="borderon text-center" style="height:50px;">progress</td>
+													<td class="borderon text-center" style="height:50px;"><div class="" th:text=${userprofile.progress}></div></td> 
+												</tr>
+												<tr class="borderon">
+													<td class="borderon text-center" style="height:50px;">accomodation</td>
+													<td class="borderon text-center" style="height:50px;"><div class="" th:text=${userprofile.accomodation}></div></td> 
+												</tr>
+												<tr class="borderon">
+													<td class="borderon text-center" style="height:50px;">arrivaldate</td>
+													<td class="borderon text-center" style="height:50px;"><div class="" th:text=${userprofile.arrivaldate}></div></td> 
+												</tr>
+												<tr class="borderon">
+													<td class="borderon text-center" style="height:50px;">flightinfo</td>
+													<td class="borderon text-center" style="height:50px;"><div class="" th:text=${userprofile.flightinfo}></div></td> 
+												</tr>
+												<tr class="borderon">
+													<td class="borderon text-center" style="height:50px;">interest</td>
+													<td class="borderon text-center" style="height:100%;"><div class="" th:text=${userprofile.interest}></div></td> 
+												</tr>
+												<tr class="borderon">
+													<td class="borderon text-center" style="height:50px;">usertext</td>
+													<td class="borderon text-center" style="height:100%;"><div class="" th:utext="${#strings.replace( userprofile.usertext ,T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}"></div></td> 
+												</tr>
+                                                <tr class="borderon">
+                                                    <td class="borderon text-center" style="height:50px;">admintext</td>
+                                                    <td class="borderon text-center" style="height:100%;"><div class="" th:utext="${#strings.replace( userprofile.admintext ,T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}"></div></td> 
+                                                </tr>
+                                                <tr class="borderon">
+                                                    <td class="borderon text-center" style="height:50px;">extra1</td>
+                                                    <td class="borderon text-center" style="height:50px;"><div class="" th:text=${userprofile.extra1}></div></td> 
+                                                </tr>
+                                                <tr class="borderon">
+                                                    <td class="borderon text-center" style="height:50px;">extra2</td>
+                                                    <td class="borderon text-center" style="height:50px;"><div class="" th:text=${userprofile.extra2}></div></td> 
+                                                </tr>
+												
+											</tbody>
+										</table>
+										
 
-										<div class="mui-textfield">
-											<input th:field=${userprofile.school} type="text" id="school" name="school">
-											<label>유저 어학원 예)리피어학원 </label>
-										</div>
+										
 
-										<div class="mui-textfield">
-											<input th:field=${userprofile.progress} type="text" id="progress" name="progress">
-											<label>유저 progress. 예)심층상담후, 어학원 진행중</label>
-										</div>
-
-										<div class="mui-textfield">
-											<input th:field=${userprofile.accomodation} type="text" id="accomodation" name="accomodation">
-											<label>유저 accomodation. 예)배정됨. 372 Harolds Cross Road. Dublin.</label>
-										</div>
-
-										<div class="mui-textfield">
-											<input th:field=${userprofile.arrivaldate} type="text" id="arrivaldate" name="arrivaldate">
-											<label>도착날짜 ex>2019-02-18 12:00:00 </label>
-										</div>
-
-										<div class="mui-textfield">
-											<input th:field=${userprofile.flightinfo} type="text" id="flightinfo" name="flightinfo">
-											<label>유저 flightinfo. 예)BA3020 Dublin </label>
-										</div>
-
-										<div class="mui-textfield">
-											<textarea th:field=${userprofile.interest} id="interest" name="interest"></textarea>
-											<label>유저 interest</label>
-										</div>
-
-										<div class="mui-textfield">
-											<textarea th:field=${userprofile.usertext} id="usertext" name="usertext"></textarea>
-											<label>유저 usertext</label>
-										</div>
-
-										<div class="mui-textfield">
-											<textarea th:field=${userprofile.admintext} id="admintext" name="admintext"></textarea>
-											<label>유저 admintext</label>
-										</div>
-
-										<div class="mui-textfield">
-											<input th:field=${userprofile.extra1} type="text" id="extra1" name="extra1">
-											<label>유저 extra1. </label>
-										</div>
-
-										<div class="mui-textfield">
-											<input th:field=${userprofile.extra2} type="text" id="extra2" name="extra2">
-											<label>유저 extra2. </label>
-										</div>
-
-										<button type="submit" class="mui-btn mui-btn--raised">Submit</button>
+										<form class="mui-form" method="GET" th:action="@{'/admin/updateUserDetail/' + ${userprofile.id} }" />
+										<button type="submit" class="mui-btn mui-btn--raised">정보수정</button>
 										</form>
 									</div>
 								</div>
@@ -216,7 +272,7 @@ input[type="file"] {
 	<!-- plugins:js -->
 	<script th:src="@{'/resources/vendors/js/vendor.bundle.base.js'}"></script>
 	<!-- <script th:src="@{'/resources/vendors/js/vendor.bundle.addons.js'}"></script> -->
-	
+
 	<script th:src="@{'/resources/js/off-canvas.js'}"></script>
 	<!-- <script th:src="@{'/resources/js/misc.js'}"></script> -->
 	<!-- endinject -->

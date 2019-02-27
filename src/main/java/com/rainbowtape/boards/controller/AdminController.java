@@ -67,7 +67,6 @@ public class AdminController {
 		int pageNum = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1); // 페이지넘버가 0 부터 시작하니까 -1 해줌. 
 		pageable = new PageRequest(pageNum, 10, new Sort(Sort.Direction.DESC, "arrivaldate"));
 
-//		Page<User> usersPage = userService.findAll(pageable);
 		Page<UserWithArrivalInfo> usersPage = userService.findAllWithArrivalInfo(pageable);
 		model.addAttribute("page", usersPage);
 
@@ -80,6 +79,17 @@ public class AdminController {
 		UserProfile userProfile = userProfileService.findById(userid);
 		model.addAttribute("userprofile", userProfile);
 
+		return "_userUpdateView";
+	}
+	
+	@GetMapping("updateUserDetail/{id}")
+	public String viewUserUpdateForm (Model model, @PathVariable("id") int userid) {
+		
+		UserProfile userProfile = userProfileService.findById(userid);
+		userProfile.setAdmintext(html2textAndKeepLineBreak(userProfile.getAdmintext()));
+		
+		model.addAttribute("userprofile", userProfile);
+		
 		return "_userUpdateForm";
 	}
 
@@ -92,6 +102,7 @@ public class AdminController {
 		if (temp.getSchool().length() == 0) temp.setSchool(null);
 		if (temp.getProgress().length() == 0) temp.setProgress(null);
 		if (temp.getAccomodation().length() == 0) temp.setAccomodation(null);
+		if (temp.getArrivaldate().length() == 0) temp.setArrivaldate(null);
 		if (temp.getFlightinfo().length() == 0) temp.setFlightinfo(null);
 		if (temp.getInterest().length() == 0) temp.setInterest(null);
 		if (temp.getUsertext().length() == 0) temp.setUsertext(null);
@@ -105,6 +116,7 @@ public class AdminController {
 		originalProfile.setSchool(temp.getSchool());
 		originalProfile.setProgress(temp.getProgress());
 		originalProfile.setAccomodation(temp.getAccomodation());
+		originalProfile.setArrivaldate(temp.getArrivaldate());
 		originalProfile.setFlightinfo(temp.getFlightinfo());
 		originalProfile.setInterest(temp.getInterest());
 		originalProfile.setUsertext(temp.getUsertext());

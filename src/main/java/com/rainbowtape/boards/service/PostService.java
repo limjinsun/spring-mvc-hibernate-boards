@@ -16,4 +16,5 @@ public interface PostService {
 	public void update(Post post);
 	public Page<Post> findAll(Pageable pageable);
 	public List<Post> findSpecialPost(String string);
+	public Page<Post> findManualPostAll(Pageable pageable);
 }

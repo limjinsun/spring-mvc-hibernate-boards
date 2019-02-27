@@ -140,6 +140,12 @@ a {
 											<!--  -->
 											<label style="color: deeppink;">인스타그램 아이디 [옵션] 게시글과 함께 피드사진 1장이 표시됩니다. 공개된 계정만 적용됩니다.</label>
 										</div>
+										
+										<div sec:authorize="hasRole('ROLE_ADMIN')" class="mui-textfield borderon">
+											<input type="text" name="special" th:field="${post.special}" id="special">
+											<label style="color: deeppink;">스페셜 섹션 - 관리자에게만 노출</label>
+										</div>
+										
 										<button type="submit" class="mui-btn mui-btn--raised font-b">전송</button>
 										</form>
 									</div>
