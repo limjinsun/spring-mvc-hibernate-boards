@@ -5,13 +5,12 @@ Java spring framework has almost every functionality web application required fr
 <br/><br/>
 ©Jin Lim
 <br/><br/>
+```
 [Proto type on live server](https://liffeyireland.com) - Korean
-<br/><br/>
+```
+
 ## Database Design and Entity Relations
 ![databasedesign](./pics/01.png "s01")
-
-
-
 
 ```
 MySQL database used
