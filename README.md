@@ -1,16 +1,16 @@
-# Spring MVC CRM Software project
+## Spring MVC CRM Software project
 
 Java Spring Framework - Web application CRM software
-
-## Authors
-
-* **Jin Lim** - [limjinsun](https://github.com/limjinsun)
+This project was built to demonstrate how Java spring-framework and hibernate can be used in a real-world situation. Java spring framework has almost every functionality web application required from user-login handling to ORM(Object Relation Management) for a database. Through this project, I would like to show how each module can be used for the purpose respectively.
+© Jin Lim
 
 [proto type on live server](https://liffeyireland.com) - Korean
 
-<!--
-![screenshot1](./pics/a.png "s1")
-![screenshot2](./pics/b.png "s2") -->
+
+
+## Database Design and Entity Relations
+![databasedesign](./pics/01.png "s01")
+
 
 
 
