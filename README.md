@@ -15,7 +15,6 @@ MySQL database used
 ```
 
 ## demo
-<img src="https://media.giphy.com/media/1ykCBM626sMLBN4RE5/giphy.gif" height="100%" width="100%">
 <img src="https://media.giphy.com/media/1oJRIiTAb6Zsc1n7Kt/giphy.gif" height="100%" width="100%">
 
 
