@@ -1,10 +1,18 @@
-# Spring MVC CRM(Customer Relation Management) Software project
+# Spring MVC CRM Software project
 
 Java Spring Framework - Web application CRM software
 
 ## Authors
 
-* **Jin Lim** - *Initial work* -
+* **Jin Lim** - [limjinsun](https://github.com/limjinsun)
+
+[proto type on live server](https://liffeyireland.com) - Korean
+
+<!--
+![screenshot1](./pics/a.png "s1")
+![screenshot2](./pics/b.png "s2") -->
+
+
 
 ```
 Give examples
@@ -19,4 +27,4 @@ Give examples
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
