@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSessionListener;
 public class SessionListener implements HttpSessionListener {
 	
 	// setting for session time.
-
 	@Override
 	public void sessionCreated(HttpSessionEvent se) {
 		System.err.println("session created");

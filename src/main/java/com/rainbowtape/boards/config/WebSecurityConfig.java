@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired // UserServiceImpl autowired
 	private UserService userService;
 
-	// https://www.baeldung.com/spring-security-authentication-with-a-database
+	// https://www.baeldung.com/spring-security-authentication-with-a-database **
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception { 
 
@@ -64,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.addFilterBefore(filter,CsrfFilter.class);
 		/** https://stackoverflow.com/a/23051264/4735043 **/
 		http
-		.csrf().disable() // https://stackoverflow.com/questions/28716632/spring-boot-request-method-post-not-supported
+		.csrf().disable() // https://stackoverflow.com/questions/28716632/spring-boot-request-method-post-not-supported - 이거 안해주면 페이지낫파운드 에러발생.
 		.authorizeRequests()
 		.antMatchers("/resources/**").permitAll()
 		.antMatchers("/images/**").permitAll()
@@ -89,8 +89,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.exceptionHandling()
 		.accessDeniedPage("/403");
-		//				.and()
-		//			.csrf();
 	}
 
 	private AuthenticationFailureHandler loginFailureHandler() {

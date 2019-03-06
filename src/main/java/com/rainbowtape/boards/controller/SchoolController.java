@@ -342,10 +342,10 @@ public class SchoolController {
 	}
 
 	public static String html2textAndKeepLineBreak(String html) {
-		if(html==null)
+		if (html == null)
 			return html;
 		Document document = Jsoup.parse(html);
-		document.outputSettings(new Document.OutputSettings().prettyPrint(false));//makes html() preserve linebreaks and spacing
+		document.outputSettings(new Document.OutputSettings().prettyPrint(false)); //makes html() preserve linebreaks and spacing
 		document.select("br").append("\\n");
 		document.select("p").prepend("\\n\\n");
 		String s = document.html().replaceAll("\\\\n", "\n");

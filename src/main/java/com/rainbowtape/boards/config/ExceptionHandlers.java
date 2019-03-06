@@ -11,19 +11,17 @@ public class ExceptionHandlers {
 	
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public String handle(Exception ex) {
-
-		return "404";//this is view name
+		
+		return "404"; //this is view name
 	}
 	
-	
-	//https://jira.spring.io/browse/SPR-14651
+	//https://jira.spring.io/browse/SPR-14651 
     //4.3.5 supports RedirectAttributes redirectAttributes
     @ExceptionHandler(MultipartException.class)
     public String handleError1(MultipartException e, RedirectAttributes redirectAttributes) {
 
         redirectAttributes.addFlashAttribute("message", e.getCause().getMessage());
         return "redirect:/school/uploadStatus"; // 
-
     }
 
     /*@ExceptionHandler(MultipartException.class)
@@ -32,4 +30,5 @@ public class ExceptionHandlers {
         return "redirect:/errorPage";
 
     }*/
+    
 }

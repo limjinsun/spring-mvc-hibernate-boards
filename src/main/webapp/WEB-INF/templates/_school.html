@@ -206,9 +206,9 @@ a {
 											<!-- align-self-center / align-items-center -->
 											<div class="col-md-7 d-flex flex-column justify-content-center borderon">
 												<div class="d-flex flex-row justify-content-center align-items-center borderon">
-													<div class="col-md-4 borderon">
+													<div class="col-md-4 text-center borderon">
 														<!--  /logos/englishour-logo.png -->
-														<img th:src="@{'/images' + ${school.logo} }" width="100%" style="max-height: 250px; max-width: 250px;" alt="" />
+														<img th:src="@{'/images' + ${school.logo} }" width="100%" style="max-height: 150px; max-width: 150px;" alt="" />
 													</div>
 
 													<div class="col-md-8 justify-content-center align-items-center borderon">
@@ -216,7 +216,7 @@ a {
 													</div>
 												</div>
 
-												<div class="align-self-right borderon">
+												<div class="d-none d-md-block align-self-right borderon">
 													<i class="mdi mdi-map-marker-circle text-primary icon-sm"></i> <span style="margin-left: 3px;"> <small class="text-primary" th:text="${school.address}">학교주소</small>
 													</span>
 												</div>
@@ -226,14 +226,14 @@ a {
 											</div>
 											<!--  align-items-center  -->
 											<div class="col-md-5 d-flex flex-column justify-content-center align-items-center borderon">
-												<div class="borderon mt-auto align-self-left">
+												<div class="d-none d-md-block borderon mt-auto align-self-left">
 													<a th:href="${school.homepage}" target="_blank"> <i class="mdi mdi-web text-primary icon-md"></i>
 													</a> <a th:href="'http://instagram.com/' + ${school.insta}" target="_blank"> <i class="mdi mdi-instagram text-primary icon-md"></i>
 													</a> <a th:href="${school.youtube}" target="_blank"> <i class="mdi mdi-youtube-play text-primary icon-md"></i>
 													</a> <a th:href="${school.facebook}" target="_blank"> <i class="mdi mdi-facebook-box text-primary icon-md"></i>
 													</a>
 												</div>
-												<div class="table-responsive borderon">
+												<div class="d-none d-md-block table-responsive borderon">
 													<table class="table card-description">
 														<tbody>
 															<tr>

@@ -16,7 +16,7 @@ public interface CourseDAO extends JpaRepository<Course, Integer> {
 	List<Course> findBySchool(School school);
 	
 	// https://stackoverflow.com/a/27954027/4735043
-	// cascade = all 때문에 매뉴얼로 딜리트를 해줘야 함. 
+	// cascade = all 때문에 매뉴얼로 딜리트를 해줘야 함. or cascade 를 바꿔줘야함. 
 	@Modifying
 	@Query(value = "DELETE FROM course WHERE idcourse = ?1", nativeQuery = true)
 	void delete(int idcourse);

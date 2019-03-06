@@ -87,7 +87,6 @@ public class UserController {
 	@PostMapping("/updateEmail")
 	public String updateEmailIntoDb(@ModelAttribute("user") User user) { 
 
-
 		try {
 			userService.updateUser(user);
 			updateAuthentication(user); // 이메일을 변경하였을 경우를 대비해서, 변경된 정보로 현재 authentication 정보를 업데이트 해줘야 한다. 
@@ -96,7 +95,6 @@ public class UserController {
 			System.err.println(e);
 			return "redirect:/error";
 		}
-
 		
 		return "redirect:/user/";
 	}

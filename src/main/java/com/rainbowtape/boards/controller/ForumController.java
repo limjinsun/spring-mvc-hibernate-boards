@@ -124,7 +124,6 @@ public class ForumController {
 		return "_viewpostslist";
 	}
 	
-	
 	@GetMapping("/viewliffeypostslist")
 	public String showLiffeyPostsList (
 			@ModelAttribute("post") Post post,
@@ -144,8 +143,6 @@ public class ForumController {
 		return "_viewliffeypostslist";
 	}
 	
-	
-
 	@GetMapping("/viewpost/{idpost}")
 	public String showPost (
 			@ModelAttribute("post") Post post, 
@@ -268,7 +265,6 @@ public class ForumController {
 	public String deleteReply (@PathVariable int idreply, @RequestParam("idpost") int idpost, @ModelAttribute("user") User user) {
 
 		replyService.delete(idreply);
-
 		return "redirect:/forum/viewpost/" + idpost;
 	}
 	
@@ -290,7 +286,7 @@ public class ForumController {
 	}
 	
 	public static String html2textAndKeepLineBreak(String html) {
-	    if(html==null)
+	    if(html == null)
 	        return html;
 	    Document document = Jsoup.parse(html);
 	    document.outputSettings(new Document.OutputSettings().prettyPrint(false));//makes html() preserve linebreaks and spacing
@@ -299,5 +295,4 @@ public class ForumController {
 	    String s = document.html().replaceAll("\\\\n", "\n");
 	    return Jsoup.clean(s, "", Whitelist.none(), new Document.OutputSettings().prettyPrint(false));
 	}
-	
 }
