@@ -13,11 +13,6 @@ Java spring framework has almost every functionality web application required fr
 ```
 MySQL database used
 ```
-
-## demo
-<img src="https://media.giphy.com/media/1oJRIiTAb6Zsc1n7Kt/giphy.gif" height="100%" width="100%">
-
-
 ## Built With
 
 * [Spring](https://spring.io/) - The web framework used
@@ -25,7 +20,12 @@ MySQL database used
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Hibernate](http://hibernate.org/) - Used to ORM mapping and Entity Validation
 * [MySQL](https://www.mysql.com/) - Relational Database Used
+* [Tomcat](http://tomcat.apache.org/) - Open Source web server and servlet container
+
+## Demo
+<img src="https://media.giphy.com/media/1oJRIiTAb6Zsc1n7Kt/giphy.gif" height="100%" width="100%">
+
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the MIT License.
