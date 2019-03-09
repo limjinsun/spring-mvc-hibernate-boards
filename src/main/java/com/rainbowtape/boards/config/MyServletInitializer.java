@@ -15,7 +15,7 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 	    super.onStartup(servletContext); 
 	    servletContext.addListener(new SessionListener());
 	}
-
+	
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class[] { PersistenceConfig.class, WebSecurityConfig.class, };
@@ -25,7 +25,7 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class[] { SpringConfig.class };
 	}
-
+ 
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] { "/*" };
@@ -86,5 +86,5 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 		customizeRegistration(registration);
 	}
 	 */
-
+	
 }
