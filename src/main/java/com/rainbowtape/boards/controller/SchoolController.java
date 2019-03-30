@@ -351,5 +351,4 @@ public class SchoolController {
 		String s = document.html().replaceAll("\\\\n", "\n");
 		return Jsoup.clean(s, "", Whitelist.none(), new Document.OutputSettings().prettyPrint(false));
 	}
-
 }

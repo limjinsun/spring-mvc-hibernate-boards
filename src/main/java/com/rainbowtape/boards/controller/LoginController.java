@@ -45,9 +45,10 @@ public class LoginController {
 	 * If not present in the model, the argument should be instantiated first and then added to the model.
 	 * https://docs.spring.io/spring/docs/3.1.x/spring-framework-reference/html/mvc.html#mvc-ann-modelattrib-methods */	
 	@RequestMapping(value = "/login", method = RequestMethod.GET) // https://stackoverflow.com/a/28718816/4735043
-	public String login(@ModelAttribute User user) {
-
+	public String login(Locale locale, @ModelAttribute User user) {
 		logger.info("Login");
+		System.out.println("- locale is : " + locale);
+		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if(isAdmin(auth)) {
 			return "redirect:/admin/";

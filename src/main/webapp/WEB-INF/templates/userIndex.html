@@ -22,11 +22,14 @@
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/font-awesome/css/font-awesome.css'}" type="text/css">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 <link rel="stylesheet" th:href="@{'/resources/vendors/icheck/skins/all.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/css/style.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/css/custom.css'}" type="text/css">
-<link rel="stylesheet" th:href="@{'/resources/css/simplepicker.css'}" type="text/css">
-<script th:src="@{'/resources/js/simplepicker.js'}"></script>
+
+<!-- <link rel="stylesheet" th:href="@{'/resources/css/simplepicker.css'}" type="text/css">
+<script th:src="@{'/resources/js/simplepicker.js'}"></script> -->
 
 <link rel="stylesheet" th:href="@{'/resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css'}" type="text/css">
 <link rel="stylesheet" th:href="@{'/resources/vendors/css/vendor.bundle.base.css'}" type="text/css">
@@ -273,7 +276,7 @@
 						</span>
 					</a></li>
 					
-					<li class="nav-item"><a class="nav-link" th:href="@{'/school/all'}"> <i class="mdi mdi-drag-vertical icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">어학원 가격정보</small>
+					<li class="nav-item"><a class="nav-link" th:href="@{'/school/all'}"> <i class="mdi mdi-drag-vertical icon-md"></i> <span class="menu-title font-b"> &nbsp<small class="">어학원 가격정보 [준비중]</small>
 						</span>
 					</a></li>
 					<li class="nav-item bg-color-a">
@@ -422,8 +425,8 @@
 							<div class="d-flex align-items-center col-12">
 								<form th:action="@{'/user/arrivalUpdate'}" class="mui-form" method="POST" />
 								<div class="mui-textfield">
-									<a class="datetime-toggle"> <span class="mdi mdi-calendar-check icon-xmd" style="padding-top: 0px; position: absolute;"></span>
-									</a><input th:value="${userProfile.arrivaldate}" type="text" id="arrivaldate" name="arrivaldate" style="padding-left: 25px;" readonly>
+									<span class="mdi mdi-calendar-check icon-xmd" style="padding-top: 0px; position: absolute; right: 0px;"></span>
+										<input th:value="${userProfile.arrivaldate}" type="text" id="arrivaldate" name="arrivaldate" style="padding-left: 0px;">
 									<label>아일랜드 입국시각</label>
 								</div>
 								<div class="mui-textfield borderon">
@@ -721,7 +724,7 @@
 		}
 	</script>
 	<script>
-	let simplepicker = new SimplePicker({
+	/* let simplepicker = new SimplePicker({
 	      zIndex: 1050
 	    });
 	
@@ -730,10 +733,8 @@
     	 simplepicker.open();
     }, false);
     
-    // $eventLog.innerHTML += '\n\n';
     simplepicker.on('submit', (date, readableDate) => {
-     	/* alert(readableDate); */
-        
+     
         var myDate = new Date(date); 
         mysqldate = myDate.getUTCFullYear() + '-' +
   	          ('00' + (myDate.getUTCMonth()+1)).slice(-2) + '-' +
@@ -743,11 +744,17 @@
   	          ('00' + myDate.getUTCSeconds()).slice(-2);
 	      	document.getElementById("arrivaldate").value = mysqldate;
     });
-
+ 	*/
+ 	
     /* simplepicker.on('close', (date) => {
       $eventLog.innerHTML += 'Picker Closed'  + '\n';
     }); */
 	</script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script type="text/javascript">
+        flatpickr("#arrivaldate", {enableTime: true, dateFormat: "Y-m-d H:i",});
+    </script>
 
 
 	<!-- plugins:js -->

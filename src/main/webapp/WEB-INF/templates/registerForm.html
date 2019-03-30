@@ -85,8 +85,8 @@ body, html {
 							<div class="card-body" style="padding: 1.1rem 0.3rem;">
 								<div class="row">
 									<div class="col-lg-12 borderon" style="color: #FFF;">
-										<h2 class="card-description font-d" style="font-weight: normal; letter-spacing: -0.2rem;">리피의 아일랜드</h2>
-										<p class="card-description">스스로 선택하는 자유, 혼자 할수있는 자신감</p>
+										<h2 class="card-description font-d" th:text="#{login.header}" style="font-weight: normal; letter-spacing: -0.2rem;">login.header</h2>
+										<p class="card-description" th:text="#{login.greetings}">login.greetings</p>
 									</div>
 									<!-- <div class="col-lg-3 borderon">hello</div> -->
 								</div>
@@ -104,12 +104,12 @@ body, html {
 							<div class="row">
 								<div class="col-sm-6 mui-textfield borderon">
 									<input class="form-control" id="fname" th:field="*{fname}" type="text">
-									<label>Name</label>
+									<label th:text="#{register.name}">th:text="#{register.name}"</label>
 								</div>
 
 								<div class="col-sm-6 mui-textfield borderon">
 									<input class="form-control" id="email" th:field="*{email}" type="email">
-									<label>Email</label>
+									<label th:text="#{register.email}">th:text="#{register.email}"</label>
 								</div>
 
 							</div>
@@ -118,17 +118,15 @@ body, html {
 
 								<div class="col-sm-6 mui-textfield borderon">
 									<input id="password_reg" th:field="*{password}" type="password" placeholder="more than 6 characters">
-									<label>Password</label>
+									<label th:text="#{register.password}">th:text="#{register.password}"</label>
 								</div>
 
 								<div class="col-sm-6 mui-textfield borderon">
 									<input id="confirmPassword" th:field="*{passwordConfirm}" type="password" placeholder="more than 6 characters">
-									<label>Password confirm</label>
+									<label th:text="#{register.passwordconfirm}">th:text="#{register.passwordconfirm}"</label>
 								</div>
-
 							</div>
-
-
+							
 							<div class="row d-flex justify-content-center align-items-center">
 								<button type="submit" class="col-6 text-center d-flex justify-content-center align-items-center mui-btn mui-btn--raised font-b" style="border: 3px solid black; margin-bottom: 7px; height: 52px;">Join</button>
 							</div>

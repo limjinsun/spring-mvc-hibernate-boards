@@ -21,13 +21,13 @@ public class MyServletInitializer extends AbstractAnnotationConfigDispatcherServ
 		return new Class[] { PersistenceConfig.class, WebSecurityConfig.class, };
 	}
 
-	@Override
+	@Override 
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class[] { SpringConfig.class };
 	}
  
 	@Override
-	protected String[] getServletMappings() {
+	protected String[] getServletMappings() { 
 		return new String[] { "/*" };
 	}
 

@@ -38,20 +38,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	// https://www.baeldung.com/spring-security-authentication-with-a-database **
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception { 
-
 		auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
 	}
 
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
-
 		return super.authenticationManagerBean();
 	}
 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder(){
-
 		return new BCryptPasswordEncoder();
 	}
 
@@ -92,7 +89,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	private AuthenticationFailureHandler loginFailureHandler() {
-
 		return (request, response, exception) -> {
 			if(exception.getMessage().contains("JDBC")) {
 				response.sendRedirect(request.getContextPath()+"/dbError");
@@ -103,7 +99,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	private AuthenticationSuccessHandler loginSuccessHandler() {
-		
 		return (request, response, authentication) -> {
 			if(authentication.getAuthorities().size() == 0) {
 				log.info("User has no role.");
@@ -119,9 +114,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	private boolean isAdmin(Authentication auth) {
-		
 		System.err.println("isadmin?? - " + auth.getAuthorities().toString());
-
 		boolean isAdmin = false;
 		Iterator<? extends GrantedAuthority> i = auth.getAuthorities().iterator();
 		while (i.hasNext()) {
