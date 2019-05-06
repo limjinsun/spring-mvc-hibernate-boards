@@ -12,7 +12,6 @@ import com.rainbowtape.boards.entity.School;
 
 @Repository
 public interface CourseDAO extends JpaRepository<Course, Integer> {
-	
 	List<Course> findBySchool(School school);
 	
 	// https://stackoverflow.com/a/27954027/4735043
@@ -20,5 +19,4 @@ public interface CourseDAO extends JpaRepository<Course, Integer> {
 	@Modifying
 	@Query(value = "DELETE FROM course WHERE idcourse = ?1", nativeQuery = true)
 	void delete(int idcourse);
-	
 }

@@ -140,7 +140,7 @@ public class AdminController {
 		Page<UserWithArrivalInfo> usersPage = userService.findMembersWithArrivalInfo(pageable);
 		model.addAttribute("page", usersPage);
 
-		return "_allUserInfo";
+		return "_allMemberInfo";
 	}
 	
 	@GetMapping("/allOldMemberInfo")
@@ -154,7 +154,7 @@ public class AdminController {
 		Page<UserWithArrivalInfo> usersPage = userService.findOldMembersWithArrivalInfo(pageable);
 		model.addAttribute("page", usersPage);
 
-		return "_allUserInfo";
+		return "_allOldMemberInfo";
 	}
 
 	// 업데이트 유저 로그인 정보 

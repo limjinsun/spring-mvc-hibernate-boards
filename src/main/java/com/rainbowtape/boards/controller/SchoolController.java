@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
@@ -33,7 +34,6 @@ import com.rainbowtape.boards.entity.School;
 import com.rainbowtape.boards.service.CourseService;
 import com.rainbowtape.boards.service.SchoolService;
 
-
 @Controller
 @RequestMapping(value = "/school")
 public class SchoolController {
@@ -50,36 +50,30 @@ public class SchoolController {
 	/* An @ModelAttribute on a method argument indicates the argument should be retrieved from the model. 
 	 * If not present in the model, the argument should be instantiated first and then added to the model.
 	 * https://docs.spring.io/spring/docs/3.1.x/spring-framework-reference/html/mvc.html#mvc-ann-modelattrib-methods */	
-
 	@GetMapping("/all")
-	public String getAllSchool (Model model) {
-
+	public String getAllSchool (Model model, Locale locale) {
+		System.out.println("- get all school locale : " + locale);
+		
 		List<School> schools = schoolService.getAllSchool();
-
 		model.addAttribute("schools", schools);
 		return "_school";
 	}
 
 	@GetMapping("/course")
 	public String getCourseDetails (@RequestParam("s_id") int idschool, Model model) {
-
 		School school = schoolService.findOne(idschool);
-
 		if(school == null) {
 			return "404";
 		}
-
 		model.addAttribute("school", school);
 		List<Course> courses = courseService.findBySchool(school);
 		model.addAttribute("courses", courses);
-
 		return "_course";
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/addSchool")
 	public String getSchoolAddForm (Model model) {
-
 		model.addAttribute("school", new School());
 		model.addAttribute("schoolName", new String());
 		return "_schoolAddForm";
@@ -87,6 +81,7 @@ public class SchoolController {
 
 	// /home/app-data/images/ --> live server
 	// /Users/rainbowtape/liffey-app/images/ --> localhost:8080 
+	// 디플로이를 위한 war파일을 만들기전에 반드시 라이브 서버버전으로 바꿔줘야 함. 또한 config/SpringConfig.java 의 리소스 세팅도 반드시 바꿔줘야 함. 
 	private static String UPLOADED_FOLDER = "/home/app-data/images/";
 
 	@PostMapping("/addSchool")
@@ -96,10 +91,10 @@ public class SchoolController {
 			@ModelAttribute("school") @Valid School school,
 			BindingResult result, 
 			RedirectAttributes redirectAttributes) {
-
+		
 		System.err.println(school.getSchoolDirectoryName());
 		String schoolDirectoryName = school.getSchoolDirectoryName();
-
+		
 		if(result.hasErrors()) {
 			System.out.println(result.toString());
 			redirectAttributes.addFlashAttribute("errormsg", "입력에 실패하였습니다. 정상적으로 다시 작성해 주세요."); 
@@ -112,7 +107,6 @@ public class SchoolController {
 		}
 
 		try {
-
 			String directoryName = UPLOADED_FOLDER + schoolDirectoryName;
 			File directory = new File(directoryName);
 			if (! directory.exists()){
@@ -120,7 +114,6 @@ public class SchoolController {
 				// If you require it to make the entire directory path including parents,
 				// use directory.mkdirs(); here instead.
 			}            
-
 			String file1Name = schoolDirectoryName + "-logo.png";
 			byte[] bytes = file1.getBytes();
 			Path path = Paths.get(directoryName + File.separator + file1Name);
@@ -137,9 +130,7 @@ public class SchoolController {
 			school.setSchoolpics(schoolpics);
 			
 			school.setAdmintext(textToHtmlConvertingURLsToLinks(school.getAdmintext()));
-
 			schoolService.save(school);
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -200,7 +191,6 @@ public class SchoolController {
 		School originalSchool = schoolService.findOne(idschool);
 
 		try {
-
 			// original foler exist? delete it!..
 			deleteFolderIfExist(originalSchool);
 
@@ -232,7 +222,6 @@ public class SchoolController {
 
 			originalSchool = temp;
 			schoolService.save(originalSchool);
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

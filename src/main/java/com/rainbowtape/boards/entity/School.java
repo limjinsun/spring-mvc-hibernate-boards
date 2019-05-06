@@ -116,7 +116,6 @@ public class School {
 	@Column(name="s_special")
 	private String special;
 	
-
 	/**
 	 * One to Many relation with Course
 	 */
@@ -384,6 +383,4 @@ public class School {
 	public void setSchoolDirectoryName(String schoolDirectoryName) {
 		this.schoolDirectoryName = schoolDirectoryName;
 	}
-
-	
 }

@@ -9,6 +9,8 @@ import javax.validation.Valid;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -41,6 +43,8 @@ import com.rainbowtape.boards.service.UserService;
 @Controller
 @RequestMapping(value = "/forum")
 public class ForumController {
+	
+	private final Logger slf4jLogger = LoggerFactory.getLogger(ForumController.class);
 	
 	@Autowired
 	private PostService postService;
@@ -93,13 +97,28 @@ public class ForumController {
 			redirectAttributes.addFlashAttribute("errormsg", "입력에 실패하였습니다. 정상적으로 다시 작성해 주세요."); 
 			return "redirect:/forum/write";
 		}
-
+		
 		post.setUser(user);
 		java.util.Date now = new java.util.Date();
 		post.setDatecreated(now);
 		post.setDatemodified(now);
+		
+		String s = post.getSpecial();
+		if(isNullOrEmpty(s)) {
+			post.setSpecial(null);
+		} else {
+			post.setSpecial(s);
+		}
+		
+		String insta = post.getInsta();
+		if(isNullOrEmpty(insta)) {
+			post.setInsta(null);
+		} else {
+			post.setInsta(insta);
+		}
 
 		post.setContent(textToHtmlConvertingURLsToLinks(post.getContent()));
+		slf4jLogger.info("** DEBUG **", "write post method called..");		
 		
 		postService.save(post);
 		return "redirect:/forum/viewpostslist";
